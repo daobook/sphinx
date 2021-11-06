@@ -19,15 +19,15 @@ msgstr ""
 
 #: ../../usage/theming.rst:6
 msgid "HTML Theming"
-msgstr ""
+msgstr "HTML 主题化"
 
 #: ../../usage/theming.rst:8
 msgid "Sphinx provides a number of builders for HTML and HTML-based formats."
-msgstr ""
+msgstr "Sphinx 为 HTML 和基于 HTML 的格式提供了许多构建器。"
 
 #: ../../usage/theming.rst:11
 msgid "Builders"
-msgstr ""
+msgstr "构建器"
 
 #: ../../usage/theming.rst:13
 msgid "Todo"
@@ -35,11 +35,11 @@ msgstr ""
 
 #: ../../usage/theming.rst:13
 msgid "Populate when the 'builders' document is split up."
-msgstr ""
+msgstr "当 “构建器” 文档被拆分时进行填充。"
 
 #: ../../usage/theming.rst:17
 msgid "Themes"
-msgstr ""
+msgstr "主题"
 
 #: ../../usage/theming.rst:23
 msgid ""
@@ -47,6 +47,8 @@ msgid ""
 "If you wish to create your own theme, refer to "
 ":doc:`/development/theming`."
 msgstr ""
+"本节提供关于使用预先存在的 HTML 主题的信息。"
+"如果你想创建你自己的主题，请参考 :doc:`/development/theming`。"
 
 #: ../../usage/theming.rst:27
 msgid ""
@@ -56,16 +58,21 @@ msgid ""
 "from which theme to inherit, which highlighting style to use, and what "
 "options exist for customizing the theme's look and feel."
 msgstr ""
+"Sphinx 支持通过 *主题* 改变其 HTML 输出的外观。"
+"一个主题是一个 HTML 模板、样式表和其他静态文件的集合。"
+"此外，它有一个配置文件，指定从哪个主题继承，使用哪种突出的风格，"
+"以及有哪些选项可以定制主题的外观和感觉。"
 
 #: ../../usage/theming.rst:33
 msgid ""
 "Themes are meant to be project-unaware, so they can be used for different"
 " projects without change."
 msgstr ""
+"主题是为了不受项目影响，所以它们可以用于不同的项目而不需要改变。"
 
 #: ../../usage/theming.rst:37
 msgid "Using a theme"
-msgstr ""
+msgstr "使用主题"
 
 #: ../../usage/theming.rst:39
 msgid ""
@@ -74,6 +81,9 @@ msgid ""
 ":confval:`html_theme` config value. For example, to enable the "
 "``classic`` theme, add the following to :file:`conf.py`::"
 msgstr ""
+"使用 :ref:`Sphinx 提供的 <builtin-themes>` 很容易。"
+"因为这些不需要安装，你只需要设置 :confval:`html_theme` 配置值。"
+"例如，要启用 ``classic`` 主题，请在 :file:`conf.py` 中添加以下内容 ::"
 
 #: ../../usage/theming.rst:46
 msgid ""
@@ -84,6 +94,10 @@ msgid ""
 "(the bar with the navigation links at the page's top and bottom), add the"
 " following :file:`conf.py`::"
 msgstr ""
+"你也可以使用 :confval:`html_theme_options` 配置值来设置特定主题的选项。"
+"这些选项通常用于改变主题的外观和感觉。"
+"例如，要把侧边栏放在右边，关系栏（页面顶部和底部的导航链接栏）用黑色背景，"
+"请添加如下 :file:`conf.py`::"
 
 #: ../../usage/theming.rst:57
 msgid ""
@@ -98,32 +112,45 @@ msgid ""
 ":file:`blue.zip`, you can put it right in the directory containing "
 ":file:`conf.py` and use this configuration::"
 msgstr ""
+"如果主题没有附带 Sphinx，它可以以两种静态形式或 Python 包的形式出现。"
+"对于静态形式，可以是一个目录（包含 :file:`theme.conf` 和其他需要的文件），"
+"也可以是一个具有相同内容的 zip 文件。"
+"这个目录或 zip 文件必须放在 Sphinx 能找到的地方；"
+"为此有一个配置值 :confval:`html_theme_path`。"
+"这可以是一个目录列表，相对于包含 :file:`conf.py` 的目录，它可以包含主题目录或 zip 文件。"
+"例如，如果你有一个主题文件 :file:`blue.zip`，你可以把它直接放在包含 "
+":file:`conf.py` 的目录中，并使用这个配置 ::"
 
 #: ../../usage/theming.rst:70
 msgid ""
 "The third form is a Python package.  If a theme you want to use is "
 "distributed as a Python package, you can use it after installing"
 msgstr ""
+"第三种形式是一个 Python 包。"
+"如果你想使用的主题是作为 Python 包分发的，你可以在安装后使用它"
 
 #: ../../usage/theming.rst:78
 msgid ""
 "Once installed, this can be used in the same manner as a directory or "
 "zipfile-based theme::"
 msgstr ""
+"一旦安装，就可以用与目录或基于 zip 文件的主题相同的方式使用 ::"。
 
 #: ../../usage/theming.rst:83
 msgid ""
 "For more information on the design of themes, including information about"
 " writing your own themes, refer to :doc:`/development/theming`."
 msgstr ""
+"关于主题设计的更多信息，包括关于编写你自己的主题的信息，"
+"请参考 :doc:`/development/theming`。"
 
 #: ../../usage/theming.rst:89
 msgid "Builtin themes"
-msgstr ""
+msgstr "内置主题"
 
 #: ../../usage/theming.rst:94
 msgid "**Theme overview**"
-msgstr ""
+msgstr "主题概览"
 
 #: ../../usage/theming.rst:96
 msgid "|alabaster|"
@@ -684,13 +711,14 @@ msgstr ""
 
 #: ../../usage/theming.rst:336
 msgid "Third Party Themes"
-msgstr ""
+msgstr "三方主题"
 
 #: ../../usage/theming.rst:338
 msgid ""
 "There are many third-party themes available for Sphinx. Some of these are"
 " for general use, while others are specific to an individual project."
 msgstr ""
+"有许多第三方主题可用于 Sphinx。其中一些是通用的，而另一些是针对个别项目的。"
 
 #: ../../usage/theming.rst:341
 msgid ""
@@ -699,7 +727,6 @@ msgid ""
 "also be found on PyPI__ (using the classifier ``Framework :: Sphinx :: "
 "Theme``), GitHub__ and GitLab__."
 msgstr ""
-
-#~ msgid "待处理"
-#~ msgstr ""
-
+"sphinx-themes.org__ 是一个画廊，展示了 Sphinx 的各种主题，每个主题下都有演示文档呈现。"
+"主题也可以在 PyPI__ "
+"（使用分类器 ``Framework :: Sphinx :: Theme``）、GitHub__ 和 GitLab__ 找到。"
