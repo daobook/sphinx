@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
+# This file is distributed under the same license as the Sphinx package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-07 00:26+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../tutorial/automatic-doc-generation.rst:2
+msgid "Automatic documentation generation from code"
+msgstr "从代码中自动生成文档"
+
+#: ../../tutorial/automatic-doc-generation.rst:4
+msgid ""
+"In the :ref:`previous section <tutorial-describing-objects>` of the "
+"tutorial you manually documented a Python function in Sphinx. However, "
+"the description was out of sync with the code itself, since the function "
+"signature was not the same. Besides, it would be nice to reuse `Python "
+"docstrings <https://www.python.org/dev/peps/pep-0257/#what-"
+"is-a-docstring>`_ in the documentation, rather than having to write the "
+"information in two places."
+msgstr ""
+"在 :ref:`前一节 <tutorial-describing-objects>` 的教程中，你在 Sphinx 中手动记录了一个 Python"
+" 函数。然而，描述与代码本身是不同步的，因为函数签名不一样。此外，在文档中重用 `Python 文档字符串 "
+"<https://www.python.org/dev/peps/pep-0257/#what-"
+"is-a-docstring>`_，而不是在两个地方写信息，那就更好了。"
+
+#: ../../tutorial/automatic-doc-generation.rst:12
+msgid ""
+"Fortunately, :doc:`the autodoc extension </usage/extensions/autodoc>` "
+"provides this functionality."
+msgstr "幸运的是，:doc:`autodoc 插件 </usage/extensions/autodoc>` 提供了这个功能。"
+
+#: ../../tutorial/automatic-doc-generation.rst:16
+msgid "Reusing signatures and docstrings with autodoc"
+msgstr "用 autodoc 复用使用签名和文档串"
+
+#: ../../tutorial/automatic-doc-generation.rst:18
+msgid "To use autodoc, first add it to the list of enabled extensions:"
+msgstr "要使用 autodoc，首先要把它添加到启用的扩展列表中："
+
+#: ../../tutorial/automatic-doc-generation.rst:20
+#: ../../tutorial/automatic-doc-generation.rst:102
+msgid "docs/source/conf.py"
+msgstr ""
+
+#: ../../tutorial/automatic-doc-generation.rst:30
+msgid ""
+"Next, move the content of the ``.. py:function`` directive to the "
+"function docstring in the original Python file, as follows:"
+msgstr "接下来，将 ``.. py:function``  指令的内容移到原始 Python 文件中的函数文档串中，如下所示："
+
+#: ../../tutorial/automatic-doc-generation.rst:33
+#: ../../tutorial/automatic-doc-generation.rst:69
+msgid "lumache.py"
+msgstr ""
+
+#: ../../tutorial/automatic-doc-generation.rst:50
+msgid ""
+"Finally, replace the ``.. py:function`` directive from the Sphinx "
+"documentation with :rst:dir:`autofunction`:"
+msgstr "最后，用 :rst:dir:`autofunction` 替换 Sphinx 文档中的 ``.. py:function`` 指令："
+
+#: ../../tutorial/automatic-doc-generation.rst:53
+#: ../../tutorial/automatic-doc-generation.rst:79
+msgid "docs/source/usage.rst"
+msgstr ""
+
+#: ../../tutorial/automatic-doc-generation.rst:61
+msgid ""
+"If you now build the HTML documentation, the output will be the same! "
+"With the advantage that it is generated from the code itself. Sphinx took"
+" the reStructuredText from the docstring and included it, also generating"
+" proper cross-references."
+msgstr ""
+"如果你现在建立 HTML 文档，输出将是一样的！。好处是它是由代码本身生成的。Sphinx 从文档字符串中提取了 reStructuredText"
+" 并将其包括在内，同时也生成了适当的交叉引用。"
+
+#: ../../tutorial/automatic-doc-generation.rst:66
+msgid ""
+"You can also autogenerate documentation from other objects. For example, "
+"add the code for the ``InvalidKindError`` exception:"
+msgstr "你也可以从其他对象自动生成文档。例如，为 ``InvalidKindError`` 异常添加代码："
+
+#: ../../tutorial/automatic-doc-generation.rst:76
+msgid ""
+"And replace the ``.. py:exception`` directive with "
+":rst:dir:`autoexception` as follows:"
+msgstr "然后用 :rst:dir:`autoexception` 替换 ``.. py:exception`` 指令，如下所示："
+
+#: ../../tutorial/automatic-doc-generation.rst:88
+msgid ""
+"And again, after running ``make html``, the output will be the same as "
+"before."
+msgstr "再者，运行 ``make html`` 后，输出结果将与之前一样。"
+
+#: ../../tutorial/automatic-doc-generation.rst:91
+msgid "Generating comprehensive API references"
+msgstr "生成全面的 API 参考资料"
+
+#: ../../tutorial/automatic-doc-generation.rst:93
+msgid ""
+"While using ``sphinx.ext.autodoc`` makes keeping the code and the "
+"documentation in sync much easier, it still requires you to write an "
+"``auto*`` directive for every object you want to document. Sphinx "
+"provides yet another level of automation: the :doc:`autosummary "
+"</usage/extensions/autosummary>` extension."
+msgstr ""
+"虽然使用 ``sphinx.ext.autodoc`` 可以使代码和文档保持同步，但它仍然需要你为每一个你想记录的对象编写 ``auto*`` "
+"指令。Sphinx 提供了另一个层次的自动化：:doc:`autosummary </usage/extensions/autosummary>`"
+" 插件。"
+
+#: ../../tutorial/automatic-doc-generation.rst:98
+msgid ""
+"The :rst:dir:`autosummary` directive generates documents that contain all"
+" the necessary ``autodoc`` directives. To use it, first enable the "
+"autosummary extension:"
+msgstr ""
+":rst:dir:`autosummary` 指令会生成包含所有必要的 ``autodoc`` 指令的文件。要使用它，首先要启用 "
+"autosummary 插件："
+
+#: ../../tutorial/automatic-doc-generation.rst:113
+msgid "Next, create a new ``api.rst`` file with these contents:"
+msgstr "接下来，用这些内容创建一个新的 ``api.rst`` 文件："
+
+#: ../../tutorial/automatic-doc-generation.rst:115
+msgid "docs/source/api.rst"
+msgstr ""
+
+#: ../../tutorial/automatic-doc-generation.rst:126
+msgid "Remember to include the new document in the root toctree:"
+msgstr "记住在根 toctree 中包括新的文件："
+
+#: ../../tutorial/automatic-doc-generation.rst:128
+msgid "docs/source/index.rst"
+msgstr ""
+
+#: ../../tutorial/automatic-doc-generation.rst:140
+msgid ""
+"Finally, after you build the HTML documentation running ``make html``, it"
+" will contain two new pages:"
+msgstr "最后，在你运行 ``make html`` 构建 HTML 文档后，它将包含两个新的页面："
+
+#: ../../tutorial/automatic-doc-generation.rst:143
+msgid ""
+"``api.html``, corresponding to ``docs/source/api.rst`` and containing a "
+"table with the objects you included in the ``autosummary`` directive (in "
+"this case, only one)."
+msgstr ""
+"``api.html``，对应于 ``docs/source/api.rst``，包含一个表格，其中有你在 ``autosummary`` "
+"指令中包含的对象（在这种情况下，只有一个）。"
+
+#: ../../tutorial/automatic-doc-generation.rst:146
+msgid ""
+"``generated/lumache.html``, corresponding to a newly created reST file "
+"``generated/lumache.rst`` and containing a summary of members of the "
+"module, in this case one function and one exception."
+msgstr ""
+"``generated/lumache.html``，对应于新创建的 reST 文件 "
+"``generated/lumache.rst``，包含模块成员的摘要，在这种情况下是一个函数和一个异常。"
+
+#: ../../tutorial/automatic-doc-generation.rst:155
+msgid "Summary page created by autosummary"
+msgstr "由 autosummary 创建的摘要页面"
+
+#: ../../tutorial/automatic-doc-generation.rst:157
+msgid ""
+"Each of the links in the summary page will take you to the places where "
+"you originally used the corresponding ``autodoc`` directive, in this case"
+" in the ``usage.rst`` document."
+msgstr "摘要页中的每个链接将带你到你最初使用相应的 ``autodoc`` 指令的地方，在这种情况下是在 ``usage.rst`` 文件中。\""
+
+#: ../../tutorial/automatic-doc-generation.rst:163
+msgid ""
+"The generated files are based on `Jinja2 templates "
+"<https://jinja2docs.readthedocs.io/>`_ that :ref:`can be customized "
+"<autosummary-customizing-templates>`, but that is out of scope for this "
+"tutorial."
+msgstr ""
+"生成的文件是基于 `Jinja2 模板 <https://jinja2docs.readthedocs.io/>`_，该模板 :ref:`可以定制"
+" <autosummary-customizing-templates>`，但这不属于本教程的范围。"
+
+#~ msgid "由 autosummary 创建的摘要页面"
+#~ msgstr ""
+

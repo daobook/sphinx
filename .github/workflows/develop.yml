@@ -2,7 +2,7 @@ name: deploy
 on:
   push:
     branches:
-      - develop
+      - xinet
 
 jobs:
   # 这个工作流程包含一个名为 "build" 的 job
@@ -30,16 +30,14 @@ jobs:
           python setup.py install
           pip install sphinx-intl
       
-      # 克隆
-      - name: Clone
-        run: |
-          git clone https://github.com/sphinx-locales/sphinx.git draft
+      # # 克隆
+      # - name: Clone
+      #   run: |
+      #     git clone https://github.com/sphinx-locales/sphinx.git draft
 
       # 构建 Sphinx 文档
       - name: Build the book
         run: |
-          cp -rf draft/locales/ doc/locale/
-          rm -rf draft/
           cd doc
           sphinx-build -b gettext ./ _build/gettext
           sphinx-intl update -p _build/gettext -l zh_CN

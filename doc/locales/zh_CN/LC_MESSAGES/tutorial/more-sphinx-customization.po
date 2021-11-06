@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
+# This file is distributed under the same license as the Sphinx package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-07 00:26+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../tutorial/more-sphinx-customization.rst:2
+msgid "More Sphinx customization"
+msgstr "更多的 Sphinx 定制"
+
+#: ../../tutorial/more-sphinx-customization.rst:4
+msgid ""
+"There are two main ways to customize your documentation beyond what is "
+"possible with core Sphinx: extensions and themes."
+msgstr "有两种主要的方式来定制你的文档，超越核心 Sphinx 的可能：插件和主题。"
+
+#: ../../tutorial/more-sphinx-customization.rst:8
+msgid "Enabling a built-in extension"
+msgstr "启用一个内置插件"
+
+#: ../../tutorial/more-sphinx-customization.rst:10
+msgid ""
+"In addition to these configuration values, you can customize Sphinx even "
+"more by using :doc:`extensions </usage/extensions/index>`.  Sphinx ships "
+"several :ref:`builtin ones <builtin-extensions>`, and there are many more"
+" :ref:`maintained by the community <third-party-extensions>`."
+msgstr ""
+"除了这些配置值，你还可以通过使用 :doc:`插件 </usage/extensions/index>` 来更多地定制 Sphinx。Sphinx"
+" 提供了几个 :ref:`内置的 <builtin-extensions>`，还有很多 :ref:`由社区维护的 <third-party-"
+"extensions>`。"
+
+#: ../../tutorial/more-sphinx-customization.rst:15
+msgid ""
+"For example, to enable the :mod:`sphinx.ext.duration` extension, locate "
+"the ``extensions`` list in your ``conf.py`` and add one element as "
+"follows:"
+msgstr ""
+"例如，要启用 :mod:`sphinx.ext.duration` 插件，在你的 ``conf.py`` 中找到 ``extensions`` "
+"列表，添加一个元素，如下："
+
+#: ../../tutorial/more-sphinx-customization.rst:19
+#: ../../tutorial/more-sphinx-customization.rst:59
+msgid "docs/source/conf.py"
+msgstr ""
+
+#: ../../tutorial/more-sphinx-customization.rst:29
+msgid ""
+"After that, every time you generate your documentation, you will see a "
+"short durations report at the end of the console output, like this one:"
+msgstr "之后，每次生成文档时，你都会在控制台输出的最后看到一个简短的持续时间报告，就像这样："
+
+#: ../../tutorial/more-sphinx-customization.rst:42
+msgid "Using a third-party HTML theme"
+msgstr "使用第三方 HTML 主题"
+
+#: ../../tutorial/more-sphinx-customization.rst:44
+msgid ""
+"Themes, on the other hand, are a way to customize the appearance of your "
+"documentation.  Sphinx has several :ref:`builtin themes <builtin-"
+"themes>`, and there are also `third-party ones <https://sphinx-"
+"themes.org/>`_."
+msgstr ""
+"另一方面，主题是定制你的文档外观的一种方式。Sphinx 有几个 :ref:`内置主题 <builtin-themes>`，还有 `第三方的 "
+"<https://sphinx-themes.org/>`。"
+
+#: ../../tutorial/more-sphinx-customization.rst:48
+msgid ""
+"For example, to use the `Furo <https://pradyunsg.me/furo/>`_ third-party "
+"theme in your HTML documentation, first you will need to install it with "
+"``pip`` in your Python virtual environment, like this:"
+msgstr ""
+"例如，要在你的 HTML 文档中使用 `Furo <https://pradyunsg.me/furo/>`_ 第三方主题，首先你需要在你的 "
+"Python 虚拟环境中用 ``pip`` 安装它，像这样："
+
+#: ../../tutorial/more-sphinx-customization.rst:56
+msgid ""
+"And then, locate the ``html_theme`` variable on your ``conf.py`` and "
+"replace its value as follows:"
+msgstr "然后，在你的 ``conf.py`` 上找到 ``html_theme`` 变量，将其值替换为："
+
+#: ../../tutorial/more-sphinx-customization.rst:67
+msgid ""
+"With this change, you will notice that your HTML documentation has now a "
+"new appearance:"
+msgstr "通过这一改变，你会注意到你的 HTML 文档现在有了新的外观："
+
+#: ../../tutorial/more-sphinx-customization.rst:75
+msgid "HTML documentation of Lumache with the Furo theme"
+msgstr "使用 Furo 主题的 Lumache 的 HTML 文档"
+
+#: ../../tutorial/more-sphinx-customization.rst:77
+msgid ""
+"It is now time to :doc:`expand the narrative documentation and split it "
+"into several documents </tutorial/narrative-documentation>`."
+msgstr "现在是时候 :doc:`扩大叙述性文档，并将其分成几个文件 </tutorial/narrative-documentation>`。"
+
+#~ msgid "使用 Furo 主题的 Lumache 的 HTML 文档"
+#~ msgstr ""
+

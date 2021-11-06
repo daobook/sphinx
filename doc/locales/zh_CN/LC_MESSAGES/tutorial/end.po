@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
+# This file is distributed under the same license as the Sphinx package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../tutorial/end.rst:2
+msgid "Where to go from here"
+msgstr "今后的发展方向"
+
+#: ../../tutorial/end.rst:4
+msgid ""
+"This tutorial covered the very first steps to create a documentation "
+"project with Sphinx.  To continue learning more about Sphinx, check out "
+"the :ref:`rest of the documentation <contents>`."
+msgstr ""
+"这个教程涵盖了用 Sphinx 创建一个文档项目的最初步骤。"
+"要继续学习更多关于 Sphinx 的知识，请查看 :ref:`文档剩余部分 <contents>`。"

@@ -1,0 +1,307 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
+# This file is distributed under the same license as the Sphinx package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-28 08:22+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../usage/installation.rst:3
+msgid "Installing Sphinx"
+msgstr "安装 Sphinx"
+
+#: ../../usage/installation.rst:13
+msgid "Overview"
+msgstr "概述"
+
+#: ../../usage/installation.rst:15
+msgid ""
+"Sphinx is written in `Python`__ and supports Python 3.6+. It builds upon "
+"the shoulders of many third-party libraries such as `Docutils`__ and "
+"`Jinja`__, which are installed when Sphinx is installed."
+msgstr ""
+"Sphinx 是用 `Python`__  写的，支持 Python 3.6+。它建立在许多第三方库之上，如 `Docutils`__  和 "
+"`Jinja`__ 。这些库在安装 Sphinx 的时候会被安装。"
+
+#: ../../usage/installation.rst:25
+msgid "Linux"
+msgstr ""
+
+#: ../../usage/installation.rst:28
+msgid "Debian/Ubuntu"
+msgstr ""
+
+#: ../../usage/installation.rst:30
+msgid "Install either ``python3-sphinx`` using :command:`apt-get`:"
+msgstr "使用 :command:`apt-get` 也可以安装 ``python3-sphinx``："
+
+#: ../../usage/installation.rst:36 ../../usage/installation.rst:47
+msgid "If it not already present, this will install Python for you."
+msgstr "如果它还没有出现，这将为你安装 Python。"
+
+#: ../../usage/installation.rst:39
+msgid "RHEL, CentOS"
+msgstr ""
+
+#: ../../usage/installation.rst:41
+msgid "Install ``python-sphinx`` using :command:`yum`:"
+msgstr "使用 :command:`yum` 安装 ``python-sphinx``："
+
+#: ../../usage/installation.rst:50
+msgid "Other distributions"
+msgstr "其他发行版"
+
+#: ../../usage/installation.rst:52
+msgid ""
+"Most Linux distributions have Sphinx in their package repositories.  "
+"Usually the package is called ``python3-sphinx``, ``python-sphinx`` or "
+"``sphinx``.  Be aware that there are at least two other packages with "
+"``sphinx`` in their name: a speech recognition toolkit (*CMU Sphinx*) and"
+" a full-text search database (*Sphinx search*)."
+msgstr ""
+"大多数 Linux 发行版的软件包库中都有 Sphinx。通常情况下包被称为 ``python3-sphinx``, ``python-"
+"sphinx`` 或者 ``sphinx``。请注意，至少还有两个名称中带有 ``sphinx`` 的软件包。一个语音识别工具包（*CMU "
+"Sphinx*）和一个全文搜索数据库 (*Sphinx search*)。"
+
+#: ../../usage/installation.rst:60
+msgid "macOS"
+msgstr ""
+
+#: ../../usage/installation.rst:62
+msgid ""
+"Sphinx can be installed using `Homebrew`__, `MacPorts`__, or as part of a"
+" Python distribution such as `Anaconda`__."
+msgstr ""
+"Sphinx 可以用 `Homebrew`__ ，`MacPorts`__  安装，也可以作为 Python 发行版的一部分，如 "
+"`Anaconda`__。"
+
+#: ../../usage/installation.rst:70
+msgid "Homebrew"
+msgstr ""
+
+#: ../../usage/installation.rst:76 ../../usage/installation.rst:96
+msgid "For more information, refer to the `package overview`__."
+msgstr "更多信息，请参考 `软件包概述`__ 。"
+
+#: ../../usage/installation.rst:81
+msgid "MacPorts"
+msgstr ""
+
+#: ../../usage/installation.rst:83
+msgid "Install either ``python3x-sphinx`` using :command:`port`:"
+msgstr "使用 :command:`port` 安装 ``python3x-sphinx``。"
+
+#: ../../usage/installation.rst:89
+msgid "To set up the executable paths, use the ``port select`` command:"
+msgstr "要设置可执行路径，使用 ``port select`` 命令："
+
+#: ../../usage/installation.rst:101
+msgid "Anaconda"
+msgstr ""
+
+#: ../../usage/installation.rst:108
+msgid "Windows"
+msgstr ""
+
+#: ../../usage/installation.rst:110
+msgid ""
+"Sphinx can be install using `Chocolatey`__ or :ref:`installed manually "
+"<windows-other-method>`."
+msgstr "Sphinx 可以用 `Chocolatey`__  来安装，或者  :ref:`手动安装 <windows-other-method>`。"
+
+#: ../../usage/installation.rst:116
+msgid "Chocolatey"
+msgstr ""
+
+#: ../../usage/installation.rst:122
+#, fuzzy
+msgid ""
+"You would need to `install Chocolatey <https://chocolatey.org/install>`_ "
+"before running this."
+msgstr "你需要 `安装 Chocolatey <https://chocolatey.org/install/>`_ 然后再运行这个。"
+
+#: ../../usage/installation.rst:126
+msgid "For more information, refer to the `chocolatey page`__."
+msgstr "欲了解更多信息，请参考 `chocolatey 页面`__。"
+
+#: ../../usage/installation.rst:133
+msgid "Other Methods"
+msgstr "其他方式"
+
+#: ../../usage/installation.rst:135
+msgid ""
+"Most Windows users do not have Python installed by default, so we begin "
+"with the installation of Python itself.  To check if you already have "
+"Python installed, open the *Command Prompt* (:kbd:`⊞Win-r` and type "
+":command:`cmd`). Once the command prompt is open, type :command:`python "
+"--version` and press Enter.  If Python is installed, you will see the "
+"version of Python printed to the screen.  If you do not have Python "
+"installed, refer to the `Hitchhikers Guide to Python's`__ Python on "
+"Windows installation guides. You must install `Python 3`__."
+msgstr ""
+"大多数 Windows 用户都没有默认安装 Python，所以我们先从安装 Python 本身开始。要检查你是否已经安装了 Python "
+"安装，打开  *命令提示符* （ :kbd:`⊞Win-r` 并输入 :command:`cmd`）。一旦命令提示符打开，输入 "
+":command:`python --version`，然后按回车。如果 Python 已经安装，你会看到 Python "
+"的版本被打印到屏幕上。如果你没有安装 Python，请参考 `Hitchhikers Guide to Python`__ 中的在 Windows"
+" 上的安装 Python。你必须安装 `Python 3`__。"
+
+#: ../../usage/installation.rst:144
+msgid ""
+"Once Python is installed, you can install Sphinx using :command:`pip`.  "
+"Refer to the :ref:`pip installation instructions <install-pypi>` below "
+"for more information."
+msgstr ""
+"一旦 Python 安装完毕，你可以用 :command:`pip` 安装 Sphinx。请参考 :ref:`pip 安装说明 <install-"
+"pypi>` 以获得更多信息。"
+
+#: ../../usage/installation.rst:155
+msgid "Installation from PyPI"
+msgstr "从 PyPI 安装"
+
+#: ../../usage/installation.rst:157
+msgid ""
+"Sphinx packages are published on the `Python Package Index "
+"<https://pypi.org/project/Sphinx/>`_.  The preferred tool for installing "
+"packages from *PyPI* is :command:`pip`.  This tool is provided with all "
+"modern versions of Python."
+msgstr ""
+"Sphinx 软件包在 `Python 软件包索引 <https://pypi.org/project/Sphinx/>`_ 上发布。安装 "
+"PyPI 软件包的首选工具 :command:`pip`。这个工具在所有现代版本的Python中都有提供。"
+
+#: ../../usage/installation.rst:162
+msgid ""
+"On Linux or MacOS, you should open your terminal and run the following "
+"command."
+msgstr "在 Linux 或 MacOS 上，你应该打开你的终端并运行以下命令。"
+
+#: ../../usage/installation.rst:168
+msgid ""
+"On Windows, you should open *Command Prompt* (:kbd:`⊞Win-r` and type "
+":command:`cmd`) and run the same command."
+msgstr "在 Windows 中，你应该打开 *命令提示符* （:kbd:`⊞Win-r` 并输入 :command:`cmd`）并运行相同的命令。"
+
+#: ../../usage/installation.rst:175
+msgid ""
+"After installation, type :command:`sphinx-build --version` on the command"
+" prompt.  If everything worked fine, you will see the version number for "
+"the Sphinx package you just installed."
+msgstr ""
+"安装后，在命令提示符上输入 :command:`sphinx-build --version`。提示符。如果一切正常，你会看到刚刚安装的 "
+"Sphinx 包的版本号。"
+
+#: ../../usage/installation.rst:179
+msgid ""
+"Installation from *PyPI* also allows you to install the latest "
+"development release.  You will not generally need (or want) to do this, "
+"but it can be useful if you see a possible bug in the latest stable "
+"release.  To do this, use the ``--pre`` flag."
+msgstr ""
+"从 *PyPI* "
+"安装也允许你安装最新的开发版本。你一般不需要（或不想）这样做，但如果你在最新的稳定版中发现了一个可能的错误，它可能会很有用。要做到这一点，请使用 "
+"``--pre`` 标志。"
+
+#: ../../usage/installation.rst:189
+msgid "Using virtual environments"
+msgstr "使用虚拟环境"
+
+#: ../../usage/installation.rst:191
+msgid ""
+"When installing Sphinx using pip, it is highly recommended to use "
+"*virtual environments*, which isolate the installed packages from the "
+"system packages, thus removing the need to use administrator privileges. "
+"To create a virtual environment in the ``.venv`` directory, use the "
+"following command."
+msgstr ""
+"当使用 pip 安装 Sphinx 时。强烈建议使用 *虚拟环境*。它将安装的软件包与系统软件包隔离。因此不需要使用管理员的权限。要在 "
+"``.venv`` 目录下创建一个虚拟环境。使用以下命令。"
+
+#: ../../usage/installation.rst:202
+msgid "You can read more about them in the `Python Packaging User Guide`_."
+msgstr "你可以在 `Python 打包用户指南`_ 中阅读更多关于它们的信息。"
+
+#: ../../usage/installation.rst:208
+msgid ""
+"Note that in some Linux distributions, such as Debian and Ubuntu, this "
+"might require an extra installation step as follows."
+msgstr "请注意，在某些Linux发行版中，如 Debian 和 Ubuntu。这可能需要一个额外的安装步骤，如下所示。"
+
+#: ../../usage/installation.rst:216
+msgid "Docker"
+msgstr ""
+
+#: ../../usage/installation.rst:218
+msgid ""
+"Docker images for Sphinx are published on the `Docker Hub`_.  There are "
+"two kind of images:"
+msgstr "Sphinx 的 Docker 镜像发布在 `Docker Hub`_ 。有两种镜像："
+
+#: ../../usage/installation.rst:221
+msgid "`sphinxdoc/sphinx`_"
+msgstr ""
+
+#: ../../usage/installation.rst:222
+msgid "`sphinxdoc/sphinx-latexpdf`_"
+msgstr ""
+
+#: ../../usage/installation.rst:228
+msgid ""
+"Former one is used for standard usage of Sphinx, and latter one is mainly"
+" used for PDF builds using LaTeX.  Please choose one for your purpose."
+msgstr "前者用于 Sphinx 的标准使用，后者主要用于使用 LaTeX 的 PDF 制作。请根据你的目的选择一个。"
+
+#: ../../usage/installation.rst:233
+msgid ""
+"sphinxdoc/sphinx-latexpdf contains TeXLive packages. So the image is very"
+" large (over 2GB!)."
+msgstr "sphinxdoc/sphinx-latexpdf 包含 TeXLive 软件包。所以这个镜像非常大（超过 2GB！）。"
+
+#: ../../usage/installation.rst:238
+msgid ""
+"When using docker images, please use ``docker run`` command to invoke "
+"sphinx commands.  For example, you can use following command to create a "
+"Sphinx project:"
+msgstr ""
+"当使用 docker 镜像时，请使用 ``docker run`` 命令来调用 sphinx 命令。例如，你可以用下面的命令来创建一个 "
+"Sphinx 项目："
+
+#: ../../usage/installation.rst:246
+msgid "And you can following command this to build HTML document:"
+msgstr "你可以按照这个命令来建立 HTML 文档："
+
+#: ../../usage/installation.rst:252
+msgid "For more details, please read `README file`__ of docker images."
+msgstr "更多细节，请阅读 docker 镜像的 `README 文件`__。"
+
+#: ../../usage/installation.rst:258
+msgid "Installation from source"
+msgstr "从源码安装"
+
+#: ../../usage/installation.rst:260
+msgid ""
+"You can install Sphinx directly from a clone of the `Git repository`__.  "
+"This can be done either by cloning the repo and installing from the local"
+" clone, on simply installing directly via :command:`git`."
+msgstr ""
+"你可以直接从 `Git 仓库`__ 的克隆中安装 Sphinx。这可以通过克隆仓库并从本地克隆中安装，也可以简单地通过 "
+":command:`git` 直接安装。"
+
+#: ../../usage/installation.rst:274
+msgid ""
+"You can also download a snapshot of the Git repo in either `tar.gz`__ or "
+"`zip`__ format.  Once downloaded and extracted, these can be installed "
+"with :command:`pip` as above."
+msgstr ""
+"你也可以下载 Git 仓库的快照，格式可以是 `tar.gz`__ 或 `zip`__ 格式。一旦下载并解压，就可以用 "
+":command:`pip`。"
+

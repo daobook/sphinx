@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
+# This file is distributed under the same license as the Sphinx package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sphinx 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../usage/markdown.rst:7
+msgid "Markdown"
+msgstr ""
+
+#: ../../usage/markdown.rst:9
+msgid ""
+"`Markdown`__ is a lightweight markup language with a simplistic plain "
+"text formatting syntax.  It exists in many syntactically different "
+"*flavors*.  To support Markdown-based documentation, Sphinx can use "
+"`MyST-Parser`__. MyST-Parser is a Docutils bridge to `markdown-it-py`__, "
+"a Python package for parsing the `CommonMark`__ Markdown flavor."
+msgstr ""
+"`Markdown`__ 是一种轻量级的标记语言，具有简单的纯文本格式化语法。"
+"它在句法上有许多不同的风格。为了支持基于 Markdown 的文档，"
+"Sphinx 可以使用 `MyST-Parser`__。MyST-Parser 是" 
+"Docutils 与 `markdown-it-py`__ 的桥梁，这是"
+"一个用于解析 `CommonMark`__ Markdown 风格 的 Python 包。"
+
+#: ../../usage/markdown.rst:21
+msgid "Configuration"
+msgstr "配置"
+
+#: ../../usage/markdown.rst:23
+msgid "To configure your Sphinx project for Markdown support, proceed as follows:"
+msgstr "要配置 Sphinx 项目以获得 Markdown 支持，请执行以下操作："
+
+#: ../../usage/markdown.rst:25
+msgid "Install the Markdown parser *MyST-Parser*::"
+msgstr "安装 Markdown 分析器  *MyST-Parser* ::"
+
+#: ../../usage/markdown.rst:29
+msgid ""
+"Add *myst_parser* to the :confval:`list of configured extensions "
+"<extensions>`::"
+msgstr ""
+"将 *myst_parser* 添加到 :confval:`配置的扩展列表"
+" <extensions>` ::"
+
+#: ../../usage/markdown.rst:35
+msgid "MyST-Parser requires Sphinx 2.1 or newer."
+msgstr "MyST-Parser 需要 Sphinx 2.1 或更新版本。"
+
+#: ../../usage/markdown.rst:37
+msgid ""
+"If you want to use Markdown files with extensions other than ``.md``, "
+"adjust the :confval:`source_suffix` variable.  The following example "
+"configures Sphinx to parse all files with the extensions ``.md`` and "
+"``.txt`` as Markdown::"
+msgstr ""
+"如果你想使用扩展名不是 `.md` 的 Markdown 文件，"
+"调整 :confval:`source_suffix` 变量。下面的例子将 Sphinx 配置"
+"为将所有扩展名为 `.md` 和 `.txt` 的文件解析为 Markdown ::"
+
+#: ../../usage/markdown.rst:48
+msgid ""
+"You can further configure *MyST-Parser* to allow custom syntax that "
+"standard *CommonMark* doesn't support.  Read more in the `MyST-Parser "
+"documentation`__."
+msgstr ""
+"你可以进一步配置 *MyST-Parser* 以允许标准 CommonMark 不支持的自定义语法。"
+"在 `MyST-Parser 文档`__ 中阅读更多内容。"
+
