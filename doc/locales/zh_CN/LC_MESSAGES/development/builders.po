@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../development/builders.rst:2
 msgid "Configuring builders"
-msgstr ""
+msgstr "配置构建器"
 
 #: ../../development/builders.rst:5
 msgid "Discover builders by entry point"
-msgstr ""
+msgstr "按切入点发现构建器"
 
 #: ../../development/builders.rst:9
 msgid ""
@@ -31,6 +31,8 @@ msgid ""
 "so that they do not have to be listed in the :confval:`extensions` "
 "configuration value."
 msgstr ""
+":term:`builder` 的插件可以通过 `切入点`_ 来发现，"
+"这样它们就不必在 :confval:`extensions` 的配置值中列出。"
 
 #: ../../development/builders.rst:13
 msgid ""
@@ -42,10 +44,16 @@ msgid ""
 "an entry point for 'mybuilder' can be defined in the extension's "
 "``setup.py``"
 msgstr ""
+"Builder 插件应该在 ``sphinx.builder`` 组中定义一个切入点。"
+"切入点的名称需要与你的构建器的 :attr:`~.Builder.name` 属性相匹配，"
+"这是传递给 :option:`sphinx-build -b` 选项的名称。"
+"切入点的值应该等于插件模块的带点名称。"
+"下面是一个例子，说明如何在扩展的 ``setup.py`` 中定义 ``mybuilder`` 的切入点"
 
 #: ../../development/builders.rst:31
 msgid ""
 "Note that it is still necessary to register the builder using "
 ":meth:`~.Sphinx.add_builder` in the extension's :func:`setup` function."
 msgstr ""
+"注意，仍然需要在插件的 :func:`setup` 函数中使用 :meth:`~.Sphinx.add_builder` 来注册构建器。"
 

@@ -235,10 +235,13 @@ msgid ""
 "is that the class should have attributes that configure the allowed "
 "markup, and a ``run`` method that returns a list of nodes."
 msgstr ""
+"指令类是一个通常从 :class:`docutils.parsers.rst.Directive` 派生出来的类。"
+"指令接口在 `docutils 文档`_ 中也有详细介绍；"
+"重要的是，该类应该有配置允许标记的属性，以及一个返回节点列表的 ``run`` 方法。"
 
 #: ../../development/tutorials/todo.rst:133
 msgid "Looking first at the ``TodolistDirective`` directive:"
-msgstr ""
+msgstr "首先看一下 ``TodolistDirective`` 指令。"
 
 #: ../../development/tutorials/todo.rst:140
 msgid ""
@@ -247,6 +250,9 @@ msgid ""
 "content nor arguments that need to be handled. That brings us to the "
 "``TodoDirective`` directive:"
 msgstr ""
+"这很简单，创建并返回我们的 ``todolist`` 节点类的实例。"
+"``TodolistDirective`` 指令本身既没有内容也没有需要处理的参数。"
+"这给我们带来了 ``TodoDirective`` 指令："
 
 #: ../../development/tutorials/todo.rst:150
 msgid ""
@@ -263,6 +269,16 @@ msgid ""
 "integer on each call and therefore leads to unique target names. The "
 "target node is instantiated without any text (the first two arguments)."
 msgstr ""
+"这里涵盖了几件重要的事情。"
+"首先，正如你所看到的，我们现在把 :class:`~sphinx.util.docutils.SphinxDirective` 辅助类，"
+"而不是通常的 :class:`~docutils.parsers.rst.Directive` 类进行子类化。"
+"这让我们可以使用 ``self.env`` 属性访问 :ref:`build environment 实例 <important-objects>`。"
+"如果没有这个，我们将不得不使用相当复杂的 ``self.state.document.settings.env``。"
+"然后，为了充当链接目标（来自 ``TodolistDirective`` ），"
+"``TodoDirective`` 指令需要在 ``todo`` 节点之外返回一个目标节点。"
+"目标 ID（在 HTML 中，这将是锚的名称）是通过使用 ``env.new_serialno`` 来生成的，"
+"它在每次调用时都会返回一个新的唯一的整数，因此导致了唯一的目标名称。"
+"目标节点被实例化，没有任何文本（前两个参数）"。
 
 #: ../../development/tutorials/todo.rst:162
 msgid ""
@@ -280,20 +296,29 @@ msgid ""
 "information about the todo entry's location are stored along with a copy "
 "of the node."
 msgstr ""
+"在创建告诫节点时，指令的内容体使用 ``self.state.nested_parse`` 进行解析。"
+"第一个参数给出内容主体，第二个参数给出内容偏移。"
+"第三个参数给出解析结果的父节点，在我们的例子中是 ``todo`` 节点。"
+"之后，“todo” 节点被添加到环境中。"
+"这是需要的，以便能够在作者放置 ``todolist`` 指令的地方，创建整个文档中所有 todo 条目的列表。"
+"在这种情况下，环境属性 ``todo_all_todos`` 被使用（同样，这个名字应该是唯一的，所以它以扩展名为前缀）。 "
+"当一个新环境被创建时，它并不存在，所以指令必须检查并在必要时创建它。"
+"关于 todo 条目的位置的各种信息与节点的副本一起被存储。"
 
 #: ../../development/tutorials/todo.rst:174
 msgid ""
 "In the last line, the nodes that should be put into the doctree are "
 "returned: the target node and the admonition node."
 msgstr ""
+"在最后一行，应该被放入 doctree 中的节点被返回：目标节点和训诫节点。"
 
 #: ../../development/tutorials/todo.rst:177
 msgid "The node structure that the directive returns looks like this::"
-msgstr ""
+msgstr "该指令返回的节点结构看起来像这样 ::"
 
 #: ../../development/tutorials/todo.rst:194
 msgid "The event handlers"
-msgstr ""
+msgstr "事件处理者"
 
 #: ../../development/tutorials/todo.rst:195
 msgid ""
