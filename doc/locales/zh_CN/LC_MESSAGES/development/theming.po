@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../development/theming.rst:2
 msgid "HTML theme development"
-msgstr ""
+msgstr "HTML 主题开发"
 
 #: ../../development/theming.rst:8
 msgid ""
@@ -27,6 +27,8 @@ msgid ""
 "simply wish to use a pre-existing HTML themes, refer to "
 ":doc:`/usage/theming`."
 msgstr ""
+"本文档提供了关于创建你自己的主题的信息。"
+"如果你只是想使用一个预先存在的 HTML 主题，请参考 :doc:`/usage/theming`。"
 
 #: ../../development/theming.rst:12
 msgid ""
@@ -36,36 +38,43 @@ msgid ""
 "from which theme to inherit, which highlighting style to use, and what "
 "options exist for customizing the theme's look and feel."
 msgstr ""
+"Sphinx 支持通过 *主题* 改变其 HTML 输出的外观。"
+" 一个主题是一个 HTML 模板、样式表和其他静态文件的集合。"
+"此外，它有一个配置文件，指定从哪个主题继承，使用哪种高亮风格，"
+"以及有哪些选项可以定制主题的外观和感觉。"
 
 #: ../../development/theming.rst:18
 msgid ""
 "Themes are meant to be project-unaware, so they can be used for different"
 " projects without change."
 msgstr ""
+"主题是为了不受项目影响，所以它们可以用于不同的项目而不需要改变。"
 
 #: ../../development/theming.rst:23
 msgid ""
 "See :ref:`dev-extensions` for more information that may be helpful in "
 "developing themes."
 msgstr ""
+"参见 :ref:`dev-extensions`，了解更多信息，可能对开发主题有帮助。"
 
 #: ../../development/theming.rst:28
 msgid "Creating themes"
-msgstr ""
+msgstr "创建主题"
 
 #: ../../development/theming.rst:30
 msgid ""
 "Themes take the form of either a directory or a zipfile (whose name is "
 "the theme name), containing the following:"
 msgstr ""
+"主题的形式是一个目录或一个压缩文件（其名称是主题名称），包含以下内容："
 
 #: ../../development/theming.rst:33
 msgid "A :file:`theme.conf` file."
-msgstr ""
+msgstr "一个 :file:`theme.conf` 文件。"
 
 #: ../../development/theming.rst:34
 msgid "HTML templates, if needed."
-msgstr ""
+msgstr "如果需要，可提供 HTML 模板。"
 
 #: ../../development/theming.rst:35
 msgid ""
@@ -73,6 +82,8 @@ msgid ""
 "to the output static directory on build.  These can be images, styles, "
 "script files."
 msgstr ""
+"一个包含任何静态文件的 ``static/`` 目录，这些文件将在构建时被复制到输出静态目录。"
+"这些可以是图像、样式、脚本文件。"
 
 #: ../../development/theming.rst:38
 msgid ""
@@ -80,6 +91,8 @@ msgid ""
 "standard Python :mod:`ConfigParser` module) and has the following "
 "structure:"
 msgstr ""
+":file:`theme.conf` 文件是 INI 格式 [1]_ "
+"（可由标准的 Python :mod:`ConfigParser` 模块读取），有以下结构："
 
 #: ../../development/theming.rst:52
 msgid ""
@@ -90,6 +103,10 @@ msgid ""
 "be used as well. If you want to also inherit the stylesheet, include it "
 "via CSS' ``@import`` in your own."
 msgstr ""
+"**inherit** 设置给出了一个 “base theme” 的名称，或者是 ``none``。"
+"基础主题将被用来定位缺少的模板（如果使用 ``basic`` 作为基础主题，大多数主题将不必提供大多数模板），"
+"它的选项将被继承，它的所有静态文件也将被使用。"
+"如果你想同时继承样式表，通过 CSS 的 ``@import`` 在你自己的样式表中包含它。"
 
 #: ../../development/theming.rst:59
 msgid ""
@@ -100,6 +117,10 @@ msgid ""
 "  Setting the :confval:`html_style` config value will override this "
 "setting."
 msgstr ""
+"**stylesheet** 设置给出了一个 CSS 文件的名称，它将在 HTML header 中被引用。"
+"如果你需要一个以上的 CSS 文件，可以通过 CSS 的 ``@import`` 从其他文件中包含一个，"
+"或者使用一个自定义的 HTML 模板，根据需要添加 ``<link rel=\"stylesheet\">`` 标签。"
+" 设置 :confval:`html_style` 配置值将覆盖此设置。"
 
 #: ../../development/theming.rst:65
 msgid ""
@@ -107,6 +128,8 @@ msgid ""
 "for highlighting.  This can be overridden by the user in the "
 ":confval:`pygments_style` config value."
 msgstr ""
+"**pygments_style** 设置给出了用于高亮显示的 Pygments 样式的名称。"
+"这可以由用户在 :confval:`pygments_style` 配置值中覆盖。"
 
 #: ../../development/theming.rst:69
 msgid ""
@@ -115,6 +138,9 @@ msgid ""
 "dark)`` evaluates to true. It is injected into the page using "
 ":meth:`~Sphinx.add_css_file()`."
 msgstr ""
+"**pygments_dark_style** 设置给出了 Pygments 样式的名称，"
+"当 CSS 媒体查询 ``(prefers-color-scheme: dark)`` 评估为 true 时，"
+"该样式用于高亮显示。它被注入到页面中，使用 :meth:`~Sphinx.add_css_file()`。"
 
 #: ../../development/theming.rst:74
 msgid ""
@@ -122,6 +148,8 @@ msgid ""
 "templates for constructing sidebars.  This can be overridden by the user "
 "in the :confval:`html_sidebars` config value."
 msgstr ""
+"**sidebars** 设置给出了用于构建侧边栏的逗号分隔的侧边栏模板列表。"
+"这可以由用户在 :confval:`html_sidebars` 配置值中覆盖。"
 
 #: ../../development/theming.rst:78
 msgid ""
@@ -130,20 +158,24 @@ msgid ""
 ":confval:`html_theme_options` and are accessible from all templates as "
 "``theme_<name>``."
 msgstr ""
+"**options** 部分包含一对变量名称和默认值。"
+"这些选项可以由用户在 :confval:`html_theme_options` 中重写，"
+"并且可以从所有模板中以 ``theme_<name>`` 的形式访问。"
 
 #: ../../development/theming.rst:82
 msgid "sidebar settings"
-msgstr ""
+msgstr "侧边栏设定"
 
 #: ../../development/theming.rst:89
 msgid "Distribute your theme as a Python package"
-msgstr ""
+msgstr "将你的主题作为一个Python包发布"
 
 #: ../../development/theming.rst:91
 msgid ""
 "As a way to distribute your theme, you can use Python package.  Python "
 "package brings to users easy setting up ways."
 msgstr ""
+"作为分发你的主题的一种方式，你可以使用 Python包。Python 包给用户带来了简单的设置方式。"
 
 #: ../../development/theming.rst:94
 msgid ""
@@ -152,28 +184,32 @@ msgid ""
 "a ``setup()`` function to register your themes using ``add_html_theme()``"
 " API in it::"
 msgstr ""
+"要将你的主题作为 Python包 发布，"
+"请在你的 ``setup.py`` 文件中定义一个名为 ``sphinx.html_themes`` 的切入点，"
+"并在其中编写一个 ``setup()`` 函数，使用 ``add_html_theme()`` API 注册你的主题 ::"
 
 #: ../../development/theming.rst:115
 msgid ""
 "If your theme package contains two or more themes, please call "
 "``add_html_theme()`` twice or more."
 msgstr ""
+"如果你的主题包包含两个或更多的主题，请调用 ``add_html_theme()`` 两次或以上。"
 
 #: ../../development/theming.rst:118
 msgid "'sphinx_themes' entry_points feature."
-msgstr ""
+msgstr "“sphinx_themes” 切入点的特征"
 
 #: ../../development/theming.rst:121
 msgid "``sphinx_themes`` entry_points has been deprecated."
-msgstr ""
+msgstr "``sphinx_themes`` 切入点已被弃用。"
 
 #: ../../development/theming.rst:124
 msgid "``sphinx.html_themes`` entry_points feature."
-msgstr ""
+msgstr "``sphinx.html_themes`` 切入点特征"
 
 #: ../../development/theming.rst:129
 msgid "Templating"
-msgstr ""
+msgstr "模板化"
 
 #: ../../development/theming.rst:131
 msgid ""
@@ -181,18 +217,20 @@ msgid ""
 "write your own templates.  What is important to keep in mind is the order"
 " in which Sphinx searches for templates:"
 msgstr ""
+"如果你想写你自己的模板，:doc:`模板指南 </templating>` 很有帮助。"
+"需要记住的是 Sphinx 搜索模板的顺序："
 
 #: ../../development/theming.rst:135
 msgid "First, in the user's ``templates_path`` directories."
-msgstr ""
+msgstr "首先，在用户的 ``templates_path`` 目录下。"
 
 #: ../../development/theming.rst:136
 msgid "Then, in the selected theme."
-msgstr ""
+msgstr "接着，在选定的主题中。"
 
 #: ../../development/theming.rst:137
 msgid "Then, in its base theme, its base's base theme, etc."
-msgstr ""
+msgstr "然后，在其基础主题中，其基础的基础主题，等等。"
 
 #: ../../development/theming.rst:139
 #, python-format
@@ -202,10 +240,13 @@ msgid ""
 "%}``.  From a user ``templates_path`` template, you can still use the "
 "\"exclamation mark\" syntax as described in the templating document."
 msgstr ""
+"当扩展基本主题中的同名模板时，使用主题名称作为明确的目录： "
+"``{% extends \"basic/layout.html\" %}``。"
+"从用户的 ``templates_path`` 模板，你仍然可以使用 “感叹号” 语法，如模板文件中所述。"
 
 #: ../../development/theming.rst:148
 msgid "Static templates"
-msgstr ""
+msgstr "静态模板"
 
 #: ../../development/theming.rst:150
 msgid ""
@@ -214,6 +255,9 @@ msgid ""
 "be able to template static files as well as HTML files.  Therefore, "
 "Sphinx supports so-called \"static templates\", like this:"
 msgstr ""
+"由于主题选项是为了让用户更容易地配置一个主题，而不需要写一个自定义的样式表，"
+"所以有必要能够对静态文件和 HTML 文件进行模板化。"
+"因此，Sphinx 支持所谓的 “静态模板”，像这样："
 
 #: ../../development/theming.rst:155
 msgid ""
@@ -226,10 +270,15 @@ msgid ""
 "theme, the output directory will contain a ``_static/classic.css`` file "
 "where all template tags have been processed."
 msgstr ""
+"如果一个主题的 ``static/`` 目录中的文件名（或者用户的静态路径中的文件名）以 ``_t`` 结尾，"
+"它将被模板引擎处理。``_t`` 将从最终的文件名中留下。"
+"例如，*classic* 主题有一个文件 ``static/classic.css_t``，它使用模板将颜色选项放入样式表。"
+"当用 classic 主题构建文档时，输出目录将包含一个 ``_static/classic.css`` 文件，"
+"其中所有模板标签都已被处理。"
 
 #: ../../development/theming.rst:165
 msgid "Use custom page metadata in HTML templates"
-msgstr ""
+msgstr "在 HTML 模板中使用自定义的页面元数据"
 
 #: ../../development/theming.rst:167
 msgid ""
@@ -239,20 +288,24 @@ msgid ""
 ":data:`meta` attribute. For example, if a page had the following text "
 "before its first title:"
 msgstr ""
+"在 :doc:`字段列表 </usage/restructuredtext/field-lists>` 中的任何键/值对，"
+"如果放在页面的标题之前，在构建页面时，在 :data:`meta` 属性中，Jinja 模板可以使用。"
+"例如，如果一个页面在其第一个标题之前有以下文字："
 
 #: ../../development/theming.rst:179
 msgid "Then it could be accessed within a Jinja template like so:"
-msgstr ""
+msgstr "然后可以像这样在 Jinja 模板中访问它。"
 
 #: ../../development/theming.rst:187
 msgid ""
 "Note the check that ``meta`` is a dictionary (\"mapping\" in Jinja "
 "terminology) to ensure that using it in this way is valid."
 msgstr ""
+"注意检查 ``meta`` 是一个字典（在 Jinja 术语中是 “映射”），以确保以这种方式使用它是有效的。"
 
 #: ../../development/theming.rst:192
 msgid "Defining custom template functions"
-msgstr ""
+msgstr "定义自定义模板函数"
 
 #: ../../development/theming.rst:194
 msgid ""
@@ -262,28 +315,35 @@ msgid ""
 " project, or if you'd like to include non-trivial checks and provide "
 "friendly error messages for incorrect configuration in the template."
 msgstr ""
+"有时，在 Python 中定义你自己的函数，然后在模板中使用是很有用的。"
+"例如，如果你想插入一个模板值，其逻辑取决于用户在项目中的配置，"
+"或者你想在模板中包含非琐碎的检查并为不正确的配置提供友好的错误信息。"
 
 #: ../../development/theming.rst:200
 msgid ""
 "To define your own template function, you'll need to define two functions"
 " inside your module:"
 msgstr ""
+"为了定义你自己的模板函数，你需要在你的模块内定义两个函数："
 
 #: ../../development/theming.rst:203
 msgid ""
 "A **page context event handler** (or **registration**) function. This is "
 "connected to the :class:`.Sphinx` application via an event callback."
 msgstr ""
+"一个 **页面上下文事件处理** （或 **注册**）函数。"
+"它通过一个事件回调连接到  :class:`.Sphinx` 应用程序。"
 
 #: ../../development/theming.rst:205
 msgid "A **template function** that you will use in your Jinja template."
-msgstr ""
+msgstr "**模板函数**，你将在你的 Jinja 模板中使用。"
 
 #: ../../development/theming.rst:207
 msgid ""
 "First, define the registration function, which accepts the arguments for "
 ":event:`html-page-context`."
 msgstr ""
+"首先，定义注册函数，它接受 :event:`html-page-context` 的参数。"
 
 #: ../../development/theming.rst:210
 msgid ""
@@ -292,12 +352,15 @@ msgid ""
 "or Python objects (lists, dictionaries) with strings inside that Jinja "
 "uses in the templating process"
 msgstr ""
+"在注册函数中，定义你想在 Jinja 中使用的模板函数。"
+"模板函数应该返回一个字符串或 Python 对象（列表、字典），里面有 Jinja 在模板制作过程中使用的字符串"
 
 #: ../../development/theming.rst:216
 msgid ""
 "The template function will have access to all of the variables that are "
 "passed to the registration function."
 msgstr ""
+"模板函数将可以访问传递给注册函数的所有变量。"
 
 #: ../../development/theming.rst:219
 msgid ""
@@ -305,20 +368,23 @@ msgid ""
 " Sphinx application's context with ``context['template_func'] = "
 "template_func``."
 msgstr ""
+"在注册函数的末尾，用 ``context['template_func'] = template_func`` "
+"将模板函数添加到 Sphinx 应用程序的上下文中。"
 
 #: ../../development/theming.rst:222
 msgid ""
 "Finally, in your extension's ``setup()`` function, add your registration "
 "function as a callback for :event:`html-page-context`."
 msgstr ""
+"最后，在你的插件的 ``setup()`` 函数中，添加你的注册函数作为 :event:`html-page-context` 的回调。"
 
 #: ../../development/theming.rst:239
 msgid "Now, you will have access to this function in jinja like so:"
-msgstr ""
+msgstr "现在，你将可以像这样在 jinja 中访问这个函数："
 
 #: ../../development/theming.rst:249
 msgid "Add your own static files to the build assets"
-msgstr ""
+msgstr "将你自己的静态文件添加到构建 assets 中"
 
 #: ../../development/theming.rst:251
 msgid ""
@@ -328,10 +394,14 @@ msgid ""
 " into a build's ``_static/`` folder at build time, generally via an event"
 " hook. Here is some sample code to accomplish this:"
 msgstr ""
+"如果你将自己的构建 assets 用插件打包（例如，一个 CSS 或 JavaScript 文件），"
+"你需要确保它们被放置在 HTML 输出的 ``_static/`` 文件夹中。"
+"要做到这一点，你可以在构建时将它们直接复制到构建的 ``_static/`` 文件夹中，一般是通过一个事件钩。"
+"下面是一些实现这一目的的示例代码："
 
 #: ../../development/theming.rst:272
 msgid "Inject JavaScript based on user configuration"
-msgstr ""
+msgstr "根据用户配置注入 JavaScript"
 
 #: ../../development/theming.rst:274
 msgid ""
@@ -340,12 +410,15 @@ msgid ""
 "this can be difficult to do if your JavaScript comes in the form of a "
 "static library (which will not be built with Jinja)."
 msgstr ""
+"如果你的扩展使用了 JavaScript，允许用户使用他们的 Sphinx 配置来控制其行为是很有用的。"
+"然而，如果你的 JavaScript 是以静态库的形式出现（不会用 Jinja 构建），这就很难做到。
 
 #: ../../development/theming.rst:279
 msgid ""
 "There are two ways to inject variables into the JavaScript space based on"
 " user configuration."
 msgstr ""
+"有两种方法可以根据用户的配置向 JavaScript 空间注入变量"。
 
 #: ../../development/theming.rst:282
 msgid ""
@@ -353,20 +426,23 @@ msgid ""
 " your extension. This will cause Sphinx to process these files with the "
 "templating engine, allowing you to embed variables and control behavior."
 msgstr ""
+"首先，你可以把 ``_t'`` 加到任何包含在你的扩展中的静态文件末尾。"
+"这将使 Sphinx 用模板引擎处理这些文件，允许你嵌入变量和控制行为。"
 
 #: ../../development/theming.rst:286
 msgid "For example, the following JavaScript structure:"
-msgstr ""
+msgstr "例如，下面的 JavaScript 结构："
 
 #: ../../development/theming.rst:295
 msgid ""
 "Will result in the following static file placed in your HTML's build "
 "output:"
 msgstr ""
+"将导致以下静态文件放在你的 HTML 的构建输出中："
 
 #: ../../development/theming.rst:304
 msgid "See :ref:`theming-static-templates` for more information."
-msgstr ""
+msgstr "更多信息见 :ref:`theming-static-templates`。"
 
 #: ../../development/theming.rst:306
 msgid ""
@@ -377,6 +453,11 @@ msgid ""
 "will be inserted as JavaScript into your site's head. This allows you to "
 "insert variables into your project's JavaScript from Python."
 msgstr ""
+"第二，你可以使用 :meth:`Sphinx.add_js_file` 方法，而不把它指向一个文件。"
+"通常情况下，这个方法是用来插入一个新的 JavaScript 文件到你的网站。"
+"然而，如果你不传递文件路径，而是传递一个字符串给参数 “body”，"
+"那么这个文本将作为 JavaScript 插入到你的网站头部。"
+"这允许你从 Python 中向你项目的 JavaScript 插入变量。"
 
 #: ../../development/theming.rst:313
 msgid ""
@@ -384,6 +465,8 @@ msgid ""
 "then insert this value as a JavaScript variable, which your extension's "
 "JavaScript code may use:"
 msgstr ""
+"例如，下面的代码将读入一个用户配置的值，然后将这个值作为一个 JavaScript 变量插入，"
+"你插件的 JavaScript 代码可以使用："
 
 #: ../../development/theming.rst:332
 msgid ""
@@ -391,6 +474,8 @@ msgid ""
 "of this variable. Users can control the variable's value by defining it "
 "in their :file:`conf.py` file."
 msgstr ""
+"因此，在你的主题中，你可以使用依赖于该变量存在的代码。"
+"用户可以通过在他们的 :file:`conf.py` 文件中定义这个变量来控制它的值。"
 
 #: ../../development/theming.rst:337
 msgid ""
@@ -398,4 +483,5 @@ msgid ""
 "because that would pose an unnecessary security risk if themes are "
 "shared."
 msgstr ""
-
+"它不是一个可执行的 Python 文件，与 :file:`conf.py` 相反，"
+"因为如果主题被共享，这将构成不必要的安全风险。"

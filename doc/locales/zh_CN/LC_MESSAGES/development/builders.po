@@ -56,4 +56,3 @@ msgid ""
 ":meth:`~.Sphinx.add_builder` in the extension's :func:`setup` function."
 msgstr ""
 "注意，仍然需要在插件的 :func:`setup` 函数中使用 :meth:`~.Sphinx.add_builder` 来注册构建器。"
-
