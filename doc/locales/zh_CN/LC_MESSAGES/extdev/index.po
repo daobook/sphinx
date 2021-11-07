@@ -52,7 +52,7 @@ msgid ""
 "throughout the build process, allowing you to register a hook and run "
 "specialized code. For example, see the :ref:`events`."
 msgstr ""
-"在整个构建过程中的战略位置添加自定义代码到所谓的（“钩子点”），"
+"在整个构建过程中的战略位置添加自定义代码到所谓的 “钩子点”，"
 "允许你注册一个钩子并运行专门的代码。例如，请参阅 :ref:`events`。"
 
 #: ../../extdev/index.rst:19
@@ -99,7 +99,8 @@ msgid ""
 "different parts of Sphinx, see the :ref:`extension-tutorials-index`."
 msgstr ""
 "本页面的其余部分描述了开发插件的一些高层次方面，以及你能控制的 Sphinx 行为的各个部分。"
-"关于如何建立和使用插件来控制 Sphinx 的不同部分的一些例子，请看 :ref:`extension-tutorials-index`。"
+"关于如何建立和使用插件来控制 Sphinx 的不同部分的一些例子，"
+"请看 :ref:`extension-tutorials-index`。"
 
 #: ../../extdev/index.rst:45
 msgid "Important objects"
@@ -231,7 +232,7 @@ msgid ""
 "one is created."
 msgstr ""
 "在这个阶段，几乎没有发生我们感兴趣的事情。"
-"源目录被搜索为源文件，扩展名被初始化。"
+"源目录被搜索为源文件，插件被初始化。"
 "如果存在一个存储的构建环境，它将被加载，否则将创建一个新的环境。"
 
 #: ../../extdev/index.rst:105
@@ -283,7 +284,7 @@ msgstr ""
 
 #: ../../extdev/index.rst:126
 msgid "**Phase 2: Consistency checks**"
-msgstr "阶段 2：一致性检查"
+msgstr "**阶段 2：一致性检查**"
 
 #: ../../extdev/index.rst:128
 msgid "Some checking is done to ensure no surprises in the built documents."
@@ -291,7 +292,7 @@ msgstr "做了一些检查，以确保建成的文件中没有意外。"
 
 #: ../../extdev/index.rst:130
 msgid "**Phase 3: Resolving**"
-msgstr "**解决问题**"
+msgstr "**阶段 3：解决问题**"
 
 #: ../../extdev/index.rst:132
 msgid ""

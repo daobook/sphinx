@@ -134,7 +134,7 @@ msgid ""
 "Once installed, this can be used in the same manner as a directory or "
 "zipfile-based theme::"
 msgstr ""
-"一旦安装，就可以用与目录或基于 zip 文件的主题相同的方式使用 ::"。
+"一旦安装，就可以用与目录或基于 zip 文件的主题相同的方式使用 ::"
 
 #: ../../usage/theming.rst:83
 msgid ""
