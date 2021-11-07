@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../templating.rst:7
 msgid "Templating"
-msgstr ""
+msgstr "主题化"
 
 #: ../../templating.rst:9
 msgid ""
@@ -29,14 +29,18 @@ msgid ""
 "with it. It also has excellent documentation for those who need to make "
 "themselves familiar with it."
 msgstr ""
+"Sphinx 使用 `Jinja <https://jinja.palletsprojects.com/>`_ "
+"模板引擎来制作 HTML 模板。"
+"Jinja 是一个基于文本的引擎，灵感来自 Django 模板，所以任何使用过 Django 的人都会熟悉它。"
+"对于那些需要熟悉它的人，它也有很好的文档。"
 
 #: ../../templating.rst:17
 msgid "Do I need to use Sphinx's templates to produce HTML?"
-msgstr ""
+msgstr "我需要使用 Sphinx 的模板来制作 HTML 吗？"
 
 #: ../../templating.rst:19
 msgid "No.  You have several other options:"
-msgstr ""
+msgstr "不，你有其他几个选择："
 
 #: ../../templating.rst:21
 msgid ""
@@ -44,6 +48,8 @@ msgid ""
 " calls your template engine of choice, and set the "
 ":confval:`template_bridge` configuration value accordingly."
 msgstr ""
+"你可以写一个 :class:`~sphinx.application.TemplateBridge` 子类，"
+"调用你选择的模板引擎，并相应设置 :confval:`template_bridge` 配置值。"
 
 #: ../../templating.rst:25
 msgid ""
@@ -51,6 +57,8 @@ msgid ""
 "from :class:`~sphinx.builders.html.StandaloneHTMLBuilder` and calls your "
 "template engine of choice."
 msgstr ""
+"你可以 :ref:`写一个自定义的构建器 <writing-builders>`，"
+"它源自 :class:`~sphinx.builders.html.StandaloneHTMLBuilder` 并调用你选择的模板引擎。"
 
 #: ../../templating.rst:29
 msgid ""
@@ -58,10 +66,13 @@ msgid ""
 "produces pickle files with the page contents, and postprocess them using "
 "a custom tool, or use them in your Web application."
 msgstr ""
+"你可以使用 :class:`~sphinx.builders.html.PickleHTMLBuilder`，"
+"它产生带有页面内容的 pickle 文件，并使用自定义工具对其进行后处理，"
+"或在你的 Web 应用程序中使用它们。"
 
 #: ../../templating.rst:35
 msgid "Jinja/Sphinx Templating Primer"
-msgstr ""
+msgstr "Jinja/Sphinx 模板化入门"
 
 #: ../../templating.rst:37
 msgid ""
@@ -71,6 +82,9 @@ msgid ""
 "specific blocks within a template, customizing it while also keeping the "
 "changes at a minimum."
 msgstr ""
+"Sphinx 的默认模板语言是 Jinja。它受 Django/Smarty 启发，易于理解。"
+"Jinja 中最重要的概念是 :dfn:`模板继承`，这意味着你可以在模板中只覆盖特定的块，"
+"定制它的同时也将变化控制在最小范围。"
 
 #: ../../templating.rst:42
 msgid ""
@@ -79,6 +93,8 @@ msgid ""
 "files with the same name as the original filename into the template "
 "directory of the structure the Sphinx quickstart generated for you."
 msgstr ""
+"要定制你的文档输出，你可以覆盖所有的模板（包括布局模板和子模板），"
+"方法是在 Sphinx quickstart 为你生成的结构的模板目录中添加与原始文件名相同的文件。"
 
 #: ../../templating.rst:47
 msgid ""
@@ -86,6 +102,8 @@ msgid ""
 ":confval:`templates_path` first, and if it can't find the template it's "
 "looking for there, it falls back to the selected theme's templates."
 msgstr ""
+"Sphinx 会先在 :confval:`templates_path` 的文件夹中寻找模板，"
+"如果在那里找不到它要找的模板，它就会退回到所选主题的模板。"
 
 #: ../../templating.rst:51
 msgid ""
@@ -93,6 +111,8 @@ msgid ""
 "the template is evaluated, **tags**, which control the logic of the "
 "template and **blocks** which are used for template inheritance."
 msgstr ""
+"一个模板包含 **变量**，这些变量在模板被评估时被替换成数值，"
+"**标记**，控制模板的逻辑，以及 **块**，用于模板的继承。"
 
 #: ../../templating.rst:55
 msgid ""
@@ -103,6 +123,10 @@ msgid ""
 ":confval:`templates_path` override templates supplied by the selected "
 "theme."
 msgstr ""
+"Sphinx 的 *basic* 主题提供了基础模板，它将用数据来填充几个块。"
+"这些模板位于 Sphinx 安装目录的 :file:`themes/basic` 子目录下，"
+"并被所有内置的 Sphinx 主题使用。"
+"在 :confval:`templates_path` 中具有相同名称的模板会覆盖所选主题提供的模板。"
 
 #: ../../templating.rst:61
 msgid ""
@@ -110,6 +134,8 @@ msgid ""
 "links all you have to do is to add a new template called ``layout.html`` "
 "with the following contents::"
 msgstr ""
+"例如，要在包含相关链接的模板区添加一个新的链接，"
+"你所要做的就是添加一个名为 ``layout.html`` 的新模板，内容如下 ::"
 
 #: ../../templating.rst:71
 msgid ""
@@ -117,6 +143,7 @@ msgid ""
 "mark, Sphinx will load the layout template from the underlying HTML "
 "theme."
 msgstr ""
+"通过在覆盖的模板名称前加上感叹号，Sphinx 将从底层的 HTML 主题加载布局模板。"
 
 #: ../../templating.rst:75
 msgid ""
@@ -124,10 +151,12 @@ msgid ""
 "block's original content in the extended template -- unless you don't "
 "want that content to show up."
 msgstr ""
+"如果你覆盖了一个块，请在某个地方调用 ``{{ super() }}``，"
+"以便在插件模板中呈现该块的原始内容--除非你不希望该内容显示出来。"
 
 #: ../../templating.rst:81
 msgid "Working with the builtin templates"
-msgstr ""
+msgstr "令内置模板生效"
 
 #: ../../templating.rst:83
 msgid ""
@@ -135,14 +164,16 @@ msgid ""
 "Sphinx themes are based on.  It has the following elements you can "
 "override or use:"
 msgstr ""
+"内建的 **basic** 主题提供了所有内建的 Sphinx 主题所基于的模板。"
+"它有以下元素，你可以覆盖或使用："
 
 #: ../../templating.rst:87
 msgid "Blocks"
-msgstr ""
+msgstr "块"
 
 #: ../../templating.rst:89
 msgid "The following blocks exist in the ``layout.html`` template:"
-msgstr ""
+msgstr "在 ``layout.html`` 模板中存在以下块："
 
 #: ../../templating.rst:95
 msgid "``doctype``"
@@ -155,6 +186,9 @@ msgid ""
 "and it's a good idea not to change it unless you want to switch to HTML 5"
 " or a different but compatible XHTML doctype."
 msgstr ""
+"输出格式的 doctype。默认是 XHTML 1.0 Transitional，"
+"因为它最接近 Sphinx 和 Docutils 生成的格式，"
+"除非你想切换到 HTML 5 或不同但兼容的 XHTML doctype，否则最好不要改变它。"
 
 #: ../../templating.rst:99
 msgid "``linktags``"
@@ -165,6 +199,7 @@ msgid ""
 "This block adds a couple of ``<link>`` tags to the head section of the "
 "template."
 msgstr ""
+"这个块在模板的头部添加了几个 ``<link>`` 标签。"
 
 #: ../../templating.rst:104
 msgid "``extrahead``"
@@ -176,6 +211,8 @@ msgid ""
 " the ``<head>`` tag of the generated HTML file.  This is the right place "
 "to add references to JavaScript or extra CSS files."
 msgstr ""
+"这个区块默认是空的，可以用来在生成的 HTML 文件的 ``<head>`` 标签中添加额外的内容。 "
+"这是添加对 JavaScript 或额外 CSS 文件引用的正确位置。"
 
 #: ../../templating.rst:113
 msgid "``relbar1``, ``relbar2``"
@@ -189,6 +226,9 @@ msgid ""
 "document.  By default, both blocks are filled; to show the relbar only "
 "before the document, you would override `relbar2` like this::"
 msgstr ""
+"这个区块包含 *关系栏*，即相关链接的列表（左边是父文档，右边是索引、模块等的链接）。"
+"`relbar1` 出现在文档之前，`relbar2` 出现在文档之后。"
+"默认情况下，两个区块都被填满；如果只在文档之前显示 relbar，你可以像这样覆盖 ``relbar2``："
 
 #: ../../templating.rst:121
 msgid "``rootrellink``, ``relbaritems``"
@@ -203,6 +243,9 @@ msgid ""
 "If you override them to add extra links into the bar make sure that they "
 "are list items and end with the :data:`reldelim1`."
 msgstr ""
+"在 relbar 内部有三个部分。``rootrellink``，来自文档的链接和自定义的 ``relbaritems``。"
+"``rootrellink`` 是一个块，默认包含一个指向根文档的列表项，``relbaritems`` 是一个空块。"
+"如果你覆盖它们来添加额外的链接到栏中，确保它们是列表项，并以 :data:`reldelim1` 结尾。"
 
 #: ../../templating.rst:134
 msgid "``document``"
@@ -213,6 +256,7 @@ msgid ""
 "The contents of the document itself.  It contains the block \"body\" "
 "where the individual content is put by subtemplates like ``page.html``."
 msgstr ""
+"文档本身的内容。它包含一个块 \"body\"，其中的单个内容由子模板（如 ``page.html``）放置。"
 
 #: ../../templating.rst:128
 msgid ""
@@ -220,6 +264,8 @@ msgid ""
 " results page, the document or body content should be wrapped in an HTML "
 "element containing the ``role=\"main\"`` attribute. For example::"
 msgstr ""
+"为了让内置的 JavaScript 搜索在结果页面上显示页面预览，"
+"文档或正文内容应该被包裹在一个包含 ``role=\"main\"`` 属性的 HTML 元素中。例如 ::"
 
 #: ../../templating.rst:146
 msgid "``sidebar1``, ``sidebar2``"
@@ -232,12 +278,16 @@ msgid ""
 "contains the default sidebar.  If you want to swap the sidebar location "
 "override this and call the ``sidebar`` helper::"
 msgstr ""
+"一个可能的侧边栏位置。"
+"``sidebar1`` 出现在文档之前，默认为空，``sidebar2`` 在文档之后，包含默认的侧边栏。"
+"如果你想更换侧边栏的位置，可以覆盖这个，并调用 ``sidebar`` 助手 ::"
 
 #: ../../templating.rst:145
 msgid ""
 "(The ``sidebar2`` location for the sidebar is needed by the "
 "``sphinxdoc.css`` stylesheet, for example.)"
 msgstr ""
+"（例如，``sphinxdoc.css`` 样式表需要侧边栏的 ``sidebar2`` 位置。）"
 
 #: ../../templating.rst:150
 msgid "``sidebarlogo``"
@@ -248,6 +298,7 @@ msgid ""
 "The logo location within the sidebar.  Override this if you want to place"
 " some content at the top of the sidebar."
 msgstr ""
+"侧边栏内的 logo 位置。如果你想把一些内容放在侧边栏的顶部，可以覆盖这个。"
 
 #: ../../templating.rst:154
 msgid "``footer``"
@@ -258,6 +309,7 @@ msgid ""
 "The block for the footer div.  If you want a custom footer or markup "
 "before or after it, override this one."
 msgstr ""
+"用于页脚 DIV 的块。如果你想在它之前或之后有一个自定义的页脚或标记，请覆盖这个。"
 
 #: ../../templating.rst:156
 msgid ""
@@ -266,6 +318,8 @@ msgid ""
 " value.  Their use is deprecated in favor of separate sidebar templates, "
 "which can be included via :confval:`html_sidebars`."
 msgstr ""
+"以下四个块只用于那些没有在 :confval:`html_sidebars` 配置值中指定自定义侧栏列表的页面。"
+"它们的使用已被弃用，以支持独立的侧边栏模板，这可以通过 :confval:`html_sidebars` 包含。"
 
 #: ../../templating.rst:164
 msgid "``sidebartoc``"
@@ -273,7 +327,7 @@ msgstr ""
 
 #: ../../templating.rst:162
 msgid "The table of contents within the sidebar."
-msgstr ""
+msgstr "侧边栏内的目录。"
 
 #: ../../templating.rst:169
 msgid "``sidebarrel``"
@@ -281,7 +335,7 @@ msgstr ""
 
 #: ../../templating.rst:167
 msgid "The relation links (previous, next document) within the sidebar."
-msgstr ""
+msgstr "侧边栏内的关系链接（上一个、下一个文档）。"
 
 #: ../../templating.rst:175
 msgid "``sidebarsourcelink``"
@@ -292,6 +346,7 @@ msgid ""
 "The \"Show source\" link within the sidebar (normally only shown if this "
 "is enabled by :confval:`html_show_sourcelink`)."
 msgstr ""
+"侧边栏内的 “显示源代码” 链接（通常只在通过 :confval:`html_show_sourcelink` 启用时显示）。"
 
 #: ../../templating.rst:182
 msgid "``sidebarsearch``"
@@ -302,10 +357,11 @@ msgid ""
 "The search box within the sidebar.  Override this if you want to place "
 "some content at the bottom of the sidebar."
 msgstr ""
+"侧边栏内的搜索框。如果你想把一些内容放在侧边栏的底部，请覆盖这一点。"
 
 #: ../../templating.rst:185
 msgid "Configuration Variables"
-msgstr ""
+msgstr "配置变量"
 
 #: ../../templating.rst:187
 #, python-format
@@ -313,6 +369,7 @@ msgid ""
 "Inside templates you can set a couple of variables used by the layout "
 "template using the ``{% set %}`` tag:"
 msgstr ""
+"在模板内部，你可以使用 ``{% set %}`` 标记来设置布局模板使用的几个变量："
 
 #: ../../templating.rst:192
 msgid ""
@@ -320,6 +377,7 @@ msgid ""
 "defaults to ``' &raquo;'`` Each item in the related bar ends with the "
 "value of this variable."
 msgstr ""
+"相关栏左边的项目的分隔符。默认为 ``' &raquo;'`` 相关栏中的每个项目都以这个变量的值结束。"
 
 #: ../../templating.rst:198
 msgid ""
@@ -327,60 +385,65 @@ msgid ""
 "defaults to ``' |'``.  Each item except of the last one in the related "
 "bar ends with the value of this variable."
 msgstr ""
+"相关栏右边的项目的分隔符。"
+"默认为 ``' |'``。除了相关栏中的最后一项外，每项都以这个变量的值结束。"
 
 #: ../../templating.rst:202
 msgid "Overriding works like this::"
-msgstr ""
+msgstr "覆盖的工作方式是这样的 ::"
 
 #: ../../templating.rst:209
 msgid "Add additional script files here, like this::"
-msgstr ""
+msgstr "在这里添加额外的脚本文件，像这样 ::"
 
 #: ../../templating.rst:215
 msgid "Please use ``.Sphinx.add_js_file()`` instead."
-msgstr ""
+msgstr "请使用 ``.Sphinx.add_js_file()`` 代替。"
 
 #: ../../templating.rst:218
 msgid "Helper Functions"
-msgstr ""
+msgstr "助手函数"
 
 #: ../../templating.rst:220
 msgid ""
 "Sphinx provides various Jinja functions as helpers in the template.  You "
 "can use them to generate links or output multiply used elements."
 msgstr ""
+"Sphinx 在模板中提供各种 Jinja 函数作为助手。你可以用它们来生成链接或输出多用的元素。"
 
 #: ../../templating.rst:225
 msgid ""
 "Return the path to a Sphinx document as a URL.  Use this to refer to "
 "built documents."
 msgstr ""
+"以 URL 的形式返回 Sphinx 文档的路径。用这个来引用已建的文件。"
 
 #: ../../templating.rst:231
 msgid ""
 "Return the path to a *file* which is a filename relative to the root of "
 "the generated output.  Use this to refer to static files."
 msgstr ""
+"返回一个 *文件* 的路径，这是一个相对于生成的输出根的文件名。用它来指代静态文件。"
 
 #: ../../templating.rst:236
 msgid "Check if a document with the name *document* exists."
-msgstr ""
+msgstr "检查是否存在一个名字为 *document* 的文件。"
 
 #: ../../templating.rst:240
 msgid "Return the rendered sidebar."
-msgstr ""
+msgstr "返回已渲染的侧边栏。"
 
 #: ../../templating.rst:244
 msgid "Return the rendered relation bar."
-msgstr ""
+msgstr "返回已渲染的关系栏。"
 
 #: ../../templating.rst:248
 msgid "Emit a warning message."
-msgstr ""
+msgstr "发出警告信息。"
 
 #: ../../templating.rst:251
 msgid "Global Variables"
-msgstr ""
+msgstr "全局变量"
 
 #: ../../templating.rst:253
 msgid ""
@@ -388,14 +451,15 @@ msgid ""
 "use. There are more, but most of them are an implementation detail and "
 "might change in the future."
 msgstr ""
+"这些全局变量在每个模板中都是可用的，并且可以安全使用。还有更多，但大多数是一个实现细节，将来可能会改变。"
 
 #: ../../templating.rst:259
 msgid "The name of the builder (e.g. ``html`` or ``htmlhelp``)."
-msgstr ""
+msgstr "构建器的名称（例如，``html`` 或 ``htmlhelp``）。"
 
 #: ../../templating.rst:263
 msgid "The value of :confval:`copyright`."
-msgstr ""
+msgstr ":confval:`copyright` 的值。"
 
 #: ../../templating.rst:267
 msgid ""
@@ -403,6 +467,8 @@ msgid ""
 "except when the \"single-file\" builder is used, when it is set to "
 "``None``."
 msgstr ""
+"文档的标题（:confval:`html_title` 的值），"
+"除了当使用 “single-file” 构建器时，它被设置为 ``None``。"
 
 #: ../../templating.rst:272
 msgid ""
@@ -410,22 +476,27 @@ msgid ""
 "application that handles navigation, not the web browser, such as for "
 "HTML help or Qt help formats.  In this case, the sidebar is not included."
 msgstr ""
+"如果内置的 HTML 是为了嵌入到一些处理导航的查看程序中，"
+"而不是 Web 浏览器，例如 HTML 帮助或 Qt 帮助格式，则为真。"
+"在这种情况下，侧边栏就不包括在内。"
 
 #: ../../templating.rst:278
 msgid ""
 "The path to the HTML favicon in the static path, or URL to the favicon, "
 "or ``''``."
 msgstr ""
+"静态路径中的 HTML favicon 的路径，或指向 favicon 的 URL，或 ``''``。"
 
 #: ../../templating.rst:283
 msgid "Recommend to use ``favicon_url`` instead."
-msgstr ""
+msgstr "建议使用 ``favicon_url`` 代替。"
 
 #: ../../templating.rst:287
 msgid ""
 "The relative path to the HTML favicon image from the current document, or"
 " URL to the favicon, or ``''``."
 msgstr ""
+"当前文档中的 HTML favicon 图片的相对路径，或指向 favicon 的URL，或 ``''``。"
 
 #: ../../templating.rst:294
 msgid ""
@@ -433,52 +504,58 @@ msgid ""
 "attribute, i.e. the file name extension that the output files will get.  "
 "For a standard HTML builder, this is usually ``.html``."
 msgstr ""
+"构建器的 :attr:`~.SerializingHTMLBuilder.out_suffix` 属性的值，"
+"即输出文件将得到的文件名扩展。对于一个标准的 HTML 生成器，这通常是 ``.html``。"
 
 #: ../../templating.rst:300
 msgid ""
 "True if the reST document sources are copied (if "
 ":confval:`html_copy_source` is ``True``)."
 msgstr ""
+"如果 reST 文档源被复制，则为真（如果 "
+":confval:`html_copy_source` 是 ``True`` ）。"
 
 #: ../../templating.rst:305
 msgid "The value of :confval:`language`."
-msgstr ""
+msgstr ":confval:`language` 的值。"
 
 #: ../../templating.rst:309
 msgid "The build date."
-msgstr ""
+msgstr "构建日期。"
 
 #: ../../templating.rst:313
 msgid ""
 "The path to the HTML logo image in the static path, or URL to the logo, "
 "or ``''``."
 msgstr ""
+"静态路径中的 HTML 标志图片的路径，或标志的 URL，或 ``''``。"
 
 #: ../../templating.rst:318
 msgid "Recommend to use ``logo_url`` instead."
-msgstr ""
+msgstr "建议使用 ``logo_url`` 代替。"
 
 #: ../../templating.rst:322
 msgid ""
 "The relative path to the HTML logo image from the current document, or "
 "URL to the logo, or ``''``."
 msgstr ""
+"当前文档中 HTML 标志图片的相对路径，或标志的 URL，或 ``''``。"
 
 #: ../../templating.rst:329
 msgid "Same as :data:`root_doc`."
-msgstr ""
+msgstr "同 :data:`root_doc`。"
 
 #: ../../templating.rst:333
 msgid "Renamed to ``root_doc``."
-msgstr ""
+msgstr "重命名为 ``root_doc``。"
 
 #: ../../templating.rst:337
 msgid "The value of :confval:`root_doc`, for usage with :func:`pathto`."
-msgstr ""
+msgstr ":confval:`root_doc` 的值，与 :func:`pathto` 一起使用。"
 
 #: ../../templating.rst:341
 msgid "Renamed from ``master_doc``."
-msgstr ""
+msgstr "从 ``master_doc`` 重新命名。"
 
 #: ../../templating.rst:345
 msgid ""
@@ -487,14 +564,16 @@ msgid ""
 "name relative to the output directory "
 "(``[directory/]filename_without_extension``)."
 msgstr ""
+"当前文件的 “页面名称”，即如果文件是从 reST 源生成的，则是文件名称，"
+"或者是相对于输出目录的等效层次名称（``[directory/]filename_without_extension``）。"
 
 #: ../../templating.rst:352
 msgid "The value of :confval:`project`."
-msgstr ""
+msgstr ":confval:`project` 的值。"
 
 #: ../../templating.rst:356
 msgid "The value of :confval:`release`."
-msgstr ""
+msgstr ":confval:`release` 的值。"
 
 #: ../../templating.rst:360
 msgid ""
@@ -504,20 +583,25 @@ msgid ""
 "yourself, it must be a tuple ``(pagename, link title, accesskey, link "
 "text)``."
 msgstr ""
+"在relbar的左边，在 “next” 和 “previous” 旁边的链接列表。"
+"这通常包含指向总索引和其他索引的链接，例如 Python 模块索引。"
+"如果你自己添加东西，它必须是一个元组
+``(pagename, link title, accesskey, link text)``。"
 
 #: ../../templating.rst:367
 msgid "The value of :confval:`html_short_title`."
-msgstr ""
+msgstr ":confval:`html_short_title` 的值。"
 
 #: ../../templating.rst:371
 msgid "True if :confval:`html_show_sourcelink` is ``True``."
-msgstr ""
+msgstr "如果 :confval:`html_show_sourcelink` 是 ``True``，则为真。"
 
 #: ../../templating.rst:375
 msgid ""
 "The version of Sphinx used to build represented as a string for example "
 "\"3.5.1\"."
 msgstr ""
+"用于构建的 Sphinx 的版本以字符串表示，例如 “3.5.1”。"
 
 #: ../../templating.rst:379
 msgid ""
@@ -526,24 +610,29 @@ msgid ""
 "'beta', 3)``. The fourth element can be one of: ``alpha``, ``beta``, "
 "``rc``, ``final``. ``final`` always has 0 as the last element."
 msgstr ""
+"用来构建的 Sphinx 的版本表示为一个有五个元素的元组。对于 Sphinx 3.5.1 beta 3 版本，"
+"这将是 ``(3, 5, 1, 'beta', 3)``。"
+"第四个元素可以是其中之一。``alpha``、``beta``、``rc``、``final``。"
+"``final`` 总是以 0 作为最后一个元素。"
 
 #: ../../templating.rst:388
 msgid ""
 "The name of the main stylesheet, as given by the theme or "
 ":confval:`html_style`."
 msgstr ""
+"主样式表的名称，由主题或 :confval:`html_style` 给出。"
 
 #: ../../templating.rst:393
 msgid "The title of the current document, as used in the ``<title>`` tag."
-msgstr ""
+msgstr "当前文档的标题，在 ``<title>`` 标记中使用。"
 
 #: ../../templating.rst:397
 msgid "The value of :confval:`html_use_opensearch`."
-msgstr ""
+msgstr ":confval:`html_use_opensearch` 的值。"
 
 #: ../../templating.rst:401
 msgid "The value of :confval:`version`."
-msgstr ""
+msgstr ":confval:`version` 的值。"
 
 #: ../../templating.rst:404
 msgid ""
@@ -551,6 +640,8 @@ msgid ""
 "available (prefixed by ``theme_``), as well as the values given by the "
 "user in :confval:`html_context`."
 msgstr ""
+"除了这些值之外，还有所有的 **主题选项** （以 ``theme_`` 为前缀），"
+"以及用户在 :confval:`html_context` 中给出的值。"
 
 #: ../../templating.rst:408
 msgid ""
@@ -558,24 +649,27 @@ msgid ""
 "automatically-generated files like the module index, or documents that "
 "already are in HTML form), these variables are also available:"
 msgstr ""
+"在从源文件创建的文件中（相对于自动生成的文件，如模块索引，或已经是 HTML 形式的文件），"
+"这些变量也可以使用："
 
 #: ../../templating.rst:414
 msgid ""
 "A string containing the content of the page in HTML form as produced by "
 "the HTML builder, before the theme is applied."
 msgstr ""
+"一个字符串，包含在应用主题之前，由 HTML 生成器生成的 HTML 形式的页面内容。"
 
 #: ../../templating.rst:419
 msgid "A boolean that is True if the toc contains more than one entry."
-msgstr ""
+msgstr "一个布尔值，如果 toc 包含一个以上的条目，则为真。"
 
 #: ../../templating.rst:423
 msgid "Document metadata (a dictionary), see :ref:`metadata`."
-msgstr ""
+msgstr "文档元数据（一个字典），见 :ref:`metadata`。"
 
 #: ../../templating.rst:427
 msgid "A string containing the page's HTML :dudir:`meta` tags."
-msgstr ""
+msgstr "一个包含页面的 HTML :dudir:`meta` 标记的字符串。"
 
 #: ../../templating.rst:431
 msgid ""
@@ -584,6 +678,9 @@ msgid ""
 "For example, to generate a link to the next page, you can use this "
 "snippet::"
 msgstr ""
+"导航的下一个文件。这个变量要么是 false，要么有两个属性 ``link`` 和 ``title``。"
+"标题包含 HTML 标记。 "
+"例如，要生成一个到下一页的链接，可以使用这个片段 ::"
 
 #: ../../templating.rst:441
 msgid ""
@@ -591,16 +688,19 @@ msgid ""
 ":confval:`source_suffix`, this will allow you to properly link to the "
 "original source file."
 msgstr ""
+"被渲染的文件的后缀。"
+"由于我们支持 :confval:`source_suffix` 的列表，这将允许你正确链接到原始源文件。"
 
 #: ../../templating.rst:447
 msgid ""
 "A list of parent documents for navigation, structured like the "
 ":data:`next` item."
 msgstr ""
+"用于导航的父文档列表，结构类似于 :data:`next` 项。"
 
 #: ../../templating.rst:452
 msgid "Like :data:`next`, but for the previous page."
-msgstr ""
+msgstr "就像 :data:`next`，但是是针对前一页。"
 
 #: ../../templating.rst:456
 msgid ""
@@ -608,18 +708,24 @@ msgid ""
 "only nonempty if the :confval:`html_copy_source` value is ``True``. This "
 "has empty value on creating automatically-generated files."
 msgstr ""
+"当前文档复制的源文件的名称。"
+"只有当 :confval:`html_copy_source` 值为 ``True`` 时，这个值才是非空的。"
+"在创建自动生成的文件时，这个值是空的。"
 
 #: ../../templating.rst:462
 msgid ""
 "The local table of contents for the current page, rendered as HTML bullet"
 " lists."
 msgstr ""
+"当前页面的本地目录，呈现为 HTML bullet 列表。"
 
 #: ../../templating.rst:467
 msgid ""
 "A callable yielding the global TOC tree containing the current page, "
 "rendered as HTML bullet lists.  Optional keyword arguments:"
 msgstr ""
+"一个可调用程序，产生包含当前页面的全局 TOC 树，以 HTML bullet 列表的形式呈现。"
+"可选的关键字参数："
 
 #: ../../templating.rst:473
 msgid "``collapse``"
@@ -630,6 +736,7 @@ msgid ""
 "If true, all TOC entries that are not ancestors of the current page are "
 "collapsed. ``True`` by default."
 msgstr ""
+"如果为真，所有不是当前页的祖先的 TOC 条目都会被折叠起来。默认为 ``True``。"
 
 #: ../../templating.rst:477
 msgid "``maxdepth``"
@@ -640,6 +747,8 @@ msgid ""
 "The maximum depth of the tree. Set it to ``-1`` to allow unlimited depth."
 " Defaults to the max depth selected in the toctree directive."
 msgstr ""
+"树的最大深度。将其设置为 ``-1`` 以允许无限深度。"
+" 默认为 toctree 指令中选择的最大深度。"
 
 #: ../../templating.rst:481
 msgid "``titles_only``"
@@ -650,6 +759,7 @@ msgid ""
 "If true, put only top-level document titles in the tree. ``False`` by "
 "default."
 msgstr ""
+"如果是真的，在树上只放顶层的文档标题。默认为 ``False``。"
 
 #: ../../templating.rst:484
 msgid "``includehidden``"
@@ -660,4 +770,4 @@ msgid ""
 "If true, the ToC tree will also contain hidden entries. ``False`` by "
 "default."
 msgstr ""
-
+"如果为真，ToC 树也将包含隐藏条目。默认为 ``False``。"
