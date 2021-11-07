@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 00:26+0800\n"
+"POT-Creation-Date: 2021-11-07 15:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,6 +168,10 @@ msgid ""
 "And finally, open ``docs/build/html/index.html`` in your browser.  You "
 "should see something like this:"
 msgstr "最后，在浏览器中打开 ``docs/build/html/index.html``。你应该看到像这样的东西："
+
+#: ../../tutorial/getting-started.rst:117
+msgid "刷新创建的 Lumache 文件"
+msgstr ""
 
 #: ../../tutorial/getting-started.rst:117
 msgid "Freshly created documentation of Lumache"

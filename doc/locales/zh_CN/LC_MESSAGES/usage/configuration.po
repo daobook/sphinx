@@ -681,7 +681,7 @@ msgid ""
 "'foo_package.bar.BAZ_VALUE')`` or ``('py:class', 'food.bar.Barman')``."
 msgstr ""
 "例如，``(r'py:.*', r'foo.*bar\\.B.*')`` 将忽略所有以 ``'foo'`` 开头且有 ``'bar.B'`` 的 "
-"python 实体的挑剔警告，例如``('py:const', 'foo_package.bar.BAZ_VALUE')`` 或 "
+"python 实体的挑剔警告，例如 ``('py:const', 'foo_package.bar.BAZ_VALUE')`` 或 "
 "``('py:class', 'food.bar.Barman')``。"
 
 #: ../../usage/configuration.rst:438
@@ -1739,6 +1739,7 @@ msgid ""
 "Custom sidebar templates, must be a dictionary that maps document names "
 "to template names."
 msgstr ""
+"自定义侧边栏模板，必须是一个字典，将文档名称映射到模板名称。"
 
 #: ../../usage/configuration.rst:1200
 msgid ""
@@ -1746,10 +1747,12 @@ msgid ""
 " documents will get the specified sidebars.  (A warning is emitted when a"
 " more than one glob-style pattern matches for any document.)"
 msgstr ""
+"键可以包含 glob-style 模式 [1]_，在这种情况下，所有匹配的文档都会得到指定的侧边栏。"
+"（当任何文档有一个以上的 glob-style 模式匹配时，会发出一个警告。）"
 
 #: ../../usage/configuration.rst:1204
 msgid "The values can be either lists or single strings."
-msgstr ""
+msgstr "这些值可以是列表，也可以是单个字符串。"
 
 #: ../../usage/configuration.rst:1206
 msgid ""
@@ -1757,6 +1760,8 @@ msgid ""
 " to include.  If all or some of the default sidebars are to be included, "
 "they must be put into this list as well."
 msgstr ""
+"如果一个值是一个列表，它指定了要包括的侧边栏模板的完整列表。"
+"如果要包括所有或部分的默认侧栏，它们也必须被放入这个列表中。"
 
 #: ../../usage/configuration.rst:1210
 msgid ""
@@ -1765,6 +1770,9 @@ msgid ""
 "default: ``['localtoc.html', 'relations.html', 'sourcelink.html', "
 "'searchbox.html']``."
 msgstr ""
+"默认的侧边栏（对于不符合任何模式的文件）是由主题本身定义的。"
+"内置的主题是由默认使用的模板：``['localtoc.html', "
+"'relations.html', 'sourcelink.html', 'searchbox.html']``。"
 
 #: ../../usage/configuration.rst:1215
 msgid ""
@@ -1772,40 +1780,46 @@ msgid ""
 "between the ``'sourcelink.html'`` and ``'searchbox.html'`` entries.  This"
 " is for compatibility with Sphinx versions before 1.0."
 msgstr ""
+"如果一个值是一个单一的字符串，它指定了一个自定义的侧边栏，"
+"将被添加到 ``'sourcelink.html'`` 和 ``'searchbox.html'`` 条目之间。"
+"这是为了与 1.0 之前的 Sphinx 版本兼容。"
 
 #: ../../usage/configuration.rst:1221
 msgid "a single string value for ``html_sidebars`` will be removed in 2.0"
-msgstr ""
+msgstr "``html_sidebars`` 的单一字符串值将在 2.0 中被删除。"
 
 #: ../../usage/configuration.rst:1223
 msgid "Builtin sidebar templates that can be rendered are:"
-msgstr ""
+msgstr "可以呈现的内置侧边栏模板有："
 
 #: ../../usage/configuration.rst:1225
 msgid ""
 "**localtoc.html** -- a fine-grained table of contents of the current "
 "document"
 msgstr ""
+"**localtoc.html** -- 当前文件的细粒度目录"
 
 #: ../../usage/configuration.rst:1227
 msgid ""
 "**globaltoc.html** -- a coarse-grained table of contents for the whole "
 "documentation set, collapsed"
 msgstr ""
+"**globaltoc.html** -- 整个文档集的粗粒度目录，折叠式的"
 
 #: ../../usage/configuration.rst:1229
 msgid "**relations.html** -- two links to the previous and next documents"
-msgstr ""
+msgstr "**relations.html** -- 两个指向上一个和下一个文档的链接"
 
 #: ../../usage/configuration.rst:1230
 msgid ""
 "**sourcelink.html** -- a link to the source of the current document, if "
 "enabled in :confval:`html_show_sourcelink`"
 msgstr ""
+"**sourcelink.html** -- 如果在 :confval:`html_show_sourcelink` 中启用，则是指向当前文档源头的链接。"
 
 #: ../../usage/configuration.rst:1232
 msgid "**searchbox.html** -- the \"quick search\" box"
-msgstr ""
+msgstr "**searchbox.html** -- “快速搜索” 框"
 
 #: ../../usage/configuration.rst:1241
 msgid ""
@@ -1814,16 +1828,20 @@ msgid ""
 " default sidebars for all other pages (except that the local TOC is "
 "replaced by the global TOC)."
 msgstr ""
+"这将呈现自定义模板 ``windowssidebar.html`` 和快速搜索框在给定文档的侧边栏内，"
+"并为所有其他页面呈现默认的侧边栏（除了本地 TOC 被全局 TOC 取代）。"
 
 #: ../../usage/configuration.rst:1246
 msgid "The ability to use globbing keys and to specify multiple sidebars."
-msgstr ""
+msgstr "能够使用 globbing 键和指定多个侧边栏。"
 
 #: ../../usage/configuration.rst:1249
 msgid ""
 "Note that this value only has no effect if the chosen theme does not "
 "possess a sidebar, like the builtin **scrolls** and **haiku** themes."
 msgstr ""
+"请注意，只有在所选主题不具备侧边栏的情况下，这个值才没有影响，"
+"比如内置的 **scrolls** 和 **haiku** 主题。"
 
 #: ../../usage/configuration.rst:1254
 msgid ""
@@ -3457,7 +3475,7 @@ msgstr ""
 
 #: ../../usage/configuration.rst:2540 ../../usage/configuration.rst:2565
 msgid "Example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../usage/configuration.rst:2549
 msgid ""
