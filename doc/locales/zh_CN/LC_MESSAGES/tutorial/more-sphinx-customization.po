@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 15:22+0800\n"
+"POT-Creation-Date: 2021-11-26 12:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,10 +96,6 @@ msgid ""
 "With this change, you will notice that your HTML documentation has now a "
 "new appearance:"
 msgstr "通过这一改变，你会注意到你的 HTML 文档现在有了新的外观："
-
-#: ../../tutorial/more-sphinx-customization.rst:75
-msgid "使用 Furo 主题的 Lumache 的 HTML 文档"
-msgstr ""
 
 #: ../../tutorial/more-sphinx-customization.rst:75
 msgid "HTML documentation of Lumache with the Furo theme"

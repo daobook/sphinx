@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"POT-Creation-Date: 2021-11-26 12:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,37 +69,41 @@ msgstr ""
 msgid "Document imported members."
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:43
+#: ../../man/sphinx-autogen.rst:44
+msgid "Document exactly the members in a module's ``__all__`` attribute."
+msgstr ""
+
+#: ../../man/sphinx-autogen.rst:47
 msgid "Example"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:45
+#: ../../man/sphinx-autogen.rst:49
 msgid "Given the following directory structure::"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:58
+#: ../../man/sphinx-autogen.rst:62
 msgid "and assuming ``docs/index.rst`` contained the following:"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:72
+#: ../../man/sphinx-autogen.rst:76
 msgid "If you run the following:"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:78
+#: ../../man/sphinx-autogen.rst:82
 msgid "then the following stub files will be created in ``docs``::"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:87
+#: ../../man/sphinx-autogen.rst:91
 msgid ""
 "and each of those files will contain a :rst:dir:`autodoc` directive and "
 "some other information."
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:91
+#: ../../man/sphinx-autogen.rst:95
 msgid "See also"
 msgstr ""
 
-#: ../../man/sphinx-autogen.rst:93
+#: ../../man/sphinx-autogen.rst:97
 msgid ":manpage:`sphinx-build(1)`, :manpage:`sphinx-apidoc(1)`"
 msgstr ""
 

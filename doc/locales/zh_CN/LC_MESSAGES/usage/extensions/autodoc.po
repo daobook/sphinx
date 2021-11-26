@@ -19,13 +19,14 @@ msgstr ""
 
 #: ../../usage/extensions/autodoc.rst:4
 msgid ":mod:`sphinx.ext.autodoc` -- Include documentation from docstrings"
-msgstr ""
+msgstr ":mod:`sphinx.ext.autodoc` —— 包括来自文档字符串的文档"
 
 #: ../../usage/extensions/autodoc.rst:12
 msgid ""
 "This extension can import the modules you are documenting, and pull in "
 "documentation from docstrings in a semi-automatic way."
 msgstr ""
+"这个插件可以导入你正在记录的模块，并以半自动的方式从文档字符串提取文档。"
 
 #: ../../usage/extensions/autodoc.rst:17
 msgid ""
@@ -34,6 +35,8 @@ msgid ""
 "the package must be in one of the directories on :data:`sys.path` -- "
 "adapt your :data:`sys.path` in the configuration file accordingly."
 msgstr ""
+"为了让 Sphinx（实际上是执行 Sphinx 的 Python 解释器）找到你的模块，它必须是可导入的。"
+"这意味着模块或包必须在 :data:`sys.path` 上的一个目录中 —— 在配置文件中相应地调整 :data:`sys.path`。"
 
 #: ../../usage/extensions/autodoc.rst:24
 msgid ""
@@ -41,12 +44,15 @@ msgid ""
 "any modules have side effects on import, these will be executed by "
 "``autodoc`` when ``sphinx-build`` is run."
 msgstr ""
+":mod:`~sphinx.ext.autodoc` **导入** 要记录的模块。"
+"如果任何模块在导入时有副作用，当运行 ``sphinx-build`` 时，这些模块将由 ``autodoc`` 执行。"
 
 #: ../../usage/extensions/autodoc.rst:28
 msgid ""
 "If you document scripts (as opposed to library modules), make sure their "
 "main routine is protected by a ``if __name__ == '__main__'`` condition."
 msgstr ""
+"如果你记录了脚本（相对于库模块而言），请确保它们的主程序受到 ``if __name__ == '__main__'`` 条件的保护。"
 
 #: ../../usage/extensions/autodoc.rst:31
 msgid ""
@@ -57,6 +63,9 @@ msgid ""
 " to maintain two locations for documentation, while at the same time "
 "avoiding auto-generated-looking pure API documentation."
 msgstr ""
+"为了使其发挥作用，文档字符串当然必须用正确的 reStructuredText 写。"
+"然后你可以在文档字符串中使用所有常规的 Sphinx 标记，它最终会正确地出现在文档中。"
+"再加上手写的文档，这种技术减轻了必须维护两个位置的文档的痛苦，同时也避免了自动生成的纯 API 文档。"
 
 #: ../../usage/extensions/autodoc.rst:38
 msgid ""
@@ -66,10 +75,14 @@ msgid ""
 "is a preprocessor that converts your docstrings to correct "
 "reStructuredText before :mod:`autodoc` processes them."
 msgstr ""
+"如果你喜欢 `NumPy`_ 或 `Google`_ 风格的文档字符串而不是 reStructuredText，"
+"你也可以启用 :mod:`napoleon <sphinx.ext.napoleon>` 插件。"
+":mod:`napoleon <sphinx.ext.napoleon>` 是一个预处理器，"
+"在 :mod:`autodoc` 处理之前将文档字符串转换为正确的 reStructuredText。"
 
 #: ../../usage/extensions/autodoc.rst:48
 msgid "Directives"
-msgstr ""
+msgstr "指令"
 
 #: ../../usage/extensions/autodoc.rst:50
 msgid ""
@@ -79,6 +92,9 @@ msgid ""
 "the given objects, inserting them into the page source under a suitable "
 ":rst:dir:`py:module`, :rst:dir:`py:class` etc.  directive."
 msgstr ""
+":mod:`autodoc` 提供了几个指令，是通常的 :rst:dir:`py:module`、:rst:dir:`py:class` 等的版本。"
+"在解析时，它们导入相应的模块，并提取给定对象的文档字符串，"
+"在合适的 :rst:dir:`py:module`、:rst:dir:`py:class` 等指令下，将它们插入页面源。"
 
 #: ../../usage/extensions/autodoc.rst:58
 msgid ""
@@ -86,16 +102,20 @@ msgid ""
 ":rst:dir:`autoclass` will also do so.  Likewise, :rst:dir:`automethod` "
 "will respect the current :rst:dir:`py:class`."
 msgstr ""
+"就像 :rst:dir:`py:class` 遵从当前 :rst:dir:`py:module` 一样，"
+":rst:dir:`autoclass` 也会这样做。"
+"同样地，:rst:dir:`automethod` 也会遵从当前的 :rst:dir:`py:class`。"
 
 #: ../../usage/extensions/autodoc.rst:67
 msgid ""
 "Document a module, class or exception.  All three directives will by "
 "default only insert the docstring of the object itself::"
 msgstr ""
+"记录一个模块、类或异常。所有这三个指令默认只插入对象本身的文档字符串 ::"
 
 #: ../../usage/extensions/autodoc.rst:72
 msgid "will produce source like this::"
-msgstr ""
+msgstr "将产生这样的源码 ::"
 
 #: ../../usage/extensions/autodoc.rst:78
 msgid ""
@@ -103,34 +123,37 @@ msgid ""
 " inserted into the resulting non-auto directive source after the "
 "docstring (but before any automatic member documentation)."
 msgstr ""
+"\"auto\" 指令也可以包含自己的内容，它将被插入到所产生的非自动指令源的文档字符串之后（但在任何自动成员文档之前）。"
 
 #: ../../usage/extensions/autodoc.rst:82
 msgid ""
 "Therefore, you can also mix automatic and non-automatic member "
 "documentation, like so::"
 msgstr ""
+"因此，你也可以把自动和非自动的成员文件混在一起，像这样 ::"
 
 #: ../../usage/extensions/autodoc.rst:93
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 #: ../../usage/extensions/autodoc.rst:97
 msgid ""
 "If set, autodoc will generate document for the members of the target "
 "module, class or exception."
 msgstr ""
+"如果设置，autodoc 将为目标模块、类或异常的成员生成文档。"
 
 #: ../../usage/extensions/autodoc.rst:100
 msgid "For example::"
-msgstr ""
+msgstr "例如 ::"
 
 #: ../../usage/extensions/autodoc.rst:105
 msgid "will document all module members (recursively), and ::"
-msgstr ""
+msgstr "将记录所有模块成员（递归），而 ::"
 
 #: ../../usage/extensions/autodoc.rst:110
 msgid "will document all class member methods and properties."
-msgstr ""
+msgstr "将记录所有的类成员方法和属性。"
 
 #: ../../usage/extensions/autodoc.rst:112
 msgid ""
@@ -138,6 +161,7 @@ msgid ""
 "private, not having docstrings, inherited from super class, or special "
 "members."
 msgstr ""
+"默认情况下，autodoc 不会为那些私有的、没有文档字符串的、从超类继承的、或特殊的成员生成文档。"
 
 #: ../../usage/extensions/autodoc.rst:116
 msgid ""
@@ -146,12 +170,16 @@ msgid ""
 "module-all``, the order of the members will also be the order in "
 "``__all__``."
 msgstr ""
+"对于模块，在寻找成员时，``__all__`` 将被遵从，"
+"除非你给出 ``ignore-module-all`` 标志选项。"
+"如果没有 ``ignore-module-all``，成员的顺序也将是 ``__all__`` 中的顺序。"
 
 #: ../../usage/extensions/autodoc.rst:121
 msgid ""
 "You can also give an explicit list of members; only these will then be "
 "documented::"
 msgstr ""
+"你也可以给出一个明确的成员列表；然后只有这些成员会被记录下来 ::"
 
 #: ../../usage/extensions/autodoc.rst:130
 msgid ""
