@@ -30,6 +30,9 @@ jobs:
         run: |
           python setup.py install
           pip install sphinx-intl
+          
+      - name: Install graphviz
+        run: sudo apt-get install graphviz
       
       # # 克隆
       # - name: Clone

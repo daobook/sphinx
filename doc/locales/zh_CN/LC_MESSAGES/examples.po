@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-07 00:26+0800\n"
+"POT-Creation-Date: 2021-12-05 12:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1732,7 +1732,7 @@ msgid ""
 msgstr ""
 
 #: ../../../EXAMPLES:434
-msgid "Theses produced using Sphinx"
+msgid "These produced using Sphinx"
 msgstr ""
 
 #: ../../../EXAMPLES:436
@@ -1957,5 +1957,8 @@ msgstr ""
 #~ " in its help pane to render "
 #~ "rich documentation for functions, classes "
 #~ "and methods automatically or on-demand."
+#~ msgstr ""
+
+#~ msgid "Theses produced using Sphinx"
 #~ msgstr ""
 

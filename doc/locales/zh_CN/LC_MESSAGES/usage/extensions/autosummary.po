@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 12:52+0800\n"
+"POT-Creation-Date: 2021-12-05 12:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,8 +28,8 @@ msgid ""
 " is especially useful when your docstrings are long and detailed, and "
 "putting each one of them on a separate page makes them easier to read."
 msgstr ""
-"这个插件可以生成函数/方法/属性的摘要列表，类似于 Epydoc 和其他 API 文档生成工具所输出的列表。"
-"当你的文档字符串又长又详细时，这特别有用，把每一个都放在一个单独的页面上可以使它们更容易阅读。"
+"这个插件可以生成函数/方法/属性的摘要列表，类似于 Epydoc 和其他 API "
+"文档生成工具所输出的列表。当你的文档字符串又长又详细时，这特别有用，把每一个都放在一个单独的页面上可以使它们更容易阅读。"
 
 #: ../../usage/extensions/autosummary.rst:16
 msgid "The :mod:`sphinx.ext.autosummary` extension does this in two parts:"
@@ -40,9 +40,7 @@ msgid ""
 "There is an :rst:dir:`autosummary` directive for generating summary "
 "listings that contain links to the documented items, and short summary "
 "blurbs extracted from their docstrings."
-msgstr ""
-"有一个 :rst:dir:`autosummary` 指令，用于生成摘要列表，"
-"其中包含指向被记录的项目的链接，以及从其文档说明中提取的简短摘要。"
+msgstr "有一个 :rst:dir:`autosummary` 指令，用于生成摘要列表，其中包含指向被记录的项目的链接，以及从其文档说明中提取的简短摘要。"
 
 #: ../../usage/extensions/autosummary.rst:22
 msgid ""
@@ -51,22 +49,20 @@ msgid ""
 "only the corresponding :mod:`sphinx.ext.autodoc` directive, but can be "
 "customized with templates."
 msgstr ""
-"一个 :rst:dir:`autosummary` 指令也为其内容中列出的条目生成简短的 \"stub\" 文件。"
-"这些文件默认只包含相应的 :mod:`sphinx.ext.autodoc` 指令，但可以用模板定制。"
+"一个 :rst:dir:`autosummary` 指令也为其内容中列出的条目生成简短的 \"stub\" 文件。这些文件默认只包含相应的 "
+":mod:`sphinx.ext.autodoc` 指令，但可以用模板定制。"
 
 #: ../../usage/extensions/autosummary.rst:27
 msgid ""
 "The :program:`sphinx-autogen` script is also able to generate \"stub\" "
 "files from command line."
-msgstr ""
-":program:`sphinx-autogen` 脚本也能够从命令行中生成 \"stub\" 文件。"
+msgstr ":program:`sphinx-autogen` 脚本也能够从命令行中生成 \"stub\" 文件。"
 
 #: ../../usage/extensions/autosummary.rst:32
 msgid ""
 "Insert a table that contains links to documented items, and a short "
 "summary blurb (the first sentence of the docstring) for each of them."
-msgstr ""
-"插入一个表格，其中包含指向文档项目的链接，以及每个项目的简短摘要说明（文档字符串的第一句）。"
+msgstr "插入一个表格，其中包含指向文档项目的链接，以及每个项目的简短摘要说明（文档字符串的第一句）。"
 
 #: ../../usage/extensions/autosummary.rst:35
 msgid ""
@@ -75,8 +71,8 @@ msgid ""
 "``.rst`` files for these items can also be automatically generated when "
 ":confval:`autosummary_generate` is `True`."
 msgstr ""
-":rst:dir:`autosummary` 指令也可以选择作为 :rst:dir:`toctree` 条目，用于包含的项目。"
-"当 :confval:`autosummary_generate` 为 True 时，这些项目的 stub ``.rst`` 文件也可以选择自动生成。"
+":rst:dir:`autosummary` 指令也可以选择作为 :rst:dir:`toctree` 条目，用于包含的项目。当 "
+":confval:`autosummary_generate` 为 True 时，这些项目的 stub ``.rst`` 文件也可以选择自动生成。"
 
 #: ../../usage/extensions/autosummary.rst:40
 msgid "For example, ::"
@@ -88,7 +84,7 @@ msgstr "产生一个类似这样的表格："
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
 msgid ""
-":obj:`environment.BuildEnvironment "
+":py:obj:`environment.BuildEnvironment "
 "<sphinx.environment.BuildEnvironment>`\\ \\(\\[app\\]\\)"
 msgstr ""
 
@@ -97,7 +93,7 @@ msgid "The environment in which the ReST files are translated."
 msgstr "翻译 ReST 文件的 environment。"
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
-msgid ":obj:`util.relative_uri <sphinx.util.relative_uri>`\\ \\(base\\, to\\)"
+msgid ":py:obj:`util.relative_uri <sphinx.util.relative_uri>`\\ \\(base\\, to\\)"
 msgstr ""
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
@@ -110,8 +106,8 @@ msgid ""
 ":event:`autodoc-process-docstring` and :event:`autodoc-process-signature`"
 " hooks as :mod:`~sphinx.ext.autodoc`."
 msgstr ""
-"Autosummary 预处理文档字符串和签名，与 :mod:`~sphinx.ext.autodoc` 的钩子一样，"
-"都是 :event:`autodoc-process-docstring` 和 :event:`autodoc-process-signature`。"
+"Autosummary 预处理文档字符串和签名，与 :mod:`~sphinx.ext.autodoc` 的钩子一样，都是 :event"
+":`autodoc-process-docstring` 和 :event:`autodoc-process-signature`。"
 
 #: ../../usage/extensions/autosummary.rst:64
 msgid "**Options**"
@@ -122,7 +118,8 @@ msgid ""
 "If you want the :rst:dir:`autosummary` table to also serve as a "
 ":rst:dir:`toctree` entry, use the ``toctree`` option, for example::"
 msgstr ""
-"如果你想让 :rst:dir:`autosummary` 表也作为 :rst:dir:`toctree` 条目，使用 ``toctree`` 选项，例如 ::"
+"如果你想让 :rst:dir:`autosummary` 表也作为 :rst:dir:`toctree` 条目，使用 ``toctree`` "
+"选项，例如 ::"
 
 #: ../../usage/extensions/autosummary.rst:75
 msgid ""
@@ -133,10 +130,9 @@ msgid ""
 "no argument is given, output is placed in the same directory as the file "
 "that contains the directive."
 msgstr ""
-"``toctree`` 选项也向 :program:`sphinx-autogen` 脚本发出信号，"
-"应该为该指令中列出的条目生成存根页。"
-"该选项接受一个目录名作为参数；:program:`sphinx-autogen` 默认会将其输出放在这个目录中。"
-"如果没有给出参数，输出将被放置在与包含指令的文件相同的目录中。"
+"``toctree`` 选项也向 :program:`sphinx-autogen` "
+"脚本发出信号，应该为该指令中列出的条目生成存根页。该选项接受一个目录名作为参数；:program:`sphinx-autogen` "
+"默认会将其输出放在这个目录中。如果没有给出参数，输出将被放置在与包含指令的文件相同的目录中。"
 
 #: ../../usage/extensions/autosummary.rst:82
 msgid "You can also use ``caption`` option to give a caption to the toctree."
@@ -150,15 +146,13 @@ msgstr "增加了 caption 选项。"
 msgid ""
 "If you don't want the :rst:dir:`autosummary` to show function signatures "
 "in the listing, include the ``nosignatures`` option::"
-msgstr ""
-"如果你不希望 :rst:dir:`autosummary` 在列表中显示函数签名，请包括 ``nosignatures`` 选项 ::"
+msgstr "如果你不希望 :rst:dir:`autosummary` 在列表中显示函数签名，请包括 ``nosignatures`` 选项 ::"
 
 #: ../../usage/extensions/autosummary.rst:97
 msgid ""
 "You can specify a custom template with the ``template`` option. For "
 "example, ::"
-msgstr ""
-"你可以用 ``template`` 选项指定一个自定义模板。例如 ::"
+msgstr "你可以用 ``template`` 选项指定一个自定义模板。例如 ::"
 
 #: ../../usage/extensions/autosummary.rst:105
 msgid ""
@@ -459,4 +453,12 @@ msgid ""
 "You can use the :rst:dir:`autosummary` directive in the stub pages. Stub "
 "pages are generated also based on these directives."
 msgstr ""
+
+#~ msgid ""
+#~ ":obj:`environment.BuildEnvironment "
+#~ "<sphinx.environment.BuildEnvironment>`\\ \\(\\[app\\]\\)"
+#~ msgstr ""
+
+#~ msgid ":obj:`util.relative_uri <sphinx.util.relative_uri>`\\ \\(base\\, to\\)"
+#~ msgstr ""
 

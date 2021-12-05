@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"POT-Creation-Date: 2021-12-05 12:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,20 +33,17 @@ msgid ""
 "  Sphinx allows you to assemble a project from different files, which is "
 "helpful when the project grows."
 msgstr ""
-"由 ``sphinx-quickstart`` 创建的 ``index.rst`` 文件是 :term:`根文件`，"
-"其主要功能是作为欢迎页和包含 “目录树”（或 *toctree*）的根。"
-"Sphinx 允许你从不同的文件中组装一个项目，这在项目增长时很有帮助。"
+"由 ``sphinx-quickstart`` 创建的 ``index.rst`` 文件是 :term:`根文件`，其主要功能是作为欢迎页和包含 "
+"“目录树”（或 *toctree*）的根。Sphinx 允许你从不同的文件中组装一个项目，这在项目增长时很有帮助。"
 
 #: ../../tutorial/narrative-documentation.rst:13
 msgid ""
 "As an example, create a new file ``docs/source/usage.rst`` (next to "
 "``index.rst``) with these contents:"
-msgstr ""
-"作为一个例子，创建一个新的文件 ``docs/source/usage.rst``（在 ``index.rst`` 旁边），"
-"内容如下："
+msgstr "作为一个例子，创建一个新的文件 ``docs/source/usage.rst``（在 ``index.rst`` 旁边），内容如下："
 
 #: ../../tutorial/narrative-documentation.rst:16
-#: ../../tutorial/narrative-documentation.rst:101
+#: ../../tutorial/narrative-documentation.rst:99
 msgid "docs/source/usage.rst"
 msgstr ""
 
@@ -57,9 +54,8 @@ msgid ""
 "block of content as source code, with appropriate syntax highlighting (in"
 " this case, generic ``console`` text)."
 msgstr ""
-"这个新文件包含两个 :ref:`章节 <rst-sections>` 标题，正常的段落文本，"
-"以及一个 :rst:dir:`code-block` 指令，该指令将一个内容块渲染成源代码，"
-"并有适当的语法高亮显示（在本例中是通用的 ``console`` 文本）。"
+"这个新文件包含两个 :ref:`章节 <rst-sections>` 标题，正常的段落文本，以及一个 :rst:dir:`code-block` "
+"指令，该指令将一个内容块渲染成源代码，并有适当的语法高亮显示（在本例中是通用的 ``console`` 文本）。"
 
 #: ../../tutorial/narrative-documentation.rst:36
 msgid ""
@@ -68,10 +64,8 @@ msgid ""
 "section after ``===`` for the \"Usage\" section, you have declared "
 "\"Installation\" to be a *subsection* of \"Usage\"."
 msgstr ""
-"文件的结构是由连续的标题决定的样式，"
-"这意味着在 “Installation” 部分使用 “----”，"
-"而在 “Usage” 部分使用 “=====”，就意味着你已经声明了。"
-"“Installation” 是 “Usage” 的小节。"
+"文件的结构是由连续的标题决定的样式，这意味着在 “Installation” 部分使用 “----”，而在 “Usage” 部分使用 "
+"“=====”，就意味着你已经声明了。“Installation” 是 “Usage” 的小节。"
 
 #: ../../tutorial/narrative-documentation.rst:41
 msgid ""
@@ -79,12 +73,12 @@ msgid ""
 "directives>` at the end of ``index.rst`` including the document you just "
 "created, as follows:"
 msgstr ""
-"为了完成这个过程，在 ``index.rst`` 的末尾添加一个 "
-"``toctree`` :ref:`指令 <rst-directives>`，包括你刚刚创建的文件，如下所示："
+"为了完成这个过程，在 ``index.rst`` 的末尾添加一个 ``toctree`` :ref:`指令 <rst-"
+"directives>`，包括你刚刚创建的文件，如下所示："
 
 #: ../../tutorial/narrative-documentation.rst:44
 #: ../../tutorial/narrative-documentation.rst:83
-#: ../../tutorial/narrative-documentation.rst:117
+#: ../../tutorial/narrative-documentation.rst:115
 msgid "docs/source/index.rst"
 msgstr ""
 
@@ -92,9 +86,7 @@ msgstr ""
 msgid ""
 "This step inserts that document in the root of the *toctree*, so now it "
 "belongs to the structure of your project, which so far looks like this:"
-msgstr ""
-"这一步将该文件插入 *toctree* 的根部，所以现在它属于你的项目结构，"
-"到目前为止，它看起来像这样："
+msgstr "这一步将该文件插入 *toctree* 的根部，所以现在它属于你的项目结构，到目前为止，它看起来像这样："
 
 #: ../../tutorial/narrative-documentation.rst:62
 msgid ""
@@ -102,18 +94,15 @@ msgid ""
 "that the ``toctree`` gets rendered as a list of hyperlinks, and this "
 "allows you to navigate to the new page you just created.  Neat!"
 msgstr ""
-"如果你运行 ``make html`` 构建 HTML 文档，"
-"你会看到 ``toctree`` 被渲染成一个超链接的列表，这允许你导航到你刚刚创建的新页面。很好！"
+"如果你运行 ``make html`` 构建 HTML 文档，你会看到 ``toctree`` "
+"被渲染成一个超链接的列表，这允许你导航到你刚刚创建的新页面。很好！"
 
 #: ../../tutorial/narrative-documentation.rst:68
 msgid ""
 "Documents outside a *toctree* will result in ``WARNING: document isn't "
 "included in any toctree`` messages during the build process, and will be "
 "unreachable for users."
-msgstr ""
-"在 *toctree* 之外的文档将导致在构建过程中"
-"出现 ``WARNING: 文档没有加入到任何目录树中`` "
-"的信息，并且对用户来说将无法访问。"
+msgstr "在 *toctree* 之外的文档将导致在构建过程中出现 ``WARNING: 文档没有加入到任何目录树中`` 的信息，并且对用户来说将无法访问。"
 
 #: ../../tutorial/narrative-documentation.rst:73
 msgid "Adding cross-references"
@@ -133,8 +122,7 @@ msgstr ""
 msgid ""
 "To add a cross-reference, write this sentence right after the "
 "introduction paragraph in ``index.rst``:"
-msgstr ""
-"要增加一个交叉引用，请在 ``index.rst`` 中的介绍段之后写下这句话："
+msgstr "要增加一个交叉引用，请在 ``index.rst`` 中的介绍段之后写下这句话："
 
 #: ../../tutorial/narrative-documentation.rst:88
 msgid ""
@@ -142,30 +130,30 @@ msgid ""
 "references a specific document in the project, in this case the "
 "``usage.rst`` you created earlier."
 msgstr ""
-"你使用的 :rst:role:`doc` :ref:`role <rst-roles-alt>` 自动引用"
-"项目中的一个特定文件，在这种情况下，你先前创建的 ``usage.rst``。"
+"你使用的 :rst:role:`doc` :ref:`role <rst-roles-alt>` "
+"自动引用项目中的一个特定文件，在这种情况下，你先前创建的 ``usage.rst``。"
 
 #: ../../tutorial/narrative-documentation.rst:92
+#, fuzzy
 msgid ""
 "Alternatively, you can also add a cross-reference to an arbitrary part of"
 " the project. For that, you need to use the :rst:role:`ref` role, and add"
-" an explicit *label* that acts as `a target`__."
+" an explicit *label* that acts as :duref:`a target <hyperlink-targets>`."
 msgstr ""
-"另外，你也可以向项目的任意部分添加一个交叉引用。"
-"为此，你需要使用 :rst:role:`ref` 角色，并添加一个显式 *标签*，作为 `target`__。"
+"另外，你也可以向项目的任意部分添加一个交叉引用。为此，你需要使用 :rst:role:`ref` 角色，并添加一个显式 *标签*，作为 "
+"`target`__。"
 
-#: ../../tutorial/narrative-documentation.rst:98
+#: ../../tutorial/narrative-documentation.rst:96
 msgid ""
 "For example, to reference the \"Installation\" subsection, add a label "
 "right before the heading, as follows:"
-msgstr ""
-"例如，为了引用 “Installation” 小节，在标题前添加一个标签，如下所示："
+msgstr "例如，为了引用 “Installation” 小节，在标题前添加一个标签，如下所示："
 
-#: ../../tutorial/narrative-documentation.rst:115
+#: ../../tutorial/narrative-documentation.rst:113
 msgid "And make the sentence you added in ``index.rst`` look like this:"
 msgstr "并使你在 ``index.rst`` 中添加的句子看起来像这样："
 
-#: ../../tutorial/narrative-documentation.rst:123
+#: ../../tutorial/narrative-documentation.rst:121
 msgid ""
 "Notice a trick here: the ``install`` part specifies how the link will "
 "look like (we want it to be a specific word, so the sentence makes "
@@ -175,17 +163,14 @@ msgid ""
 "used (in this case, ``Installation``). Both the ``:doc:`` and the "
 "``:ref:`` roles will be rendered as hyperlinks in the HTML documentation."
 msgstr ""
-"注意这里有一个技巧：``install`` 部分指定了链接的样子"
-"（我们希望它是一个特定的词，这样句子才有意义），而 ``<installation>`` "
-"部分指的是我们要添加一个交叉引用的实际标签。"
-"如果你不包括一个明确的标题，因此使用 ``:ref:`installation```，"
-"则将使用该部分的标题（在本例中，``Installation``）。"
-"``:doc:`` 和 ``:ref:`` 这两个角色都将在 HTML 文档中呈现为超链接。"
+"注意这里有一个技巧：``install`` 部分指定了链接的样子（我们希望它是一个特定的词，这样句子才有意义），而 "
+"``<installation>`` 部分指的是我们要添加一个交叉引用的实际标签。如果你不包括一个明确的标题，因此使用 "
+"``:ref:`installation```，则将使用该部分的标题（在本例中，``Installation``）。``:doc:`` 和 "
+"``:ref:`` 这两个角色都将在 HTML 文档中呈现为超链接。"
 
-#: ../../tutorial/narrative-documentation.rst:131
+#: ../../tutorial/narrative-documentation.rst:129
 msgid ""
 "What about :doc:`documenting code objects in Sphinx </tutorial"
 "/describing-code>`? Read on!"
-msgstr ""
-"那么 :doc:`在 Sphinx 中记录代码对象 </tutorial/describing-code>` 呢？请继续阅读！"
+msgstr "那么 :doc:`在 Sphinx 中记录代码对象 </tutorial/describing-code>` 呢？请继续阅读！"
 

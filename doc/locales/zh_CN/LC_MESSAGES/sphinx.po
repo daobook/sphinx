@@ -81,6 +81,9 @@ msgid ""
 "pieces of\n"
 "      information"
 msgstr ""
+"<b>广泛的交叉引用：</b> 语义标记和自动链接\n"
+"函数、类、引文、术语表和类似的"
+"的信息片段"
 
 #: ../../_templates/index.html:27
 msgid ""
