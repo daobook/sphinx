@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
 # This file is distributed under the same license as the Sphinx package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# xinetzone <735613050@qq.com>, 2021.
 #
 #, fuzzy
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-20 19:07+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../usage/advanced/websupport/quickstart.rst:4
 msgid "Web Support Quick Start"
-msgstr ""
+msgstr "Web 支持快速入门"
 
 #: ../../usage/advanced/websupport/quickstart.rst:7
 msgid "Building Documentation Data"
-msgstr ""
+msgstr "构建文档数据"
 
 #: ../../usage/advanced/websupport/quickstart.rst:9
 msgid ""
@@ -34,6 +34,10 @@ msgid ""
 " create an instance of the :class:`~.WebSupport` class and call its "
 ":meth:`~.WebSupport.build` method::"
 msgstr ""
+"为了在你的应用程序中使用网络支持包，你需要建立它使用的数据。"
+"这些数据包括代表文档的 pickle 文件、搜索索引和节点数据，用于跟踪文档中评论和其他东西的位置。"
+"要做到这一点，你需要创建一个 :class:`~.WebSupport` 类的实例，"
+"并调用其 :meth:`~.WebSupport.build` 方法 ::"
 
 #: ../../usage/advanced/websupport/quickstart.rst:23
 msgid ""
@@ -44,6 +48,10 @@ msgid ""
 "documents.  The other directory will be called \"static\" and contains "
 "static files that should be served from \"/static\"."
 msgstr ""
+"这将从 ``srcdir`` 读取 reStructuredText 源码，"
+"并将必要的数据放入 ``builddir``。"
+"``builddir`` 将包含两个子目录：一个名为 \"data\"，包含显示文档、搜索文档和为文档添加注释所需的所有数据。"
+"另一个目录叫 \"static\"，包含静态文件，应该从 \"/static\" 提供。
 
 #: ../../usage/advanced/websupport/quickstart.rst:31
 msgid ""
@@ -51,10 +59,12 @@ msgid ""
 " can do so by providing the *staticdir* keyword argument when creating "
 "the :class:`~.WebSupport` object."
 msgstr ""
+"如果你希望从除 \"/static\" 以外的路径提供静态文件，"
+"你可以在创建 :class:`~.WebSupport` 对象时提供 *staticdir* 关键字参数来实现。"
 
 #: ../../usage/advanced/websupport/quickstart.rst:37
 msgid "Integrating Sphinx Documents Into Your Webapp"
-msgstr ""
+msgstr "将 Sphinx 文档整合到你的 Web 应用中去"
 
 #: ../../usage/advanced/websupport/quickstart.rst:39
 msgid ""
@@ -62,6 +72,8 @@ msgid ""
 "Start off by creating a :class:`~.WebSupport` object for your "
 "application::"
 msgstr ""
+"现在数据已经建立，是时候用它做一些有用的事情了。"
+"首先为你的应用程序创建一个 :class:`~.WebSupport` 对象 ::"
 
 #: ../../usage/advanced/websupport/quickstart.rst:47
 msgid ""
@@ -69,10 +81,12 @@ msgid ""
 "working with.  You can then call its :meth:`~.WebSupport.get_document` "
 "method to access individual documents::"
 msgstr ""
+"你只需要为你要处理的每一组文档提供一个。"
+"然后你可以调用它的 :meth:`~.WebSupport.get_document` 方法来访问单个文档 ::"
 
 #: ../../usage/advanced/websupport/quickstart.rst:53
 msgid "This will return a dictionary containing the following items:"
-msgstr ""
+msgstr "这将返回一个包含以下项的字典："
 
 #: ../../usage/advanced/websupport/quickstart.rst:55
 msgid "**body**: The main body of the document as HTML"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
 # This file is distributed under the same license as the Sphinx package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# xinetzone <735613050@qq.com>, 2021.
 #
 #, fuzzy
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-05 12:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../tutorial/deploying.rst:2
 msgid "Appendix: Deploying a Sphinx project online"
-msgstr ""
+msgstr "附录：在线部署 Sphinx 项目"
 
 #: ../../tutorial/deploying.rst:4
 msgid ""
@@ -30,6 +30,9 @@ msgid ""
 " will not need a sophisticated server running Python: virtually every web"
 " hosting service will suffice."
 msgstr ""
+"当你准备好向世界展示你的文档项目时，有很多选择可以做到这一点。"
+"由于 Sphinx 生成的 HTML 是静态的，你可以把建立 HTML 文档的过程与在你选择的平台上托管这些文件的过程分开。"
+"你不需要一个运行 Python 的复杂服务器：几乎所有的网络托管服务都足够了。"
 
 #: ../../tutorial/deploying.rst:10
 msgid ""
@@ -37,6 +40,7 @@ msgid ""
 "but rather how to pick a workflow that automatically updates the deployed"
 " documentation every time there is a change in the source files."
 msgstr ""
+"因此，挑战不在于如何或在哪里提供静态 HTML，而在于如何挑选一个工作流程，在每次源文件有变化时自动更新部署的文档。"
 
 #: ../../tutorial/deploying.rst:14
 msgid ""
@@ -45,16 +49,19 @@ msgid ""
 "want to go directly to the practical part, you can skip to :ref"
 ":`publishing-sources`."
 msgstr ""
+"以下各节描述了一些可用的选项来部署你的在线文档，并给出了一些背景信息。"
+"如果你想直接进入实践部分，你可以跳到 :ref:`publishing-sources`。"
 
 #: ../../tutorial/deploying.rst:19
 msgid "Sphinx-friendly deployment options"
-msgstr ""
+msgstr "对 Sphinx 友好的部署选项"
 
 #: ../../tutorial/deploying.rst:21
 msgid ""
 "There are several possible options you have to host your Sphinx "
 "documentation. Some of them are:"
 msgstr ""
+"你有几个可能的选择来托管你的Sphinx文档。其中一些是："
 
 #: ../../tutorial/deploying.rst:28
 msgid "**Read the Docs**"
@@ -67,6 +74,8 @@ msgid ""
 " extra features, such as versioned documentation, traffic and search "
 "analytics, custom domains, user-defined redirects, and more."
 msgstr ""
+"`Read the Docs`_ 是一项在线服务，专门托管用 Sphinx 以及 MkDocs 编写的技术文件。"
+"他们有一些额外的功能，如版本化的文档，流量和搜索分析，自定义域名，用户定义的重定向，等等。"
 
 #: ../../tutorial/deploying.rst:35
 msgid "**GitHub Pages**"
@@ -80,6 +89,10 @@ msgid ""
 "be updated every time the sources change (for example using `GitHub "
 "Actions`_). It is free to use and supports custom domains."
 msgstr ""
+"`GitHub Pages`_ 是一个与 `GitHub`_ 紧密结合的简单静态网站托管："
+"静态 HTML 从项目的一个分支中提供，通常源代码存储在另一个分支中，"
+"以便每次源代码改变时都能更新输出（例如，使用 `GitHub Actions`_）。"
+"它是免费使用的，并支持自定义域名。"
 
 #: ../../tutorial/deploying.rst:39
 msgid "**GitLab Pages**"
@@ -90,6 +103,7 @@ msgid ""
 "`GitLab Pages`_ is a similar concept to GitHub Pages, integrated with "
 "`GitLab`_ and usually automated with `GitLab CI`_ instead."
 msgstr ""
+"`GitLab Pages`_ 是一个类似于 GitHub Pages 的概念，与 `GitLab`_ 集成，通常用 `GitLab CI`_ 代替自动。"
 
 #: ../../tutorial/deploying.rst:45
 msgid "**Netlify**"
@@ -102,26 +116,31 @@ msgid ""
 " They offer support for headless content management systems and "
 "serverless computing."
 msgstr ""
+"`Netlify`_ 是一个复杂的托管，用于通过客户端网络技术如 JavaScript（所谓的 `Jamstack`_）来增强静态网站。"
+"他们提供对 headless 内容管理系统和 serverless 计算的支持。"
 
 #: ../../tutorial/deploying.rst:49
 msgid "**Your own server**"
-msgstr ""
+msgstr "**你自己的服务器**"
 
 #: ../../tutorial/deploying.rst:48
 msgid ""
 "You can always use your own web server to host Sphinx HTML documentation."
 " It is the option that gives more flexibility, but also more complexity."
 msgstr ""
+"你可以随时使用你自己的网络服务器来托管 Sphinx HTML 文档。"
+"这是给人更多灵活性的选择，但也更复杂。"
 
 #: ../../tutorial/deploying.rst:51
 msgid ""
 "All these options have zero cost, with the option of paying for extra "
 "features."
 msgstr ""
+"所有这些选项都是零成本，可以选择为额外的功能付费。"
 
 #: ../../tutorial/deploying.rst:64
 msgid "Embracing the \"Docs as Code\" philosophy"
-msgstr ""
+msgstr "拥护 \"文档即代码\" 理念"
 
 #: ../../tutorial/deploying.rst:66
 msgid ""
@@ -133,6 +152,9 @@ msgid ""
 "with the same tools as the ones used for software development is commonly"
 " known as `\"Docs as Code\"`_."
 msgstr ""
+"上面列出的大多数选项的免费服务要求你的文件来源是公开可用的。"
+"此外，这些服务希望你使用 `Version Control System`_，这是一种以一系列快照（\"commits\"）来跟踪文件集合的演变的技术。"
+"用与软件开发相同的工具在纯文本文件中编写文档的做法通常被称为 `\"Docs as Code\"`_ 。"
 
 #: ../../tutorial/deploying.rst:73
 msgid ""
@@ -143,10 +165,14 @@ msgid ""
 "most effective way of automatically build your documentation online is to"
 " upload your sources to either of these Git hosting services."
 msgstr ""
+"现在最流行的版本控制系统是 Git_，一个免费的开源工具，是 GitHub 和 GitLab 等服务的骨干。"
+"由于 Read the Docs 和 Netlify 都与 GitHub 和 GitLab 有集成，"
+"而且 GitHub 和 GitLab 都有集成的 Pages 产品，"
+"所以自动在线建立文档的最有效方法是将你的源代码上传到这些 Git 托管服务中的任何一个。"
 
 #: ../../tutorial/deploying.rst:87
 msgid "Publishing your documentation sources"
-msgstr ""
+msgstr "发布你的文档源码"
 
 #: ../../tutorial/deploying.rst:90
 msgid "GitHub"
@@ -154,19 +180,19 @@ msgstr ""
 
 #: ../../tutorial/deploying.rst:92
 msgid "The quickest way to upload an existing project to GitHub is to:"
-msgstr ""
+msgstr "将现有项目上传到 GitHub 的最快捷方式是："
 
 #: ../../tutorial/deploying.rst:94
 msgid "`Sign up for a GitHub account <https://github.com/signup>`_."
-msgstr ""
+msgstr "`注册一个 GitHub 账户 <https://github.com/signup>`_。"
 
 #: ../../tutorial/deploying.rst:95
 msgid "`Create a new repository <https://github.com/new>`_."
-msgstr ""
+msgstr "`创建应该新的仓库 <https://github.com/new>`_。"
 
 #: ../../tutorial/deploying.rst:96
 msgid "Open `the \"Upload files\" page`_ of your new repository."
-msgstr ""
+msgstr "打开新版本库的 `the \"Upload files\" page`_。"
 
 #: ../../tutorial/deploying.rst:97
 msgid ""
@@ -175,10 +201,13 @@ msgid ""
 "directory, and everything under ``docs/source``) and drag them to the "
 "GitHub interface to upload them all."
 msgstr ""
+"在你的操作系统文件浏览器上选择文件"
+"（在你的例子中是 ``README.rst``，``lumache.py``，``docs`` 目录下的 makefiles，"
+"以及 ``docs/source`` 下的所有文件），然后把它们拖到 GitHub 界面，把它们全部上传。"
 
 #: ../../tutorial/deploying.rst:101
 msgid "Click on the :guilabel:`Commit changes` button."
-msgstr ""
+msgstr "点击 :guilabel:`Commit changes` 按钮。"
 
 #: ../../tutorial/deploying.rst:107 ../../tutorial/deploying.rst:147
 msgid ""
@@ -186,12 +215,15 @@ msgid ""
 "the output generated by Sphinx and it will change every time you change "
 "the sources, complicating your workflow."
 msgstr ""
+"确保你不上传 ``docs/build`` 目录，因为它包含了 Sphinx 生成的输出，"
+"每次你改变源头时它都会改变，使你的工作流程复杂化。"
 
 #: ../../tutorial/deploying.rst:111
 msgid ""
 "These steps do not require access to the command line or installing any "
 "additional software. To learn more, you can:"
 msgstr ""
+"这些步骤不需要访问命令行或安装任何其他软件。要了解更多，你可以："
 
 #: ../../tutorial/deploying.rst:114
 msgid ""
@@ -257,7 +289,7 @@ msgstr ""
 
 #: ../../tutorial/deploying.rst:157
 msgid "Publishing your HTML documentation"
-msgstr ""
+msgstr "发布你的 HTML 文档"
 
 #: ../../tutorial/deploying.rst:160
 msgid "Read the Docs"
@@ -273,6 +305,10 @@ msgid ""
 ":ref:`readthedocs:tutorial/index:Sign up for Read the Docs`. If you "
 "choose GitLab instead, the process is similar."
 msgstr ""
+"`Read the Docs`_ 提供了与 GitHub 和 GitLab 的整合。"
+"最快的入门方法是遵循 :doc:`RTD 教程 <readthedocs:tutorial/index>`，它是松散地基于这个教程的。"
+"你可以在 GitHub 上发布你的源代码，如 :ref:`上一节 <publishing-sources>` 所解释的那样，"
+"然后直接跳到 :ref:`readthedocs:tutorial/index:Sign up for Read the Docs`。如果你选择 GitLab，过程也类似。"
 
 #: ../../tutorial/deploying.rst:171
 msgid "GitHub Pages"
@@ -285,6 +321,9 @@ msgid ""
 "that performs the ``make html`` step every time the sources change. That "
 "can be achieved using `GitHub Actions`_."
 msgstr ""
+"`GitHub Pages`_ 要求你 :ref:`发布源码 <publishing-sources>` 在 `GitHub`_ 上发布。"
+"之后，你将需要一个自动程序，在每次改变源的时候执行 ``make html`` 步骤。"
+"这可以用 `GitHub Actions`_ 来实现。"
 
 #: ../../tutorial/deploying.rst:178
 msgid ""
@@ -292,6 +331,7 @@ msgid ""
 "``.github/workflows/sphinx.yml`` in your repository with the following "
 "contents:"
 msgstr ""
+"在 GitHub 上发布你的源代码后，在你的仓库中创建一个名为 ``.github/workflows/sphinx.yml`` 的文件，内容如下："
 
 #: ../../tutorial/deploying.rst:182
 msgid ".github/workflows/"
@@ -299,27 +339,29 @@ msgstr ""
 
 #: ../../tutorial/deploying.rst:208
 msgid "This contains a GitHub Actions workflow with a single job of four steps:"
-msgstr ""
+msgstr "这包含了一个 GitHub Actions 的工作流程，其中有四个步骤的单一工作："
 
 #: ../../tutorial/deploying.rst:210
 msgid "Checkout the code."
-msgstr ""
+msgstr "签出代码。"
 
 #: ../../tutorial/deploying.rst:211 ../../tutorial/deploying.rst:269
 msgid "Build the HTML documentation using Sphinx."
-msgstr ""
+msgstr "使用 Sphinx 建立 HTML 文档。"
 
 #: ../../tutorial/deploying.rst:212
 msgid ""
 "Attach the HTML output the artifacts to the GitHub Actions job, for "
 "easier inspection."
 msgstr ""
+"将工件的 HTML 输出附加到 GitHub Actions 作业中，以便于自省。"
 
 #: ../../tutorial/deploying.rst:214
 msgid ""
 "If the change happens on the default branch, take the contents of "
 "``docs/build/html`` and push it to the ``gh-pages`` branch."
 msgstr ""
+"如果改变发生在默认分支上，就把 ``docs/build/html`` 的内容推送到 ``gh-pages`` 分支。"
 
 #: ../../tutorial/deploying.rst:217
 msgid ""
@@ -327,6 +369,8 @@ msgid ""
 "be successful. For that, create a file ``docs/requirements.txt`` and add "
 "the following contents:"
 msgstr ""
+"接下来，你需要为 ``make html`` 步骤的成功指定依赖性。"
+"为此，创建一个文件 ``docs/requirements.txt`` 并添加以下内容："
 
 #: ../../tutorial/deploying.rst:221
 msgid "docs/requirements.txt"
@@ -340,6 +384,10 @@ msgid ""
 "and click :guilabel:`Save`. After a few minutes, you should be able to "
 "see your HTML at the designated URL."
 msgstr ""
+"最后，你已经准备好 `在你的仓库上启用 GitHub 页面`_ 了。"
+"为此，进入 :guilabel:`Settings`，然后在左侧的 :guilabel:`Pages`，"
+"在 `Source` 下拉菜单中选择 `gh-pages` 分支，然后点击 :guilabel:`Save`。"
+"几分钟后，你应该能在指定的 URL 上看到你的 HTML。"
 
 #: ../../tutorial/deploying.rst:235
 msgid "GitLab Pages"
