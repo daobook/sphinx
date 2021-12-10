@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 12:52+0800\n"
+"POT-Creation-Date: 2021-12-10 09:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgid "Builders"
 msgstr "构建器"
 
 #: ../../usage/theming.rst:13
-msgid "Todo"
+msgid "待处理"
 msgstr ""
 
 #: ../../usage/theming.rst:13
@@ -721,4 +721,7 @@ msgid ""
 msgstr ""
 "sphinx-themes.org__ 是一个画廊，展示了 Sphinx 的各种主题，每个主题下都有演示文档呈现。主题也可以在 PyPI__ "
 "（使用分类器 ``Framework :: Sphinx :: Theme``）、GitHub__ 和 GitLab__ 找到。"
+
+#~ msgid "Todo"
+#~ msgstr ""
 

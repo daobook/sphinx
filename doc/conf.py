@@ -115,7 +115,7 @@ intersphinx_mapping = {
 # Sphinx document translation with sphinx gettext feature uses these settings:
 locale_dirs = ['locales/']
 gettext_compact = False
-
+language = 'zh_CN'
 
 # -- Extension interface -------------------------------------------------------
 

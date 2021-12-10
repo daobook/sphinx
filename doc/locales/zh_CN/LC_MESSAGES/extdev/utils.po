@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 20:00+0800\n"
+"POT-Creation-Date: 2021-12-10 09:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: ../../docstring of
 #: sphinx.transforms.post_transforms.images.ImageConverter.available:4
-msgid "Todo"
+msgid "待处理"
 msgstr ""
 
 #: ../../docstring of
@@ -296,5 +296,8 @@ msgid "This returns the result of the first handler that doesn't return ``None``
 msgstr ""
 
 #~ msgid "待处理"
+#~ msgstr ""
+
+#~ msgid "Todo"
 #~ msgstr ""
 

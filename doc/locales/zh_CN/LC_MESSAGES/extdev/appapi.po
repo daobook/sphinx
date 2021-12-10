@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 20:00+0800\n"
+"POT-Creation-Date: 2021-12-10 09:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,8 +27,8 @@ msgid ""
 "function.  This function is called at initialization time with one "
 "argument, the application object representing the Sphinx process."
 msgstr ""
-"每个 Sphinx 插件是一个 Python 模块，至少有一个 :func:`setup` 函数。"
-"这个函数在初始化时被调用，有一个参数，代表 Sphinx 进程的应用对象。"
+"每个 Sphinx 插件是一个 Python 模块，至少有一个 :func:`setup` 函数。这个函数在初始化时被调用，有一个参数，代表 "
+"Sphinx 进程的应用对象。"
 
 #: ../../extdev/appapi.rst:16
 msgid "This application object has the public API described in the following."
@@ -46,8 +46,7 @@ msgstr "这些方法通常在一个插件的 ``setup()`` 函数中调用。"
 msgid ""
 "Examples of using the Sphinx extension API can be seen in the "
 ":mod:`sphinx.ext` package."
-msgstr ""
-"使用 Sphinx 插件 API 的例子可以在 :mod:`sphinx.ext` 包中看到。"
+msgstr "使用 Sphinx 插件 API 的例子可以在 :mod:`sphinx.ext` 包中看到。"
 
 #: of sphinx.application.Sphinx.setup_extension:1
 msgid "Import and setup a Sphinx extension module."
@@ -58,9 +57,7 @@ msgid ""
 "Load the extension given by the module *name*.  Use this if your "
 "extension needs the features provided by another extension.  No-op if "
 "called twice."
-msgstr ""
-"加载由模块 *名称* 给出的插件。如果你的插件需要另一个插件提供的功能，请使用此功能。"
-"如果调用两次，则没有作用。"
+msgstr "加载由模块 *名称* 给出的插件。如果你的插件需要另一个插件提供的功能，请使用此功能。如果调用两次，则没有作用。"
 
 #: of sphinx.application.Sphinx.require_sphinx:1
 msgid "Check the Sphinx version if requested."
@@ -70,10 +67,9 @@ msgstr "如果有要求，请检查 Sphinx 的版本。"
 msgid ""
 "Compare *version* with the version of the running Sphinx, and abort the "
 "build when it is too old."
-msgstr ""
-"将 *version* 与运行中的 Sphinx 的版本进行比较，当它太旧时就中止构建。"
+msgstr "将 *version* 与运行中的 Sphinx 的版本进行比较，当它太旧时就中止构建。"
 
-#: ../../extdev/appapi.rst of sphinx.application.Sphinx.add_builder
+#: of sphinx.application.Sphinx.add_builder
 #: sphinx.application.Sphinx.add_config_value
 #: sphinx.application.Sphinx.add_directive
 #: sphinx.application.Sphinx.add_directive_to_domain
@@ -92,8 +88,8 @@ msgstr ""
 #: sphinx.application.Sphinx.is_parallel_allowed
 #: sphinx.application.Sphinx.require_sphinx
 #: sphinx.application.Sphinx.set_translator
-msgid "Parameters"
-msgstr "参数"
+msgid "参数"
+msgstr ""
 
 #: of sphinx.application.Sphinx.require_sphinx:6
 msgid "The required version in the form of ``major.minor``."
@@ -124,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: of sphinx.application.Sphinx.connect
-msgid "Returns"
+msgid "返回"
 msgstr ""
 
 #: of sphinx.application.Sphinx.connect:10
@@ -1196,6 +1192,10 @@ msgid ""
 "reference being unresolved."
 msgstr ""
 
+#: ../../extdev/appapi.rst
+msgid "Parameters"
+msgstr "参数"
+
 #: ../../extdev/appapi.rst:288
 msgid "The build environment (``app.builder.env``)."
 msgstr ""
@@ -1495,5 +1495,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "返回"
+#~ msgstr ""
+
+#~ msgid "Returns"
 #~ msgstr ""
 

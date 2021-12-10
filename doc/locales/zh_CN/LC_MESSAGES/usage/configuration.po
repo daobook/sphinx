@@ -1,16 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2007-2021, Georg Brandl and the Sphinx team
 # This file is distributed under the same license as the Sphinx package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# xinetzone <735613050@qq.com>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 12:52+0800\n"
+"POT-Creation-Date: 2021-12-09 10:09+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -350,7 +350,7 @@ msgid ""
 msgstr ""
 "一个字符串，包含一个可调用（或简单的类）的全限定名称，它返回一个 "
 ":class:`~sphinx.application.TemplateBridge` 的实例。这个实例然后被用来渲染 HTML "
-"文档，可能还有其他构建器的输出（目前是变化构建器）。 (注意，如果要使用 HTML 主题，模板桥必须具有主题感知功能。)"
+"文档，可能还有其他构建器的输出（目前是变化构建器）。（注意，如果要使用 HTML 主题，模板桥必须具有主题感知功能。）"
 
 #: ../../usage/configuration.rst:244
 msgid ""
@@ -382,10 +382,10 @@ msgid ""
 " default domain is C, Python functions will be named \"Python function\","
 " not just \"function\")."
 msgstr ""
-"默认的 :doc:`域 </usage/restructuredtext/domains>` "
-"的名称。也可以是``None``，以停用默认域。默认是 ``'py'``。那些在其他域中的对象（无论域名是明确给出的，还是由 :rst:dir"
-":`default-domain` 指令选择的），在命名时都会明确预留域名（例如，当默认域是 C 时，Python 函数将被命名为 “Python"
-" function”，而不仅仅是 “function”）。"
+"默认的 :doc:`域 </usage/restructuredtext/domains>` 的名称。也可以是 "
+"``None``，以停用默认域。默认是 ``'py'``。那些在其他域中的对象（无论域名是明确给出的，还是由 :rst:dir:`default-"
+"domain` 指令选择的），在命名时都会明确预留域名（例如，当默认域是 C 时，Python 函数将被命名为 “Python "
+"function”，而不仅仅是 “function”）。"
 
 #: ../../usage/configuration.rst:288
 msgid ""
@@ -867,6 +867,7 @@ msgstr ""
 #: ../../usage/configuration.rst:619 ../../usage/configuration.rst:1071
 #: ../../usage/configuration.rst:1094 ../../usage/configuration.rst:1247
 #: ../../usage/configuration.rst:1270 ../../usage/configuration.rst:2660
+#: ../../usage/configuration.rst:2692
 msgid "Example::"
 msgstr ""
 
@@ -3565,18 +3566,25 @@ msgid ""
 msgstr ""
 
 #: ../../usage/configuration.rst:2688
+msgid ""
+"A list of regular expressions that match documents in which Sphinx should"
+" not check the validity of links. This can be used for permitting link "
+"decay in legacy or historical sections of the documentation."
+msgstr ""
+
+#: ../../usage/configuration.rst:2701
 msgid "Options for the XML builder"
 msgstr ""
 
-#: ../../usage/configuration.rst:2692
+#: ../../usage/configuration.rst:2705
 msgid "If true, pretty-print the XML.  Default is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2698
+#: ../../usage/configuration.rst:2711
 msgid "Footnotes"
 msgstr ""
 
-#: ../../usage/configuration.rst:2699
+#: ../../usage/configuration.rst:2712
 msgid ""
 "A note on available globbing syntax: you can use the standard shell "
 "constructs ``*``, ``?``, ``[...]`` and ``[!...]`` with the feature that "
@@ -3584,18 +3592,18 @@ msgid ""
 " any sequence of characters *including* slashes."
 msgstr ""
 
-#: ../../usage/configuration.rst:2708
+#: ../../usage/configuration.rst:2721
 msgid "Options for the C domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2712 ../../usage/configuration.rst:2768
+#: ../../usage/configuration.rst:2725 ../../usage/configuration.rst:2781
 msgid ""
 "A list of strings that the parser additionally should accept as "
 "attributes. This can for example be used when attributes have been "
 "``#define`` d for portability."
 msgstr ""
 
-#: ../../usage/configuration.rst:2720 ../../usage/configuration.rst:2776
+#: ../../usage/configuration.rst:2733 ../../usage/configuration.rst:2789
 msgid ""
 "A list of strings that the parser additionally should accept as "
 "attributes with one argument.  That is, if ``my_align_as`` is in the "
@@ -3605,54 +3613,54 @@ msgid ""
 "portability."
 msgstr ""
 
-#: ../../usage/configuration.rst:2730
+#: ../../usage/configuration.rst:2743
 msgid ""
 "A list of identifiers to be recognized as keywords by the C parser. It "
 "defaults to ``['alignas', 'alignof', 'bool', 'complex', 'imaginary', "
 "'noreturn', 'static_assert', 'thread_local']``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2738
+#: ../../usage/configuration.rst:2751
 msgid ""
 "A boolean (default ``False``) controlling whether to parse and try to "
 "convert pre-v3 style type directives and type roles."
 msgstr ""
 
-#: ../../usage/configuration.rst:2742 ../../usage/configuration.rst:2751
+#: ../../usage/configuration.rst:2755 ../../usage/configuration.rst:2764
 msgid "Use the directives and roles added in v3."
 msgstr ""
 
-#: ../../usage/configuration.rst:2747
+#: ../../usage/configuration.rst:2760
 msgid ""
 "A boolean (default ``True``) controlling whether to warn when a pre-v3 "
 "style type directive/role is parsed and converted."
 msgstr ""
 
-#: ../../usage/configuration.rst:2757
+#: ../../usage/configuration.rst:2770
 msgid "Options for the C++ domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2761
+#: ../../usage/configuration.rst:2774
 msgid ""
 "A list of prefixes that will be ignored when sorting C++ objects in the "
 "global index.  For example ``['awesome_lib::']``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2785
+#: ../../usage/configuration.rst:2798
 msgid "Options for the Python domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2789
+#: ../../usage/configuration.rst:2802
 msgid ""
 "If true, suppress the module name of the python reference if it can be "
 "resolved.  The default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2794
+#: ../../usage/configuration.rst:2807
 msgid "This configuration is still in experimental"
 msgstr ""
 
-#: ../../usage/configuration.rst:2797
+#: ../../usage/configuration.rst:2810
 msgid "Example of configuration file"
 msgstr ""
 

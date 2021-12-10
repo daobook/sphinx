@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 12:31+0800\n"
+"POT-Creation-Date: 2021-12-10 09:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: ../../usage/advanced/websupport/storagebackends.rst:6
 msgid "Storage Backends"
@@ -66,7 +66,7 @@ msgstr ""
 #: sphinxcontrib.websupport.storage.StorageBackend.get_data
 #: sphinxcontrib.websupport.storage.StorageBackend.process_vote
 #: sphinxcontrib.websupport.storage.StorageBackend.update_username
-msgid "Parameters"
+msgid "参数"
 msgstr ""
 
 #: of sphinxcontrib.websupport.storage.StorageBackend.add_node:3
