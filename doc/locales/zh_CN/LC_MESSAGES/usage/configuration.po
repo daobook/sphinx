@@ -1510,6 +1510,8 @@ msgid ""
 "used to indicate the location of document using `The Canonical Link "
 "Relation`_. Default: ``''``."
 msgstr ""
+"指向 HTML 文档根部的 base URL。"
+"它用于使用 `The Canonical Link Relation`_ 来表示文档的位置。默认值：``''``。"
 
 #: ../../usage/configuration.rst:1014
 msgid "The style of line numbers for code-blocks."
