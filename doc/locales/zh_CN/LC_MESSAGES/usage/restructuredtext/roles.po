@@ -385,7 +385,7 @@ msgstr "环境变量。生成索引条目。还会生成匹配的链接 :rst:dir
 msgid ""
 "The name of a grammar token (used to create links between "
 ":rst:dir:`productionlist` directives)."
-msgstr "语法标记的名称（用于创建  :rst:dir:`productionlist` 指令之间的链接）。"
+msgstr "语法形符的名称（用于创建  :rst:dir:`productionlist` 指令之间的链接）。"
 
 #: ../../usage/restructuredtext/roles.rst:256
 msgid ""

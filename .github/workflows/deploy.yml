@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python setup.py install
-          pip install sphinx-intl
+          pip install sphinx-intl sphinxcontrib-websupport
           
       - name: Install graphviz
         run: sudo apt-get install graphviz
