@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,7 @@ msgstr "Sphinx 常见问题"
 msgid ""
 "This is a list of Frequently Asked Questions about Sphinx.  Feel free to "
 "suggest new entries!"
-msgstr ""
-"这是一份关于 Sphinx 的常见问题清单。欢迎提出新的条目！"
+msgstr "这是一份关于 Sphinx 的常见问题清单。欢迎提出新的条目！"
 
 #: ../../faq.rst:10
 msgid "How do I..."
@@ -40,8 +39,7 @@ msgstr "... 不用 LaTeX 就能创建 PDF 文件？"
 msgid ""
 "`rinohtype`_ provides a PDF builder that can be used as a drop-in "
 "replacement for the LaTeX builder."
-msgstr ""
-"`rinohtype`_ 提供了一个 PDF 生成器，可以作为 LaTeX 生成器的直接替代。"
+msgstr "`rinohtype`_ 提供了一个 PDF 生成器，可以作为 LaTeX 生成器的直接替代。"
 
 #: ../../faq.rst:20
 msgid "... get section numbers?"
@@ -53,8 +51,8 @@ msgid ""
 "option to the :rst:dir:`toctree` directive where you want to start "
 "numbering."
 msgstr ""
-"它们在 LaTeX 输出中是自动的；"
-"对于 HTML，在你想开始编号的地方给 :rst:dir:`toctree` 指令一个 `:numbered:` 选项。"
+"它们在 LaTeX 输出中是自动的；对于 HTML，在你想开始编号的地方给 :rst:dir:`toctree` 指令一个 "
+"`:numbered:` 选项。"
 
 #: ../../faq.rst:23
 msgid "... customize the look of the built HTML files?"
@@ -72,8 +70,7 @@ msgstr "... 添加全局替换或包括？"
 msgid ""
 "Add them in the :confval:`rst_prolog` or :confval:`rst_epilog` config "
 "value."
-msgstr ""
-"在 :confval:`rst_prolog` 或 :confval:`rst_epilog` 配置值中添加它们。"
+msgstr "在 :confval:`rst_prolog` 或 :confval:`rst_epilog` 配置值中添加它们。"
 
 #: ../../faq.rst:30
 msgid "... display the whole TOC tree in the sidebar?"
@@ -83,8 +80,7 @@ msgstr "... 在侧边栏显示整个 TOC 树？"
 msgid ""
 "Use the :data:`toctree` callable in a custom layout template, probably in"
 " the ``sidebartoc`` block."
-msgstr ""
-"在自定义布局模板中使用 :data:`toctree` 可调用，可能在 ``sidebartoc`` 块中。"
+msgstr "在自定义布局模板中使用 :data:`toctree` 可调用，可能在 ``sidebartoc`` 块中。"
 
 #: ../../faq.rst:33
 msgid "... write my own extension?"
@@ -103,16 +99,13 @@ msgid ""
 "The easiest way is to convert to xhtml, then convert `xhtml to reST`_. "
 "You'll still need to mark up classes and such, but the headings and code "
 "examples come through cleanly."
-msgstr ""
-"最简单的方法是转换为 xhtml，然后将 `xhtml 转换为 reST`_。"
-"你仍然需要标记类和类似的东西，但标题和代码示例会很干净。"
+msgstr "最简单的方法是转换为 xhtml，然后将 `xhtml 转换为 reST`_。你仍然需要标记类和类似的东西，但标题和代码示例会很干净。"
 
 #: ../../faq.rst:40
 msgid ""
 "For many more extensions and other contributed stuff, see the sphinx-"
 "contrib_ repository."
-msgstr ""
-"更多的插件和其他贡献的东西，请看 sphinx-contrib_ 仓库。"
+msgstr "更多的插件和其他贡献的东西，请看 sphinx-contrib_ 仓库。"
 
 #: ../../faq.rst:48
 msgid "Using Sphinx with..."
@@ -130,9 +123,8 @@ msgid ""
 " generation, and more. The `Getting Started`_ guide is a good place to "
 "start."
 msgstr ""
-"`Read the Docs <https://readthedocs.org>`_ 是一个基于 Sphinx 的文档托管服务。"
-"他们将托管 sphinx 文档，同时支持其他一些功能，包括版本支持、PDF 生成等等。"
-"`Getting Started`_  是一个很好的开始。"
+"`Read the Docs <https://readthedocs.org>`_ 是一个基于 Sphinx 的文档托管服务。他们将托管 "
+"sphinx 文档，同时支持其他一些功能，包括版本支持、PDF 生成等等。`Getting Started`_  是一个很好的开始。"
 
 #: ../../faq.rst:58
 msgid "Epydoc"
@@ -142,8 +134,7 @@ msgstr ""
 msgid ""
 "There's a third-party extension providing an `api role`_ which refers to "
 "Epydoc's API docs for a given identifier."
-msgstr ""
-"有一个第三方扩展提供了一个 `api role`_，它指的是 Epydoc 的 API 文档，用于给定的标识符。"
+msgstr "有一个第三方扩展提供了一个 `api role`_，它指的是 Epydoc 的 API 文档，用于给定的标识符。"
 
 #: ../../faq.rst:62
 msgid "Doxygen"
@@ -154,8 +145,8 @@ msgid ""
 "Michael Jones is developing a reST/Sphinx bridge to doxygen called "
 "`breathe <https://github.com/michaeljones/breathe/tree/master>`_."
 msgstr ""
-"Michael Jones 正在开发一个 reST/Sphinx 与 doxygen 的桥梁，名为 "
-"`breathe <https://github.com/michaeljones/breathe/tree/master>`_。"
+"Michael Jones 正在开发一个 reST/Sphinx 与 doxygen 的桥梁，名为 `breathe "
+"<https://github.com/michaeljones/breathe/tree/master>`_。"
 
 #: ../../faq.rst:66
 msgid "SCons"
@@ -167,8 +158,8 @@ msgid ""
 "documentation; it is hosted here: https://bitbucket.org/zondo/sphinx-"
 "scons"
 msgstr ""
-"Glenn Hutchings 写了一个 SCons 构建脚本来构建 Sphinx 文档；"
-"它的被托管在：https://bitbucket.org/zondo/sphinx-scons"
+"Glenn Hutchings 写了一个 SCons 构建脚本来构建 Sphinx "
+"文档；它的被托管在：https://bitbucket.org/zondo/sphinx-scons"
 
 #: ../../faq.rst:72
 msgid "PyPI"
@@ -180,8 +171,8 @@ msgid ""
 "/Sphinx-PyPI-upload/>`_ that automatically uploads Sphinx documentation "
 "to the PyPI package documentation area at https://pythonhosted.org/."
 msgstr ""
-"Jannis Leidel 写了一个 `setuptools 命令 <https://pypi.org/project/Sphinx-PyPI-upload/>`_，"
-"可以自动将 Sphinx 文档上传到 PyPI 软件包文档区 https://pythonhosted.org/。"
+"Jannis Leidel 写了一个 `setuptools 命令 <https://pypi.org/project/Sphinx-PyPI-"
+"upload/>`_，可以自动将 Sphinx 文档上传到 PyPI 软件包文档区 https://pythonhosted.org/。"
 
 #: ../../faq.rst:77
 msgid "GitHub Pages"
@@ -193,9 +184,8 @@ msgid ""
 "you to publish your document in GitHub Pages.  It generates helper files "
 "for GitHub Pages on building HTML document automatically."
 msgstr ""
-"请将 :py:mod:`sphinx.ext.githubpages` 添加到你的项目中。"
-"它允许你在 GitHub Pages 中发布你的文档。"
-"它为 GitHub Pages 自动生成关于构建 HTML 文档的辅助文件。"
+"请将 :py:mod:`sphinx.ext.githubpages` 添加到你的项目中。它允许你在 GitHub Pages "
+"中发布你的文档。它为 GitHub Pages 自动生成关于构建 HTML 文档的辅助文件。"
 
 #: ../../faq.rst:81
 msgid "MediaWiki"
@@ -223,29 +213,25 @@ msgstr ""
 msgid ""
 "To replace Sphinx's built-in search function with Google Search, proceed "
 "as follows:"
-msgstr ""
-"用谷歌搜索替换 Sphinx 的内置搜索功能，步骤如下："
+msgstr "用谷歌搜索替换 Sphinx 的内置搜索功能，步骤如下："
 
 #: ../../faq.rst:121
 msgid ""
 "Go to https://cse.google.com/cse/all to create the Google Search code "
 "snippet."
-msgstr ""
-"去 https://cse.google.com/cse/all，创建谷歌搜索的代码片段。"
+msgstr "去 https://cse.google.com/cse/all，创建谷歌搜索的代码片段。"
 
 #: ../../faq.rst:124
 msgid ""
 "Copy the code snippet and paste it into ``_templates/searchbox.html`` in "
 "your Sphinx project:"
-msgstr ""
-"复制代码片段并将其粘贴到你的 Sphinx 项目中的 ``_templates/searchbox.html`` 中："
+msgstr "复制代码片段并将其粘贴到你的 Sphinx 项目中的 ``_templates/searchbox.html`` 中："
 
 #: ../../faq.rst:144
 msgid ""
 "Add ``searchbox.html`` to the :confval:`html_sidebars` configuration "
 "value."
-msgstr ""
-"在 :confval:`html_sidebars` 配置值中添加 ``searchbox.html``。"
+msgstr "在 :confval:`html_sidebars` 配置值中添加 ``searchbox.html``。"
 
 #: ../../faq.rst:152
 msgid "Sphinx vs. Docutils"
@@ -257,8 +243,8 @@ msgid ""
 "Sphinx builds upon docutils to allow construction of cross-referenced and"
 " indexed bodies of documentation."
 msgstr ""
-"tl;dr: *docutils* 将 reStructuredText 转换为多种输出格式。"
-"Sphinx 建立在 docutils 的基础上，允许构建交叉引用和索引的文档体。"
+"tl;dr: *docutils* 将 reStructuredText 转换为多种输出格式。Sphinx 建立在 docutils "
+"的基础上，允许构建交叉引用和索引的文档体。"
 
 #: ../../faq.rst:158
 msgid ""
@@ -274,12 +260,12 @@ msgid ""
 "different formats including HTML, LaTeX, man pages, Open Document Format "
 "and XML."
 msgstr ""
-"`docutils`__ 是一个文本处理系统，用于将纯文本文档转换为其他更丰富的格式。"
-"正如 `docutils 文档`__ 中所指出的，docutils 使用 *读取器* 来读取文档，"
-"*解析器* 将纯文本格式解析为由不同类型的 *节点* 组成的内部树状表示，*写入器* 以各种文档格式输出该树状表示。"
-"docutils 为一种纯文本格式提供了解析器 —— `reStructuredText`__ —— 尽管其他 *out-of-tree* 解析器已经被实现，"
-"包括 Sphinx 的 :doc:`Markdown 解析器 </usage/markdown>`。"
-"另一方面，它为许多不同的格式提供了写入器，包括 HTML、LaTeX、man pages、Open Document Format 和 XML。"
+"`docutils`__ 是一个文本处理系统，用于将纯文本文档转换为其他更丰富的格式。正如 `docutils 文档`__ "
+"中所指出的，docutils 使用 *读取器* 来读取文档，*解析器* 将纯文本格式解析为由不同类型的 *节点* 组成的内部树状表示，*写入器* "
+"以各种文档格式输出该树状表示。docutils 为一种纯文本格式提供了解析器 —— `reStructuredText`__ —— 尽管其他 "
+"*out-of-tree* 解析器已经被实现，包括 Sphinx 的 :doc:`Markdown 解析器 "
+"</usage/markdown>`。另一方面，它为许多不同的格式提供了写入器，包括 HTML、LaTeX、man pages、Open "
+"Document Format 和 XML。"
 
 #: ../../faq.rst:169
 msgid ""
@@ -290,9 +276,9 @@ msgid ""
 "referencing, indexing of documents, or the construction of a document "
 "hierarchy (typically manifesting in a table of contents)."
 msgstr ""
-"docutils 通过各种 `前端工具`__ 暴露其所有功能，如 ``rst2html``、``rst2odt`` 和 ``rst2xml``。"
-"但重要的是，所有这些工具，以及 docutils 本身，都与单个文档有关。"
-"它们不支持交叉引用、文档索引或构建文档层次结构（通常表现为目录）等概念"。
+"docutils 通过各种 `前端工具`__ 暴露其所有功能，如 ``rst2html``、``rst2odt`` 和 "
+"``rst2xml``。但重要的是，所有这些工具，以及 docutils "
+"本身，都与单个文档有关。它们不支持交叉引用、文档索引或构建文档层次结构（通常表现为目录）等概念\""
 
 #: ../../faq.rst:176
 msgid ""
@@ -302,9 +288,9 @@ msgid ""
 "provide many features that would simply not be possible with docutils, "
 "such as those outlined above."
 msgstr ""
-"Sphinx 以 docutils 为基础，利用 docutils 的阅读器和解析器，并提供自己的 :doc:`/usage/builders/index`。"
-"因此，Sphinx 包装了一些由 docutils 提供的 *writers*。"
-"这使得 Sphinx 可以提供许多用 docutils 根本不可能实现的功能，比如上面提到的那些。"
+"Sphinx 以 docutils 为基础，利用 docutils 的阅读器和解析器，并提供自己的 "
+":doc:`/usage/builders/index`。因此，Sphinx 包装了一些由 docutils 提供的 *writers*。这使得 "
+"Sphinx 可以提供许多用 docutils 根本不可能实现的功能，比如上面提到的那些。"
 
 #: ../../faq.rst:191
 msgid "Epub info"
@@ -319,9 +305,7 @@ msgid ""
 "Split the text into several files. The longer the individual HTML files "
 "are, the longer it takes the ebook reader to render them.  In extreme "
 "cases, the rendering can take up to one minute."
-msgstr ""
-"将文本分成几个文件。单个 HTML 文件越长，电子书阅读器渲染它们所需的时间就越长。"
-"在极端情况下，渲染时间可能长达一分钟。"
+msgstr "将文本分成几个文件。单个 HTML 文件越长，电子书阅读器渲染它们所需的时间就越长。在极端情况下，渲染时间可能长达一分钟。"
 
 #: ../../faq.rst:199
 msgid "Try to minimize the markup.  This also pays in rendering time."
@@ -438,6 +422,13 @@ msgstr ""
 
 #: ../../faq.rst:302
 msgid ""
+"One can disable generation of the inline references in a document with "
+":confval:`texinfo_cross_references`.  That makes an info file more "
+"readable with stand-alone reader (``info``)."
+msgstr ""
+
+#: ../../faq.rst:306
+msgid ""
 "The exact behavior of how Emacs displays references is dependent on the "
 "variable ``Info-hide-note-references``.  If set to the value of ``hide``,"
 " Emacs will hide both the ``*note:`` part and the ``target-id``.  This is"
@@ -447,7 +438,7 @@ msgid ""
 "displayed and most do take this behavior into account."
 msgstr ""
 
-#: ../../faq.rst:310
+#: ../../faq.rst:314
 msgid ""
 "If you want Emacs to display Info files produced by Sphinx using the "
 "value ``hide`` for ``Info-hide-note-references`` and the default value "
@@ -455,35 +446,35 @@ msgid ""
 "your start-up file, ``~/.emacs.d/init.el``."
 msgstr ""
 
-#: ../../faq.rst:336
+#: ../../faq.rst:340
 msgid "Notes"
 msgstr ""
 
-#: ../../faq.rst:338
+#: ../../faq.rst:342
 msgid "The following notes may be helpful if you want to create Texinfo files:"
 msgstr ""
 
-#: ../../faq.rst:340
+#: ../../faq.rst:344
 msgid "Each section corresponds to a different ``node`` in the Info file."
 msgstr ""
 
-#: ../../faq.rst:342
+#: ../../faq.rst:346
 msgid ""
 "Colons (``:``) cannot be properly escaped in menu entries and xrefs. They"
 " will be replaced with semicolons (``;``)."
 msgstr ""
 
-#: ../../faq.rst:345
+#: ../../faq.rst:349
 msgid ""
 "Links to external Info files can be created using the somewhat official "
 "URI scheme ``info``.  For example::"
 msgstr ""
 
-#: ../../faq.rst:350
+#: ../../faq.rst:354
 msgid "Inline markup"
 msgstr ""
 
-#: ../../faq.rst:352
+#: ../../faq.rst:356
 msgid ""
 "The standard formatting for ``*strong*`` and ``_emphasis_`` can result in"
 " ambiguous output when used to markup parameter names and other values.  "
@@ -492,7 +483,7 @@ msgid ""
 "```literal'``\\s."
 msgstr ""
 
-#: ../../faq.rst:358
+#: ../../faq.rst:362
 msgid ""
 "The standard formatting can be re-enabled by adding the following to your"
 " :file:`conf.py`::"

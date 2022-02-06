@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-10 09:16+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,8 +28,8 @@ msgid ""
 "patches for new or fixed behavior. This guide serves to illustrate how "
 "you can get started with this."
 msgstr ""
-"你可以通过很多方式为 Sphinx 做贡献，无论是提交错误报告或功能请求，"
-"编写新的文档或提交新的或固定行为的补丁。本指南旨在说明你如何能开始做这些事。"
+"你可以通过很多方式为 Sphinx "
+"做贡献，无论是提交错误报告或功能请求，编写新的文档或提交新的或固定行为的补丁。本指南旨在说明你如何能开始做这些事。"
 
 #: ../../internals/contributing.rst:11
 msgid "Getting help"
@@ -64,7 +64,7 @@ msgid "Mailing list for development related discussions."
 msgstr "用于开发的相关讨论邮件列表。"
 
 #: ../../internals/contributing.rst:25
-msgid "#sphinx-doc on irc.freenode.net"
+msgid "#sphinx-doc on irc.libera.chat"
 msgstr ""
 
 #: ../../internals/contributing.rst:25
@@ -81,8 +81,8 @@ msgid ""
 "feature, please submit it to the `issue tracker`_ on GitHub or discuss it"
 " on the `sphinx-dev`_ mailing list."
 msgstr ""
-"如果你遇到了 Sphinx 的问题或有新功能的想法，请提交到 GitHub 上的 `issue tracker`_，"
-"或在 `sphinx-dev`_ 邮件列表中讨论。"
+"如果你遇到了 Sphinx 的问题或有新功能的想法，请提交到 GitHub 上的 `issue tracker`_，或在 `sphinx-"
+"dev`_ 邮件列表中讨论。"
 
 #: ../../internals/contributing.rst:36
 msgid ""
@@ -90,18 +90,14 @@ msgid ""
 "process and also the log file Sphinx creates after it encounters an "
 "unhandled exception.  The location of this file should be shown towards "
 "the end of the error message."
-msgstr ""
-"对于错误报告，请包括在构建过程中产生的输出，以及 Sphinx 在遇到未处理的异常后创建的日志文件。"
-"这个文件的位置应该显示在错误信息的最后。"
+msgstr "对于错误报告，请包括在构建过程中产生的输出，以及 Sphinx 在遇到未处理的异常后创建的日志文件。这个文件的位置应该显示在错误信息的最后。"
 
 #: ../../internals/contributing.rst:41
 msgid ""
 "Including or providing a link to the source files involved may help us "
 "fix the issue.  If possible, try to create a minimal project that "
 "produces the error and post that instead."
-msgstr ""
-"包括或提供所涉及的源文件的链接可能有助于我们解决这个 issue。"
-"如果可能的话，尝试创建一个产生错误的最小项目，并张贴出来。
+msgstr "包括或提供所涉及的源文件的链接可能有助于我们解决这个 issue。如果可能的话，尝试创建一个产生错误的最小项目，并张贴出来"
 
 #: ../../internals/contributing.rst:50
 msgid "Writing code"
@@ -115,9 +111,8 @@ msgid ""
 "to their fork. The pull request will then need to be approved by one of "
 "the core developers before it is merged into the main repository."
 msgstr ""
-"Sphinx 的源代码使用 Git 管理，托管在 `GitHub`__。"
-"推荐新的贡献者向 Sphinx 提交代码的方式是分叉这个仓库，并在提交修改后提交一个拉动请求。"
-"然后，在合并到主仓库之前，该拉取请求需要得到核心开发人员的批准。"
+"Sphinx 的源代码使用 Git 管理，托管在 `GitHub`__。推荐新的贡献者向 Sphinx "
+"提交代码的方式是分叉这个仓库，并在提交修改后提交一个拉动请求。然后，在合并到主仓库之前，该拉取请求需要得到核心开发人员的批准。"
 
 #: ../../internals/contributing.rst:61
 msgid "Getting started"
@@ -130,9 +125,8 @@ msgid ""
 "you feel uncomfortable or uncertain about an issue or your changes, feel "
 "free to email the *sphinx-dev* mailing list."
 msgstr ""
-"在开始打补丁之前，我们建议检查是否有开放的 issue，或者打开一个新的 issue，"
-"围绕一个功能想法或一个错误展开讨论。"
-"如果你对某个问题或你的改动感到不舒服或不确定，请随时给 *sphinx-dev* 邮件列表发邮件。"
+"在开始打补丁之前，我们建议检查是否有开放的 issue，或者打开一个新的 "
+"issue，围绕一个功能想法或一个错误展开讨论。如果你对某个问题或你的改动感到不舒服或不确定，请随时给 *sphinx-dev* 邮件列表发邮件。"
 
 #: ../../internals/contributing.rst:68
 msgid "These are the basic steps needed to start developing on Sphinx."
@@ -147,7 +141,8 @@ msgid ""
 "Fork the main Sphinx repository (`sphinx-doc/sphinx <https://github.com"
 "/sphinx-doc/sphinx>`_) using the GitHub interface."
 msgstr ""
-"使用 GitHub 接口分叉主 Sphinx 仓库（`sphinx-doc/sphinx <https://github.com/sphinx-doc/sphinx>`_）。"
+"使用 GitHub 接口分叉主 Sphinx 仓库（`sphinx-doc/sphinx <https://github.com/sphinx-"
+"doc/sphinx>`_）。"
 
 #: ../../internals/contributing.rst:75
 msgid "Clone the forked repository to your machine. ::"
@@ -166,23 +161,19 @@ msgid ""
 "For changes that preserves backwards-compatibility of API and features, "
 "they should be included in the next MINOR release, use the ``A.x`` "
 "branch. ::"
-msgstr ""
-"对于保留了向后兼容的 API 和功能的变化，"
-"它们应该包含在下一个 MINOR 版本中，使用 ``A.x`` 分支。 ::"
+msgstr "对于保留了向后兼容的 API 和功能的变化，它们应该包含在下一个 MINOR 版本中，使用 ``A.x`` 分支。 ::"
 
 #: ../../internals/contributing.rst:90
 msgid ""
 "For incompatible or other substantial changes that should wait until the "
 "next MAJOR release, use the ``master`` branch."
-msgstr ""
-"对于不兼容的或其他实质性的变化，应该等到下一个 MAJOR 版本，使用 ``master`` 分支。"
+msgstr "对于不兼容的或其他实质性的变化，应该等到下一个 MAJOR 版本，使用 ``master`` 分支。"
 
 #: ../../internals/contributing.rst:93
 msgid ""
 "For urgent release, a new PATCH branch must be branched from the newest "
 "release tag (see :doc:`release-process` for detail)."
-msgstr ""
-"对于紧急发布，必须从最新的发布标签中分出一个新的 PATCH 分支（详见 :doc:`release-process`）。"
+msgstr "对于紧急发布，必须从最新的发布标签中分出一个新的 PATCH 分支（详见 :doc:`release-process`）。"
 
 #: ../../internals/contributing.rst:96
 msgid "Setup a virtual environment."
@@ -194,8 +185,8 @@ msgid ""
 "necessary if you wish to run ``sphinx-build`` locally or run unit tests "
 "without the help of ``tox``::"
 msgstr ""
-"由于 ``tox`` 的存在，这对单元测试来说是不必要的，"
-"但如果你想在本地运行 ``sphinx-build`` 或在没有 ``tox`` 的帮助下运行单元测试，这是必要的 ::"
+"由于 ``tox`` 的存在，这对单元测试来说是不必要的，但如果你想在本地运行 ``sphinx-build`` 或在没有 ``tox`` "
+"的帮助下运行单元测试，这是必要的 ::"
 
 #: ../../internals/contributing.rst:106
 msgid "Create a new working branch. Choose any name you like. ::"
@@ -209,22 +200,19 @@ msgstr ""
 msgid ""
 "Write your code along with tests that shows that the bug was fixed or "
 "that the feature works as expected."
-msgstr ""
-"把你的代码和测试一起写出来，表明错误得到了修复，或者功能按预期工作。"
+msgstr "把你的代码和测试一起写出来，表明错误得到了修复，或者功能按预期工作。"
 
 #: ../../internals/contributing.rst:115
 msgid ""
 "Add a bullet point to :file:`CHANGES` if the fix or feature is not "
 "trivial (small doc updates, typo fixes), then commit::"
-msgstr ""
-"在 :file:`CHANGES` 中增加一个要点，如果该修复或功能不是微不足道的（小型文档更新，错别字修复），则提交 ::"
+msgstr "在 :file:`CHANGES` 中增加一个要点，如果该修复或功能不是微不足道的（小型文档更新，错别字修复），则提交 ::"
 
 #: ../../internals/contributing.rst:120
 msgid ""
 "GitHub recognizes certain phrases that can be used to automatically "
 "update the issue tracker. For example::"
-msgstr ""
-"GitHub 识别某些短语，可以用来自动更新问题跟踪器。比如说 ::"
+msgstr "GitHub 识别某些短语，可以用来自动更新问题跟踪器。比如说 ::"
 
 #: ../../internals/contributing.rst:125
 msgid "would close issue #42."
@@ -238,8 +226,7 @@ msgstr "将分支中的变更推送到你在 GitHub 上的分叉存储库中"
 msgid ""
 "Submit a pull request from your branch to the respective branch "
 "(``master`` or ``A.x``)."
-msgstr ""
-"从你的分支向相应的分支（``master`` 或 ``A.x``）提交拉动请求。"
+msgstr "从你的分支向相应的分支（``master`` 或 ``A.x``）提交拉动请求。"
 
 #: ../../internals/contributing.rst:134
 msgid "Wait for a core developer to review your changes."
@@ -517,5 +504,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Todo"
+#~ msgstr ""
+
+#~ msgid "#sphinx-doc on irc.freenode.net"
 #~ msgstr ""
 

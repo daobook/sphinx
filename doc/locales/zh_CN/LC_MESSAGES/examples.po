@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-05 12:22+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,15 +28,14 @@ msgid ""
 "be included, please mail to `the Google group "
 "<https://groups.google.com/forum/#!forum/sphinx-users>`_."
 msgstr ""
-"这是一个（不完整的）按字母顺序排列的项目清单，这些项目使用 Sphinx 或正在尝试使用它来编写文档。"
-"如果你想被包括在内，请发邮件到 `谷歌小组 <https://groups.google.com/forum/#!forum/sphinx-users>`_。"
+"这是一个（不完整的）按字母顺序排列的项目清单，这些项目使用 Sphinx 或正在尝试使用它来编写文档。如果你想被包括在内，请发邮件到 `谷歌小组 "
+"<https://groups.google.com/forum/#!forum/sphinx-users>`_。"
 
 #: ../../../EXAMPLES:9
 msgid ""
 "I've grouped the list into sections to make it easier to find interesting"
 " examples."
-msgstr ""
-"我把清单分成了几个部分，以便更容易找到有趣的例子。"
+msgstr "我把清单分成了几个部分，以便更容易找到有趣的例子。"
 
 #: ../../../EXAMPLES:13
 msgid "Documentation using the alabaster theme"
@@ -1735,7 +1734,8 @@ msgid ""
 msgstr ""
 
 #: ../../../EXAMPLES:434
-msgid "These produced using Sphinx"
+#, fuzzy
+msgid "Theses produced using Sphinx"
 msgstr "使用 Sphinx 生产的这些产品"
 
 #: ../../../EXAMPLES:436
@@ -1745,7 +1745,8 @@ msgid ""
 "/masterthesis-markusmayr-0542042>`__"
 msgstr ""
 "`\"利用 CouchDB 对 OpenStreetMap 数据进行比较分析的基于网络的系统\" "
-"<https://www.yumpu.com/et/document/view/11722645/masterthesis-markusmayr-0542042>`__
+"<https://www.yumpu.com/et/document/view/11722645/masterthesis-"
+"markusmayr-0542042>`_"
 
 #: ../../../EXAMPLES:438
 msgid ""
@@ -1769,7 +1770,8 @@ msgid ""
 "documentation hosting platform, uses Sphinx to automatically build "
 "documentation updates that are pushed to GitHub."
 msgstr ""
-"`Read the Docs <https://readthedocs.org/>`__，一个软件即服务的文档托管平台，使用 Sphinx 来自动建立文档更新，并推送到 GitHub。"
+"`Read the Docs <https://readthedocs.org/>`__，一个软件即服务的文档托管平台，使用 Sphinx "
+"来自动建立文档更新，并推送到 GitHub。"
 
 #: ../../../EXAMPLES:447
 msgid ""
@@ -1778,8 +1780,8 @@ msgid ""
 "documentation for functions, classes and methods automatically or on-"
 "demand."
 msgstr ""
-"`Spyder <https://docs.spyder-ide.org/help.html>`__，科学的 Python 开发环境，"
-"在其帮助窗格中使用 Sphinx，自动或按需呈现函数、类和方法的丰富文档。"
+"`Spyder <https://docs.spyder-ide.org/help.html>`__，科学的 Python "
+"开发环境，在其帮助窗格中使用 Sphinx，自动或按需呈现函数、类和方法的丰富文档。"
 
 #~ msgid "`CherryPy <https://cherrypy.readthedocs.io/>`__"
 #~ msgstr ""

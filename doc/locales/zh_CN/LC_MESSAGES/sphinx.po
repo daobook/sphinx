@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,7 @@ msgid ""
 "<b>want</b>\n"
 "      to write documentation!&#8220;"
 msgstr ""
-"&#8220;为一个伟大的工具喝彩，它实际上使程序员 "
-"<b>想要</b>\n"
+"&#8220;为一个伟大的工具喝彩，它实际上使程序员 <b>想要</b>\n"
 "      来写文档！&#8220;"
 
 #: ../../_templates/index.html:12
@@ -48,8 +47,7 @@ msgid ""
 "license."
 msgstr ""
 "\n"
-"Sphinx 是在 BSD 许可证下由 Georg Brandl 编写，用于创建智能而"
-"美丽文档的工具。"
+"Sphinx 是在 BSD 许可证下由 Georg Brandl 编写，用于创建智能而美丽文档的工具。"
 
 #: ../../_templates/index.html:15
 msgid ""
@@ -60,19 +58,17 @@ msgid ""
 "\n"
 "    Sphinx!  The following features should be highlighted:"
 msgstr ""
-"它最初是为 <a href=\"https://docs.python.org/\">"
-"Python 文档</a> 而创建，并且它有很好的设施"
-"来记录一系列语言的软件项目。"
-"当然，这个网站也是使用 Sphinx 从 reStructuredText 源创建的！" 
-"应该强调以下特点："
+"它最初是为 <a href=\"https://docs.python.org/\">Python 文档</a> "
+"而创建，并且它有很好的设施来记录一系列语言的软件项目。当然，这个网站也是使用 Sphinx 从 reStructuredText "
+"源创建的！应该强调以下特点："
 
 #: ../../_templates/index.html:22
 msgid ""
 "<b>Output formats:</b> HTML (including Windows HTML Help), LaTeX (for\n"
 "      printable PDF versions), ePub, Texinfo, manual pages, plain text"
 msgstr ""
-"<b>输出格式</b>：HTML（包括 Windows HTML 帮助）、"
-"LaTeX（用于可打印的 PDF 版本）、ePub、Texinfo、手册页、纯文本"
+"<b>输出格式</b>：HTML（包括 Windows HTML 帮助）、LaTeX（用于可打印的 PDF "
+"版本）、ePub、Texinfo、手册页、纯文本"
 
 #: ../../_templates/index.html:24
 msgid ""
@@ -82,30 +78,25 @@ msgid ""
 "      information"
 msgstr ""
 "<b>广泛的交叉引用</b>：语义标记和自动链接\n"
-"函数、类、引文、术语表和类似的"
-"的信息片段"
+"函数、类、引文、术语表和类似的的信息片段"
 
 #: ../../_templates/index.html:27
 msgid ""
 "<b>Hierarchical structure:</b> easy definition of a document tree, with\n"
 "      automatic links to siblings, parents and children"
-msgstr ""
-"<b>分层结构</b>：轻松定义文档树，自动链接到同胞、父级和子级"
+msgstr "<b>分层结构</b>：轻松定义文档树，自动链接到同胞、父级和子级"
 
 #: ../../_templates/index.html:29
 msgid ""
 "<b>Automatic indices:</b> general index as well as a language-specific\n"
 "      module indices"
-msgstr ""
-"<b>自动索引</b>：一般索引以及特定语言的模块索引"
+msgstr "<b>自动索引</b>：一般索引以及特定语言的模块索引"
 
 #: ../../_templates/index.html:31
 msgid ""
 "<b>Code handling:</b> automatic highlighting using the <a\n"
 "      href=\"https://pygments.org\">Pygments</a> highlighter"
-msgstr ""
-"<b>代码处理</b>：自动高亮显示，使用 "
-"<a href=\"https://pygments.org\">Pygments</a> 高亮"
+msgstr "<b>代码处理</b>：自动高亮显示，使用 <a href=\"https://pygments.org\">Pygments</a> 高亮"
 
 #: ../../_templates/index.html:33
 #, python-format
@@ -114,8 +105,8 @@ msgid ""
 "      docstrings from Python modules (API docs), and\n"
 "      <a href=\"%(path)s#builtin-sphinx-extensions\">more</a>"
 msgstr ""
-"<b>插件</b>：自动测试代码片段，纳入 Python 模块的文档字符串（API 文档），"
-"以及 <a href=\"%(path)s#builtin-sphinx-extensions\">更多内容</a> "
+"<b>插件</b>：自动测试代码片段，纳入 Python 模块的文档字符串（API 文档），以及 <a href=\"%(path)s"
+"#builtin-sphinx-extensions\">更多内容</a> "
 
 #: ../../_templates/index.html:36
 #, python-format
@@ -125,8 +116,8 @@ msgid ""
 "by users</a>;\n"
 "      most of them installable from PyPI"
 msgstr ""
-"<b>贡献的插件：</b> 几十个插件 <a href=\"%(path)s#third-party-extensions\">由用户贡献的</a>；"
-"其中大部分可从 PyPI 安装"
+"<b>贡献的插件：</b> 几十个插件 <a href=\"%(path)s#third-party-"
+"extensions\">由用户贡献的</a>；其中大部分可从 PyPI 安装"
 
 #: ../../_templates/index.html:40
 msgid ""
@@ -140,9 +131,10 @@ msgid ""
 "    suite, the <a href=\"https://docutils.sourceforge.io/\">Docutils</a>."
 msgstr ""
 "\n"
-"    Sphinx 使用 <a href=\"https://docutils.sourceforge.io/rst.html\">reStructuredText</a> "
-"作为其标记语言，它的许多优势来自 reStructuredText 及其解析和翻译套件 "
-"<a href=\"https://docutils.sourceforge.io/\">Docutils</a> 的强大和直接。"
+"    Sphinx 使用 <a "
+"href=\"https://docutils.sourceforge.io/rst.html\">reStructuredText</a> "
+"作为其标记语言，它的许多优势来自 reStructuredText 及其解析和翻译套件 <a "
+"href=\"https://docutils.sourceforge.io/\">Docutils</a> 的强大和直接。"
 
 #: ../../_templates/index.html:47
 msgid "Documentation"
@@ -214,8 +206,7 @@ msgstr "案例"
 msgid ""
 "Links to documentation generated with Sphinx can be found on the\n"
 "    <a href=\"%(path)s\">Projects using Sphinx</a> page."
-msgstr ""
-"用 Sphinx 生成的文档的链接可以在 <a href=\"%(path)s\">使用 Sphinx 的项目</a> 页上找到。"
+msgstr "用 Sphinx 生成的文档的链接可以在 <a href=\"%(path)s\">使用 Sphinx 的项目</a> 页上找到。"
 
 #: ../../_templates/index.html:86
 msgid ""
@@ -226,8 +217,7 @@ msgid ""
 "    welcome page."
 msgstr ""
 "\n"
-"    要想知道 Sphinx 源文件的样子，"
-"请使用除了这个欢迎页之外的所有文档页面上的 &#8220;显示源文件&#8221;链接。"
+"    要想知道 Sphinx 源文件的样子，请使用除了这个欢迎页之外的所有文档页面上的 &#8220;显示源文件&#8221;链接。"
 
 #: ../../_templates/index.html:92
 msgid ""
@@ -238,8 +228,9 @@ msgid ""
 "matplotlib\n"
 "    developers."
 msgstr ""
-"你可能也会对非常好的 <a href=\"http://matplotlib.sourceforge.net/sampledoc/\">教程</a>，"
-"由 matplotlib 的开发者编写的关于如何使用 Sphinx 创建一个自定义的文档。"
+"你可能也会对非常好的 <a "
+"href=\"http://matplotlib.sourceforge.net/sampledoc/\">教程</a>，由 matplotlib"
+" 的开发者编写的关于如何使用 Sphinx 创建一个自定义的文档。"
 
 #: ../../_templates/index.html:97
 msgid ""
@@ -247,8 +238,8 @@ msgid ""
 "/sphinx-doc/sphinx-doc/dashboard/\">Transifex</a>\n"
 "    of this documentation, thanks to the Sphinx document translators."
 msgstr ""
-"在这个文档的 <a href=\"https://www.transifex.com/sphinx-doc/sphinx-doc/dashboard/\">Transifex</a> "
-"中有一个翻译小组，感谢 Sphinx 的文档翻译人员。"
+"在这个文档的 <a href=\"https://www.transifex.com/sphinx-doc/sphinx-"
+"doc/dashboard/\">Transifex</a> 中有一个翻译小组，感谢 Sphinx 的文档翻译人员。"
 
 #: ../../_templates/index.html:99
 msgid ""
@@ -258,7 +249,8 @@ msgid ""
 "      Learning Sphinx</a>."
 msgstr ""
 "一本关于 Sphinx 的日文书已经由 O'Reilly 出版：<a "
-"href=\"https://www.oreilly.co.jp/books/9784873116488/\">Sphinxをはじめよう /Learning Sphinx</a>。"
+"href=\"https://www.oreilly.co.jp/books/9784873116488/\">Sphinxをはじめよう "
+"/Learning Sphinx</a>。"
 
 #: ../../_templates/index.html:102
 msgid ""
@@ -266,8 +258,9 @@ msgid ""
 "    <a href=\"https://literatur.hasecke.com/post/software-dokumentation-"
 "mit-sphinx/\">Software-Dokumentation mit Sphinx</a>."
 msgstr ""
-"2019 年，一本关于 Sphinx 的德文书的第二版已经出版："
-"<a href=\"https://literatur.hasecke.com/post/software-dokumentation-mit-sphinx/\">使用 Sphinx 的软件文档</a>。"
+"2019 年，一本关于 Sphinx 的德文书的第二版已经出版：<a "
+"href=\"https://literatur.hasecke.com/post/software-dokumentation-mit-"
+"sphinx/\">使用 Sphinx 的软件文档</a>。"
 
 #: ../../_templates/index.html:107
 msgid "Hosting"
@@ -285,8 +278,8 @@ msgid ""
 "    offline search."
 msgstr ""
 "需要一个地方来托管你的 Sphinx 文档吗？ \n"
-"<a href=\"https://readthedocs.org/\">readthedocs.org</a> 已经托管了很多 Sphinx 文档，"
-"并与项目的源代码控制很好地整合。它还具有强大的内置搜索功能，超过了 Sphinx 基于 JavaScript 的离线搜索的可能性。"
+"<a href=\"https://readthedocs.org/\">readthedocs.org</a> 已经托管了很多 Sphinx "
+"文档，并与项目的源代码控制很好地整合。它还具有强大的内置搜索功能，超过了 Sphinx 基于 JavaScript 的离线搜索的可能性。"
 
 #: ../../_templates/index.html:115
 msgid "Contributor Guide"
@@ -296,8 +289,7 @@ msgstr "贡献者指南"
 msgid ""
 "If you want to contribute to the project,\n"
 "    this part of the documentation is for you."
-msgstr ""
-"如果你想为该项目做出贡献，这部分文件是为你准备的。"
+msgstr "如果你想为该项目做出贡献，这部分文件是为你准备的。"
 
 #: ../../_templates/index.html:121
 #, python-format
@@ -327,8 +319,8 @@ msgid ""
 "Current version: <a href=\"https://pypi.org/project/Sphinx/\" "
 "alt=\"PyPI\"><img src=\"https://img.shields.io/pypi/v/sphinx.svg\"></a>"
 msgstr ""
-"当前版本：<a href=\"https://pypi.org/project/Sphinx/\" alt=\"PyPI\">"
-"<img src=\"https://img.shields.io/pypi/v/sphinx.svg\"></a>"
+"当前版本：<a href=\"https://pypi.org/project/Sphinx/\" alt=\"PyPI\"><img "
+"src=\"https://img.shields.io/pypi/v/sphinx.svg\"></a>"
 
 #: ../../_templates/indexsidebar.html:7
 msgid "Install Sphinx with:"
@@ -343,10 +335,14 @@ msgid ""
 "Join the <a href=\"https://groups.google.com/group/sphinx-users\">sphinx-"
 "users</a> mailing list on Google Groups:"
 msgstr ""
-"加入 Google Groups 上的 <a href=\"https://groups.google.com/group/sphinx-users\">sphinx-users</a> 邮件列表："
+"加入 Google Groups 上的 <a href=\"https://groups.google.com/group/sphinx-"
+"users\">sphinx-users</a> 邮件列表："
 
 #: ../../_templates/indexsidebar.html:21
-msgid "or come to the <tt>#sphinx-doc</tt> channel on FreeNode."
+#, fuzzy
+msgid ""
+"or come to the <tt>#sphinx-doc</tt> channel on <a "
+"href=\"https://web.libera.chat/?channel=#sphinx-doc\">libera.chat</a>."
 msgstr "或者到 FreeNode 的 <tt>#sphinx-doc</tt> 频道来。"
 
 #: ../../_templates/indexsidebar.html:22
@@ -354,4 +350,6 @@ msgid ""
 "You can also open an issue at the\n"
 "  <a href=\"https://github.com/sphinx-doc/sphinx/issues\">tracker</a>."
 msgstr ""
-"你也可以在 <a href=\"https://github.com/sphinx-doc/sphinx/issues\">追踪器</a> 上打开一个 issue。"
+"你也可以在 <a href=\"https://github.com/sphinx-doc/sphinx/issues\">追踪器</a> "
+"上打开一个 issue。"
+

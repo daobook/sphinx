@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 10:09+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgstr ""
 "``docutils.parsers.Parser`` 或 "
 ":class:`sphinx.parsers.Parser``。后缀不在字典中的文件将用默认的 reStructuredText 解析器进行解析。"
 
-#: ../../usage/configuration.rst:169 ../../usage/configuration.rst:1470
+#: ../../usage/configuration.rst:169 ../../usage/configuration.rst:1477
 msgid "For example::"
 msgstr "例如 ::"
 
@@ -866,8 +866,8 @@ msgstr ""
 
 #: ../../usage/configuration.rst:619 ../../usage/configuration.rst:1071
 #: ../../usage/configuration.rst:1094 ../../usage/configuration.rst:1247
-#: ../../usage/configuration.rst:1270 ../../usage/configuration.rst:2660
-#: ../../usage/configuration.rst:2692
+#: ../../usage/configuration.rst:1270 ../../usage/configuration.rst:2674
+#: ../../usage/configuration.rst:2706
 msgid "Example::"
 msgstr ""
 
@@ -1012,11 +1012,11 @@ msgstr ""
 msgid "``cy`` -- Welsh"
 msgstr ""
 
-#: ../../usage/configuration.rst:739 ../../usage/configuration.rst:1394
+#: ../../usage/configuration.rst:739 ../../usage/configuration.rst:1401
 msgid "``da`` -- Danish"
 msgstr ""
 
-#: ../../usage/configuration.rst:740 ../../usage/configuration.rst:1399
+#: ../../usage/configuration.rst:740 ../../usage/configuration.rst:1406
 msgid "``de`` -- German"
 msgstr ""
 
@@ -1024,7 +1024,7 @@ msgstr ""
 msgid "``el`` -- Greek"
 msgstr ""
 
-#: ../../usage/configuration.rst:742 ../../usage/configuration.rst:1396
+#: ../../usage/configuration.rst:742 ../../usage/configuration.rst:1403
 msgid "``en`` -- English"
 msgstr ""
 
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "``eo`` -- Esperanto"
 msgstr ""
 
-#: ../../usage/configuration.rst:744 ../../usage/configuration.rst:1407
+#: ../../usage/configuration.rst:744 ../../usage/configuration.rst:1414
 msgid "``es`` -- Spanish"
 msgstr ""
 
@@ -1048,11 +1048,11 @@ msgstr ""
 msgid "``fa`` -- Iranian"
 msgstr ""
 
-#: ../../usage/configuration.rst:748 ../../usage/configuration.rst:1397
+#: ../../usage/configuration.rst:748 ../../usage/configuration.rst:1404
 msgid "``fi`` -- Finnish"
 msgstr ""
 
-#: ../../usage/configuration.rst:749 ../../usage/configuration.rst:1398
+#: ../../usage/configuration.rst:749 ../../usage/configuration.rst:1405
 msgid "``fr`` -- French"
 msgstr ""
 
@@ -1072,7 +1072,7 @@ msgstr ""
 msgid "``hr`` -- Croatian"
 msgstr ""
 
-#: ../../usage/configuration.rst:754 ../../usage/configuration.rst:1400
+#: ../../usage/configuration.rst:754 ../../usage/configuration.rst:1407
 msgid "``hu`` -- Hungarian"
 msgstr ""
 
@@ -1080,11 +1080,11 @@ msgstr ""
 msgid "``id`` -- Indonesian"
 msgstr ""
 
-#: ../../usage/configuration.rst:756 ../../usage/configuration.rst:1401
+#: ../../usage/configuration.rst:756 ../../usage/configuration.rst:1408
 msgid "``it`` -- Italian"
 msgstr ""
 
-#: ../../usage/configuration.rst:757 ../../usage/configuration.rst:1402
+#: ../../usage/configuration.rst:757 ../../usage/configuration.rst:1409
 msgid "``ja`` -- Japanese"
 msgstr ""
 
@@ -1112,7 +1112,7 @@ msgstr ""
 msgid "``ne`` -- Nepali"
 msgstr ""
 
-#: ../../usage/configuration.rst:764 ../../usage/configuration.rst:1395
+#: ../../usage/configuration.rst:764 ../../usage/configuration.rst:1402
 msgid "``nl`` -- Dutch"
 msgstr ""
 
@@ -1120,7 +1120,7 @@ msgstr ""
 msgid "``pl`` -- Polish"
 msgstr ""
 
-#: ../../usage/configuration.rst:766 ../../usage/configuration.rst:1404
+#: ../../usage/configuration.rst:766 ../../usage/configuration.rst:1411
 msgid "``pt`` -- Portuguese"
 msgstr ""
 
@@ -1132,11 +1132,11 @@ msgstr ""
 msgid "``pt_PT`` -- European Portuguese"
 msgstr ""
 
-#: ../../usage/configuration.rst:769 ../../usage/configuration.rst:1405
+#: ../../usage/configuration.rst:769 ../../usage/configuration.rst:1412
 msgid "``ro`` -- Romanian"
 msgstr ""
 
-#: ../../usage/configuration.rst:770 ../../usage/configuration.rst:1406
+#: ../../usage/configuration.rst:770 ../../usage/configuration.rst:1413
 msgid "``ru`` -- Russian"
 msgstr ""
 
@@ -1168,7 +1168,7 @@ msgstr ""
 msgid "``sr_RS`` -- Serbian (Cyrillic)"
 msgstr ""
 
-#: ../../usage/configuration.rst:778 ../../usage/configuration.rst:1408
+#: ../../usage/configuration.rst:778 ../../usage/configuration.rst:1415
 msgid "``sv`` -- Swedish"
 msgstr ""
 
@@ -1180,7 +1180,7 @@ msgstr ""
 msgid "``te`` -- Telugu"
 msgstr ""
 
-#: ../../usage/configuration.rst:781 ../../usage/configuration.rst:1409
+#: ../../usage/configuration.rst:781 ../../usage/configuration.rst:1416
 msgid "``tr`` -- Turkish"
 msgstr ""
 
@@ -1464,8 +1464,8 @@ msgid ""
 "about theming </usage/theming>`.  The default is ``'alabaster'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:964 ../../usage/configuration.rst:1767
-#: ../../usage/configuration.rst:2528
+#: ../../usage/configuration.rst:964 ../../usage/configuration.rst:1774
+#: ../../usage/configuration.rst:2542
 msgid ""
 "A dictionary of options that influence the look and feel of the selected "
 "theme.  These are theme-specific.  For the options understood by the "
@@ -1510,8 +1510,8 @@ msgid ""
 "used to indicate the location of document using `The Canonical Link "
 "Relation`_. Default: ``''``."
 msgstr ""
-"指向 HTML 文档根部的 base URL。"
-"它用于使用 `The Canonical Link Relation`_ 来表示文档的位置。默认值：``''``。"
+"指向 HTML 文档根部的 base URL。它用于使用 `The Canonical Link Relation`_ "
+"来表示文档的位置。默认值：``''``。"
 
 #: ../../usage/configuration.rst:1014
 msgid "The style of line numbers for code-blocks."
@@ -1828,8 +1828,8 @@ msgid ""
 "``download.html``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1281 ../../usage/configuration.rst:2127
-#: ../../usage/configuration.rst:2439
+#: ../../usage/configuration.rst:1281 ../../usage/configuration.rst:2134
+#: ../../usage/configuration.rst:2446
 msgid ""
 "If true, generate domain-specific indices in addition to the general "
 "index. For e.g. the Python domain, this is the global module index.  "
@@ -1905,18 +1905,24 @@ msgstr ""
 
 #: ../../usage/configuration.rst:1356
 msgid ""
+"If true, the text around the keyword is shown as summary of each search "
+"result. Default is ``True``."
+msgstr ""
+
+#: ../../usage/configuration.rst:1363
+msgid ""
 "If true, \"Created using Sphinx\" is shown in the HTML footer.  Default "
 "is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1363
+#: ../../usage/configuration.rst:1370
 msgid ""
 "Encoding of HTML output files. Default is ``'utf-8'``.  Note that this "
 "encoding name must both be a valid Python encoding name and a valid HTML "
 "``charset`` value."
 msgstr ""
 
-#: ../../usage/configuration.rst:1371
+#: ../../usage/configuration.rst:1378
 msgid ""
 "If true, a list all whose items consist of a single paragraph and/or a "
 "sub-list all whose items etc... (recursive definition) will not use the "
@@ -1924,13 +1930,13 @@ msgid ""
 " Default: ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1380
+#: ../../usage/configuration.rst:1387
 msgid ""
 "Suffix for section numbers.  Default: ``\". \"``.  Set to ``\" \"`` to "
 "suppress the final dot on section numbers."
 msgstr ""
 
-#: ../../usage/configuration.rst:1387
+#: ../../usage/configuration.rst:1394
 msgid ""
 "Language to be used for generating the HTML full-text search index.  This"
 " defaults to the global language selected with :confval:`language`.  If "
@@ -1938,56 +1944,56 @@ msgid ""
 "the English language."
 msgstr ""
 
-#: ../../usage/configuration.rst:1392
+#: ../../usage/configuration.rst:1399
 msgid "Support is present for these languages:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1403
+#: ../../usage/configuration.rst:1410
 msgid "``no`` -- Norwegian"
 msgstr ""
 
-#: ../../usage/configuration.rst:1410
+#: ../../usage/configuration.rst:1417
 msgid "``zh`` -- Chinese"
 msgstr ""
 
-#: ../../usage/configuration.rst:1412
+#: ../../usage/configuration.rst:1419
 msgid "Accelerating build speed"
 msgstr ""
 
-#: ../../usage/configuration.rst:1414
+#: ../../usage/configuration.rst:1421
 msgid ""
 "Each language (except Japanese) provides its own stemming algorithm. "
 "Sphinx uses a Python implementation by default.  You can use a C "
 "implementation to accelerate building the index file."
 msgstr ""
 
-#: ../../usage/configuration.rst:1418
+#: ../../usage/configuration.rst:1425
 msgid "`PorterStemmer <https://pypi.org/project/PorterStemmer/>`_ (``en``)"
 msgstr ""
 
-#: ../../usage/configuration.rst:1419
+#: ../../usage/configuration.rst:1426
 msgid "`PyStemmer <https://pypi.org/project/PyStemmer/>`_ (all languages)"
 msgstr ""
 
-#: ../../usage/configuration.rst:1421
+#: ../../usage/configuration.rst:1428
 msgid "With support for ``en`` and ``ja``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1424
+#: ../../usage/configuration.rst:1431
 msgid "Added additional languages."
 msgstr ""
 
-#: ../../usage/configuration.rst:1429
+#: ../../usage/configuration.rst:1436
 msgid ""
 "A dictionary with options for the search language support, empty by "
 "default. The meaning of these options depends on the language selected."
 msgstr ""
 
-#: ../../usage/configuration.rst:1432
+#: ../../usage/configuration.rst:1439
 msgid "The English support has no options."
 msgstr ""
 
-#: ../../usage/configuration.rst:1434
+#: ../../usage/configuration.rst:1441
 msgid "The Japanese support has these options:"
 msgstr ""
 
@@ -1995,7 +2001,7 @@ msgstr ""
 msgid "type"
 msgstr ""
 
-#: ../../usage/configuration.rst:1437
+#: ../../usage/configuration.rst:1444
 msgid ""
 "_`type` is dotted module path string to specify Splitter implementation "
 "which should be derived from :class:`sphinx.search.ja.BaseSplitter`.  If "
@@ -2003,7 +2009,7 @@ msgid ""
 "``'sphinx.search.ja.DefaultSplitter'`` will be used."
 msgstr ""
 
-#: ../../usage/configuration.rst:1442
+#: ../../usage/configuration.rst:1449
 msgid "You can choose from these modules:"
 msgstr ""
 
@@ -2011,7 +2017,7 @@ msgstr ""
 msgid "'sphinx.search.ja.DefaultSplitter'"
 msgstr ""
 
-#: ../../usage/configuration.rst:1445
+#: ../../usage/configuration.rst:1452
 msgid "TinySegmenter algorithm. This is default splitter."
 msgstr ""
 
@@ -2019,7 +2025,7 @@ msgstr ""
 msgid "'sphinx.search.ja.MecabSplitter'"
 msgstr ""
 
-#: ../../usage/configuration.rst:1447
+#: ../../usage/configuration.rst:1454
 msgid ""
 "MeCab binding. To use this splitter, 'mecab' python binding or dynamic "
 "link library ('libmecab.so' for linux, 'libmecab.dll' for windows) is "
@@ -2030,24 +2036,24 @@ msgstr ""
 msgid "'sphinx.search.ja.JanomeSplitter'"
 msgstr ""
 
-#: ../../usage/configuration.rst:1451
+#: ../../usage/configuration.rst:1458
 msgid ""
 "Janome binding. To use this splitter, `Janome "
 "<https://pypi.org/project/Janome/>`_ is required."
 msgstr ""
 
-#: ../../usage/configuration.rst:1454
+#: ../../usage/configuration.rst:1461
 msgid ""
 "``'mecab'``, ``'janome'`` and ``'default'`` is deprecated. To keep "
 "compatibility, ``'mecab'``, ``'janome'`` and ``'default'`` are also "
 "acceptable."
 msgstr ""
 
-#: ../../usage/configuration.rst:1459
+#: ../../usage/configuration.rst:1466
 msgid "Other option values depend on splitter value which you choose."
 msgstr ""
 
-#: ../../usage/configuration.rst:1477
+#: ../../usage/configuration.rst:1484
 msgid "Options for ``'mecab'``:"
 msgstr ""
 
@@ -2055,7 +2061,7 @@ msgstr ""
 msgid "dic_enc"
 msgstr ""
 
-#: ../../usage/configuration.rst:1463
+#: ../../usage/configuration.rst:1470
 msgid "_`dic_enc option` is the encoding for the MeCab algorithm."
 msgstr ""
 
@@ -2063,7 +2069,7 @@ msgstr ""
 msgid "dict"
 msgstr ""
 
-#: ../../usage/configuration.rst:1465
+#: ../../usage/configuration.rst:1472
 msgid "_`dict option` is the dictionary to use for the MeCab algorithm."
 msgstr ""
 
@@ -2071,13 +2077,13 @@ msgstr ""
 msgid "lib"
 msgstr ""
 
-#: ../../usage/configuration.rst:1467
+#: ../../usage/configuration.rst:1474
 msgid ""
 "_`lib option` is the library name for finding the MeCab library via "
 "ctypes if the Python binding is not installed."
 msgstr ""
 
-#: ../../usage/configuration.rst:1484
+#: ../../usage/configuration.rst:1491
 msgid "Options for ``'janome'``:"
 msgstr ""
 
@@ -2085,7 +2091,7 @@ msgstr ""
 msgid "user_dic"
 msgstr ""
 
-#: ../../usage/configuration.rst:1481
+#: ../../usage/configuration.rst:1488
 msgid "_`user_dic option` is the user dictionary file path for Janome."
 msgstr ""
 
@@ -2093,71 +2099,71 @@ msgstr ""
 msgid "user_dic_enc"
 msgstr ""
 
-#: ../../usage/configuration.rst:1483
+#: ../../usage/configuration.rst:1490
 msgid ""
 "_`user_dic_enc option` is the encoding for the user dictionary file "
 "specified by ``user_dic`` option. Default is 'utf8'."
 msgstr ""
 
-#: ../../usage/configuration.rst:1488
+#: ../../usage/configuration.rst:1495
 msgid ""
 "html_search_options for Japanese is re-organized and any custom splitter "
 "can be used by `type`_ settings."
 msgstr ""
 
-#: ../../usage/configuration.rst:1492
+#: ../../usage/configuration.rst:1499
 msgid "The Chinese support has these options:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1494
+#: ../../usage/configuration.rst:1501
 msgid ""
 "``dict``  -- the ``jieba`` dictionary path if want to use custom "
 "dictionary."
 msgstr ""
 
-#: ../../usage/configuration.rst:1499
+#: ../../usage/configuration.rst:1506
 msgid ""
 "The name of a JavaScript file (relative to the configuration directory) "
 "that implements a search results scorer.  If empty, the default will be "
 "used."
 msgstr ""
 
-#: ../../usage/configuration.rst:1508
+#: ../../usage/configuration.rst:1515
 msgid ""
 "If true, images itself links to the original image if it doesn't have "
 "'target' option or scale related options: 'scale', 'width', 'height'. The"
 " default is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1512
+#: ../../usage/configuration.rst:1519
 msgid ""
 "Document authors can this feature manually with giving ``no-scaled-link``"
 " class to the image:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1525
+#: ../../usage/configuration.rst:1532
 msgid "It is disabled for images having ``no-scaled-link`` class"
 msgstr ""
 
-#: ../../usage/configuration.rst:1529
+#: ../../usage/configuration.rst:1536
 msgid ""
 "The name of math_renderer extension for HTML output.  The default is "
 "``'mathjax'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1536
+#: ../../usage/configuration.rst:1543
 msgid "Output is processed with HTML5 writer.  Default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1544
+#: ../../usage/configuration.rst:1551
 msgid "Output is processed with HTML4 writer.  Default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1547
+#: ../../usage/configuration.rst:1554
 msgid "Options for Single HTML output"
 msgstr ""
 
-#: ../../usage/configuration.rst:1551
+#: ../../usage/configuration.rst:1558
 msgid ""
 "Custom sidebar templates, must be a dictionary that maps document names "
 "to template names.  And it only allows a key named `'index'`.  All other "
@@ -2166,42 +2172,42 @@ msgid ""
 ":confval:`html_sidebars`."
 msgstr ""
 
-#: ../../usage/configuration.rst:1560
+#: ../../usage/configuration.rst:1567
 msgid "Options for HTML help output"
 msgstr ""
 
-#: ../../usage/configuration.rst:1564
+#: ../../usage/configuration.rst:1571
 msgid "Output file base name for HTML help builder.  Default is ``'pydoc'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1568
+#: ../../usage/configuration.rst:1575
 msgid ""
 "This is the file name suffix for generated HTML help files.  The default "
 "is ``\".html\"``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1575
+#: ../../usage/configuration.rst:1582
 msgid "Suffix for generated links to HTML files.  The default is ``\".html\"``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1583
+#: ../../usage/configuration.rst:1590
 msgid "Options for Apple Help output"
 msgstr ""
 
-#: ../../usage/configuration.rst:1587
+#: ../../usage/configuration.rst:1594
 msgid ""
 "These options influence the Apple Help output.  This builder derives from"
 " the HTML builder, so the HTML options also apply where appropriate."
 msgstr ""
 
-#: ../../usage/configuration.rst:1592
+#: ../../usage/configuration.rst:1599
 msgid ""
 "Apple Help output will only work on Mac OS X 10.6 and higher, as it "
 "requires the :program:`hiutil` and :program:`codesign` command line "
 "tools, neither of which are Open Source."
 msgstr ""
 
-#: ../../usage/configuration.rst:1596
+#: ../../usage/configuration.rst:1603
 msgid ""
 "You can disable the use of these tools using "
 ":confval:`applehelp_disable_external_tools`, but the result will not be a"
@@ -2209,44 +2215,44 @@ msgid ""
 "within the bundle."
 msgstr ""
 
-#: ../../usage/configuration.rst:1603
+#: ../../usage/configuration.rst:1610
 msgid ""
 "The basename for the Apple Help Book.  Defaults to the :confval:`project`"
 " name."
 msgstr ""
 
-#: ../../usage/configuration.rst:1608
+#: ../../usage/configuration.rst:1615
 msgid "The bundle ID for the help book bundle."
 msgstr ""
 
-#: ../../usage/configuration.rst:1612
+#: ../../usage/configuration.rst:1619
 msgid "You *must* set this value in order to generate Apple Help."
 msgstr ""
 
-#: ../../usage/configuration.rst:1616
+#: ../../usage/configuration.rst:1623
 msgid ""
 "The development region.  Defaults to ``'en-us'``, which is Apple’s "
 "recommended setting."
 msgstr ""
 
-#: ../../usage/configuration.rst:1621
+#: ../../usage/configuration.rst:1628
 msgid "The bundle version (as a string).  Defaults to ``'1'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1625
+#: ../../usage/configuration.rst:1632
 msgid ""
 "The help bundle icon file, or ``None`` for no icon.  According to Apple's"
 " documentation, this should be a 16-by-16 pixel version of the "
 "application's icon with a transparent background, saved as a PNG file."
 msgstr ""
 
-#: ../../usage/configuration.rst:1631
+#: ../../usage/configuration.rst:1638
 msgid ""
 "The product tag for use with :confval:`applehelp_kb_url`.  Defaults to "
 ":samp:`'{<project>}-{<release>}'`."
 msgstr ""
 
-#: ../../usage/configuration.rst:1636
+#: ../../usage/configuration.rst:1643
 msgid ""
 "The URL for your knowledgebase server, e.g. "
 "``https://example.com/kbsearch.py?p='product'&q='query'&l='lang'``. Help "
@@ -2256,29 +2262,29 @@ msgid ""
 "respectively."
 msgstr ""
 
-#: ../../usage/configuration.rst:1643
+#: ../../usage/configuration.rst:1650
 msgid "Defaults to ``None`` for no remote search."
 msgstr ""
 
-#: ../../usage/configuration.rst:1647
+#: ../../usage/configuration.rst:1654
 msgid ""
 "The URL for remote content.  You can place a copy of your Help Book's "
 "``Resources`` folder at this location and Help Viewer will attempt to use"
 " it to fetch updated content."
 msgstr ""
 
-#: ../../usage/configuration.rst:1651
+#: ../../usage/configuration.rst:1658
 msgid ""
 "e.g. if you set it to ``https://example.com/help/Foo/`` and Help Viewer "
 "wants a copy of ``index.html`` for an English speaking customer, it will "
 "look at ``https://example.com/help/Foo/en.lproj/index.html``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1655
+#: ../../usage/configuration.rst:1662
 msgid "Defaults to ``None`` for no remote content."
 msgstr ""
 
-#: ../../usage/configuration.rst:1659
+#: ../../usage/configuration.rst:1666
 msgid ""
 "If ``True``, tell the help indexer to index anchors in the generated "
 "HTML. This can be useful for jumping to a particular topic using the "
@@ -2287,13 +2293,13 @@ msgid ""
 " documentation for more information on this topic."
 msgstr ""
 
-#: ../../usage/configuration.rst:1667
+#: ../../usage/configuration.rst:1674
 msgid ""
 "Controls the minimum term length for the help indexer.  Defaults to "
 "``None``, which means the default will be used."
 msgstr ""
 
-#: ../../usage/configuration.rst:1672
+#: ../../usage/configuration.rst:1679
 msgid ""
 "Either a language specification (to use the built-in stopwords), or the "
 "path to a stopwords plist, or ``None`` if you do not want to use "
@@ -2302,145 +2308,145 @@ msgid ""
 "stopwords for the following languages:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1679
+#: ../../usage/configuration.rst:1686
 msgid "Language"
 msgstr ""
 
-#: ../../usage/configuration.rst:1679
+#: ../../usage/configuration.rst:1686
 msgid "Code"
 msgstr ""
 
-#: ../../usage/configuration.rst:1681
+#: ../../usage/configuration.rst:1688
 msgid "English"
 msgstr ""
 
-#: ../../usage/configuration.rst:1681
+#: ../../usage/configuration.rst:1688
 msgid "en"
 msgstr ""
 
-#: ../../usage/configuration.rst:1682
+#: ../../usage/configuration.rst:1689
 msgid "German"
 msgstr ""
 
-#: ../../usage/configuration.rst:1682
+#: ../../usage/configuration.rst:1689
 msgid "de"
 msgstr ""
 
-#: ../../usage/configuration.rst:1683
+#: ../../usage/configuration.rst:1690
 msgid "Spanish"
 msgstr ""
 
-#: ../../usage/configuration.rst:1683
+#: ../../usage/configuration.rst:1690
 msgid "es"
 msgstr ""
 
-#: ../../usage/configuration.rst:1684
+#: ../../usage/configuration.rst:1691
 msgid "French"
 msgstr ""
 
-#: ../../usage/configuration.rst:1684
+#: ../../usage/configuration.rst:1691
 msgid "fr"
 msgstr ""
 
-#: ../../usage/configuration.rst:1685
+#: ../../usage/configuration.rst:1692
 msgid "Swedish"
 msgstr ""
 
-#: ../../usage/configuration.rst:1685
+#: ../../usage/configuration.rst:1692
 msgid "sv"
 msgstr ""
 
-#: ../../usage/configuration.rst:1686
+#: ../../usage/configuration.rst:1693
 msgid "Hungarian"
 msgstr ""
 
-#: ../../usage/configuration.rst:1686
+#: ../../usage/configuration.rst:1693
 msgid "hu"
 msgstr ""
 
-#: ../../usage/configuration.rst:1687
+#: ../../usage/configuration.rst:1694
 msgid "Italian"
 msgstr ""
 
-#: ../../usage/configuration.rst:1687
+#: ../../usage/configuration.rst:1694
 msgid "it"
 msgstr ""
 
-#: ../../usage/configuration.rst:1690 ../../usage/configuration.rst:1698
+#: ../../usage/configuration.rst:1697 ../../usage/configuration.rst:1705
 msgid "Defaults to :confval:`language`, or if that is not set, to :confval:`en`."
 msgstr ""
 
-#: ../../usage/configuration.rst:1694
+#: ../../usage/configuration.rst:1701
 msgid ""
 "Specifies the locale to generate help for.  This is used to determine the"
 " name of the ``.lproj`` folder inside the Help Book’s ``Resources``, and "
 "is passed to the help indexer."
 msgstr ""
 
-#: ../../usage/configuration.rst:1702
+#: ../../usage/configuration.rst:1709
 msgid "Specifies the help book title.  Defaults to :samp:`'{<project>} Help'`."
 msgstr ""
 
-#: ../../usage/configuration.rst:1706
+#: ../../usage/configuration.rst:1713
 msgid ""
 "Specifies the identity to use for code signing, or ``None`` if code "
 "signing is not to be performed."
 msgstr ""
 
-#: ../../usage/configuration.rst:1709
+#: ../../usage/configuration.rst:1716
 msgid ""
 "Defaults to the value of the environment variable ``CODE_SIGN_IDENTITY``,"
 " which is set by Xcode for script build phases, or ``None`` if that "
 "variable is not set."
 msgstr ""
 
-#: ../../usage/configuration.rst:1715
+#: ../../usage/configuration.rst:1722
 msgid ""
 "A *list* of additional arguments to pass to :program:`codesign` when "
 "signing the help book."
 msgstr ""
 
-#: ../../usage/configuration.rst:1718
+#: ../../usage/configuration.rst:1725
 msgid ""
 "Defaults to a list based on the value of the environment variable "
 "``OTHER_CODE_SIGN_FLAGS``, which is set by Xcode for script build phases,"
 " or the empty list if that variable is not set."
 msgstr ""
 
-#: ../../usage/configuration.rst:1724
+#: ../../usage/configuration.rst:1731
 msgid ""
 "The path to the :program:`hiutil` program.  Defaults to "
 "``'/usr/bin/hiutil'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1729
+#: ../../usage/configuration.rst:1736
 msgid ""
 "The path to the :program:`codesign` program.  Defaults to "
 "``'/usr/bin/codesign'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1734
+#: ../../usage/configuration.rst:1741
 msgid ""
 "If ``True``, the builder will not run the indexer or the code signing "
 "tool, no matter what other settings are specified."
 msgstr ""
 
-#: ../../usage/configuration.rst:1737
+#: ../../usage/configuration.rst:1744
 msgid ""
 "This is mainly useful for testing, or where you want to run the Sphinx "
 "build on a non-Mac OS X platform and then complete the final steps on OS "
 "X for some reason."
 msgstr ""
 
-#: ../../usage/configuration.rst:1741
+#: ../../usage/configuration.rst:1748
 msgid "Defaults to ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1747
+#: ../../usage/configuration.rst:1754
 msgid "Options for epub output"
 msgstr ""
 
-#: ../../usage/configuration.rst:1749
+#: ../../usage/configuration.rst:1756
 msgid ""
 "These options influence the epub output.  As this builder derives from "
 "the HTML builder, the HTML options also apply where appropriate.  The "
@@ -2449,13 +2455,13 @@ msgid ""
 "<https://dublincore.org/>`_."
 msgstr ""
 
-#: ../../usage/configuration.rst:1756
+#: ../../usage/configuration.rst:1763
 msgid ""
 "The basename for the epub file.  It defaults to the :confval:`project` "
 "name."
 msgstr ""
 
-#: ../../usage/configuration.rst:1760
+#: ../../usage/configuration.rst:1767
 msgid ""
 "The HTML theme for the epub output.  Since the default themes are not "
 "optimized for small screen space, using the same theme for HTML and epub "
@@ -2463,62 +2469,62 @@ msgid ""
 "designed to save visual space."
 msgstr ""
 
-#: ../../usage/configuration.rst:1775
+#: ../../usage/configuration.rst:1782
 msgid ""
 "The title of the document.  It defaults to the :confval:`html_title` "
 "option but can be set independently for epub creation.  It defaults to "
 "the :confval:`project` option."
 msgstr ""
 
-#: ../../usage/configuration.rst:1779
+#: ../../usage/configuration.rst:1786
 msgid "It defaults to the ``project`` option."
 msgstr ""
 
-#: ../../usage/configuration.rst:1784
+#: ../../usage/configuration.rst:1791
 msgid "The description of the document. The default value is ``'unknown'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1788
+#: ../../usage/configuration.rst:1795
 msgid "Renamed from ``epub3_description``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1793
+#: ../../usage/configuration.rst:1800
 msgid ""
 "The author of the document.  This is put in the Dublin Core metadata.  It"
 " defaults to the :confval:`author` option."
 msgstr ""
 
-#: ../../usage/configuration.rst:1798
+#: ../../usage/configuration.rst:1805
 msgid ""
 "The name of a person, organization, etc. that played a secondary role in "
 "the creation of the content of an EPUB Publication. The default value is "
 "``'unknown'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1804
+#: ../../usage/configuration.rst:1811
 msgid "Renamed from ``epub3_contributor``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1809
+#: ../../usage/configuration.rst:1816
 msgid ""
 "The language of the document.  This is put in the Dublin Core metadata.  "
 "The default is the :confval:`language` option or ``'en'`` if unset."
 msgstr ""
 
-#: ../../usage/configuration.rst:1814
+#: ../../usage/configuration.rst:1821
 msgid ""
 "The publisher of the document.  This is put in the Dublin Core metadata. "
 "You may use any sensible string, e.g. the project homepage.  The defaults"
 " to the :confval:`author` option."
 msgstr ""
 
-#: ../../usage/configuration.rst:1820
+#: ../../usage/configuration.rst:1827
 msgid ""
 "The copyright of the document.  It defaults to the :confval:`copyright` "
 "option but can be set independently for epub creation."
 msgstr ""
 
-#: ../../usage/configuration.rst:1825
+#: ../../usage/configuration.rst:1832
 msgid ""
 "An identifier for the document.  This is put in the Dublin Core metadata."
 " For published documents this is the ISBN number, but you can also use an"
@@ -2526,7 +2532,7 @@ msgid ""
 "``'unknown'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1832
+#: ../../usage/configuration.rst:1839
 msgid ""
 "The publication scheme for the :confval:`epub_identifier`.  This is put "
 "in the Dublin Core metadata.  For published books the scheme is "
@@ -2534,7 +2540,7 @@ msgid ""
 "  The default value is ``'unknown'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1839
+#: ../../usage/configuration.rst:1846
 msgid ""
 "A unique identifier for the document.  This is put in the Dublin Core "
 "metadata.  You may use a `XML's Name format <https://www.w3.org/TR/REC-"
@@ -2542,7 +2548,7 @@ msgid ""
 "as a first character.  The default value is ``'unknown'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1847
+#: ../../usage/configuration.rst:1854
 msgid ""
 "The cover page information.  This is a tuple containing the filenames of "
 "the cover image and the html template.  The rendered html cover page is "
@@ -2551,18 +2557,18 @@ msgid ""
 "all is created if the tuple is empty.  Examples::"
 msgstr ""
 
-#: ../../usage/configuration.rst:1857 ../../usage/configuration.rst:1881
+#: ../../usage/configuration.rst:1864 ../../usage/configuration.rst:1888
 msgid "The default value is ``()``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1863
+#: ../../usage/configuration.rst:1870
 msgid ""
 "A list of CSS files.  The entry must be a *filename* string or a tuple "
 "containing the *filename* string and the *attributes* dictionary.  For "
 "more information, see :confval:`html_css_files`."
 msgstr ""
 
-#: ../../usage/configuration.rst:1871
+#: ../../usage/configuration.rst:1878
 msgid ""
 "Meta data for the guide element of :file:`content.opf`. This is a "
 "sequence of tuples containing the *type*, the *uri* and the *title* of "
@@ -2573,18 +2579,18 @@ msgid ""
 "appropriate. Example::"
 msgstr ""
 
-#: ../../usage/configuration.rst:1885
+#: ../../usage/configuration.rst:1892
 msgid ""
 "Additional files that should be inserted before the text generated by "
 "Sphinx. It is a list of tuples containing the file name and the title. If"
 " the title is empty, no entry is added to :file:`toc.ncx`.  Example::"
 msgstr ""
 
-#: ../../usage/configuration.rst:1893
+#: ../../usage/configuration.rst:1900
 msgid "The default value is ``[]``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1897
+#: ../../usage/configuration.rst:1904
 msgid ""
 "Additional files that should be inserted after the text generated by "
 "Sphinx. It is a list of tuples containing the file name and the title.  "
@@ -2592,20 +2598,20 @@ msgid ""
 "entry is added to :file:`toc.ncx`.  The default value is ``[]``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1904
+#: ../../usage/configuration.rst:1911
 msgid ""
 "A list of files that are generated/copied in the build directory but "
 "should not be included in the epub file.  The default value is ``[]``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1909
+#: ../../usage/configuration.rst:1916
 msgid ""
 "The depth of the table of contents in the file :file:`toc.ncx`.  It "
 "should be an integer greater than zero.  The default value is 3.  Note: A"
 " deeply nested table of contents may be difficult to navigate."
 msgstr ""
 
-#: ../../usage/configuration.rst:1915
+#: ../../usage/configuration.rst:1922
 msgid ""
 "This flag determines if a toc entry is inserted again at the beginning of"
 " its nested toc listing.  This allows easier navigation to the top of a "
@@ -2613,21 +2619,21 @@ msgid ""
 " in one list.  The default value is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1922
+#: ../../usage/configuration.rst:1929
 msgid ""
 "This setting control the scope of the epub table of contents.  The "
 "setting can have the following values:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1925
+#: ../../usage/configuration.rst:1932
 msgid "``'default'`` -- include all toc entries that are not hidden (default)"
 msgstr ""
 
-#: ../../usage/configuration.rst:1926
+#: ../../usage/configuration.rst:1933
 msgid "``'includehidden'`` -- include all toc entries"
 msgstr ""
 
-#: ../../usage/configuration.rst:1932
+#: ../../usage/configuration.rst:1939
 msgid ""
 "This flag determines if sphinx should try to fix image formats that are "
 "not supported by some epub readers.  At the moment palette images with a "
@@ -2636,7 +2642,7 @@ msgid ""
 "because the automatic conversion may lose information."
 msgstr ""
 
-#: ../../usage/configuration.rst:1942
+#: ../../usage/configuration.rst:1949
 msgid ""
 "This option specifies the maximum width of images.  If it is set to a "
 "value greater than zero, images with a width larger than the given value "
@@ -2645,142 +2651,142 @@ msgid ""
 "installed to use this option."
 msgstr ""
 
-#: ../../usage/configuration.rst:1952
+#: ../../usage/configuration.rst:1959
 msgid ""
 "Control whether to display URL addresses. This is very useful for readers"
 " that have no other means to display the linked URL. The settings can "
 "have the following values:"
 msgstr ""
 
-#: ../../usage/configuration.rst:1956
+#: ../../usage/configuration.rst:1963
 msgid "``'inline'`` -- display URLs inline in parentheses (default)"
 msgstr ""
 
-#: ../../usage/configuration.rst:1957 ../../usage/configuration.rst:2149
+#: ../../usage/configuration.rst:1964 ../../usage/configuration.rst:2156
 msgid "``'footnote'`` -- display URLs in footnotes"
 msgstr ""
 
-#: ../../usage/configuration.rst:1958 ../../usage/configuration.rst:2453
+#: ../../usage/configuration.rst:1965 ../../usage/configuration.rst:2460
 msgid "``'no'`` -- do not display URLs"
 msgstr ""
 
-#: ../../usage/configuration.rst:1960
+#: ../../usage/configuration.rst:1967
 msgid ""
 "The display of inline URLs can be customized by adding CSS rules for the "
 "class ``link-target``."
 msgstr ""
 
-#: ../../usage/configuration.rst:1967
+#: ../../usage/configuration.rst:1974
 msgid ""
 "If true, add an index to the epub document.  It defaults to the "
 ":confval:`html_use_index` option but can be set independently for epub "
 "creation."
 msgstr ""
 
-#: ../../usage/configuration.rst:1975
+#: ../../usage/configuration.rst:1982
 msgid ""
 "It specifies writing direction. It can accept ``'horizontal'`` (default) "
 "and ``'vertical'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1982
+#: ../../usage/configuration.rst:1989
 msgid "``epub_writing_mode``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1983
+#: ../../usage/configuration.rst:1990
 msgid "``'horizontal'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1984
+#: ../../usage/configuration.rst:1991
 msgid "``'vertical'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1985
+#: ../../usage/configuration.rst:1992
 msgid "writing-mode [#]_"
 msgstr ""
 
-#: ../../usage/configuration.rst:1986
+#: ../../usage/configuration.rst:1993
 msgid "``horizontal-tb``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1987
+#: ../../usage/configuration.rst:1994
 msgid "``vertical-rl``"
 msgstr ""
 
-#: ../../usage/configuration.rst:1988
+#: ../../usage/configuration.rst:1995
 msgid "page progression"
 msgstr ""
 
-#: ../../usage/configuration.rst:1989
+#: ../../usage/configuration.rst:1996
 msgid "left to right"
 msgstr ""
 
-#: ../../usage/configuration.rst:1990
+#: ../../usage/configuration.rst:1997
 msgid "right to left"
 msgstr ""
 
-#: ../../usage/configuration.rst:1991
+#: ../../usage/configuration.rst:1998
 msgid "iBook's Scroll Theme support"
 msgstr ""
 
-#: ../../usage/configuration.rst:1992
+#: ../../usage/configuration.rst:1999
 msgid "scroll-axis is vertical."
 msgstr ""
 
-#: ../../usage/configuration.rst:1993
+#: ../../usage/configuration.rst:2000
 msgid "scroll-axis is horizontal."
 msgstr ""
 
-#: ../../usage/configuration.rst:1995
+#: ../../usage/configuration.rst:2002
 msgid "https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode"
 msgstr ""
 
-#: ../../usage/configuration.rst:2001
+#: ../../usage/configuration.rst:2008
 msgid "Options for LaTeX output"
 msgstr ""
 
-#: ../../usage/configuration.rst:2003
+#: ../../usage/configuration.rst:2010
 msgid "These options influence LaTeX output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2007
+#: ../../usage/configuration.rst:2014
 msgid ""
 "The LaTeX engine to build the docs.  The setting can have the following "
 "values:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2010
+#: ../../usage/configuration.rst:2017
 msgid "``'pdflatex'`` -- PDFLaTeX (default)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2011
+#: ../../usage/configuration.rst:2018
 msgid "``'xelatex'`` -- XeLaTeX"
 msgstr ""
 
-#: ../../usage/configuration.rst:2012
+#: ../../usage/configuration.rst:2019
 msgid "``'lualatex'`` -- LuaLaTeX"
 msgstr ""
 
-#: ../../usage/configuration.rst:2013
+#: ../../usage/configuration.rst:2020
 msgid "``'platex'`` -- pLaTeX"
 msgstr ""
 
-#: ../../usage/configuration.rst:2014
+#: ../../usage/configuration.rst:2021
 msgid "``'uplatex'`` -- upLaTeX (default if :confval:`language` is ``'ja'``)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2016
+#: ../../usage/configuration.rst:2023
 msgid "``'pdflatex'``\\ 's support for Unicode characters is limited."
 msgstr ""
 
-#: ../../usage/configuration.rst:2020
+#: ../../usage/configuration.rst:2027
 msgid ""
 "2.0 adds to ``'pdflatex'`` support in Latin language document of "
 "occasional Cyrillic or Greek letters or words.  This is not automatic, "
 "see the discussion of the :confval:`latex_elements` ``'fontenc'`` key."
 msgstr ""
 
-#: ../../usage/configuration.rst:2024
+#: ../../usage/configuration.rst:2031
 msgid ""
 "If your project uses Unicode characters, setting the engine to "
 "``'xelatex'`` or ``'lualatex'`` and making sure to use an OpenType font "
@@ -2790,25 +2796,25 @@ msgid ""
 "Greek."
 msgstr ""
 
-#: ../../usage/configuration.rst:2033
+#: ../../usage/configuration.rst:2040
 msgid ""
 "Use ``xelatex`` (and LaTeX package ``xeCJK``) by default for Chinese "
 "documents."
 msgstr ""
 
-#: ../../usage/configuration.rst:2038
+#: ../../usage/configuration.rst:2045
 msgid "Use ``xelatex`` by default for Greek documents."
 msgstr ""
 
-#: ../../usage/configuration.rst:2042
+#: ../../usage/configuration.rst:2049
 msgid "Add ``uplatex`` support."
 msgstr ""
 
-#: ../../usage/configuration.rst:2046
+#: ../../usage/configuration.rst:2053
 msgid "``uplatex`` becomes the default setting of Japanese documents."
 msgstr ""
 
-#: ../../usage/configuration.rst:2048
+#: ../../usage/configuration.rst:2055
 msgid ""
 "Contrarily to :ref:`MathJaX math rendering in HTML output <math-"
 "support>`, LaTeX requires some extra configuration to support Unicode "
@@ -2820,19 +2826,19 @@ msgid ""
 "example as is in output, rather than being rendered as :math:`\\alpha`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2060
+#: ../../usage/configuration.rst:2067
 msgid ""
 "This value determines how to group the document tree into LaTeX source "
 "files. It must be a list of tuples ``(startdocname, targetname, title, "
 "author, theme, toctree_only)``, where the items are:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2068 ../../usage/configuration.rst:2338
-#: ../../usage/configuration.rst:2399
+#: ../../usage/configuration.rst:2075 ../../usage/configuration.rst:2345
+#: ../../usage/configuration.rst:2406
 msgid "*startdocname*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2065
+#: ../../usage/configuration.rst:2072
 msgid ""
 "String that specifies the :term:`document name` of the LaTeX file's "
 "master document.  All documents referenced by the *startdoc* document in "
@@ -2841,19 +2847,19 @@ msgid ""
 ":confval:`root_doc` here.)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2071 ../../usage/configuration.rst:2402
+#: ../../usage/configuration.rst:2078 ../../usage/configuration.rst:2409
 msgid "*targetname*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2071
+#: ../../usage/configuration.rst:2078
 msgid "File name of the LaTeX file in the output directory."
 msgstr ""
 
-#: ../../usage/configuration.rst:2077 ../../usage/configuration.rst:2407
+#: ../../usage/configuration.rst:2084 ../../usage/configuration.rst:2414
 msgid "*title*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2074
+#: ../../usage/configuration.rst:2081
 msgid ""
 "LaTeX document title.  Can be empty to use the title of the *startdoc* "
 "document.  This is inserted as LaTeX markup, so special characters like a"
@@ -2861,11 +2867,11 @@ msgid ""
 "if they are to be inserted literally."
 msgstr ""
 
-#: ../../usage/configuration.rst:2082 ../../usage/configuration.rst:2411
+#: ../../usage/configuration.rst:2089 ../../usage/configuration.rst:2418
 msgid "*author*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2080
+#: ../../usage/configuration.rst:2087
 msgid ""
 "Author for the LaTeX document.  The same LaTeX markup caveat as for "
 "*title* applies.  Use ``\\\\and`` to separate multiple authors, as in: "
@@ -2873,19 +2879,19 @@ msgid ""
 "LaTeX)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2085
+#: ../../usage/configuration.rst:2092
 msgid "*theme*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2085
+#: ../../usage/configuration.rst:2092
 msgid "LaTeX theme.  See :confval:`latex_theme`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2091 ../../usage/configuration.rst:2427
+#: ../../usage/configuration.rst:2098 ../../usage/configuration.rst:2434
 msgid "*toctree_only*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2088
+#: ../../usage/configuration.rst:2095
 msgid ""
 "Must be ``True`` or ``False``.  If true, the *startdoc* document itself "
 "is not included in the output, only the documents referenced by it via "
@@ -2893,25 +2899,25 @@ msgid ""
 "document that shows up in the HTML, but not the LaTeX output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2093
+#: ../../usage/configuration.rst:2100
 msgid ""
 "In the past including your own document class required you to prepend the"
 " document class name with the string \"sphinx\". This is not necessary "
 "anymore."
 msgstr ""
 
-#: ../../usage/configuration.rst:2098
+#: ../../usage/configuration.rst:2105
 msgid "The 6th item ``toctree_only``.  Tuples with 5 items are still accepted."
 msgstr ""
 
-#: ../../usage/configuration.rst:2103
+#: ../../usage/configuration.rst:2110
 msgid ""
 "If given, this must be the name of an image file (relative to the "
 "configuration directory) that is the logo of the docs.  It is placed at "
 "the top of the title page.  Default: ``None``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2109
+#: ../../usage/configuration.rst:2116
 msgid ""
 "This value determines the topmost sectioning unit. It should be chosen "
 "from ``'part'``, ``'chapter'`` or ``'section'``. The default is ``None``;"
@@ -2920,7 +2926,7 @@ msgid ""
 "used."
 msgstr ""
 
-#: ../../usage/configuration.rst:2115
+#: ../../usage/configuration.rst:2122
 msgid ""
 "Note that if LaTeX uses ``\\part`` command, then the numbering of "
 "sectioning units one level deep gets off-sync with HTML numbering, "
@@ -2928,44 +2934,44 @@ msgid ""
 "``howto``.)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2123 ../../usage/configuration.rst:2433
+#: ../../usage/configuration.rst:2130 ../../usage/configuration.rst:2440
 msgid "A list of document names to append as an appendix to all manuals."
 msgstr ""
 
-#: ../../usage/configuration.rst:2131 ../../usage/configuration.rst:2443
+#: ../../usage/configuration.rst:2138 ../../usage/configuration.rst:2450
 msgid ""
 "This value can be a bool or a list of index names that should be "
 "generated, like for :confval:`html_domain_indices`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2138
+#: ../../usage/configuration.rst:2145
 msgid ""
 "If true, add page references after internal references.  This is very "
 "useful for printed copies of the manual.  Default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2145
+#: ../../usage/configuration.rst:2152
 msgid ""
 "Control whether to display URL addresses.  This is very useful for "
 "printed copies of the manual.  The setting can have the following values:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2148
+#: ../../usage/configuration.rst:2155
 msgid "``'no'`` -- do not display URLs (default)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2150 ../../usage/configuration.rst:2454
+#: ../../usage/configuration.rst:2157 ../../usage/configuration.rst:2461
 msgid "``'inline'`` -- display URLs inline in parentheses"
 msgstr ""
 
-#: ../../usage/configuration.rst:2153
+#: ../../usage/configuration.rst:2160
 msgid ""
 "This value is now a string; previously it was a boolean value, and a true"
 " value selected the ``'inline'`` display.  For backwards compatibility, "
 "``True`` is still accepted."
 msgstr ""
 
-#: ../../usage/configuration.rst:2160
+#: ../../usage/configuration.rst:2167
 msgid ""
 "The default is ``False``: it means that Sphinx's own macros are used for "
 "merged cells from grid tables. They allow general contents (literal "
@@ -2974,7 +2980,7 @@ msgid ""
 "the type ``>{..}``, ``<{..}``, ``@{..}`` as column specification."
 msgstr ""
 
-#: ../../usage/configuration.rst:2166
+#: ../../usage/configuration.rst:2173
 msgid ""
 "Setting to ``True`` means to use LaTeX's standard ``\\multicolumn``; this"
 " is incompatible with literal blocks in the horizontally merged cell, and"
@@ -2982,7 +2988,7 @@ msgid ""
 "using ``tabulary``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2175
+#: ../../usage/configuration.rst:2182
 msgid ""
 "If ``True``, the PDF build from the LaTeX files created by Sphinx will "
 "use :program:`xindy` (doc__) rather than :program:`makeindex` for "
@@ -2991,14 +2997,14 @@ msgid ""
 "the :confval:`language`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2183
+#: ../../usage/configuration.rst:2190
 msgid ""
 "This option is ignored if :confval:`latex_engine` is ``'platex'`` "
 "(Japanese documents; :program:`mendex` replaces :program:`makeindex` "
 "then)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2187
+#: ../../usage/configuration.rst:2194
 msgid ""
 "The default is ``True`` for ``'xelatex'`` or ``'lualatex'`` as "
 ":program:`makeindex`, if any indexed term starts with a non-ascii "
@@ -3006,14 +3012,14 @@ msgid ""
 "encoding. With ``'lualatex'`` this then breaks the PDF build."
 msgstr ""
 
-#: ../../usage/configuration.rst:2193
+#: ../../usage/configuration.rst:2200
 msgid ""
 "The default is ``False`` for ``'pdflatex'`` but ``True`` is recommended "
 "for non-English documents as soon as some indexed terms use non-ascii "
 "characters from the language script."
 msgstr ""
 
-#: ../../usage/configuration.rst:2197
+#: ../../usage/configuration.rst:2204
 msgid ""
 "Sphinx adds to :program:`xindy` base distribution some dedicated support "
 "for using ``'pdflatex'`` engine with Cyrillic scripts.  And whether with "
@@ -3021,13 +3027,13 @@ msgid ""
 "the indexing of Latin names, even with diacritics."
 msgstr ""
 
-#: ../../usage/configuration.rst:2208
+#: ../../usage/configuration.rst:2215
 msgid ""
 "Its :ref:`documentation <latex_elements_confval>` has moved to "
 ":doc:`/latex`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2212
+#: ../../usage/configuration.rst:2219
 msgid ""
 "A dictionary mapping ``'howto'`` and ``'manual'`` to names of real "
 "document classes that will be used as the base for the two Sphinx "
@@ -3035,13 +3041,13 @@ msgid ""
 "``'report'`` for ``'manual'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2220
+#: ../../usage/configuration.rst:2227
 msgid ""
 "In Japanese docs (:confval:`language` is ``'ja'``), by default "
 "``'jreport'`` is used for ``'howto'`` and ``'jsbook'`` for ``'manual'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2225
+#: ../../usage/configuration.rst:2232
 msgid ""
 "A list of file names, relative to the configuration directory, to copy to"
 " the build directory when building LaTeX output.  This is useful to copy "
@@ -3051,135 +3057,135 @@ msgid ""
 "automatically."
 msgstr ""
 
-#: ../../usage/configuration.rst:2231
+#: ../../usage/configuration.rst:2238
 msgid ""
 "You have to make sure yourself that the filenames don't collide with "
 "those of any automatically copied files."
 msgstr ""
 
-#: ../../usage/configuration.rst:2236
+#: ../../usage/configuration.rst:2243
 msgid ""
 "This overrides the files which is provided from Sphinx such as "
 "``sphinx.sty``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2242
+#: ../../usage/configuration.rst:2249
 msgid ""
 "The \"theme\" that the LaTeX output should use.  It is a collection of "
 "settings for LaTeX output (ex. document class, top level sectioning unit "
 "and so on)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2245
+#: ../../usage/configuration.rst:2252
 msgid "As a built-in LaTeX themes, ``manual`` and ``howto`` are bundled."
 msgstr ""
 
-#: ../../usage/configuration.rst:2249
+#: ../../usage/configuration.rst:2256
 msgid "``manual``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2248
+#: ../../usage/configuration.rst:2255
 msgid ""
 "A LaTeX theme for writing a manual.  It imports the ``report`` document "
 "class (Japanese documents use ``jsbook``)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2254
+#: ../../usage/configuration.rst:2261
 msgid "``howto``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2252
+#: ../../usage/configuration.rst:2259
 msgid ""
 "A LaTeX theme for writing an article.  It imports the ``article`` "
 "document class (Japanese documents use ``jreport`` rather).  "
 ":confval:`latex_appendices` is available only for this theme."
 msgstr ""
 
-#: ../../usage/configuration.rst:2256
+#: ../../usage/configuration.rst:2263
 msgid "It defaults to ``'manual'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2262
+#: ../../usage/configuration.rst:2269
 msgid ""
 "A dictionary of options that influence the look and feel of the selected "
 "theme."
 msgstr ""
 
-#: ../../usage/configuration.rst:2269
+#: ../../usage/configuration.rst:2276
 msgid ""
 "A list of paths that contain custom LaTeX themes as subdirectories.  "
 "Relative paths are taken as relative to the configuration directory."
 msgstr ""
 
-#: ../../usage/configuration.rst:2278
+#: ../../usage/configuration.rst:2285
 msgid "Options for text output"
 msgstr ""
 
-#: ../../usage/configuration.rst:2280
+#: ../../usage/configuration.rst:2287
 msgid "These options influence text output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2284
+#: ../../usage/configuration.rst:2291
 msgid "Determines which end-of-line character(s) are used in text output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2286
+#: ../../usage/configuration.rst:2293
 msgid "``'unix'``: use Unix-style line endings (``\\n``)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2287
+#: ../../usage/configuration.rst:2294
 msgid "``'windows'``: use Windows-style line endings (``\\r\\n``)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2288
+#: ../../usage/configuration.rst:2295
 msgid ""
 "``'native'``: use the line ending style of the platform the documentation"
 " is built on"
 msgstr ""
 
-#: ../../usage/configuration.rst:2291
+#: ../../usage/configuration.rst:2298
 msgid "Default: ``'unix'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2297
+#: ../../usage/configuration.rst:2304
 msgid ""
 "A string of 7 characters that should be used for underlining sections. "
 "The first character is used for first-level headings, the second for "
 "second-level headings and so on."
 msgstr ""
 
-#: ../../usage/configuration.rst:2301
+#: ../../usage/configuration.rst:2308
 msgid "The default is ``'*=-~\"+`'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2307
+#: ../../usage/configuration.rst:2314
 msgid ""
 "A boolean that decides whether section numbers are included in text "
 "output. Default is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2314
+#: ../../usage/configuration.rst:2321
 msgid ""
 "Suffix for section numbers in text output.  Default: ``\". \"``. Set to "
 "``\" \"`` to suppress the final dot on section numbers."
 msgstr ""
 
-#: ../../usage/configuration.rst:2323
+#: ../../usage/configuration.rst:2330
 msgid "Options for manual page output"
 msgstr ""
 
-#: ../../usage/configuration.rst:2325
+#: ../../usage/configuration.rst:2332
 msgid "These options influence manual page output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2329
+#: ../../usage/configuration.rst:2336
 msgid ""
 "This value determines how to group the document tree into manual pages.  "
 "It must be a list of tuples ``(startdocname, name, description, authors, "
 "section)``, where the items are:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2334
+#: ../../usage/configuration.rst:2341
 msgid ""
 "String that specifies the :term:`document name` of the manual page's "
 "master document. All documents referenced by the *startdoc* document in "
@@ -3188,74 +3194,74 @@ msgid ""
 ":confval:`root_doc` here.)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2343
+#: ../../usage/configuration.rst:2350
 msgid "*name*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2341
+#: ../../usage/configuration.rst:2348
 msgid ""
 "Name of the manual page.  This should be a short string without spaces or"
 " special characters.  It is used to determine the file name as well as "
 "the name of the manual page (in the NAME section)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2348 ../../usage/configuration.rst:2417
+#: ../../usage/configuration.rst:2355 ../../usage/configuration.rst:2424
 msgid "*description*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2346
+#: ../../usage/configuration.rst:2353
 msgid ""
 "Description of the manual page.  This is used in the NAME section. Can be"
 " an empty string if you do not want to automatically generate the NAME "
 "section."
 msgstr ""
 
-#: ../../usage/configuration.rst:2353
+#: ../../usage/configuration.rst:2360
 msgid "*authors*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2351
+#: ../../usage/configuration.rst:2358
 msgid ""
 "A list of strings with authors, or a single string.  Can be an empty "
 "string or list if you do not want to automatically generate an AUTHORS "
 "section in the manual page."
 msgstr ""
 
-#: ../../usage/configuration.rst:2357
+#: ../../usage/configuration.rst:2364
 msgid "*section*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2356
+#: ../../usage/configuration.rst:2363
 msgid ""
 "The manual page section.  Used for the output file name as well as in the"
 " manual page header."
 msgstr ""
 
-#: ../../usage/configuration.rst:2363
+#: ../../usage/configuration.rst:2370
 msgid "If true, add URL addresses after links.  Default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2369
+#: ../../usage/configuration.rst:2376
 msgid "If true, make a section directory on build man page.  Default is True."
 msgstr ""
 
-#: ../../usage/configuration.rst:2374
+#: ../../usage/configuration.rst:2381
 msgid "The default is changed to ``False`` from ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2378
+#: ../../usage/configuration.rst:2385
 msgid "The default is changed to ``True`` from ``False`` again."
 msgstr ""
 
-#: ../../usage/configuration.rst:2383
+#: ../../usage/configuration.rst:2390
 msgid "Options for Texinfo output"
 msgstr ""
 
-#: ../../usage/configuration.rst:2385
+#: ../../usage/configuration.rst:2392
 msgid "These options influence Texinfo output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2389
+#: ../../usage/configuration.rst:2396
 msgid ""
 "This value determines how to group the document tree into Texinfo source "
 "files.  It must be a list of tuples ``(startdocname, targetname, title, "
@@ -3263,7 +3269,7 @@ msgid ""
 "items are:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2395
+#: ../../usage/configuration.rst:2402
 msgid ""
 "String that specifies the :term:`document name` of the the Texinfo file's"
 " master document.  All documents referenced by the *startdoc* document in"
@@ -3272,46 +3278,46 @@ msgid ""
 ":confval:`root_doc` here.)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2402
+#: ../../usage/configuration.rst:2409
 msgid "File name (no extension) of the Texinfo file in the output directory."
 msgstr ""
 
-#: ../../usage/configuration.rst:2405
+#: ../../usage/configuration.rst:2412
 msgid ""
 "Texinfo document title.  Can be empty to use the title of the *startdoc* "
 "document.  Inserted as Texinfo markup, so special characters like ``@`` "
 "and ``{}`` will need to be escaped to be inserted literally."
 msgstr ""
 
-#: ../../usage/configuration.rst:2410
+#: ../../usage/configuration.rst:2417
 msgid ""
 "Author for the Texinfo document.  Inserted as Texinfo markup.  Use ``@*``"
 " to separate multiple authors, as in: ``'John@*Sarah'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2414
+#: ../../usage/configuration.rst:2421
 msgid "*dir_entry*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2414
+#: ../../usage/configuration.rst:2421
 msgid "The name that will appear in the top-level ``DIR`` menu file."
 msgstr ""
 
-#: ../../usage/configuration.rst:2417
+#: ../../usage/configuration.rst:2424
 msgid "Descriptive text to appear in the top-level ``DIR`` menu file."
 msgstr ""
 
-#: ../../usage/configuration.rst:2421
+#: ../../usage/configuration.rst:2428
 msgid "*category*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2420
+#: ../../usage/configuration.rst:2427
 msgid ""
 "Specifies the section which this entry will appear in the top-level "
 "``DIR`` menu file."
 msgstr ""
 
-#: ../../usage/configuration.rst:2424
+#: ../../usage/configuration.rst:2431
 msgid ""
 "Must be ``True`` or ``False``.  If true, the *startdoc* document itself "
 "is not included in the output, only the documents referenced by it via "
@@ -3319,185 +3325,192 @@ msgid ""
 "document that shows up in the HTML, but not the Texinfo output."
 msgstr ""
 
-#: ../../usage/configuration.rst:2450
+#: ../../usage/configuration.rst:2457
 msgid "Control how to display URL addresses."
 msgstr ""
 
-#: ../../usage/configuration.rst:2452
+#: ../../usage/configuration.rst:2459
 msgid "``'footnote'`` -- display URLs in footnotes (default)"
 msgstr ""
 
-#: ../../usage/configuration.rst:2460
+#: ../../usage/configuration.rst:2467
 msgid ""
 "If true, do not generate a ``@detailmenu`` in the \"Top\" node's menu "
 "containing entries for each sub-node in the document.  Default is "
 "``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2467
+#: ../../usage/configuration.rst:2474
 msgid ""
 "A dictionary that contains Texinfo snippets that override those Sphinx "
 "usually puts into the generated ``.texi`` files."
 msgstr ""
 
-#: ../../usage/configuration.rst:2470
+#: ../../usage/configuration.rst:2477
 msgid "Keys that you may want to override include:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2474
+#: ../../usage/configuration.rst:2481
 msgid "``'paragraphindent'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2473
+#: ../../usage/configuration.rst:2480
 msgid ""
 "Number of spaces to indent the first line of each paragraph, default "
 "``2``.  Specify ``0`` for no indentation."
 msgstr ""
 
-#: ../../usage/configuration.rst:2478
+#: ../../usage/configuration.rst:2485
 msgid "``'exampleindent'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2477
+#: ../../usage/configuration.rst:2484
 msgid ""
 "Number of spaces to indent the lines for examples or literal blocks, "
 "default ``4``.  Specify ``0`` for no indentation."
 msgstr ""
 
-#: ../../usage/configuration.rst:2481
+#: ../../usage/configuration.rst:2488
 msgid "``'preamble'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2481
+#: ../../usage/configuration.rst:2488
 msgid "Texinfo markup inserted near the beginning of the file."
 msgstr ""
 
-#: ../../usage/configuration.rst:2486
+#: ../../usage/configuration.rst:2493
 msgid "``'copying'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2484
+#: ../../usage/configuration.rst:2491
 msgid ""
 "Texinfo markup inserted within the ``@copying`` block and displayed after"
 " the title.  The default value consists of a simple title page "
 "identifying the project."
 msgstr ""
 
-#: ../../usage/configuration.rst:2488
+#: ../../usage/configuration.rst:2495
 msgid ""
 "Keys that are set by other options and therefore should not be overridden"
 " are:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2491
+#: ../../usage/configuration.rst:2498
 msgid ""
 "``'author'`` ``'body'`` ``'date'`` ``'direntry'`` ``'filename'`` "
 "``'project'`` ``'release'`` ``'title'``"
 msgstr ""
 
-#: ../../usage/configuration.rst:2506
+#: ../../usage/configuration.rst:2511
+msgid ""
+"If false, do not generate inline references in a document.  That makes an"
+" info file more readable with stand-alone reader (``info``). Default is "
+"``True``."
+msgstr ""
+
+#: ../../usage/configuration.rst:2520
 msgid "Options for QtHelp output"
 msgstr ""
 
-#: ../../usage/configuration.rst:2508
+#: ../../usage/configuration.rst:2522
 msgid ""
 "These options influence qthelp output.  As this builder derives from the "
 "HTML builder, the HTML options also apply where appropriate."
 msgstr ""
 
-#: ../../usage/configuration.rst:2513
+#: ../../usage/configuration.rst:2527
 msgid ""
 "The basename for the qthelp file.  It defaults to the :confval:`project` "
 "name."
 msgstr ""
 
-#: ../../usage/configuration.rst:2518
+#: ../../usage/configuration.rst:2532
 msgid ""
 "The namespace for the qthelp file.  It defaults to "
 "``org.sphinx.<project_name>.<project_version>``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2523
+#: ../../usage/configuration.rst:2537
 msgid "The HTML theme for the qthelp output. This defaults to ``'nonav'``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2534
+#: ../../usage/configuration.rst:2548
 msgid "Options for the linkcheck builder"
 msgstr ""
 
-#: ../../usage/configuration.rst:2538
+#: ../../usage/configuration.rst:2552
 msgid ""
 "A list of regular expressions that match URIs that should not be checked "
 "when doing a ``linkcheck`` build.  Example::"
 msgstr ""
 
-#: ../../usage/configuration.rst:2547
+#: ../../usage/configuration.rst:2561
 msgid ""
 "A dictionary that maps a pattern of the source URI to a pattern of the "
 "canonical URI. The linkcheck builder treats the redirected link as "
 "\"working\" when:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2550
+#: ../../usage/configuration.rst:2564
 msgid "the link in the document matches the source URI pattern, and"
 msgstr ""
 
-#: ../../usage/configuration.rst:2551
+#: ../../usage/configuration.rst:2565
 msgid "the redirect location matches the canonical URI pattern."
 msgstr ""
 
-#: ../../usage/configuration.rst:2553 ../../usage/configuration.rst:2578
+#: ../../usage/configuration.rst:2567 ../../usage/configuration.rst:2592
 msgid "Example:"
 msgstr "例如："
 
-#: ../../usage/configuration.rst:2562
+#: ../../usage/configuration.rst:2576
 msgid ""
 "If set, linkcheck builder will emit a warning when disallowed redirection"
 " found.  It's useful to detect unexpected redirects under :option:`the "
 "warn-is-error mode <sphinx-build -W>`."
 msgstr ""
 
-#: ../../usage/configuration.rst:2570
+#: ../../usage/configuration.rst:2584
 msgid "A dictionary that maps baseurls to HTTP request headers."
 msgstr ""
 
-#: ../../usage/configuration.rst:2572
+#: ../../usage/configuration.rst:2586
 msgid ""
 "The key is a URL base string like ``\"https://www.sphinx-doc.org/\"``.  "
 "To specify headers for other hosts, ``\"*\"`` can be used.  It matches "
 "all hosts only when the URL does not match other settings."
 msgstr ""
 
-#: ../../usage/configuration.rst:2576
+#: ../../usage/configuration.rst:2590
 msgid "The value is a dictionary that maps header name to its value."
 msgstr ""
 
-#: ../../usage/configuration.rst:2596
+#: ../../usage/configuration.rst:2610
 msgid ""
 "The number of times the linkcheck builder will attempt to check a URL "
 "before declaring it broken. Defaults to 1 attempt."
 msgstr ""
 
-#: ../../usage/configuration.rst:2603
+#: ../../usage/configuration.rst:2617
 msgid ""
 "A timeout value, in seconds, for the linkcheck builder.  The default is "
 "to use Python's global socket timeout."
 msgstr ""
 
-#: ../../usage/configuration.rst:2610
+#: ../../usage/configuration.rst:2624
 msgid ""
 "The number of worker threads to use when checking links.  Default is 5 "
 "threads."
 msgstr ""
 
-#: ../../usage/configuration.rst:2617
+#: ../../usage/configuration.rst:2631
 msgid ""
 "If true, check the validity of ``#anchor``\\ s in links. Since this "
 "requires downloading the whole document, it's considerably slower when "
 "enabled. Default is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2625
+#: ../../usage/configuration.rst:2639
 msgid ""
 "A list of regular expressions that match anchors Sphinx should skip when "
 "checking the validity of anchors in links. This allows skipping anchors "
@@ -3505,7 +3518,7 @@ msgid ""
 "triggering an internal REST request. Default is ``[\"^!\"]``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2632
+#: ../../usage/configuration.rst:2646
 msgid ""
 "If you want to ignore anchors of a specific page or of pages that match a"
 " specific pattern (but still check occurrences of the same page(s) that "
@@ -3513,80 +3526,80 @@ msgid ""
 " as follows::"
 msgstr ""
 
-#: ../../usage/configuration.rst:2645
+#: ../../usage/configuration.rst:2659
 msgid "Pass authentication information when doing a ``linkcheck`` build."
 msgstr ""
 
-#: ../../usage/configuration.rst:2647
+#: ../../usage/configuration.rst:2661
 msgid "A list of ``(regex_pattern, auth_info)`` tuples where the items are:"
 msgstr ""
 
-#: ../../usage/configuration.rst:2649
+#: ../../usage/configuration.rst:2663
 msgid "*regex_pattern*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2650
+#: ../../usage/configuration.rst:2664
 msgid "A regular expression that matches a URI."
 msgstr ""
 
-#: ../../usage/configuration.rst:2654
+#: ../../usage/configuration.rst:2668
 msgid "*auth_info*"
 msgstr ""
 
-#: ../../usage/configuration.rst:2652
+#: ../../usage/configuration.rst:2666
 msgid ""
 "Authentication information to use for that URI. The value can be anything"
 " that is understood by the ``requests`` library (see :ref:`requests "
 "Authentication <requests:authentication>` for details)."
 msgstr ""
 
-#: ../../usage/configuration.rst:2656
+#: ../../usage/configuration.rst:2670
 msgid ""
 "The ``linkcheck`` builder will use the first matching ``auth_info`` value"
 " it can find in the :confval:`linkcheck_auth` list, so values earlier in "
 "the list have higher priority."
 msgstr ""
 
-#: ../../usage/configuration.rst:2671
+#: ../../usage/configuration.rst:2685
 msgid ""
 "The ``linkcheck`` builder may issue a large number of requests to the "
 "same site over a short period of time. This setting controls the builder "
 "behavior when servers indicate that requests are rate-limited."
 msgstr ""
 
-#: ../../usage/configuration.rst:2675
+#: ../../usage/configuration.rst:2689
 msgid ""
 "If a server indicates when to retry (using the `Retry-After`_ header), "
 "``linkcheck`` always follows the server indication."
 msgstr ""
 
-#: ../../usage/configuration.rst:2678
+#: ../../usage/configuration.rst:2692
 msgid ""
 "Otherwise, ``linkcheck`` waits for a minute before to retry and keeps "
 "doubling the wait time between attempts until it succeeds or exceeds the "
 "``linkcheck_rate_limit_timeout``. By default, the timeout is 5 minutes."
 msgstr ""
 
-#: ../../usage/configuration.rst:2688
+#: ../../usage/configuration.rst:2702
 msgid ""
 "A list of regular expressions that match documents in which Sphinx should"
 " not check the validity of links. This can be used for permitting link "
 "decay in legacy or historical sections of the documentation."
 msgstr ""
 
-#: ../../usage/configuration.rst:2701
+#: ../../usage/configuration.rst:2715
 msgid "Options for the XML builder"
 msgstr ""
 
-#: ../../usage/configuration.rst:2705
+#: ../../usage/configuration.rst:2719
 msgid "If true, pretty-print the XML.  Default is ``True``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2711
+#: ../../usage/configuration.rst:2725
 msgid "Footnotes"
 msgstr ""
 
-#: ../../usage/configuration.rst:2712
+#: ../../usage/configuration.rst:2726
 msgid ""
 "A note on available globbing syntax: you can use the standard shell "
 "constructs ``*``, ``?``, ``[...]`` and ``[!...]`` with the feature that "
@@ -3594,18 +3607,18 @@ msgid ""
 " any sequence of characters *including* slashes."
 msgstr ""
 
-#: ../../usage/configuration.rst:2721
+#: ../../usage/configuration.rst:2735
 msgid "Options for the C domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2725 ../../usage/configuration.rst:2781
+#: ../../usage/configuration.rst:2739 ../../usage/configuration.rst:2795
 msgid ""
 "A list of strings that the parser additionally should accept as "
 "attributes. This can for example be used when attributes have been "
 "``#define`` d for portability."
 msgstr ""
 
-#: ../../usage/configuration.rst:2733 ../../usage/configuration.rst:2789
+#: ../../usage/configuration.rst:2747 ../../usage/configuration.rst:2803
 msgid ""
 "A list of strings that the parser additionally should accept as "
 "attributes with one argument.  That is, if ``my_align_as`` is in the "
@@ -3615,54 +3628,54 @@ msgid ""
 "portability."
 msgstr ""
 
-#: ../../usage/configuration.rst:2743
+#: ../../usage/configuration.rst:2757
 msgid ""
 "A list of identifiers to be recognized as keywords by the C parser. It "
 "defaults to ``['alignas', 'alignof', 'bool', 'complex', 'imaginary', "
 "'noreturn', 'static_assert', 'thread_local']``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2751
+#: ../../usage/configuration.rst:2765
 msgid ""
 "A boolean (default ``False``) controlling whether to parse and try to "
 "convert pre-v3 style type directives and type roles."
 msgstr ""
 
-#: ../../usage/configuration.rst:2755 ../../usage/configuration.rst:2764
+#: ../../usage/configuration.rst:2769 ../../usage/configuration.rst:2778
 msgid "Use the directives and roles added in v3."
 msgstr ""
 
-#: ../../usage/configuration.rst:2760
+#: ../../usage/configuration.rst:2774
 msgid ""
 "A boolean (default ``True``) controlling whether to warn when a pre-v3 "
 "style type directive/role is parsed and converted."
 msgstr ""
 
-#: ../../usage/configuration.rst:2770
+#: ../../usage/configuration.rst:2784
 msgid "Options for the C++ domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2774
+#: ../../usage/configuration.rst:2788
 msgid ""
 "A list of prefixes that will be ignored when sorting C++ objects in the "
 "global index.  For example ``['awesome_lib::']``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2798
+#: ../../usage/configuration.rst:2812
 msgid "Options for the Python domain"
 msgstr ""
 
-#: ../../usage/configuration.rst:2802
+#: ../../usage/configuration.rst:2816
 msgid ""
 "If true, suppress the module name of the python reference if it can be "
 "resolved.  The default is ``False``."
 msgstr ""
 
-#: ../../usage/configuration.rst:2807
+#: ../../usage/configuration.rst:2821
 msgid "This configuration is still in experimental"
 msgstr ""
 
-#: ../../usage/configuration.rst:2810
+#: ../../usage/configuration.rst:2824
 msgid "Example of configuration file"
 msgstr ""
 

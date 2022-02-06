@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-10 09:16+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1217,85 +1217,87 @@ msgstr ""
 msgid ""
 "Emitted when a cross-reference to an object cannot be resolved even after"
 " :event:`missing-reference`.  If the event handler can emit warnings for "
-"the missing reference, it should return ``True``."
+"the missing reference, it should return ``True``. The configuration "
+"variables :confval:`nitpick_ignore` and :confval:`nitpick_ignore_regex` "
+"prevent the event from being emitted for the corresponding nodes."
 msgstr ""
 
-#: ../../extdev/appapi.rst:307
+#: ../../extdev/appapi.rst:309
 msgid ""
 "Emitted when a doctree has been \"resolved\" by the environment, that is,"
 " all references have been resolved and TOCs have been inserted.  The "
 "*doctree* can be modified in place."
 msgstr ""
 
-#: ../../extdev/appapi.rst:311
+#: ../../extdev/appapi.rst:313
 msgid ""
 "Here is the place to replace custom nodes that don't have visitor methods"
 " in the writers, so that they don't cause errors when the writers "
 "encounter them."
 msgstr ""
 
-#: ../../extdev/appapi.rst:316
+#: ../../extdev/appapi.rst:318
 msgid ""
 "This event is only emitted when parallel reading of documents is enabled."
 "  It is emitted once for every subprocess that has read some documents."
 msgstr ""
 
-#: ../../extdev/appapi.rst:319
+#: ../../extdev/appapi.rst:321
 msgid ""
 "You must handle this event in an extension that stores data in the "
 "environment in a custom location.  Otherwise the environment in the main "
 "process will not be aware of the information stored in the subprocess."
 msgstr ""
 
-#: ../../extdev/appapi.rst:323
+#: ../../extdev/appapi.rst:325
 msgid ""
 "*other* is the environment object from the subprocess, *env* is the "
 "environment from the main process.  *docnames* is a set of document names"
 " that have been read in the subprocess."
 msgstr ""
 
-#: ../../extdev/appapi.rst:331
+#: ../../extdev/appapi.rst:333
 msgid ""
 "Emitted when the :meth:`update` method of the build environment has "
 "completed, that is, the environment and all doctrees are now up-to-date."
 msgstr ""
 
-#: ../../extdev/appapi.rst:334
+#: ../../extdev/appapi.rst:336
 msgid ""
 "You can return an iterable of docnames from the handler.  These documents"
 " will then be considered updated, and will be (re-)written during the "
 "writing phase."
 msgstr ""
 
-#: ../../extdev/appapi.rst:340
+#: ../../extdev/appapi.rst:342
 msgid "The handlers' return value is now used."
 msgstr ""
 
-#: ../../extdev/appapi.rst:345
+#: ../../extdev/appapi.rst:347
 msgid ""
 "Emitted when Consistency checks phase.  You can check consistency of "
 "metadata for whole of documents."
 msgstr ""
 
-#: ../../extdev/appapi.rst:350
+#: ../../extdev/appapi.rst:352
 msgid "As a **experimental** event"
 msgstr ""
 
-#: ../../extdev/appapi.rst:354
+#: ../../extdev/appapi.rst:356
 msgid ""
 "Emitted when the HTML builder is starting to write non-document pages.  "
 "You can add pages to write by returning an iterable from this event "
 "consisting of ``(pagename, context, templatename)``."
 msgstr ""
 
-#: ../../extdev/appapi.rst:362
+#: ../../extdev/appapi.rst:364
 msgid ""
 "Emitted when the HTML builder has created a context dictionary to render "
 "a template with -- this can be used to add custom elements to the "
 "context."
 msgstr ""
 
-#: ../../extdev/appapi.rst:365
+#: ../../extdev/appapi.rst:367
 msgid ""
 "The *pagename* argument is the canonical name of the page being rendered,"
 " that is, without ``.html`` suffix and using slashes as path separators."
@@ -1303,44 +1305,44 @@ msgid ""
 "``'page.html'`` for all pages from reST documents."
 msgstr ""
 
-#: ../../extdev/appapi.rst:370
+#: ../../extdev/appapi.rst:372
 msgid ""
 "The *context* argument is a dictionary of values that are given to the "
 "template engine to render the page and can be modified to include custom "
 "values.  Keys must be strings."
 msgstr ""
 
-#: ../../extdev/appapi.rst:374
+#: ../../extdev/appapi.rst:376
 msgid ""
 "The *doctree* argument will be a doctree when the page is created from a "
 "reST documents; it will be ``None`` when the page is created from an HTML"
 " template alone."
 msgstr ""
 
-#: ../../extdev/appapi.rst:378
+#: ../../extdev/appapi.rst:380
 msgid ""
 "You can return a string from the handler, it will then replace "
 "``'page.html'`` as the HTML template for this page."
 msgstr ""
 
-#: ../../extdev/appapi.rst:381
+#: ../../extdev/appapi.rst:383
 msgid ""
 "You can install JS/CSS files for the specific page via "
 ":meth:`Sphinx.add_js_file` and :meth:`Sphinx.add_css_file` since v3.5.0."
 msgstr ""
 
-#: ../../extdev/appapi.rst:387
+#: ../../extdev/appapi.rst:389
 msgid "The return value can now specify a template name."
 msgstr ""
 
-#: ../../extdev/appapi.rst:392
+#: ../../extdev/appapi.rst:394
 msgid ""
 "Emitted when the linkcheck builder collects hyperlinks from document.  "
 "*uri* is a collected URI.  The event handlers can modify the URI by "
 "returning a string."
 msgstr ""
 
-#: ../../extdev/appapi.rst:400
+#: ../../extdev/appapi.rst:402
 msgid ""
 "Emitted when a build has finished, before Sphinx exits, usually used for "
 "cleanup.  This event is emitted even when the build process raised an "
@@ -1350,11 +1352,11 @@ msgid ""
 "to customize cleanup actions depending on the exception status."
 msgstr ""
 
-#: ../../extdev/appapi.rst:411
+#: ../../extdev/appapi.rst:413
 msgid "Checking the Sphinx version"
 msgstr ""
 
-#: ../../extdev/appapi.rst:415
+#: ../../extdev/appapi.rst:417
 msgid "Use this to adapt your extension to API changes in Sphinx."
 msgstr ""
 
@@ -1373,7 +1375,7 @@ msgstr ""
 msgid "Before version 1.2, check the string ``sphinx.__version__``."
 msgstr ""
 
-#: ../../extdev/appapi.rst:421
+#: ../../extdev/appapi.rst:423
 msgid "The Config object"
 msgstr ""
 
@@ -1395,7 +1397,7 @@ msgid ""
 "``app.config.language`` or ``env.config.language``."
 msgstr ""
 
-#: ../../extdev/appapi.rst:431
+#: ../../extdev/appapi.rst:433
 msgid "The template bridge"
 msgstr ""
 
@@ -1440,7 +1442,7 @@ msgid ""
 "specified context (a Python dictionary)."
 msgstr ""
 
-#: ../../extdev/appapi.rst:442
+#: ../../extdev/appapi.rst:444
 msgid "Exceptions"
 msgstr ""
 
@@ -1498,5 +1500,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Returns"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Emitted when a cross-reference to "
+#~ "an object cannot be resolved even "
+#~ "after :event:`missing-reference`.  If the "
+#~ "event handler can emit warnings for "
+#~ "the missing reference, it should return"
+#~ " ``True``."
 #~ msgstr ""
 

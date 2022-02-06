@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 12:52+0800\n"
+"POT-Creation-Date: 2022-02-06 12:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,8 +73,8 @@ msgid "Which will render like this:"
 msgstr "这将呈现出这样的效果："
 
 #: ../../tutorial/describing-code.rst:53
-msgid "HTML result of documenting a Python function in Sphinx"
-msgstr "在 Sphinx 中记录一个 Python 函数的 HTML 结果"
+msgid "在 Sphinx 中记录一个 Python 函数的 HTML 结果"
+msgstr ""
 
 #: ../../tutorial/describing-code.rst:53
 msgid "The rendered result of documenting a Python function in Sphinx"
@@ -148,11 +148,8 @@ msgid "And finally, this is how the result would look:"
 msgstr "最后，这就是结果的样子："
 
 #: ../../tutorial/describing-code.rst:124
-msgid ""
-"HTML result of documenting a Python function in Sphinx\n"
-"with cross-references"
+msgid "在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
 msgstr ""
-"在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
 
 #: ../../tutorial/describing-code.rst:124
 msgid ""
@@ -280,9 +277,8 @@ msgid ""
 " C, C++, JavaScript, and reStructuredText. Third-party extensions may "
 "define domains for more languages, such as"
 msgstr ""
-"Sphinx也支持记录和交叉引用用其他编程语言编写的对象。"
-"有四个额外的内置域：C, C++, JavaScript, 和 reStructuredText。"
-"第三方扩展可以为更多的语言定义域，比如说"
+"Sphinx也支持记录和交叉引用用其他编程语言编写的对象。有四个额外的内置域：C, C++, JavaScript, 和 "
+"reStructuredText。第三方扩展可以为更多的语言定义域，比如说"
 
 #: ../../tutorial/describing-code.rst:247
 msgid "`Fortran <https://sphinx-fortran.readthedocs.io>`_,"
@@ -300,8 +296,7 @@ msgstr ""
 msgid ""
 "For example, to document a C++ type definition, you would use the built-"
 "in :rst:dir:`cpp:type` directive, as follows:"
-msgstr ""
-"例如，要记录一个 C++ 类型定义，你可以使用内置的 :rst:dir:`cpp:type` 指令，如下所示："
+msgstr "例如，要记录一个 C++ 类型定义，你可以使用内置的 :rst:dir:`cpp:type` 指令，如下所示："
 
 #: ../../tutorial/describing-code.rst:260
 msgid "Which would give the following result:"
@@ -317,12 +312,20 @@ msgid ""
 " by using the corresponding role. For example, to reference the previous "
 "type definition, you can use the :rst:role:`cpp:type` role as follows:"
 msgstr ""
-"所有这样的指令就会产生引用，可以通过使用相应的角色进行交叉引用。"
-"例如，要引用前面的类型定义，你可以使用 :rst:role:`cpp:type` 角色，如下所示："
+"所有这样的指令就会产生引用，可以通过使用相应的角色进行交叉引用。例如，要引用前面的类型定义，你可以使用 :rst:role:`cpp:type` "
+"角色，如下所示："
 
 #: ../../tutorial/describing-code.rst:275
 msgid ""
 "Which would produce a hyperlink to the previous definition: "
 ":cpp:type:`CustomList`."
-msgstr ""
-"这将产生一个指向先前定义的超链接： :cpp:type:`CustomList`。"
+msgstr "这将产生一个指向先前定义的超链接： :cpp:type:`CustomList`。"
+
+#~ msgid "HTML result of documenting a Python function in Sphinx"
+#~ msgstr "在 Sphinx 中记录一个 Python 函数的 HTML 结果"
+
+#~ msgid ""
+#~ "HTML result of documenting a Python function in Sphinx\n"
+#~ "with cross-references"
+#~ msgstr "在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
+
