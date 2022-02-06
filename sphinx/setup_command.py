@@ -7,7 +7,7 @@
 
     :author: Sebastian Wiesner
     :contact: basti.wiesner@gmx.net
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -112,7 +112,7 @@ class BuildDoc(Command):
         for guess in ('doc', 'docs'):
             if not os.path.isdir(guess):
                 continue
-            for root, dirnames, filenames in os.walk(guess):
+            for root, _dirnames, filenames in os.walk(guess):
                 if 'conf.py' in filenames:
                     return root
         return os.curdir

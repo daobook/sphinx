@@ -21,7 +21,7 @@
 
     Both, the url string and the caption string must escape ``%`` as ``%%``.
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -38,7 +38,7 @@ from sphinx.application import Sphinx
 from sphinx.deprecation import RemovedInSphinx60Warning
 from sphinx.locale import __
 from sphinx.transforms.post_transforms import SphinxPostTransform
-from sphinx.util import logging
+from sphinx.util import logging, rst
 from sphinx.util.nodes import split_explicit_title
 from sphinx.util.typing import RoleFunction
 
@@ -55,7 +55,7 @@ class ExternalLinksChecker(SphinxPostTransform):
     default_priority = 500
 
     def run(self, **kwargs: Any) -> None:
-        for refnode in self.document.traverse(nodes.reference):
+        for refnode in self.document.findall(nodes.reference):
             self.check_uri(refnode)
 
     def check_uri(self, refnode: nodes.reference) -> None:
@@ -67,15 +67,20 @@ class ExternalLinksChecker(SphinxPostTransform):
             return
 
         uri = refnode['refuri']
+        title = refnode.astext()
 
-        for alias, (base_uri, caption) in self.app.config.extlinks.items():
+        for alias, (base_uri, _caption) in self.app.config.extlinks.items():
             uri_pattern = re.compile(base_uri.replace('%s', '(?P<value>.+)'))
             match = uri_pattern.match(uri)
             if match and match.groupdict().get('value'):
                 # build a replacement suggestion
                 msg = __('hardcoded link %r could be replaced by an extlink '
                          '(try using %r instead)')
-                replacement = f":{alias}:`{match.groupdict().get('value')}`"
+                value = match.groupdict().get('value')
+                if uri != title:
+                    replacement = f":{alias}:`{rst.escape(title)} <{value}>`"
+                else:
+                    replacement = f":{alias}:`{value}`"
                 logger.warning(msg, uri, replacement, location=refnode)
 
 

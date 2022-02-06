@@ -662,6 +662,18 @@ There are also config values that you can set:
    .. __: https://mypy.readthedocs.io/en/latest/kinds_of_types.html#type-aliases
    .. versionadded:: 3.3
 
+.. confval:: autodoc_typehints_format
+
+   This value controls the format of typehints.  The setting takes the
+   following values:
+
+   * ``'fully-qualified'`` -- Show the module name and its name of typehints
+     (default)
+   * ``'short'`` -- Suppress the leading module names of the typehints
+     (ex. ``io.StringIO`` -> ``StringIO``)
+
+   .. versionadded:: 4.4
+
 .. confval:: autodoc_preserve_defaults
 
    If True, the default argument values of functions will be not evaluated on

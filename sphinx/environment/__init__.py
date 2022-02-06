@@ -4,7 +4,7 @@
 
     Global creation environment.
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -535,7 +535,7 @@ class BuildEnvironment:
         self.apply_post_transforms(doctree, docname)
 
         # now, resolve all toctree nodes
-        for toctreenode in doctree.traverse(addnodes.toctree):
+        for toctreenode in doctree.findall(addnodes.toctree):
             result = TocTree(self).resolve(docname, builder, toctreenode,
                                            prune=prune_toctrees,
                                            includehidden=includehidden)
@@ -621,7 +621,7 @@ class BuildEnvironment:
 
     def check_consistency(self) -> None:
         """Do consistency checks."""
-        included = set().union(*self.included.values())  # type: ignore
+        included = set().union(*self.included.values())
         for docname in sorted(self.all_docs):
             if docname not in self.files_to_rebuild:
                 if docname == self.config.root_doc:

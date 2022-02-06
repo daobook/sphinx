@@ -4,17 +4,16 @@
 
     docutils writers handling Sphinx' custom nodes.
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
-import copy
 import os
 import posixpath
 import re
 import urllib.parse
 import warnings
-from typing import TYPE_CHECKING, Iterable, Tuple, cast
+from typing import TYPE_CHECKING, Iterable, Optional, Tuple, cast
 
 from docutils import nodes
 from docutils.nodes import Element, Node, Text
@@ -54,11 +53,8 @@ def multiply_length(length: str, scale: int) -> str:
 
 class HTMLWriter(Writer):
 
-    # override embed-stylesheet default value to 0.
-    settings_spec = copy.deepcopy(Writer.settings_spec)
-    for _setting in settings_spec[2]:
-        if '--embed-stylesheet' in _setting[1]:
-            _setting[2]['default'] = 0
+    # override embed-stylesheet default value to False.
+    settings_default_overrides = {"embed_stylesheet": False}
 
     def __init__(self, builder: "StandaloneHTMLBuilder") -> None:
         super().__init__()
@@ -284,6 +280,9 @@ class HTMLTranslator(SphinxTranslator, BaseTranslator):
         if name:
             node.insert(0, nodes.title(name, admonitionlabels[name]))
         self.set_first_last(node)
+
+    def depart_admonition(self, node: Optional[Element] = None) -> None:
+        self.body.append('</div>\n')
 
     def visit_seealso(self, node: Element) -> None:
         self.visit_admonition(node, 'seealso')
@@ -875,9 +874,6 @@ class HTMLTranslator(SphinxTranslator, BaseTranslator):
         _, depart = self.builder.app.registry.html_block_math_renderers[name]
         if depart:
             depart(self, node)
-
-    def unknown_visit(self, node: Node) -> None:
-        raise NotImplementedError('Unknown node: ' + node.__class__.__name__)
 
     @property
     def permalink_text(self) -> str:

@@ -4,7 +4,7 @@
 
     The CheckExternalLinksBuilder class.
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -43,18 +43,31 @@ logger = logging.getLogger(__name__)
 
 uri_re = re.compile('([a-z]+:)?//')  # matches to foo:// and // (a protocol relative URL)
 
-Hyperlink = NamedTuple('Hyperlink', (('uri', str),
-                                     ('docname', str),
-                                     ('lineno', Optional[int])))
-CheckRequest = NamedTuple('CheckRequest', (('next_check', float),
-                                           ('hyperlink', Optional[Hyperlink])))
-CheckResult = NamedTuple('CheckResult', (('uri', str),
-                                         ('docname', str),
-                                         ('lineno', int),
-                                         ('status', str),
-                                         ('message', str),
-                                         ('code', int)))
-RateLimit = NamedTuple('RateLimit', (('delay', float), ('next_check', float)))
+
+class Hyperlink(NamedTuple):
+    uri: str
+    docname: str
+    lineno: Optional[int]
+
+
+class CheckRequest(NamedTuple):
+    next_check: float
+    hyperlink: Optional[Hyperlink]
+
+
+class CheckResult(NamedTuple):
+    uri: str
+    docname: str
+    lineno: int
+    status: str
+    message: str
+    code: int
+
+
+class RateLimit(NamedTuple):
+    delay: float
+    next_check: float
+
 
 # Tuple is old styled CheckRequest
 CheckRequestType = Union[CheckRequest, Tuple[float, str, str, int]]
@@ -326,7 +339,7 @@ class HyperlinkAvailabilityChecker:
             self.wqueue = PriorityQueue()
 
     def invoke_threads(self) -> None:
-        for i in range(self.config.linkcheck_workers):
+        for _i in range(self.config.linkcheck_workers):
             thread = HyperlinkAvailabilityCheckWorker(self.env, self.config,
                                                       self.rqueue, self.wqueue,
                                                       self.rate_limits, self.builder)
@@ -335,7 +348,7 @@ class HyperlinkAvailabilityChecker:
 
     def shutdown_threads(self) -> None:
         self.wqueue.join()
-        for worker in self.workers:
+        for _worker in self.workers:
             self.wqueue.put(CheckRequest(CHECK_IMMEDIATELY, None), False)
 
     def check(self, hyperlinks: Dict[str, Hyperlink]) -> Generator[CheckResult, None, None]:
@@ -650,7 +663,7 @@ class HyperlinkCollector(SphinxPostTransform):
         hyperlinks = builder.hyperlinks
 
         # reference nodes
-        for refnode in self.document.traverse(nodes.reference):
+        for refnode in self.document.findall(nodes.reference):
             if 'refuri' not in refnode:
                 continue
             uri = refnode['refuri']
@@ -664,7 +677,7 @@ class HyperlinkCollector(SphinxPostTransform):
                 hyperlinks[uri] = uri_info
 
         # image nodes
-        for imgnode in self.document.traverse(nodes.image):
+        for imgnode in self.document.findall(nodes.image):
             uri = imgnode['candidates'].get('?')
             if uri and '://' in uri:
                 newuri = self.app.emit_firstresult('linkcheck-process-uri', uri)

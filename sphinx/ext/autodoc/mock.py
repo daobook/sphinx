@@ -4,7 +4,7 @@
 
     mock for autodoc
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -152,6 +152,11 @@ def mock(modnames: List[str]) -> Generator[None, None, None]:
     finally:
         sys.meta_path.remove(finder)
         finder.invalidate_caches()
+
+
+def ismockmodule(subject: Any) -> bool:
+    """Check if the object is a mocked module."""
+    return isinstance(subject, _MockModule)
 
 
 def ismock(subject: Any) -> bool:

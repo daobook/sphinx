@@ -1351,6 +1351,13 @@ that use Sphinx's HTMLWriter class.
 
    .. versionadded:: 1.0
 
+.. confval:: html_show_search_summary
+
+   If true, the text around the keyword is shown as summary of each search result.
+   Default is ``True``.
+
+   .. versionadded:: 4.5
+
 .. confval:: html_show_sphinx
 
    If true, "Created using Sphinx" is shown in the HTML footer.  Default is
@@ -2499,6 +2506,13 @@ These options influence Texinfo output.
 
    .. versionadded:: 1.1
 
+.. confval:: texinfo_cross_references
+
+  If false, do not generate inline references in a document.  That makes
+  an info file more readable with stand-alone reader (``info``).
+  Default is ``True``.
+
+  .. versionadded:: 4.4
 
 .. _qthelp-options:
 

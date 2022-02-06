@@ -4,7 +4,7 @@
 
     Several HTML builders.
 
-    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :copyright: Copyright 2007-2022 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
@@ -486,7 +486,7 @@ class StandaloneHTMLBuilder(Builder):
         rellinks: List[Tuple[str, str, str, str]] = []
         if self.use_index:
             rellinks.append(('genindex', _('General Index'), 'I', _('index')))
-        for indexname, indexcls, content, collapse in self.domain_indices:
+        for indexname, indexcls, _content, _collapse in self.domain_indices:
             # if it has a short name
             if indexcls.shortname:
                 rellinks.append((indexname, indexcls.localname,
@@ -509,6 +509,7 @@ class StandaloneHTMLBuilder(Builder):
             'docstitle': self.config.html_title,
             'shorttitle': self.config.html_short_title,
             'show_copyright': self.config.html_show_copyright,
+            'show_search_summary': self.config.html_show_search_summary,
             'show_sphinx': self.config.html_show_sphinx,
             'has_source': self.config.html_copy_source,
             'show_source': self.config.html_show_sourcelink,
@@ -866,7 +867,7 @@ class StandaloneHTMLBuilder(Builder):
         Builder.post_process_images(self, doctree)
 
         if self.config.html_scaled_image_link and self.html_scaled_image_link:
-            for node in doctree.traverse(nodes.image):
+            for node in doctree.findall(nodes.image):
                 if not any((key in node) for key in ['scale', 'width', 'height']):
                     # resizing options are not given. scaled image link is available
                     # only for resized images.
@@ -1340,6 +1341,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value('html_file_suffix', None, 'html', [str])
     app.add_config_value('html_link_suffix', None, 'html', [str])
     app.add_config_value('html_show_copyright', True, 'html')
+    app.add_config_value('html_show_search_summary', True, 'html')
     app.add_config_value('html_show_sphinx', True, 'html')
     app.add_config_value('html_context', {}, 'html')
     app.add_config_value('html_output_encoding', 'utf-8', 'html')
