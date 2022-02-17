@@ -136,11 +136,7 @@ class TodoListProcessor:
                 node.parent.remove(node)
                 continue
 
-            if node.get('ids'):
-                content: List[Element] = [nodes.target()]
-            else:
-                content = []
-
+            content = [nodes.target()] if node.get('ids') else []
             for todo in todos:
                 # Create a copy of the todo node
                 new_todo = todo.deepcopy()

@@ -246,10 +246,7 @@ class StandaloneHTMLBuilder(Builder):
                       path.join(sys.prefix, 'share/sphinx/locale',
                                 self.config.language, 'sphinx.js')]
 
-        for jsfile in candidates:
-            if path.isfile(jsfile):
-                return jsfile
-        return None
+        return next((jsfile for jsfile in candidates if path.isfile(jsfile)), None)
 
     def _get_style_filename(self) -> str:
         if self.config.html_style is not None:
@@ -348,19 +345,18 @@ class StandaloneHTMLBuilder(Builder):
         if name is not None:
             # use given name
             return name
+        # not given: choose a math_renderer from registered ones as possible
+        renderers = list(self.app.registry.html_inline_math_renderers)
+        if len(renderers) == 1:
+            # only default math_renderer (mathjax) is registered
+            return renderers[0]
+        elif len(renderers) == 2:
+            # default and another math_renderer are registered; prior the another
+            renderers.remove('mathjax')
+            return renderers[0]
         else:
-            # not given: choose a math_renderer from registered ones as possible
-            renderers = list(self.app.registry.html_inline_math_renderers)
-            if len(renderers) == 1:
-                # only default math_renderer (mathjax) is registered
-                return renderers[0]
-            elif len(renderers) == 2:
-                # default and another math_renderer are registered; prior the another
-                renderers.remove('mathjax')
-                return renderers[0]
-            else:
-                # many math_renderers are registered. can't choose automatically!
-                return None
+            # many math_renderers are registered. can't choose automatically!
+            return None
 
     def get_outdated_docs(self) -> Iterator[str]:
         try:
@@ -447,16 +443,16 @@ class StandaloneHTMLBuilder(Builder):
 
         # determine the additional indices to include
         self.domain_indices = []
-        # html_domain_indices can be False/True or a list of index names
-        indices_config = self.config.html_domain_indices
-        if indices_config:
+        if indices_config := self.config.html_domain_indices:
             for domain_name in sorted(self.env.domains):
                 domain: Domain = self.env.domains[domain_name]
                 for indexcls in domain.indices:
                     indexname = '%s-%s' % (domain.name, indexcls.name)
-                    if isinstance(indices_config, list):
-                        if indexname not in indices_config:
-                            continue
+                    if (
+                        isinstance(indices_config, list)
+                        and indexname not in indices_config
+                    ):
+                        continue
                     content, collapse = indexcls(domain).generate()
                     if content:
                         self.domain_indices.append(
@@ -486,11 +482,11 @@ class StandaloneHTMLBuilder(Builder):
         rellinks: List[Tuple[str, str, str, str]] = []
         if self.use_index:
             rellinks.append(('genindex', _('General Index'), 'I', _('index')))
-        for indexname, indexcls, content, collapse in self.domain_indices:
-            # if it has a short name
-            if indexcls.shortname:
-                rellinks.append((indexname, indexcls.localname,
-                                 '', indexcls.shortname))
+        rellinks.extend(
+            (indexname, indexcls.localname, '', indexcls.shortname)
+            for indexname, indexcls, content, collapse in self.domain_indices
+            if indexcls.shortname
+        )
 
         # back up script_files and css_files to allow adding JS/CSS files to a specific page.
         self._script_files = list(self.script_files)
@@ -529,9 +525,8 @@ class StandaloneHTMLBuilder(Builder):
             'html5_doctype': html5_ready and not self.config.html4_writer,
         }
         if self.theme:
-            self.globalcontext.update(
-                ('theme_' + key, val) for (key, val) in
-                self.theme.get_options(self.theme_options).items())
+            self.globalcontext.update((f'theme_{key}', val) for (key, val) in
+                        self.theme.get_options(self.theme_options).items())
         self.globalcontext.update(self.config.html_context)
 
     def get_doc_context(self, docname: str, body: str, metatags: str) -> Dict[str, Any]:
@@ -670,7 +665,7 @@ class StandaloneHTMLBuilder(Builder):
     def gen_additional_pages(self) -> None:
         # additional pages from conf.py
         for pagename, template in self.config.html_additional_pages.items():
-            logger.info(pagename + ' ', nonl=True)
+            logger.info(f'{pagename} ', nonl=True)
             self.handle_page(pagename, {}, template)
 
         # the search page
@@ -688,10 +683,10 @@ class StandaloneHTMLBuilder(Builder):
         # the total count of lines for each index letter, used to distribute
         # the entries into two columns
         genindex = IndexEntries(self.env).create_index(self)
-        indexcounts = []
-        for _k, entries in genindex:
-            indexcounts.append(sum(1 + len(subitems)
-                                   for _, (_, subitems, _) in entries))
+        indexcounts = [
+            sum(1 + len(subitems) for _, (_, subitems, _) in entries)
+            for _k, entries in genindex
+        ]
 
         genindexcontext = {
             'genindexentries': genindex,
@@ -708,8 +703,7 @@ class StandaloneHTMLBuilder(Builder):
             for (key, entries), count in zip(genindex, indexcounts):
                 ctx = {'key': key, 'entries': entries, 'count': count,
                        'genindexentries': genindex}
-                self.handle_page('genindex-' + key, ctx,
-                                 'genindex-single.html')
+                self.handle_page(f'genindex-{key}', ctx, 'genindex-single.html')
         else:
             self.handle_page('genindex', genindexcontext, 'genindex.html')
 
@@ -720,7 +714,7 @@ class StandaloneHTMLBuilder(Builder):
                 'content': content,
                 'collapse_index': collapse,
             }
-            logger.info(indexname + ' ', nonl=True)
+            logger.info(f'{indexname} ', nonl=True)
             self.handle_page(indexname, indexcontext, 'domainindex.html')
 
     def copy_image_files(self) -> None:
@@ -768,8 +762,7 @@ class StandaloneHTMLBuilder(Builder):
     def copy_translation_js(self) -> None:
         """Copy a JavaScript file for translations."""
         if self.config.language is not None:
-            jsfile = self._get_translations_js()
-            if jsfile:
+            if jsfile := self._get_translations_js():
                 copyfile(jsfile, path.join(self.outdir, '_static', 'translations.js'))
 
     def copy_stemmer_js(self) -> None:
@@ -778,10 +771,8 @@ class StandaloneHTMLBuilder(Builder):
             if hasattr(self.indexer, 'get_js_stemmer_rawcodes'):
                 for jsfile in self.indexer.get_js_stemmer_rawcodes():
                     copyfile(jsfile, path.join(self.outdir, '_static', path.basename(jsfile)))
-            else:
-                jsfile = self.indexer.get_js_stemmer_rawcode()
-                if jsfile:
-                    copyfile(jsfile, path.join(self.outdir, '_static', '_stemmer.js'))
+            elif jsfile := self.indexer.get_js_stemmer_rawcode():
+                copyfile(jsfile, path.join(self.outdir, '_static', '_stemmer.js'))
 
     def copy_theme_static_files(self, context: Dict) -> None:
         def onerror(filename: str, error: Exception) -> None:
@@ -867,7 +858,7 @@ class StandaloneHTMLBuilder(Builder):
 
         if self.config.html_scaled_image_link and self.html_scaled_image_link:
             for node in doctree.traverse(nodes.image):
-                if not any((key in node) for key in ['scale', 'width', 'height']):
+                if all(key not in node for key in ['scale', 'width', 'height']):
                     # resizing options are not given. scaled image link is available
                     # only for resized images.
                     continue
@@ -1099,12 +1090,12 @@ class StandaloneHTMLBuilder(Builder):
             # first write to a temporary file, so that if dumping fails,
             # the existing index won't be overwritten
             if self.indexer_dumps_unicode:
-                with open(searchindexfn + '.tmp', 'w', encoding='utf-8') as ft:
+                with open(f'{searchindexfn}.tmp', 'w', encoding='utf-8') as ft:
                     self.indexer.dump(ft, self.indexer_format)
             else:
-                with open(searchindexfn + '.tmp', 'wb') as fb:
+                with open(f'{searchindexfn}.tmp', 'wb') as fb:
                     self.indexer.dump(fb, self.indexer_format)
-            os.replace(searchindexfn + '.tmp', searchindexfn)
+            os.replace(f'{searchindexfn}.tmp', searchindexfn)
 
 
 def convert_html_css_files(app: Sphinx, config: Config) -> None:
@@ -1204,14 +1195,14 @@ def setup_resource_paths(app: Sphinx, pagename: str, templatename: str,
     # favicon_url
     favicon = context.get('favicon')
     if favicon and not isurl(favicon):
-        context['favicon_url'] = pathto('_static/' + favicon, resource=True)
+        context['favicon_url'] = pathto(f'_static/{favicon}', resource=True)
     else:
         context['favicon_url'] = favicon
 
     # logo_url
     logo = context.get('logo')
     if logo and not isurl(logo):
-        context['logo_url'] = pathto('_static/' + logo, resource=True)
+        context['logo_url'] = pathto(f'_static/{logo}', resource=True)
     else:
         context['logo_url'] = logo
 

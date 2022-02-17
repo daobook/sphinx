@@ -59,11 +59,7 @@ class BuiltInTheme(Theme):
         else:
             self.docclass = config.latex_docclass.get('manual', 'report')
 
-        if name in ('manual', 'howto'):
-            self.wrapperclass = 'sphinx' + name
-        else:
-            self.wrapperclass = name
-
+        self.wrapperclass = f'sphinx{name}' if name in {'manual', 'howto'} else name
         # we assume LaTeX class provides \chapter command except in case
         # of non-Japanese 'howto' case
         if name == 'howto' and not self.docclass.startswith('j'):

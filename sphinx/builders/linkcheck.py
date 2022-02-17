@@ -258,8 +258,14 @@ class CheckExternalLinksBuilder(DummyBuilder):
                                location=(result.docname, result.lineno))
             else:
                 logger.info(red('broken    ') + result.uri + red(' - ' + result.message))
-            self.write_entry('broken', result.docname, filename, result.lineno,
-                             result.uri + ': ' + result.message)
+            self.write_entry(
+                'broken',
+                result.docname,
+                filename,
+                result.lineno,
+                f'{result.uri}: {result.message}',
+            )
+
         elif result.status == 'redirected':
             try:
                 text, color = {
@@ -273,13 +279,28 @@ class CheckExternalLinksBuilder(DummyBuilder):
                 text, color = ('with unknown code', purple)
             linkstat['text'] = text
             if self.config.linkcheck_allowed_redirects:
-                logger.warning('redirect  ' + result.uri + ' - ' + text + ' to ' +
-                               result.message, location=(result.docname, result.lineno))
+                logger.warning(
+                    (f'redirect  {result.uri} - {text} to ' + result.message),
+                    location=(result.docname, result.lineno),
+                )
+
             else:
-                logger.info(color('redirect  ') + result.uri +
-                            color(' - ' + text + ' to ' + result.message))
-            self.write_entry('redirected ' + text, result.docname, filename,
-                             result.lineno, result.uri + ' to ' + result.message)
+                logger.info(
+                    (
+                        color('redirect  ')
+                        + result.uri
+                        + color(f' - {text} to {result.message}')
+                    )
+                )
+
+            self.write_entry(
+                f'redirected {text}',
+                result.docname,
+                filename,
+                result.lineno,
+                f'{result.uri} to {result.message}',
+            )
+
         else:
             raise ValueError("Unknown status %s." % result.status)
 
@@ -326,7 +347,7 @@ class HyperlinkAvailabilityChecker:
             self.wqueue = PriorityQueue()
 
     def invoke_threads(self) -> None:
-        for i in range(self.config.linkcheck_workers):
+        for _ in range(self.config.linkcheck_workers):
             thread = HyperlinkAvailabilityCheckWorker(self.env, self.config,
                                                       self.rqueue, self.wqueue,
                                                       self.rate_limits, self.builder)
@@ -350,11 +371,8 @@ class HyperlinkAvailabilityChecker:
                 self.wqueue.put(CheckRequest(CHECK_IMMEDIATELY, hyperlink), False)
                 total_links += 1
 
-        done = 0
-        while done < total_links:
+        for _ in range(total_links):
             yield self.rqueue.get()
-            done += 1
-
         self.shutdown_threads()
 
     def is_ignored_uri(self, uri: str) -> bool:
@@ -498,26 +516,24 @@ class HyperlinkAvailabilityCheckWorker(Thread):
                     pass
             if response.url.rstrip('/') == req_url.rstrip('/'):
                 return 'working', '', 0
-            else:
-                new_url = response.url
-                if anchor:
-                    new_url += '#' + anchor
+            new_url = response.url
+            if anchor:
+                new_url += f'#{anchor}'
 
-                if allowed_redirect(req_url, new_url):
-                    return 'working', '', 0
-                elif response.history:
-                    # history contains any redirects, get last
-                    code = response.history[-1].status_code
-                    return 'redirected', new_url, code
-                else:
-                    return 'redirected', new_url, 0
+            if allowed_redirect(req_url, new_url):
+                return 'working', '', 0
+            elif response.history:
+                # history contains any redirects, get last
+                code = response.history[-1].status_code
+                return 'redirected', new_url, code
+            else:
+                return 'redirected', new_url, 0
 
         def allowed_redirect(url: str, new_url: str) -> bool:
-            for from_url, to_url in self.config.linkcheck_allowed_redirects.items():
-                if from_url.match(url) and to_url.match(new_url):
-                    return True
-
-            return False
+            return any(
+                from_url.match(url) and to_url.match(new_url)
+                for from_url, to_url in self.config.linkcheck_allowed_redirects.items()
+            )
 
         def check(docname: str) -> Tuple[str, str, int]:
             # check for various conditions without bothering the network
@@ -536,13 +552,11 @@ class HyperlinkAvailabilityCheckWorker(Thread):
                 if uri_re.match(uri):
                     # non supported URI schemes (ex. ftp)
                     return 'unchecked', '', 0
-                else:
-                    srcdir = path.dirname(self.env.doc2path(docname))
-                    if path.exists(path.join(srcdir, uri)):
-                        return 'working', '', 0
-                    else:
-                        self._broken[uri] = ''
-                        return 'broken', '', 0
+                srcdir = path.dirname(self.env.doc2path(docname))
+                if path.exists(path.join(srcdir, uri)):
+                    return 'working', '', 0
+                self._broken[uri] = ''
+                return 'broken', '', 0
             elif uri in self._good:
                 return 'working', 'old', 0
             elif uri in self._broken:
@@ -604,8 +618,7 @@ class HyperlinkAvailabilityCheckWorker(Thread):
 
     def limit_rate(self, response: Response) -> Optional[float]:
         next_check = None
-        retry_after = response.headers.get("Retry-After")
-        if retry_after:
+        if retry_after := response.headers.get("Retry-After"):
             try:
                 # Integer: time to wait before next attempt.
                 delay = float(retry_after)
@@ -654,8 +667,7 @@ class HyperlinkCollector(SphinxPostTransform):
             if 'refuri' not in refnode:
                 continue
             uri = refnode['refuri']
-            newuri = self.app.emit_firstresult('linkcheck-process-uri', uri)
-            if newuri:
+            if newuri := self.app.emit_firstresult('linkcheck-process-uri', uri):
                 uri = newuri
 
             lineno = get_node_line(refnode)
@@ -667,8 +679,9 @@ class HyperlinkCollector(SphinxPostTransform):
         for imgnode in self.document.traverse(nodes.image):
             uri = imgnode['candidates'].get('?')
             if uri and '://' in uri:
-                newuri = self.app.emit_firstresult('linkcheck-process-uri', uri)
-                if newuri:
+                if newuri := self.app.emit_firstresult(
+                    'linkcheck-process-uri', uri
+                ):
                     uri = newuri
 
                 lineno = get_node_line(imgnode)

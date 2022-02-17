@@ -98,12 +98,7 @@ def try_import(objname: str) -> Any:
 
 def import_classes(name: str, currmodule: str) -> Any:
     """Import a class using its fully-qualified *name*."""
-    target = None
-
-    # import class or module using currmodule
-    if currmodule:
-        target = try_import(currmodule + '.' + name)
-
+    target = try_import(f'{currmodule}.{name}') if currmodule else None
     # import class or module without currmodule
     if target is None:
         target = try_import(name)
@@ -117,12 +112,12 @@ def import_classes(name: str, currmodule: str) -> Any:
         # If imported object is a class, just return it
         return [target]
     elif inspect.ismodule(target):
-        # If imported object is a module, return classes defined on it
-        classes = []
-        for cls in target.__dict__.values():
-            if inspect.isclass(cls) and cls.__module__ == target.__name__:
-                classes.append(cls)
-        return classes
+        return [
+            cls
+            for cls in target.__dict__.values()
+            if inspect.isclass(cls) and cls.__module__ == target.__name__
+        ]
+
     raise InheritanceException('%r specified for inheritance diagram is '
                                'not a class or module' % name)
 
@@ -193,8 +188,7 @@ class InheritanceGraph:
             tooltip = None
             try:
                 if cls.__doc__:
-                    doc = cls.__doc__.strip().split("\n")[0]
-                    if doc:
+                    if doc := cls.__doc__.strip().split("\n")[0]:
                         tooltip = '"%s"' % doc.replace('"', '\\"')
             except Exception:  # might raise AttributeError for strange classes
                 pass
@@ -293,10 +287,7 @@ class InheritanceGraph:
             n_attrs.update(env.config.inheritance_node_attrs)
             e_attrs.update(env.config.inheritance_edge_attrs)
 
-        res: List[str] = []
-        res.append('digraph %s {\n' % name)
-        res.append(self._format_graph_attrs(g_attrs))
-
+        res: List[str] = ['digraph %s {\n' % name, self._format_graph_attrs(g_attrs)]
         for name, fullname, bases, tooltip in sorted(self.class_info):
             # Write the node
             this_node_attrs = n_attrs.copy()
@@ -309,10 +300,9 @@ class InheritanceGraph:
                        (name, self._format_node_attrs(this_node_attrs)))
 
             # Write the edges
-            for base_name in bases:
-                res.append('  "%s" -> "%s" [%s];\n' %
+            res.extend('  "%s" -> "%s" [%s];\n' %
                            (base_name, name,
-                            self._format_node_attrs(e_attrs)))
+                            self._format_node_attrs(e_attrs)) for base_name in bases)
         res.append('}\n')
         return ''.join(res)
 
@@ -349,8 +339,7 @@ class InheritanceDiagram(SphinxDirective):
         node['content'] = ', '.join(class_names)
         node['top-classes'] = []
         for cls in self.options.get('top-classes', '').split(','):
-            cls = cls.strip()
-            if cls:
+            if cls := cls.strip():
                 node['top-classes'].append(cls)
 
         # Create a graph starting with the list of classes

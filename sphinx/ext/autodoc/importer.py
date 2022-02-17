@@ -8,6 +8,7 @@
     :license: BSD, see LICENSE for details.
 """
 
+
 import importlib
 import traceback
 import warnings
@@ -19,12 +20,6 @@ from sphinx.pycode import ModuleAnalyzer, PycodeError
 from sphinx.util import logging
 from sphinx.util.inspect import (getannotations, getmro, getslots, isclass, isenumclass,
                                  safe_getattr)
-
-if False:
-    # For type annotation
-    from typing import Type  # NOQA
-
-    from sphinx.ext.autodoc import ObjectMember
 
 logger = logging.getLogger(__name__)
 
@@ -47,12 +42,11 @@ def unmangle(subject: Any, name: str) -> Optional[str]:
             prefix = "_%s__" % subject.__name__
             if name.startswith(prefix):
                 return name.replace(prefix, "__", 1)
-            else:
-                for cls in subject.__mro__:
-                    prefix = "_%s__" % cls.__name__
-                    if name.startswith(prefix):
-                        # mangled attribute defined in parent class
-                        return None
+            for cls in subject.__mro__:
+                prefix = "_%s__" % cls.__name__
+                if name.startswith(prefix):
+                    # mangled attribute defined in parent class
+                    return None
     except AttributeError:
         pass
 
@@ -93,13 +87,12 @@ def import_object(modname: str, objpath: List[str], objtype: str = '',
             except ImportError as exc:
                 logger.debug('[autodoc] import %s => failed', modname)
                 exc_on_importing = exc
-                if '.' in modname:
-                    # retry with parent module
-                    modname, name = modname.rsplit('.', 1)
-                    objpath.insert(0, name)
-                else:
+                if '.' not in modname:
                     raise
 
+                # retry with parent module
+                modname, name = modname.rsplit('.', 1)
+                objpath.insert(0, name)
         obj = module
         parent = None
         object_name = None
@@ -200,8 +193,7 @@ def get_object_members(subject: Any, objpath: List[str], attrgetter: Callable,
 
     # members in __slots__
     try:
-        __slots__ = getslots(subject)
-        if __slots__:
+        if __slots__ := getslots(subject):
             from sphinx.ext.autodoc import SLOTSATTR
 
             for name in __slots__:
@@ -261,8 +253,7 @@ def get_class_members(subject: Any, objpath: List[str], attrgetter: Callable
 
     # members in __slots__
     try:
-        __slots__ = getslots(subject)
-        if __slots__:
+        if __slots__ := getslots(subject):
             from sphinx.ext.autodoc import SLOTSATTR
 
             for name, docstring in __slots__.items():

@@ -343,9 +343,9 @@ class SphinxComponentRegistry:
             handlers = self.translation_handlers.get(builder.format, {})
 
         for name, (visit, depart) in handlers.items():
-            setattr(translator, 'visit_' + name, MethodType(visit, translator))
+            setattr(translator, f'visit_{name}', MethodType(visit, translator))
             if depart:
-                setattr(translator, 'depart_' + name, MethodType(depart, translator))
+                setattr(translator, f'depart_{name}', MethodType(depart, translator))
 
         return translator
 
@@ -469,13 +469,11 @@ class SphinxComponentRegistry:
 def merge_source_suffix(app: "Sphinx", config: Config) -> None:
     """Merge any user-specified source_suffix with any added by extensions."""
     for suffix, filetype in app.registry.source_suffix.items():
-        if suffix not in app.config.source_suffix:
+        if (
+            suffix not in app.config.source_suffix
+            or app.config.source_suffix[suffix] is None
+        ):
             app.config.source_suffix[suffix] = filetype
-        elif app.config.source_suffix[suffix] is None:
-            # filetype is not specified (default filetype).
-            # So it overrides default filetype by extensions setting.
-            app.config.source_suffix[suffix] = filetype
-
     # copy config.source_suffix to registry
     app.registry.source_suffix = app.config.source_suffix
 

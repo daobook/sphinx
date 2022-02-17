@@ -239,7 +239,7 @@ def render_dot(self: SphinxTranslator, code: str, options: Dict, format: str,
 
     dot_args = [graphviz_dot]
     dot_args.extend(self.builder.config.graphviz_dot_args)
-    dot_args.extend(['-T' + format, '-o' + outfn])
+    dot_args.extend([f'-T{format}', f'-o{outfn}'])
 
     docname = options.get('docname', 'index')
     if filename:
@@ -300,8 +300,8 @@ def render_dot_html(self: HTMLTranslator, node: graphviz, code: str, options: Di
             self.body.append('<p class="warning">%s</p>' % alt)
             self.body.append('</object></div>\n')
         else:
-            with open(outfn + '.map', encoding='utf-8') as mapfile:
-                imgmap = ClickableMapDefinition(outfn + '.map', mapfile.read(), dot=code)
+            with open(f'{outfn}.map', encoding='utf-8') as mapfile:
+                imgmap = ClickableMapDefinition(f'{outfn}.map', mapfile.read(), dot=code)
                 if imgmap.clickable:
                     # has a map
                     self.body.append('<div class="graphviz">')

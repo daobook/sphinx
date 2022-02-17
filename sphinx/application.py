@@ -174,16 +174,10 @@ class Sphinx:
             self._status = status
             self.quiet = False
 
-        if warning is None:
-            self._warning: IO = StringIO()
-        else:
-            self._warning = warning
+        self._warning = StringIO() if warning is None else warning
         self._warncount = 0
         self.keep_going = warningiserror and keep_going
-        if self.keep_going:
-            self.warningiserror = False
-        else:
-            self.warningiserror = warningiserror
+        self.warningiserror = False if self.keep_going else warningiserror
         logging.setup(self, self._status, self._warning)
 
         self.events = EventManager(self)
@@ -354,11 +348,10 @@ class Sphinx:
                         msg = __('build %s, %s warning (with warnings treated as errors).')
                     else:
                         msg = __('build %s, %s warnings (with warnings treated as errors).')
+                elif self._warncount == 1:
+                    msg = __('build %s, %s warning.')
                 else:
-                    if self._warncount == 1:
-                        msg = __('build %s, %s warning.')
-                    else:
-                        msg = __('build %s, %s warnings.')
+                    msg = __('build %s, %s warnings.')
 
                 logger.info(bold(msg % (status, self._warncount)))
             else:
@@ -1056,12 +1049,7 @@ class Sphinx:
         logger.warning('The app.add_stylesheet() is deprecated. '
                        'Please use app.add_css_file() instead.')
 
-        attributes = {}  # type: Dict[str, Any]
-        if alternate:
-            attributes['rel'] = 'alternate stylesheet'
-        else:
-            attributes['rel'] = 'stylesheet'
-
+        attributes = {'rel': 'alternate stylesheet' if alternate else 'stylesheet'}
         if title:
             attributes['title'] = title
 
@@ -1124,7 +1112,7 @@ class Sphinx:
         logger.debug('[app] adding autodocumenter: %r', cls)
         from sphinx.ext.autodoc.directive import AutodocDirective
         self.registry.add_documenter(cls.objtype, cls)
-        self.add_directive('auto' + cls.objtype, AutodocDirective, override=override)
+        self.add_directive(f'auto{cls.objtype}', AutodocDirective, override=override)
 
     def add_autodoc_attrgetter(self, typ: Type, getter: Callable[[Any, str, Any], Any]
                                ) -> None:

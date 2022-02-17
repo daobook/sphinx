@@ -56,7 +56,7 @@ def merge_typehints(app: Sphinx, domain: str, objtype: str, contentnode: Element
     annotations = app.env.temp_data.get('annotations', {})
     if annotations.get(fullname, {}):
         field_lists = [n for n in contentnode if isinstance(n, nodes.field_list)]
-        if field_lists == []:
+        if not field_lists:
             field_list = insert_field_list(contentnode)
             field_lists.append(field_list)
 
@@ -69,8 +69,7 @@ def merge_typehints(app: Sphinx, domain: str, objtype: str, contentnode: Element
 
 def insert_field_list(node: Element) -> nodes.field_list:
     field_list = nodes.field_list()
-    desc = [n for n in node if isinstance(n, addnodes.desc)]
-    if desc:
+    if desc := [n for n in node if isinstance(n, addnodes.desc)]:
         # insert just before sub object descriptions (ex. methods, nested classes, etc.)
         index = node.index(desc[0])
         node.insert(index - 1, [field_list])
@@ -111,12 +110,12 @@ def modify_field_list(node: nodes.field_list, annotations: Dict[str, str]) -> No
         arg = arguments.get(name, {})
         if not arg.get('type'):
             field = nodes.field()
-            field += nodes.field_name('', 'type ' + name)
+            field += nodes.field_name('', f'type {name}')
             field += nodes.field_body('', nodes.paragraph('', annotation))
             node += field
         if not arg.get('param'):
             field = nodes.field()
-            field += nodes.field_name('', 'param ' + name)
+            field += nodes.field_name('', f'param {name}')
             field += nodes.field_body('', nodes.paragraph('', ''))
             node += field
 
@@ -160,17 +159,20 @@ def augment_descriptions_with_types(
             continue
         if name in has_description and name not in has_type:
             field = nodes.field()
-            field += nodes.field_name('', 'type ' + name)
+            field += nodes.field_name('', f'type {name}')
             field += nodes.field_body('', nodes.paragraph('', annotations[name]))
             node += field
 
     # Add 'rtype' if 'return' is present and 'rtype' isn't.
-    if 'return' in annotations:
-        if 'return' in has_description and 'return' not in has_type:
-            field = nodes.field()
-            field += nodes.field_name('', 'rtype')
-            field += nodes.field_body('', nodes.paragraph('', annotations['return']))
-            node += field
+    if (
+        'return' in annotations
+        and 'return' in has_description
+        and 'return' not in has_type
+    ):
+        field = nodes.field()
+        field += nodes.field_name('', 'rtype')
+        field += nodes.field_body('', nodes.paragraph('', annotations['return']))
+        node += field
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

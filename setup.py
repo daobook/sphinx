@@ -114,33 +114,44 @@ else:
             po_files = []
             js_files = []
 
-            if not self.input_file:
-                if self.locale:
-                    po_files.append((self.locale,
-                                     os.path.join(self.directory, self.locale,
-                                                  'LC_MESSAGES',
-                                                  domain + '.po')))
-                    js_files.append(os.path.join(self.directory, self.locale,
-                                                 'LC_MESSAGES',
-                                                 domain + '.js'))
-                else:
-                    for locale in os.listdir(self.directory):
-                        po_file = os.path.join(self.directory, locale,
-                                               'LC_MESSAGES',
-                                               domain + '.po')
-                        if os.path.exists(po_file):
-                            po_files.append((locale, po_file))
-                            js_files.append(os.path.join(self.directory, locale,
-                                                         'LC_MESSAGES',
-                                                         domain + '.js'))
-            else:
+            if self.input_file:
                 po_files.append((self.locale, self.input_file))
                 if self.output_file:
                     js_files.append(self.output_file)
                 else:
-                    js_files.append(os.path.join(self.directory, self.locale,
-                                                 'LC_MESSAGES',
-                                                 domain + '.js'))
+                    js_files.append(
+                        os.path.join(
+                            self.directory, self.locale, 'LC_MESSAGES', f'{domain}.js'
+                        )
+                    )
+
+
+            elif self.locale:
+                po_files.append(
+                    (
+                        self.locale,
+                        os.path.join(
+                            self.directory, self.locale, 'LC_MESSAGES', f'{domain}.po'
+                        ),
+                    )
+                )
+
+                js_files.append(
+                    os.path.join(
+                        self.directory, self.locale, 'LC_MESSAGES', f'{domain}.js'
+                    )
+                )
+
+            else:
+                for locale in os.listdir(self.directory):
+                    po_file = os.path.join(self.directory, locale, 'LC_MESSAGES', f'{domain}.po')
+                    if os.path.exists(po_file):
+                        po_files.append((locale, po_file))
+                        js_files.append(
+                            os.path.join(
+                                self.directory, locale, 'LC_MESSAGES', f'{domain}.js'
+                            )
+                        )
 
             for js_file, (locale, po_file) in zip(js_files, po_files):
                 with open(po_file, encoding='utf8') as infile:

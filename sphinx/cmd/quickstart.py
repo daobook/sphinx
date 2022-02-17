@@ -8,6 +8,7 @@
     :license: BSD, see LICENSE for details.
 """
 
+
 import argparse
 import locale
 import os
@@ -65,23 +66,18 @@ DEFAULTS = {
 
 PROMPT_PREFIX = '> '
 
-if sys.platform == 'win32':
-    # On Windows, show questions as bold because of color scheme of PowerShell (refs: #5294).
-    COLOR_QUESTION = 'bold'
-else:
-    COLOR_QUESTION = 'purple'
+COLOR_QUESTION = 'bold' if sys.platform == 'win32' else 'purple'
 
 
 # function to get input from terminal -- overridden by the test suite
 def term_input(prompt: str) -> str:
-    if sys.platform == 'win32':
-        # Important: On windows, readline is not enabled by default.  In these
-        #            environment, escape sequences have been broken.  To avoid the
-        #            problem, quickstart uses ``print()`` to show prompt.
-        print(prompt, end='')
-        return input('')
-    else:
+    if sys.platform != 'win32':
         return input(prompt)
+    # Important: On windows, readline is not enabled by default.  In these
+    #            environment, escape sequences have been broken.  To avoid the
+    #            problem, quickstart uses ``print()`` to show prompt.
+    print(prompt, end='')
+    return input('')
 
 
 class ValidationError(Exception):
@@ -96,9 +92,7 @@ def is_path(x: str) -> str:
 
 
 def is_path_or_empty(x: str) -> str:
-    if x == '':
-        return x
-    return is_path(x)
+    return x if not x else is_path(x)
 
 
 def allow_empty(x: str) -> str:
@@ -126,7 +120,7 @@ def boolean(x: str) -> bool:
 
 
 def suffix(x: str) -> str:
-    if not (x[0:1] == '.' and len(x) > 1):
+    if not (x.startswith('.') and len(x) > 1):
         raise ValidationError(__("Please enter a file suffix, e.g. '.rst' or '.txt'."))
     return x
 
@@ -157,7 +151,7 @@ def do_prompt(text: str, default: str = None, validator: Callable[[str], Any] = 
         try:
             x = validator(x)
         except ValidationError as err:
-            print(red('* ' + str(err)))
+            print(red(f'* {str(err)}'))
             continue
         break
     return x
@@ -175,17 +169,13 @@ class QuickstartRenderer(SphinxRenderer):
               It will be removed in the future without deprecation period.
         """
         template = path.join(self.templatedir, path.basename(template_name))
-        if self.templatedir and path.exists(template):
-            return True
-        else:
-            return False
+        return bool(self.templatedir and path.exists(template))
 
     def render(self, template_name: str, context: Dict) -> str:
-        if self._has_custom_template(template_name):
-            custom_template = path.join(self.templatedir, path.basename(template_name))
-            return self.render_from_file(custom_template, context)
-        else:
+        if not self._has_custom_template(template_name):
             return super().render(template_name, context)
+        custom_template = path.join(self.templatedir, path.basename(template_name))
+        return self.render_from_file(custom_template, context)
 
 
 def ask_user(d: Dict) -> None:
@@ -368,9 +358,8 @@ def generate(d: Dict, overwrite: bool = True, silent: bool = False, templatedir:
                 print(__('Creating file %s.') % fpath)
             with open(fpath, 'wt', encoding='utf-8', newline=newline) as f:
                 f.write(content)
-        else:
-            if 'quiet' not in d:
-                print(__('File %s already exists, skipping.') % fpath)
+        elif 'quiet' not in d:
+            print(__('File %s already exists, skipping.') % fpath)
 
     conf_path = os.path.join(templatedir, 'conf.py_t') if templatedir else None
     if not conf_path or not path.isfile(conf_path):
@@ -567,11 +556,10 @@ def main(argv: List[str] = sys.argv[1:]) -> int:
             d['extensions'].extend(ext.split(','))
 
     try:
-        if 'quiet' in d:
-            if not {'project', 'author'}.issubset(d):
-                print(__('"quiet" is specified, but any of "project" or '
-                         '"author" is not specified.'))
-                return 1
+        if 'quiet' in d and not {'project', 'author'}.issubset(d):
+            print(__('"quiet" is specified, but any of "project" or '
+                     '"author" is not specified.'))
+            return 1
 
         if {'quiet', 'project', 'author'}.issubset(d):
             # quiet mode with all required params satisfied, use default

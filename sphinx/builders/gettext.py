@@ -235,8 +235,7 @@ class MessageCatalogBuilder(I18nBuilder):
         return template_files
 
     def _extract_from_template(self) -> None:
-        files = list(self._collect_templates())
-        files.sort()
+        files = sorted(self._collect_templates())
         logger.info(bold(__('building [%s]: ') % self.name), nonl=True)
         logger.info(__('targets for %d template files'), len(files))
 
@@ -280,7 +279,7 @@ class MessageCatalogBuilder(I18nBuilder):
             context['messages'] = list(catalog)
             content = GettextRenderer(outdir=self.outdir).render('message.pot_t', context)
 
-            pofn = path.join(self.outdir, textdomain + '.pot')
+            pofn = path.join(self.outdir, f'{textdomain}.pot')
             if should_write(pofn, content):
                 with open(pofn, 'w', encoding='utf-8') as pofile:
                     pofile.write(content)

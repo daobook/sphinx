@@ -40,11 +40,10 @@ def optional_int(argument: str) -> int:
     """
     if argument is None:
         return None
-    else:
-        value = int(argument)
-        if value < 0:
-            raise ValueError('negative value; must be positive or zero')
-        return value
+    value = int(argument)
+    if value < 0:
+        raise ValueError('negative value; must be positive or zero')
+    return value
 
 
 class ObjectDescription(SphinxDirective, Generic[T]):
@@ -176,7 +175,7 @@ class ObjectDescription(SphinxDirective, Generic[T]):
 
         self.names: List[T] = []
         signatures = self.get_signatures()
-        for i, sig in enumerate(signatures):
+        for sig in signatures:
             # add a signature node for each signature in the current unit
             # and add a reference target for it
             signode = addnodes.desc_signature(sig, '')

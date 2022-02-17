@@ -90,12 +90,11 @@ def jobs_argument(value: str) -> int:
     """
     if value == 'auto':
         return multiprocessing.cpu_count()
+    jobs = int(value)
+    if jobs <= 0:
+        raise argparse.ArgumentTypeError(__('job number should be a positive number'))
     else:
-        jobs = int(value)
-        if jobs <= 0:
-            raise argparse.ArgumentTypeError(__('job number should be a positive number'))
-        else:
-            return jobs
+        return jobs
 
 
 def get_parser() -> argparse.ArgumentParser:
@@ -215,11 +214,9 @@ def build_main(argv: List[str] = sys.argv[1:]) -> int:
 
     # handle remaining filename arguments
     filenames = args.filenames
-    missing_files = []
-    for filename in filenames:
-        if not os.path.isfile(filename):
-            missing_files.append(filename)
-    if missing_files:
+    if missing_files := [
+        filename for filename in filenames if not os.path.isfile(filename)
+    ]:
         parser.error(__('cannot find files %r') % missing_files)
 
     if args.force_all and filenames:
@@ -288,10 +285,7 @@ def main(argv: List[str] = sys.argv[1:]) -> int:
     sphinx.locale.setlocale(locale.LC_ALL, '')
     sphinx.locale.init_console(os.path.join(package_dir, 'locale'), 'sphinx')
 
-    if argv[:1] == ['-M']:
-        return make_main(argv)
-    else:
-        return build_main(argv)
+    return make_main(argv) if argv[:1] == ['-M'] else build_main(argv)
 
 
 if __name__ == '__main__':

@@ -44,13 +44,7 @@ class ExtBabel(Babel):
 
     def get_mainlanguage_options(self) -> Optional[str]:
         """Return options for polyglossia's ``\\setmainlanguage``."""
-        if self.use_polyglossia is False:
+        if self.use_polyglossia is False or self.language != 'german':
             return None
-        elif self.language == 'german':
-            language = super().language_name(self.language_code)
-            if language == 'ngerman':
-                return 'spelling=new'
-            else:
-                return 'spelling=old'
-        else:
-            return None
+        language = super().language_name(self.language_code)
+        return 'spelling=new' if language == 'ngerman' else 'spelling=old'

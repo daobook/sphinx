@@ -390,15 +390,15 @@ Doctest summary
     def skipped(self, node: Element) -> bool:
         if 'skipif' not in node:
             return False
-        else:
-            condition = node['skipif']
-            context: Dict[str, Any] = {}
-            if self.config.doctest_global_setup:
-                exec(self.config.doctest_global_setup, context)
-            should_skip = eval(condition, context)
-            if self.config.doctest_global_cleanup:
-                exec(self.config.doctest_global_cleanup, context)
-            return should_skip
+
+        condition = node['skipif']
+        context: Dict[str, Any] = {}
+        if self.config.doctest_global_setup:
+            exec(self.config.doctest_global_setup, context)
+        should_skip = eval(condition, context)
+        if self.config.doctest_global_cleanup:
+            exec(self.config.doctest_global_cleanup, context)
+        return should_skip
 
     def test_doc(self, docname: str, doctree: Node) -> None:
         groups: Dict[str, TestGroup] = {}

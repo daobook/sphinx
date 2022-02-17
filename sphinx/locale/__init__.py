@@ -30,10 +30,7 @@ class _TranslationProxy(UserString):
     __slots__ = ('_func', '_args')
 
     def __new__(cls, func: Callable, *args: str) -> object:  # type: ignore
-        if not args:
-            # not called with "function" and "arguments", but a plain string
-            return str(func)
-        return object.__new__(cls)
+        return str(func) if not args else object.__new__(cls)
 
     def __getnewargs__(self) -> Tuple[str]:
         return (self._func,) + self._args  # type: ignore
@@ -83,9 +80,7 @@ class _TranslationProxy(UserString):
         return other * self.data
 
     def __getattr__(self, name: str) -> Any:
-        if name == '__members__':
-            return self.__dir__()
-        return getattr(self.data, name)
+        return self.__dir__() if name == '__members__' else getattr(self.data, name)
 
     def __getstate__(self) -> Tuple[Callable, Tuple[str, ...]]:
         return self._func, self._args
@@ -98,7 +93,7 @@ class _TranslationProxy(UserString):
 
     def __repr__(self) -> str:
         try:
-            return 'i' + repr(str(self.data))
+            return f'i{repr(str(self.data))}'
         except Exception:
             return '<%s broken>' % self.__class__.__name__
 
@@ -228,12 +223,11 @@ def get_translation(catalog: str, namespace: str = 'general') -> Callable:
         if not is_translator_registered(catalog, namespace):
             # not initialized yet
             return _TranslationProxy(_lazy_translate, catalog, namespace, message)  # type: ignore  # NOQA
-        else:
-            translator = get_translator(catalog, namespace)
-            if len(args) <= 1:
-                return translator.gettext(message)
-            else:  # support pluralization
-                return translator.ngettext(message, args[0], args[1])
+        translator = get_translator(catalog, namespace)
+        if len(args) <= 1:
+            return translator.gettext(message)
+        else:  # support pluralization
+            return translator.ngettext(message, args[0], args[1])
 
     return gettext
 

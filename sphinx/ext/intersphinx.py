@@ -140,14 +140,13 @@ def _get_safe_url(url: str) -> str:
     parts = urlsplit(url)
     if parts.username is None:
         return url
+    frags = list(parts)
+    if parts.port:
+        frags[1] = '{}@{}:{}'.format(parts.username, parts.hostname, parts.port)
     else:
-        frags = list(parts)
-        if parts.port:
-            frags[1] = '{}@{}:{}'.format(parts.username, parts.hostname, parts.port)
-        else:
-            frags[1] = '{}@{}'.format(parts.username, parts.hostname)
+        frags[1] = '{}@{}'.format(parts.username, parts.hostname)
 
-        return urlunsplit(frags)
+    return urlunsplit(frags)
 
 
 def fetch_inventory(app: Sphinx, uri: str, inv: Any) -> Any:
@@ -173,7 +172,7 @@ def fetch_inventory(app: Sphinx, uri: str, inv: Any) -> Any:
             if inv != newinv:
                 logger.info(__('intersphinx inventory has moved: %s -> %s'), inv, newinv)
 
-                if uri in (inv, path.dirname(inv), path.dirname(inv) + '/'):
+                if uri in (inv, path.dirname(inv), f'{path.dirname(inv)}/'):
                     uri = path.dirname(newinv)
         with f:
             try:
@@ -213,7 +212,7 @@ def fetch_inventory_group(
                     return True
         return False
     finally:
-        if failures == []:
+        if not failures:
             pass
         elif len(failures) < len(invs):
             logger.info(__("encountered some issues with some of the inventories,"
@@ -232,11 +231,9 @@ def load_mappings(app: Sphinx) -> None:
     inventories = InventoryAdapter(app.builder.env)
 
     with concurrent.futures.ThreadPoolExecutor() as pool:
-        futures = []
-        for name, (uri, invs) in app.config.intersphinx_mapping.values():
-            futures.append(pool.submit(
+        futures = [pool.submit(
                 fetch_inventory_group, name, uri, invs, inventories.cache, app, now
-            ))
+            ) for name, (uri, invs) in app.config.intersphinx_mapping.values()]
         updated = [f.result() for f in concurrent.futures.as_completed(futures)]
 
     if any(updated):
@@ -278,7 +275,7 @@ def _create_element_from_result(domain: Domain, inv_name: Optional[str],
             (domain.name == 'std' and node['reftype'] == 'keyword'):
         # use whatever title was given, but strip prefix
         title = contnode.astext()
-        if inv_name is not None and title.startswith(inv_name + ':'):
+        if inv_name is not None and title.startswith(f'{inv_name}:'):
             newnode.append(contnode.__class__(title[len(inv_name) + 1:],
                                               title[len(inv_name) + 1:]))
         else:
@@ -305,9 +302,12 @@ def _resolve_reference_in_domain_by_target(
         elif objtype == 'std:term':
             # Check for potential case insensitive matches for terms only
             target_lower = target.lower()
-            insensitive_matches = list(filter(lambda k: k.lower() == target_lower,
-                                              inventory[objtype].keys()))
-            if insensitive_matches:
+            if insensitive_matches := list(
+                filter(
+                    lambda k: k.lower() == target_lower,
+                    inventory[objtype].keys(),
+                )
+            ):
                 data = inventory[objtype][insensitive_matches[0]]
             else:
                 # No case insensitive match either, continue to the next candidate
@@ -369,8 +369,11 @@ def _resolve_reference(env: BuildEnvironment, inv_name: Optional[str], inventory
     typ = node['reftype']
     if typ == 'any':
         for domain_name, domain in env.domains.items():
-            if honor_disabled_refs \
-                    and (domain_name + ":*") in env.config.intersphinx_disabled_reftypes:
+            if (
+                honor_disabled_refs
+                and f'{domain_name}:*'
+                in env.config.intersphinx_disabled_reftypes
+            ):
                 continue
             objtypes = list(domain.object_types)
             res = _resolve_reference_in_domain(env, inv_name, inventory,
@@ -385,8 +388,10 @@ def _resolve_reference(env: BuildEnvironment, inv_name: Optional[str], inventory
         if not domain_name:
             # only objects in domains are in the inventory
             return None
-        if honor_disabled_refs \
-                and (domain_name + ":*") in env.config.intersphinx_disabled_reftypes:
+        if (
+            honor_disabled_refs
+            and f'{domain_name}:*' in env.config.intersphinx_disabled_reftypes
+        ):
             return None
         domain = env.get_domain(domain_name)
         objtypes = domain.objtypes_for_role(typ)

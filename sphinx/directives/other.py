@@ -34,9 +34,7 @@ logger = logging.getLogger(__name__)
 
 
 def int_or_nothing(argument: str) -> int:
-    if not argument:
-        return 999
-    return int(argument)
+    return 999 if not argument else int(argument)
 
 
 class TocTree(SphinxDirective):
@@ -342,7 +340,7 @@ class Only(SphinxDirective):
             # be placed in the doctree.
             n_sects_to_raise = current_depth - nested_depth + 1
             parent = cast(nodes.Element, self.state.parent)
-            for i in range(n_sects_to_raise):
+            for _ in range(n_sects_to_raise):
                 if parent.parent:
                     parent = parent.parent
             parent.append(node)

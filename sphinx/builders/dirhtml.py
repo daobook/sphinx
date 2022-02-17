@@ -30,19 +30,18 @@ class DirectoryHTMLBuilder(StandaloneHTMLBuilder):
     def get_target_uri(self, docname: str, typ: str = None) -> str:
         if docname == 'index':
             return ''
-        if docname.endswith(SEP + 'index'):
+        if docname.endswith(f'{SEP}index'):
             return docname[:-5]  # up to sep
         return docname + SEP
 
     def get_outfilename(self, pagename: str) -> str:
-        if pagename == 'index' or pagename.endswith(SEP + 'index'):
-            outfilename = path.join(self.outdir, os_path(pagename) +
-                                    self.out_suffix)
-        else:
-            outfilename = path.join(self.outdir, os_path(pagename),
-                                    'index' + self.out_suffix)
-
-        return outfilename
+        return (
+            path.join(self.outdir, os_path(pagename) + self.out_suffix)
+            if pagename == 'index' or pagename.endswith(f'{SEP}index')
+            else path.join(
+                self.outdir, os_path(pagename), f'index{self.out_suffix}'
+            )
+        )
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

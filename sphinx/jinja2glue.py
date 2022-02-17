@@ -64,17 +64,15 @@ def _todim(val: Union[int, str]) -> str:
 
 def _slice_index(values: List, slices: int) -> Iterator[List]:
     seq = list(values)
-    length = 0
-    for value in values:
-        length += 1 + len(value[1][1])  # count includes subitems
+    length = sum(1 + len(value[1][1]) for value in values)
     items_per_slice = length // slices
     offset = 0
     for slice_number in range(slices):
-        count = 0
         start = offset
         if slices == slice_number + 1:  # last column
             offset = len(seq)
         else:
+            count = 0
             for value in values[offset:]:
                 count += 1 + len(value[1][1])
                 offset += 1

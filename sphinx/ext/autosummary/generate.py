@@ -106,7 +106,7 @@ def _simple_info(msg: str) -> None:
 def _simple_warn(msg: str) -> None:
     warnings.warn('_simple_warn() is deprecated.',
                   RemovedInSphinx50Warning, stacklevel=2)
-    print('WARNING: ' + msg, file=sys.stderr)
+    print(f'WARNING: {msg}', file=sys.stderr)
 
 
 def _underline(title: str, line: str = '=') -> str:
@@ -217,7 +217,7 @@ class ModuleScanner:
             if imported_members:
                 # list all members up
                 members.append(name)
-            elif imported is False:
+            elif not imported:
                 # list not-imported members
                 members.append(name)
             elif '__all__' in dir(self.object) and respect_module_all:
@@ -283,21 +283,21 @@ def generate_autosummary_content(name: str, obj: Any, parent: Any,
         all_members = get_all_members(obj)
         for name, value in all_members.items():
             documenter = get_documenter(app, value, obj)
-            if documenter.objtype in types:
-                # skip imported members if expected
-                if imported or getattr(value, '__module__', None) == obj.__name__:
-                    skipped = skip_member(value, name, documenter.objtype)
-                    if skipped is True:
-                        pass
-                    elif skipped is False:
-                        # show the member forcedly
-                        items.append(name)
+            if documenter.objtype in types and (
+                imported or getattr(value, '__module__', None) == obj.__name__
+            ):
+                skipped = skip_member(value, name, documenter.objtype)
+                if skipped is True:
+                    pass
+                elif skipped is False:
+                    # show the member forcedly
+                    items.append(name)
+                    public.append(name)
+                else:
+                    items.append(name)
+                    if name in include_public or not name.startswith('_'):
+                        # considers member as public
                         public.append(name)
-                    else:
-                        items.append(name)
-                        if name in include_public or not name.startswith('_'):
-                            # considers member as public
-                            public.append(name)
         return public, items
 
     def get_module_attrs(members: Any) -> Tuple[List[str], List[str]]:
@@ -318,7 +318,7 @@ def generate_autosummary_content(name: str, obj: Any, parent: Any,
     def get_modules(obj: Any) -> Tuple[List[str], List[str]]:
         items: List[str] = []
         for _, modname, ispkg in pkgutil.iter_modules(obj.__path__):
-            fullname = name + '.' + modname
+            fullname = f'{name}.{modname}'
             try:
                 module = import_module(fullname)
                 if module and hasattr(module, '__sphinx_mock__'):
@@ -414,11 +414,7 @@ def generate_autosummary_docs(sources: List[str], output_dir: str = None,
     # keep track of new files
     new_files = []
 
-    if app:
-        filename_map = app.config.autosummary_filename_map
-    else:
-        filename_map = {}
-
+    filename_map = app.config.autosummary_filename_map if app else {}
     # write
     for entry in sorted(set(items), key=str):
         if entry.path is None:
@@ -431,12 +427,12 @@ def generate_autosummary_docs(sources: List[str], output_dir: str = None,
 
         try:
             name, obj, parent, modname = import_by_name(entry.name)
-            qualname = name.replace(modname + ".", "")
+            qualname = name.replace(f'{modname}.', "")
         except ImportError as e:
             try:
                 # try to importl as an instance attribute
                 name, obj, parent, modname = import_ivar_by_name(entry.name)
-                qualname = name.replace(modname + ".", "")
+                qualname = name.replace(f'{modname}.', "")
             except ImportError:
                 logger.warning(__('[autosummary] failed to import %r: %s') % (entry.name, e))
                 continue
@@ -546,45 +542,41 @@ def find_autosummary_in_lines(lines: List[str], module: str = None, filename: st
 
     for line in lines:
         if in_autosummary:
-            m = recursive_arg_re.match(line)
-            if m:
+            if m := recursive_arg_re.match(line):
                 recursive = True
                 continue
 
-            m = toctree_arg_re.match(line)
-            if m:
+            if m := toctree_arg_re.match(line):
                 toctree = m.group(1)
                 if filename:
                     toctree = os.path.join(os.path.dirname(filename),
                                            toctree)
                 continue
 
-            m = template_arg_re.match(line)
-            if m:
+            if m := template_arg_re.match(line):
                 template = m.group(1).strip()
                 continue
 
             if line.strip().startswith(':'):
                 continue  # skip options
 
-            m = autosummary_item_re.match(line)
-            if m:
+            if m := autosummary_item_re.match(line):
                 name = m.group(1).strip()
                 if name.startswith('~'):
                     name = name[1:]
-                if current_module and \
-                   not name.startswith(current_module + '.'):
+                if current_module and not name.startswith(
+                    f'{current_module}.'
+                ):
                     name = "%s.%s" % (current_module, name)
                 documented.append(AutosummaryEntry(name, toctree, template, recursive))
                 continue
 
-            if not line.strip() or line.startswith(base_indent + " "):
+            if not line.strip() or line.startswith(f'{base_indent} '):
                 continue
 
             in_autosummary = False
 
-        m = autosummary_re.match(line)
-        if m:
+        if m := autosummary_re.match(line):
             in_autosummary = True
             base_indent = m.group(1)
             recursive = False
@@ -592,16 +584,14 @@ def find_autosummary_in_lines(lines: List[str], module: str = None, filename: st
             template = None
             continue
 
-        m = automodule_re.search(line)
-        if m:
+        if m := automodule_re.search(line):
             current_module = m.group(1).strip()
             # recurse into the automodule docstring
             documented.extend(find_autosummary_in_docstring(
                 current_module, filename=filename))
             continue
 
-        m = module_re.match(line)
-        if m:
+        if m := module_re.match(line):
             current_module = m.group(2)
             continue
 
@@ -668,10 +658,13 @@ def main(argv: List[str] = sys.argv[1:]) -> None:
         app.config.templates_path.append(path.abspath(args.templates))
     app.config.autosummary_ignore_module_all = not args.respect_module_all  # type: ignore
 
-    generate_autosummary_docs(args.source_file, args.output_dir,
-                              '.' + args.suffix,
-                              imported_members=args.imported_members,
-                              app=app)
+    generate_autosummary_docs(
+        args.source_file,
+        args.output_dir,
+        f'.{args.suffix}',
+        imported_members=args.imported_members,
+        app=app,
+    )
 
 
 if __name__ == '__main__':

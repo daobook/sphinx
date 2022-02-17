@@ -21,8 +21,7 @@ def create_nojekyll_and_cname(app: Sphinx, env: BuildEnvironment) -> None:
     if app.builder.format == 'html':
         open(os.path.join(app.builder.outdir, '.nojekyll'), 'wt').close()
 
-        html_baseurl = app.config.html_baseurl
-        if html_baseurl:
+        if html_baseurl := app.config.html_baseurl:
             domain = urllib.parse.urlparse(html_baseurl).hostname
             if domain and not domain.endswith(".github.io"):
                 with open(os.path.join(app.builder.outdir, 'CNAME'), 'wt') as f:

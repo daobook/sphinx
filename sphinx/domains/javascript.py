@@ -93,8 +93,7 @@ class JSObject(ObjectDescription[Tuple[str, str]]):
         signode['object'] = prefix
         signode['fullname'] = fullname
 
-        display_prefix = self.get_display_prefix()
-        if display_prefix:
+        if display_prefix := self.get_display_prefix():
             signode += addnodes.desc_annotation('', '', *display_prefix)
 
         actual_prefix = None
@@ -119,7 +118,7 @@ class JSObject(ObjectDescription[Tuple[str, str]]):
     def add_target_and_index(self, name_obj: Tuple[str, str], sig: str,
                              signode: desc_signature) -> None:
         mod_name = self.env.ref_context.get('js:module')
-        fullname = (mod_name + '.' if mod_name else '') + name_obj[0]
+        fullname = (f'{mod_name}.' if mod_name else '') + name_obj[0]
         node_id = make_id(self.env, self.state.document, '', fullname)
         signode['ids'].append(node_id)
 
@@ -135,8 +134,7 @@ class JSObject(ObjectDescription[Tuple[str, str]]):
         domain.note_object(fullname, self.objtype, node_id, location=signode)
 
         if 'noindexentry' not in self.options:
-            indextext = self.get_index_text(mod_name, name_obj)
-            if indextext:
+            if indextext := self.get_index_text(mod_name, name_obj):
                 self.indexnode['entries'].append(('single', indextext, node_id, '', None))
 
     def get_index_text(self, objectname: str, name_obj: Tuple[str, str]) -> str:
@@ -308,7 +306,7 @@ class JSModule(SphinxDirective):
         .. note:: Old Styled node_id was used until Sphinx-3.0.
                   This will be removed in Sphinx-5.0.
         """
-        return 'module-' + modname
+        return f'module-{modname}'
 
 
 class JSXRefRole(XRefRole):
@@ -320,12 +318,12 @@ class JSXRefRole(XRefRole):
         if not has_explicit_title:
             title = title.lstrip('.')
             target = target.lstrip('~')
-            if title[0:1] == '~':
+            if title[:1] == '~':
                 title = title[1:]
                 dot = title.rfind('.')
                 if dot != -1:
                     title = title[dot + 1:]
-        if target[0:1] == '.':
+        if target[:1] == '.':
             target = target[1:]
             refnode['refspecific'] = True
         return title, target
@@ -444,8 +442,12 @@ class JavaScriptDomain(Domain):
         name, obj = self.find_obj(env, mod_name, prefix, target, None, 1)
         if not obj:
             return []
-        return [('js:' + self.role_for_objtype(obj[2]),
-                 make_refnode(builder, fromdocname, obj[0], obj[1], contnode, name))]
+        return [
+            (
+                f'js:{self.role_for_objtype(obj[2])}',
+                make_refnode(builder, fromdocname, obj[0], obj[1], contnode, name),
+            )
+        ]
 
     def get_objects(self) -> Iterator[Tuple[str, str, str, str, str, int]]:
         for refname, (docname, node_id, typ) in list(self.objects.items()):

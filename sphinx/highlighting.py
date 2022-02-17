@@ -108,18 +108,10 @@ class PygmentsBridge:
             opts = {}
 
         # find out which lexer to use
-        if lang in ('py', 'python'):
-            if source.startswith('>>>'):
-                # interactive session
-                lang = 'pycon'
-            else:
-                lang = 'python'
-        elif lang in ('py3', 'python3', 'default'):
-            if source.startswith('>>>'):
-                lang = 'pycon3'
-            else:
-                lang = 'python3'
-
+        if lang in {'py', 'python'}:
+            lang = 'pycon' if source.startswith('>>>') else 'python'
+        elif lang in {'py3', 'python3', 'default'}:
+            lang = 'pycon3' if source.startswith('>>>') else 'python3'
         if lang in lexers:
             # just return custom lexers here (without installing raiseonerror filter)
             return lexers[lang]
@@ -155,9 +147,7 @@ class PygmentsBridge:
         except ErrorToken:
             # this is most probably not the selected language,
             # so let it pass unhighlighted
-            if lang == 'default':
-                pass  # automatic highlighting failed.
-            else:
+            if lang != 'default':
                 logger.warning(__('Could not lex literal_block as "%s". '
                                   'Highlighting skipped.'), lang,
                                type='misc', subtype='highlighting_failure',

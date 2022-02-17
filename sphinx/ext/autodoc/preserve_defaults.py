@@ -52,14 +52,10 @@ def get_function_def(obj: Any) -> ast.FunctionDef:
 
 def get_default_value(lines: List[str], position: ast.AST) -> Optional[str]:
     try:
-        if sys.version_info < (3, 8):  # only for py38+
+        if sys.version_info < (3, 8) or position.lineno != position.end_lineno:
             return None
-        elif position.lineno == position.end_lineno:
-            line = lines[position.lineno - 1]
-            return line[position.col_offset:position.end_col_offset]
-        else:
-            # multiline value is not supported now
-            return None
+        line = lines[position.lineno - 1]
+        return line[position.col_offset:position.end_col_offset]
     except (AttributeError, IndexError):
         return None
 
@@ -87,16 +83,12 @@ def update_defvalue(app: Sphinx, obj: Any, bound_method: bool) -> None:
                 if param.default is not param.empty:
                     if param.kind in (param.POSITIONAL_ONLY, param.POSITIONAL_OR_KEYWORD):
                         default = defaults.pop(0)
-                        value = get_default_value(lines, default)
-                        if value is None:
-                            value = ast_unparse(default)  # type: ignore
-                        parameters[i] = param.replace(default=DefaultValue(value))
                     else:
                         default = kw_defaults.pop(0)
-                        value = get_default_value(lines, default)
-                        if value is None:
-                            value = ast_unparse(default)  # type: ignore
-                        parameters[i] = param.replace(default=DefaultValue(value))
+                    value = get_default_value(lines, default)
+                    if value is None:
+                        value = ast_unparse(default)  # type: ignore
+                    parameters[i] = param.replace(default=DefaultValue(value))
             sig = sig.replace(parameters=parameters)
             obj.__signature__ = sig
     except (AttributeError, TypeError):

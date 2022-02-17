@@ -144,7 +144,7 @@ class Make:
         papersize = os.getenv('PAPER', '')
         opts = self.opts
         if papersize in ('a4', 'letter'):
-            opts.extend(['-D', 'latex_elements.papersize=' + papersize + 'paper'])
+            opts.extend(['-D', f'latex_elements.papersize={papersize}paper'])
         if doctreedir is None:
             doctreedir = self.builddir_join('doctrees')
 
@@ -161,7 +161,7 @@ def run_make_mode(args: List[str]) -> int:
               'dir, build dir) are required.', file=sys.stderr)
         return 1
     make = Make(args[1], args[2], args[3:])
-    run_method = 'build_' + args[0]
+    run_method = f'build_{args[0]}'
     if hasattr(make, run_method):
         return getattr(make, run_method)()
     return make.run_generic_build(args[0])

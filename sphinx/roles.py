@@ -83,15 +83,12 @@ class XRefRole(ReferenceRole):
 
     def update_title_and_target(self, title: str, target: str) -> Tuple[str, str]:
         if not self.has_explicit_title:
-            if title.endswith('()'):
-                # remove parentheses
-                title = title[:-2]
+            title = title.removesuffix('()')
             if self.config.add_function_parentheses:
                 # add them back to all occurrences if configured
                 title += '()'
         # remove parentheses from the target too
-        if target.endswith('()'):
-            target = target[:-2]
+        target = target.removesuffix('()')
         return title, target
 
     def run(self) -> Tuple[List[Node], List[system_message]]:
@@ -187,7 +184,7 @@ class PEP(ReferenceRole):
             if self.has_explicit_title:
                 reference += nodes.strong(self.title, self.title)
             else:
-                title = "PEP " + self.title
+                title = f'PEP {self.title}'
                 reference += nodes.strong(title, title)
         except ValueError:
             msg = self.inliner.reporter.error('invalid PEP number %s' % self.target,
@@ -221,7 +218,7 @@ class RFC(ReferenceRole):
             if self.has_explicit_title:
                 reference += nodes.strong(self.title, self.title)
             else:
-                title = "RFC " + self.title
+                title = f'RFC {self.title}'
                 reference += nodes.strong(title, title)
         except ValueError:
             msg = self.inliner.reporter.error('invalid RFC number %s' % self.target,
@@ -294,9 +291,7 @@ class EmphasizedLiteral(SphinxRole):
                 if len(stack) >= 2 and stack[-2] == "{":  # nested
                     stack[-1] += "{"
                 else:
-                    # start emphasis
-                    stack.append('{')
-                    stack.append('')
+                    stack.extend(('{', ''))
             elif part == '}':
                 if len(stack) == 3 and stack[1] == "{" and len(stack[2]) > 0:
                     # emphasized word found
@@ -331,8 +326,7 @@ class Abbreviation(SphinxRole):
 
     def run(self) -> Tuple[List[Node], List[system_message]]:
         options = self.options.copy()
-        matched = self.abbr_re.search(self.text)
-        if matched:
+        if matched := self.abbr_re.search(self.text):
             text = self.text[:matched.start()].strip()
             options['explanation'] = matched.group(1)
         else:

@@ -217,9 +217,9 @@ class BuildEnvironment:
         self.version = app.registry.get_envversion(app)
 
         # initialize domains
-        self.domains = {}
-        for domain in app.registry.create_domains(self):
-            self.domains[domain.name] = domain
+        self.domains = {
+            domain.name: domain for domain in app.registry.create_domains(self)
+        }
 
         # setup domains (must do after all initialization)
         for domain in self.domains.values():
@@ -277,9 +277,9 @@ class BuildEnvironment:
         condition: Union[bool, Callable]
         if callable(method):
             condition = method
+        elif method not in versioning_conditions:
+            raise ValueError('invalid versioning method: %r' % method)
         else:
-            if method not in versioning_conditions:
-                raise ValueError('invalid versioning method: %r' % method)
             condition = versioning_conditions[method]
 
         if self.versioning_condition not in (None, condition):
@@ -403,7 +403,7 @@ class BuildEnvironment:
                     added.add(docname)
                     continue
                 # if the doctree file is not there, rebuild
-                filename = path.join(self.doctreedir, docname + '.doctree')
+                filename = path.join(self.doctreedir, f'{docname}.doctree')
                 if not path.isfile(filename):
                     logger.debug('[build target] changed %r', docname)
                     changed.add(docname)
@@ -472,7 +472,7 @@ class BuildEnvironment:
 
         The number is guaranteed to be unique in the current document.
         """
-        key = category + 'serialno'
+        key = f'{category}serialno'
         cur = self.temp_data.get(key, 0)
         self.temp_data[key] = cur + 1
         return cur
@@ -515,7 +515,7 @@ class BuildEnvironment:
 
     def get_doctree(self, docname: str) -> nodes.document:
         """Read the doctree for a file from the pickle and return it."""
-        filename = path.join(self.doctreedir, docname + '.doctree')
+        filename = path.join(self.doctreedir, f'{docname}.doctree')
         with open(filename, 'rb') as f:
             doctree = pickle.load(f)
         doctree.settings.env = self

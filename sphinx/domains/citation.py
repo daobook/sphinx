@@ -100,10 +100,7 @@ class CitationDomain(Domain):
                          target: str, node: pending_xref, contnode: Element
                          ) -> List[Tuple[str, Element]]:
         refnode = self.resolve_xref(env, fromdocname, builder, 'ref', target, node, contnode)
-        if refnode is None:
-            return []
-        else:
-            return [('ref', refnode)]
+        return [] if refnode is None else [('ref', refnode)]
 
 
 class CitationDefinitionTransform(SphinxTransform):

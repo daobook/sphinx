@@ -140,7 +140,7 @@ class LaTeXBuilder(Builder):
         if docname not in self.docnames:
             raise NoUri(docname, typ)
         else:
-            return '%' + docname
+            return f'%{docname}'
 
     def get_relative_uri(self, from_: str, to: str, typ: str = None) -> str:
         # ignore source path
@@ -161,7 +161,7 @@ class LaTeXBuilder(Builder):
                                   'document %s'), docname)
                 continue
             self.document_data.append(entry)  # type: ignore
-            if docname.endswith(SEP + 'index'):
+            if docname.endswith(f'{SEP}index'):
                 docname = docname[:-5]
             self.titles.append((docname, entry[2]))
 
@@ -181,11 +181,9 @@ class LaTeXBuilder(Builder):
         self.context['release'] = self.config.release
         self.context['use_xindy'] = self.config.latex_use_xindy
 
-        if self.config.today:
-            self.context['date'] = self.config.today
-        else:
-            self.context['date'] = format_date(self.config.today_fmt or _('%b %d, %Y'),
-                                               language=self.config.language)
+        self.context['date'] = self.config.today or format_date(
+            self.config.today_fmt or _('%b %d, %Y'), language=self.config.language
+        )
 
         if self.config.latex_logo:
             self.context['logofilename'] = path.basename(self.config.latex_logo)
@@ -242,8 +240,7 @@ class LaTeXBuilder(Builder):
                     self.context['fontpkg'] = ''
         elif self.context['polyglossia']:
             self.context['classoptions'] += ',' + self.babel.get_language()
-            options = self.babel.get_mainlanguage_options()
-            if options:
+            if options := self.babel.get_mainlanguage_options():
                 language = r'\setmainlanguage[%s]{%s}' % (options, self.babel.get_language())
             else:
                 language = r'\setmainlanguage{%s}' % self.babel.get_language()
@@ -273,9 +270,7 @@ class LaTeXBuilder(Builder):
         for entry in self.document_data:
             docname, targetname, title, author, themename = entry[:5]
             theme = self.themes.get(themename)
-            toctree_only = False
-            if len(entry) > 5:
-                toctree_only = entry[5]
+            toctree_only = entry[5] if len(entry) > 5 else False
             destination = SphinxFileOutput(destination_path=path.join(self.outdir, targetname),
                                            encoding='utf-8', overwrite_if_changed=True)
             with progress_message(__("processing %s") % targetname):
@@ -309,13 +304,14 @@ class LaTeXBuilder(Builder):
 
     def get_contentsname(self, indexfile: str) -> str:
         tree = self.env.get_doctree(indexfile)
-        contentsname = None
-        for toctree in tree.traverse(addnodes.toctree):
-            if 'caption' in toctree:
-                contentsname = toctree['caption']
-                break
-
-        return contentsname
+        return next(
+            (
+                toctree['caption']
+                for toctree in tree.traverse(addnodes.toctree)
+                if 'caption' in toctree
+            ),
+            None,
+        )
 
     def update_doc_context(self, title: str, author: str, theme: Theme) -> None:
         self.context['title'] = title
@@ -327,7 +323,7 @@ class LaTeXBuilder(Builder):
 
     def assemble_doctree(self, indexfile: str, toctree_only: bool, appendices: List[str]) -> nodes.document:  # NOQA
         self.docnames = set([indexfile] + appendices)
-        logger.info(darkgreen(indexfile) + " ", nonl=True)
+        logger.info(f'{darkgreen(indexfile)} ', nonl=True)
         tree = self.env.get_doctree(indexfile)
         tree['docname'] = indexfile
         if toctree_only:
@@ -363,8 +359,6 @@ class LaTeXBuilder(Builder):
                     newnodes.append(nodes.emphasis(title, title))
                     newnodes.append(nodes.Text(')', ')'))
                     break
-            else:
-                pass
             pendingnode.replace_self(newnodes)
         return largetree
 
@@ -412,7 +406,7 @@ class LaTeXBuilder(Builder):
     @progress_message(__('copying additional files'))
     def copy_latex_additional_files(self) -> None:
         for filename in self.config.latex_additional_files:
-            logger.info(' ' + filename, nonl=True)
+            logger.info(f' {filename}', nonl=True)
             copy_asset_file(path.join(self.confdir, filename), self.outdir)
 
     def copy_image_files(self) -> None:
@@ -498,15 +492,14 @@ def default_latex_engine(config: Config) -> str:
 
 def default_latex_docclass(config: Config) -> Dict[str, str]:
     """ Better default latex_docclass settings for specific languages. """
-    if config.language == 'ja':
-        if config.latex_engine == 'uplatex':
-            return {'manual': 'ujbook',
-                    'howto': 'ujreport'}
-        else:
-            return {'manual': 'jsbook',
-                    'howto': 'jreport'}
-    else:
+    if config.language != 'ja':
         return {}
+    if config.latex_engine == 'uplatex':
+        return {'manual': 'ujbook',
+                'howto': 'ujreport'}
+    else:
+        return {'manual': 'jsbook',
+                'howto': 'jreport'}
 
 
 def default_latex_use_xindy(config: Config) -> bool:
@@ -518,11 +511,15 @@ def default_latex_documents(config: Config) -> List[Tuple[str, str, str, str, st
     """ Better default latex_documents settings. """
     project = texescape.escape(config.project, config.latex_engine)
     author = texescape.escape(config.author, config.latex_engine)
-    return [(config.root_doc,
-             make_filename_from_project(config.project) + '.tex',
-             texescape.escape_abbr(project),
-             texescape.escape_abbr(author),
-             config.latex_theme)]
+    return [
+        (
+            config.root_doc,
+            f'{make_filename_from_project(config.project)}.tex',
+            texescape.escape_abbr(project),
+            texescape.escape_abbr(author),
+            config.latex_theme,
+        )
+    ]
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

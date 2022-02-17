@@ -87,12 +87,7 @@ class TocTreeCollector(EnvironmentCollector):
                     visitor = SphinxContentsFilter(doctree)
                     title.walkabout(visitor)
                     nodetext = visitor.get_entry_text()
-                    if not numentries[0]:
-                        # for the very first toc entry, don't add an anchor
-                        # as it is the file's title anyway
-                        anchorname = ''
-                    else:
-                        anchorname = '#' + sectionnode['ids'][0]
+                    anchorname = '' if not numentries[0] else '#' + sectionnode['ids'][0]
                     numentries[0] += 1
                     # make these nodes:
                     # list_item -> compact_paragraph -> reference
@@ -101,14 +96,12 @@ class TocTreeCollector(EnvironmentCollector):
                         anchorname=anchorname, *nodetext)
                     para = addnodes.compact_paragraph('', '', reference)
                     item: Element = nodes.list_item('', para)
-                    sub_item = build_toc(sectionnode, depth + 1)
-                    if sub_item:
+                    if sub_item := build_toc(sectionnode, depth + 1):
                         item += sub_item
                     entries.append(item)
                 elif isinstance(sectionnode, addnodes.only):
                     onlynode = addnodes.only(expr=sectionnode['expr'])
-                    blist = build_toc(sectionnode, depth)
-                    if blist:
+                    if blist := build_toc(sectionnode, depth):
                         onlynode += blist.children
                         entries.append(onlynode)
                 elif isinstance(sectionnode, nodes.Element):
@@ -149,13 +142,7 @@ class TocTreeCollector(EnvironmentCollector):
                     _walk_toc(subnode, secnums, depth - 1, titlenode)
                     numstack.pop()
                     titlenode = None
-                elif isinstance(subnode, nodes.list_item):
-                    _walk_toc(subnode, secnums, depth, titlenode)
-                    titlenode = None
-                elif isinstance(subnode, addnodes.only):
-                    # at this stage we don't know yet which sections are going
-                    # to be included; just include all of them, even if it leads
-                    # to gaps in the numbering
+                elif isinstance(subnode, (nodes.list_item, addnodes.only)):
                     _walk_toc(subnode, secnums, depth, titlenode)
                     titlenode = None
                 elif isinstance(subnode, addnodes.compact_paragraph):
@@ -255,8 +242,7 @@ class TocTreeCollector(EnvironmentCollector):
         def _walk_doctree(docname: str, doctree: Element, secnum: Tuple[int, ...]) -> None:
             for subnode in doctree.children:
                 if isinstance(subnode, nodes.section):
-                    next_secnum = get_section_number(docname, subnode)
-                    if next_secnum:
+                    if next_secnum := get_section_number(docname, subnode):
                         _walk_doctree(docname, subnode, next_secnum)
                     else:
                         _walk_doctree(docname, subnode, secnum)

@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 def not_suppressed(argtypes: List[ast.AST] = []) -> bool:
     """Check given *argtypes* is suppressed type_comment or not."""
-    if len(argtypes) == 0:  # no argtypees
+    if not argtypes:  # no argtypees
         return False
     elif len(argtypes) == 1 and ast_unparse(argtypes[0]) == "...":  # suppressed
         # Note: To support multiple versions of python, this uses ``ast_unparse()`` for
@@ -106,17 +106,14 @@ def get_type_comment(obj: Any, bound_method: bool = False) -> Signature:
             return signature_from_ast(subject, bound_method, function)  # type: ignore
         else:
             return None
-    except (OSError, TypeError):  # failed to load source code
-        return None
-    except SyntaxError:  # failed to parse type_comments
+    except (OSError, TypeError, SyntaxError):  # failed to load source code
         return None
 
 
 def update_annotations_using_type_comments(app: Sphinx, obj: Any, bound_method: bool) -> None:
     """Update annotations info of *obj* using type_comments."""
     try:
-        type_sig = get_type_comment(obj, bound_method)
-        if type_sig:
+        if type_sig := get_type_comment(obj, bound_method):
             sig = inspect.signature(obj, bound_method)
             for param in sig.parameters.values():
                 if param.name not in obj.__annotations__:

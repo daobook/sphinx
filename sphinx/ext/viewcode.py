@@ -149,12 +149,11 @@ def env_merge_info(app: Sphinx, env: BuildEnvironment, docnames: Iterable[str],
     for modname, entry in other._viewcode_modules.items():  # type: ignore
         if modname not in env._viewcode_modules:  # type: ignore
             env._viewcode_modules[modname] = entry  # type: ignore
-        else:
-            if env._viewcode_modules[modname]:  # type: ignore
-                used = env._viewcode_modules[modname][2]  # type: ignore
-                for fullname, docname in entry[2].items():
-                    if fullname not in used:
-                        used[fullname] = docname
+        elif env._viewcode_modules[modname]:  # type: ignore
+            used = env._viewcode_modules[modname][2]  # type: ignore
+            for fullname, docname in entry[2].items():
+                if fullname not in used:
+                    used[fullname] = docname
 
 
 def env_purge_doc(app: Sphinx, env: BuildEnvironment, docname: str) -> None:
@@ -209,15 +208,13 @@ def missing_reference(app: Sphinx, env: BuildEnvironment, node: Element, contnod
 
 def get_module_filename(app: Sphinx, modname: str) -> Optional[str]:
     """Get module filename for *modname*."""
-    source_info = app.emit_firstresult('viewcode-find-source', modname)
-    if source_info:
+    if source_info := app.emit_firstresult('viewcode-find-source', modname):
         return None
-    else:
-        try:
-            filename, source = ModuleAnalyzer.get_module_source(modname)
-            return filename
-        except Exception:
-            return None
+    try:
+        filename, source = ModuleAnalyzer.get_module_source(modname)
+        return filename
+    except Exception:
+        return None
 
 
 def should_generate_module_page(app: Sphinx, modname: str) -> bool:
@@ -275,7 +272,7 @@ def collect_pages(app: Sphinx) -> Generator[Tuple[str, Dict[str, Any], str], Non
         lines = highlighted.splitlines()
         # split off wrap markup from the first line of the actual code
         before, after = lines[0].split('<pre>')
-        lines[0:1] = [before + '<pre>', after]
+        lines[0:1] = [f'{before}<pre>', after]
         # nothing to do for the last line; it always starts with </pre> anyway
         # now that we have code lines (starting at index 1), insert anchors for
         # the collected tags (HACK: this only works if the tag boundaries are
@@ -283,7 +280,7 @@ def collect_pages(app: Sphinx) -> Generator[Tuple[str, Dict[str, Any], str], Non
         maxindex = len(lines) - 1
         for name, docname in used.items():
             type, start, end = tags[name]
-            backlink = urito(pagename, docname) + '#' + refname + '.' + name
+            backlink = f'{urito(pagename, docname)}#{refname}.{name}'
             lines[start] = (
                 '<div class="viewcode-block" id="%s"><a class="viewcode-back" '
                 'href="%s">%s</a>' % (name, backlink, _('[docs]')) +
@@ -319,14 +316,13 @@ def collect_pages(app: Sphinx) -> Generator[Tuple[str, Dict[str, Any], str], Non
     stack = ['']
     for modname in sorted(modnames):
         if modname.startswith(stack[-1]):
-            stack.append(modname + '.')
             html.append('<ul>')
         else:
             stack.pop()
             while not modname.startswith(stack[-1]):
                 stack.pop()
                 html.append('</ul>')
-            stack.append(modname + '.')
+        stack.append(f'{modname}.')
         html.append('<li><a href="%s">%s</a></li>\n' % (
             urito(posixpath.join(OUTPUT_DIRNAME, 'index'),
                   posixpath.join(OUTPUT_DIRNAME, modname.replace('.', '/'))),

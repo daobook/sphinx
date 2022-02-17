@@ -193,15 +193,15 @@ class TocTree:
                         for toplevel in children:
                             # nodes with length 1 don't have any children anyway
                             if len(toplevel) > 1:
-                                subtrees = list(toplevel.traverse(addnodes.toctree))
-                                if subtrees:
+                                if subtrees := list(
+                                    toplevel.traverse(addnodes.toctree)
+                                ):
                                     toplevel[1][:] = subtrees  # type: ignore
                                 else:
                                     toplevel.pop(1)
                     # resolve all sub-toctrees
                     for subtocnode in list(toc.traverse(addnodes.toctree)):
-                        if not (subtocnode.get('hidden', False) and
-                                not includehidden):
+                        if not subtocnode.get('hidden', False) or includehidden:
                             i = subtocnode.parent.index(subtocnode) + 1
                             for entry in _entries_from_toctree(
                                     subtocnode, [refdoc] + parents,
@@ -288,14 +288,12 @@ class TocTree:
                 # entry is to be collapsed
                 if maxdepth > 0 and depth > maxdepth:
                     subnode.parent.replace(subnode, [])
-                else:
-                    # cull sub-entries whose parents aren't 'current'
-                    if (collapse and depth > 1 and
+                elif (collapse and depth > 1 and
                             'iscurrent' not in subnode.parent):
-                        subnode.parent.remove(subnode)
-                    else:
-                        # recurse on visible children
-                        self._toctree_prune(subnode, depth + 1, maxdepth,  collapse)
+                    subnode.parent.remove(subnode)
+                else:
+                    # recurse on visible children
+                    self._toctree_prune(subnode, depth + 1, maxdepth,  collapse)
 
     def get_toc_for(self, docname: str, builder: "Builder") -> Node:
         """Return a TOC nodetree -- for use on the same page only!"""
@@ -324,10 +322,16 @@ class TocTree:
         else:
             kwargs['maxdepth'] = int(kwargs['maxdepth'])
         kwargs['collapse'] = collapse
-        for toctreenode in doctree.traverse(addnodes.toctree):
-            toctree = self.resolve(docname, builder, toctreenode, prune=True, **kwargs)
-            if toctree:
-                toctrees.append(toctree)
+        toctrees.extend(
+            toctree
+            for toctreenode in doctree.traverse(addnodes.toctree)
+            if (
+                toctree := self.resolve(
+                    docname, builder, toctreenode, prune=True, **kwargs
+                )
+            )
+        )
+
         if not toctrees:
             return None
         result = toctrees[0]

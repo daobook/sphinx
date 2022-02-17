@@ -45,10 +45,9 @@ class Project:
         self.docnames = set()
         excludes = compile_matchers(exclude_paths + EXCLUDE_PATHS)
         for filename in get_matching_files(self.srcdir, excludes):  # type: ignore
-            docname = self.path2doc(filename)
-            if docname:
+            if docname := self.path2doc(filename):
                 if docname in self.docnames:
-                    pattern = os.path.join(self.srcdir, docname) + '.*'
+                    pattern = f'{os.path.join(self.srcdir, docname)}.*'
                     files = [relpath(f, self.srcdir) for f in glob(pattern)]
                     logger.warning(__('multiple files found for the document "%s": %r\n'
                                       'Use %r for the build.'),
@@ -90,7 +89,4 @@ class Project:
             # document does not exist
             suffix = list(self.source_suffix)[0]
 
-        if basedir:
-            return basename + suffix
-        else:
-            return docname + suffix
+        return basename + suffix if basedir else docname + suffix

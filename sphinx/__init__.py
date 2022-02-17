@@ -8,6 +8,7 @@
     :license: BSD, see LICENSE for details.
 """
 
+
 # Keep this file executable as-is in Python 3!
 # (Otherwise getting the version out of it from setup.py is impossible.)
 
@@ -54,6 +55,6 @@ if __version__.endswith('+'):
                              cwd=package_dir,
                              stdout=PIPE, stderr=PIPE, encoding='ascii')
         if ret.stdout:
-            __display_version__ += '/' + ret.stdout.strip()
+            __display_version__ += f'/{ret.stdout.strip()}'
     except Exception:
         pass

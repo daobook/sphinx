@@ -67,9 +67,7 @@ def read_svg_depth(filename: str) -> int:
     with open(filename) as f:
         for line in f:
             pass
-        # Only last line is checked
-        matched = depthsvgcomment_re.match(line)
-        if matched:
+        if matched := depthsvgcomment_re.match(line):
             return int(matched.group(1))
         return None
 
@@ -177,8 +175,7 @@ def convert_dvi_to_png(dvipath: str, builder: Builder) -> Tuple[str, int]:
     depth = None
     if builder.config.imgmath_use_preview:
         for line in stdout.splitlines():
-            matched = depth_re.match(line)
-            if matched:
+            if matched := depth_re.match(line):
                 depth = int(matched.group(1))
                 write_png_depth(filename, depth)
                 break
@@ -201,8 +198,7 @@ def convert_dvi_to_svg(dvipath: str, builder: Builder) -> Tuple[str, int]:
     depth = None
     if builder.config.imgmath_use_preview:
         for line in stderr.splitlines():  # not stdout !
-            matched = depthsvg_re.match(line)
-            if matched:
+            if matched := depthsvg_re.match(line):
                 depth = round(float(matched.group(1)) * 100 / 72.27)  # assume 100ppi
                 write_svg_depth(filename, depth)
                 break
@@ -291,7 +287,7 @@ def get_tooltip(self: HTMLTranslator, node: Element) -> str:
 
 def html_visit_math(self: HTMLTranslator, node: nodes.math) -> None:
     try:
-        fname, depth = render_math(self, '$' + node.astext() + '$')
+        fname, depth = render_math(self, f'${node.astext()}$')
     except MathExtError as exc:
         msg = str(exc)
         sm = nodes.system_message(msg, type='WARNING', level=2,
@@ -307,7 +303,7 @@ def html_visit_math(self: HTMLTranslator, node: nodes.math) -> None:
         c = ('<img class="math" src="%s"' % fname) + get_tooltip(self, node)
         if depth is not None:
             c += ' style="vertical-align: %dpx"' % (-depth)
-        self.body.append(c + '/>')
+        self.body.append(f'{c}/>')
     raise nodes.SkipNode
 
 

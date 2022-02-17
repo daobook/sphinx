@@ -243,11 +243,7 @@ class Domain:
     def add_object_type(self, name: str, objtype: ObjType) -> None:
         """Add an object type."""
         self.object_types[name] = objtype
-        if objtype.roles:
-            self._type2role[name] = objtype.roles[0]
-        else:
-            self._type2role[name] = ''
-
+        self._type2role[name] = objtype.roles[0] if objtype.roles else ''
         for role in objtype.roles:
             self._role2type.setdefault(role, []).append(name)
 
@@ -389,9 +385,7 @@ class Domain:
 
     def get_type_name(self, type: ObjType, primary: bool = False) -> str:
         """Return full name for given ObjType."""
-        if primary:
-            return type.lname
-        return _('%s %s') % (self.label, type.lname)
+        return type.lname if primary else _('%s %s') % (self.label, type.lname)
 
     def get_enumerable_node_type(self, node: Node) -> Optional[str]:
         """Get type of enumerable nodes (experimental)."""

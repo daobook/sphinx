@@ -51,11 +51,10 @@ template_dir = path.join(package_dir, 'templates', 'apidoc')
 def is_initpy(filename: str) -> bool:
     """Check *filename* is __init__ file or not."""
     basename = path.basename(filename)
-    for suffix in sorted(PY_SUFFIXES, key=len, reverse=True):
-        if basename == '__init__' + suffix:
-            return True
-    else:
-        return False
+    return any(
+        basename == f'__init__{suffix}'
+        for suffix in sorted(PY_SUFFIXES, key=len, reverse=True)
+    )
 
 
 def module_join(*modnames: str) -> str:
@@ -155,7 +154,7 @@ def create_modules_toc_file(modules: List[str], opts: Any, name: str = 'modules'
     prev_module = ''
     for module in modules[:]:
         # look if the module is a subpackage and, if yes, ignore it
-        if module.startswith(prev_module + '.'):
+        if module.startswith(f'{prev_module}.'):
             modules.remove(module)
         else:
             prev_module = module
@@ -181,11 +180,7 @@ def is_skipped_package(dirname: str, opts: Any, excludes: List[str] = []) -> boo
         return True
 
     # Check there is some showable module inside package
-    if all(is_excluded(path.join(dirname, f), excludes) for f in files):
-        # all submodules are excluded
-        return True
-    else:
-        return False
+    return all(is_excluded(path.join(dirname, f), excludes) for f in files)
 
 
 def is_skipped_module(filename: str, opts: Any, excludes: List[str]) -> bool:
@@ -214,11 +209,7 @@ def walk(rootpath: str, excludes: List[str], opts: Any
 
         # remove hidden ('.') and private ('_') directories, as well as
         # excluded dirs
-        if includeprivate:
-            exclude_prefixes: Tuple[str, ...] = ('.',)
-        else:
-            exclude_prefixes = ('.', '_')
-
+        exclude_prefixes = ('.', ) if includeprivate else ('.', '_')
         subs[:] = sorted(sub for sub in subs if not sub.startswith(exclude_prefixes) and
                          not is_excluded(path.join(root, sub), excludes))
 
@@ -227,11 +218,7 @@ def walk(rootpath: str, excludes: List[str], opts: Any
 
 def has_child_module(rootpath: str, excludes: List[str], opts: Any) -> bool:
     """Check the given directory contains child module/s (at least one)."""
-    for root, subs, files in walk(rootpath, excludes, opts):
-        if files:
-            return True
-
-    return False
+    return any(files for root, subs, files in walk(rootpath, excludes, opts))
 
 
 def recurse_tree(rootpath: str, excludes: List[str], opts: Any,
@@ -294,10 +281,7 @@ def is_excluded(root: str, excludes: List[str]) -> bool:
     Note: by having trailing slashes, we avoid common prefix issues, like
           e.g. an exclude "foo" also accidentally excluding "foobar".
     """
-    for exclude in excludes:
-        if fnmatch(root, exclude):
-            return True
-    return False
+    return any(fnmatch(root, exclude) for exclude in excludes)
 
 
 def get_parser() -> argparse.ArgumentParser:
@@ -427,7 +411,7 @@ def main(argv: List[str] = sys.argv[1:]) -> int:
         prev_module = ''
         text = ''
         for module in modules:
-            if module.startswith(prev_module + '.'):
+            if module.startswith(f'{prev_module}.'):
                 continue
             prev_module = module
             text += '   %s\n' % module
@@ -439,11 +423,14 @@ def main(argv: List[str] = sys.argv[1:]) -> int:
             'author': args.author or 'Author',
             'version': args.version or '',
             'release': args.release or args.version or '',
-            'suffix': '.' + args.suffix,
+            'suffix': f'.{args.suffix}',
             'master': 'index',
             'epub': True,
-            'extensions': ['sphinx.ext.autodoc', 'sphinx.ext.viewcode',
-                           'sphinx.ext.todo'],
+            'extensions': [
+                'sphinx.ext.autodoc',
+                'sphinx.ext.viewcode',
+                'sphinx.ext.todo',
+            ],
             'makefile': True,
             'batchfile': True,
             'make_mode': True,
@@ -453,6 +440,7 @@ def main(argv: List[str] = sys.argv[1:]) -> int:
             'module_path': rootpath,
             'append_syspath': args.append_syspath,
         }
+
         if args.extensions:
             d['extensions'].extend(args.extensions)
         if args.quiet:

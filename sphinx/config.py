@@ -176,43 +176,45 @@ class Config:
     def convert_overrides(self, name: str, value: Any) -> Any:
         if not isinstance(value, str):
             return value
-        else:
-            defvalue = self.values[name][0]
-            if self.values[name][2] == Any:
-                return value
-            elif self.values[name][2] == {bool, str}:
-                if value == '0':
-                    # given falsy string from command line option
-                    return False
-                elif value == '1':
-                    return True
-                else:
-                    return value
-            elif type(defvalue) is bool or self.values[name][2] == [bool]:
-                if value == '0':
-                    # given falsy string from command line option
-                    return False
-                else:
-                    return bool(value)
-            elif isinstance(defvalue, dict):
-                raise ValueError(__('cannot override dictionary config setting %r, '
-                                    'ignoring (use %r to set individual elements)') %
-                                 (name, name + '.key=value'))
-            elif isinstance(defvalue, list):
-                return value.split(',')
-            elif isinstance(defvalue, int):
-                try:
-                    return int(value)
-                except ValueError as exc:
-                    raise ValueError(__('invalid number %r for config value %r, ignoring') %
-                                     (value, name)) from exc
-            elif hasattr(defvalue, '__call__'):
-                return value
-            elif defvalue is not None and not isinstance(defvalue, str):
-                raise ValueError(__('cannot override config setting %r with unsupported '
-                                    'type, ignoring') % name)
+        defvalue = self.values[name][0]
+        if self.values[name][2] == Any:
+            return value
+        elif self.values[name][2] == {bool, str}:
+            if value == '0':
+                # given falsy string from command line option
+                return False
+            elif value == '1':
+                return True
             else:
                 return value
+        elif type(defvalue) is bool or self.values[name][2] == [bool]:
+            return False if value == '0' else bool(value)
+        elif isinstance(defvalue, dict):
+            raise ValueError(
+                (
+                    __(
+                        'cannot override dictionary config setting %r, '
+                        'ignoring (use %r to set individual elements)'
+                    )
+                    % (name, f'{name}.key=value')
+                )
+            )
+
+        elif isinstance(defvalue, list):
+            return value.split(',')
+        elif isinstance(defvalue, int):
+            try:
+                return int(value)
+            except ValueError as exc:
+                raise ValueError(__('invalid number %r for config value %r, ignoring') %
+                                 (value, name)) from exc
+        elif hasattr(defvalue, '__call__'):
+            return value
+        elif defvalue is not None and not isinstance(defvalue, str):
+            raise ValueError(__('cannot override config setting %r with unsupported '
+                                'type, ignoring') % name)
+        else:
+            return value
 
     def pre_init_values(self) -> None:
         """
@@ -291,12 +293,11 @@ class Config:
     def __getstate__(self) -> Dict:
         """Obtains serializable data for pickling."""
         # remove potentially pickling-problematic values from config
-        __dict__ = {}
-        for key, value in self.__dict__.items():
-            if key.startswith('_') or not is_serializable(value):
-                pass
-            else:
-                __dict__[key] = value
+        __dict__ = {
+            key: value
+            for key, value in self.__dict__.items()
+            if not key.startswith('_') and is_serializable(value)
+        }
 
         # create a picklable copy of values list
         __dict__['values'] = {}
@@ -317,10 +318,7 @@ class Config:
 
 def eval_config_file(filename: str, tags: Optional[Tags]) -> Dict[str, Any]:
     """Evaluate a config file."""
-    namespace: Dict[str, Any] = {}
-    namespace['__file__'] = filename
-    namespace['tags'] = tags
-
+    namespace: Dict[str, Any] = {'__file__': filename, 'tags': tags}
     with cd(path.dirname(filename)):
         # during executing config file, current dir is changed to ``confdir``.
         try:

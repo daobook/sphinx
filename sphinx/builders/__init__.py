@@ -228,8 +228,7 @@ class Builder:
 
     def compile_specific_catalogs(self, specified_files: List[str]) -> None:
         def to_domain(fpath: str) -> Optional[str]:
-            docname = self.env.path2doc(path.abspath(fpath))
-            if docname:
+            if docname := self.env.path2doc(path.abspath(fpath)):
                 return docname_to_domain(docname, self.config.gettext_compact)
             else:
                 return None
@@ -295,7 +294,7 @@ class Builder:
                        summary=__('targets for %d source files that are out of date') %
                        len(to_build))
 
-    def build(self, docnames: Iterable[str], summary: str = None, method: str = 'update') -> None:  # NOQA
+    def build(self, docnames: Iterable[str], summary: str = None, method: str = 'update') -> None:    # NOQA
         """Main build method.
 
         First updates the environment, and then calls :meth:`write`.
@@ -311,8 +310,7 @@ class Builder:
         logger.info(bold(__('looking for now-outdated files... ')), nonl=True)
         for docname in self.env.check_dependents(self.app, updated_docnames):
             updated_docnames.add(docname)
-        outdated = len(updated_docnames) - doccount
-        if outdated:
+        if outdated := len(updated_docnames) - doccount:
             logger.info(__('%d found'), outdated)
         else:
             logger.info(__('none found'))
@@ -328,10 +326,9 @@ class Builder:
             self.app.phase = BuildPhase.CONSISTENCY_CHECK
             with progress_message(__('checking consistency')):
                 self.env.check_consistency()
-        else:
-            if method == 'update' and not docnames:
-                logger.info(bold(__('no targets are out of date.')))
-                return
+        elif method == 'update' and not docnames:
+            logger.info(bold(__('no targets are out of date.')))
+            return
 
         self.app.phase = BuildPhase.RESOLVING
 
@@ -497,7 +494,7 @@ class Builder:
         doctree.settings.env = None
         doctree.settings.record_dependencies = None
 
-        doctree_filename = path.join(self.doctreedir, docname + '.doctree')
+        doctree_filename = path.join(self.doctreedir, f'{docname}.doctree')
         ensuredir(path.dirname(doctree_filename))
         with open(doctree_filename, 'wb') as f:
             pickle.dump(doctree, f, pickle.HIGHEST_PROTOCOL)

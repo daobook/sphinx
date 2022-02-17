@@ -119,7 +119,7 @@ def process_autosummary_toc(app: Sphinx, doctree: nodes.document) -> None:
 
     def crawl_toc(node: Element, depth: int = 1) -> None:
         crawled[node] = True
-        for j, subnode in enumerate(node):
+        for subnode in node:
             try:
                 if (isinstance(subnode, autosummary_toc) and
                         isinstance(subnode[0], addnodes.toctree)):
@@ -224,14 +224,16 @@ def get_documenter(app: Sphinx, obj: Any, parent: Any) -> Type[Documenter]:
     else:
         parent_doc = parent_doc_cls(FakeDirective(), "")
 
-    # Get the correct documenter class for *obj*
-    classes = [cls for cls in app.registry.documenters.values()
-               if cls.can_document_member(obj, '', False, parent_doc)]
-    if classes:
-        classes.sort(key=lambda cls: cls.priority)
-        return classes[-1]
-    else:
+    if not (
+        classes := [
+            cls
+            for cls in app.registry.documenters.values()
+            if cls.can_document_member(obj, '', False, parent_doc)
+        ]
+    ):
         return DataDocumenter
+    classes.sort(key=lambda cls: cls.priority)
+    return classes[-1]
 
 
 # -- .. autosummary:: ----------------------------------------------------------
@@ -354,7 +356,7 @@ class Autosummary(SphinxDirective):
             if not isinstance(obj, ModuleType):
                 # give explicitly separated module name, so that members
                 # of inner classes can be documented
-                full_name = modname + '::' + full_name[len(modname) + 1:]
+                full_name = f'{modname}::{full_name[len(modname) + 1:]}'
             # NB. using full_name here is important, since Documenters
             #     handle module prefixes slightly differently
             documenter = self.create_documenter(self.env.app, obj, parent, full_name)
@@ -608,7 +610,7 @@ def limited_join(sep: str, items: List[str], max_chars: int = 30,
 
     n_chars = 0
     n_items = 0
-    for j, item in enumerate(items):
+    for item in items:
         n_chars += len(item) + len(sep)
         if n_chars < max_chars - len(overflow_marker):
             n_items += 1
@@ -631,10 +633,9 @@ def get_import_prefixes_from_env(env: BuildEnvironment) -> List[str]:
     if currmodule:
         prefixes.insert(0, currmodule)
 
-    currclass = env.ref_context.get('py:class')
-    if currclass:
+    if currclass := env.ref_context.get('py:class'):
         if currmodule:
-            prefixes.insert(0, currmodule + "." + currclass)
+            prefixes.insert(0, f'{currmodule}.{currclass}')
         else:
             prefixes.insert(0, currclass)
 
@@ -648,10 +649,7 @@ def import_by_name(name: str, prefixes: List[str] = [None]) -> Tuple[str, Any, A
     tried = []
     for prefix in prefixes:
         try:
-            if prefix:
-                prefixed_name = '.'.join([prefix, name])
-            else:
-                prefixed_name = name
+            prefixed_name = '.'.join([prefix, name]) if prefix else name
             obj, parent, modname = _import_by_name(prefixed_name)
             return prefixed_name, obj, parent, modname
         except ImportError:
@@ -687,15 +685,14 @@ def _import_by_name(name: str) -> Tuple[Any, Any, str]:
             if modname in sys.modules:
                 break
 
-        if last_j < len(name_parts):
-            parent = None
-            obj = sys.modules[modname]
-            for obj_name in name_parts[last_j:]:
-                parent = obj
-                obj = getattr(obj, obj_name)
-            return obj, parent, modname
-        else:
+        if last_j >= len(name_parts):
             return sys.modules[modname], None, modname
+        parent = None
+        obj = sys.modules[modname]
+        for obj_name in name_parts[last_j:]:
+            parent = obj
+            obj = getattr(obj, obj_name)
+        return obj, parent, modname
     except (ValueError, ImportError, AttributeError, KeyError) as e:
         raise ImportError(*e.args) from e
 
@@ -707,12 +704,12 @@ def import_ivar_by_name(name: str, prefixes: List[str] = [None]) -> Tuple[str, A
     try:
         name, attr = name.rsplit(".", 1)
         real_name, obj, parent, modname = import_by_name(name, prefixes)
-        qualname = real_name.replace(modname + ".", "")
+        qualname = real_name.replace(f'{modname}.', "")
         analyzer = ModuleAnalyzer.for_module(getattr(obj, '__module__', modname))
         analyzer.analyze()
         # check for presence in `annotations` to include dataclass attributes
         if (qualname, attr) in analyzer.attr_docs or (qualname, attr) in analyzer.annotations:
-            return real_name + "." + attr, INSTANCEATTR, obj, modname
+            return f'{real_name}.{attr}', INSTANCEATTR, obj, modname
     except (ImportError, ValueError, PycodeError):
         pass
 
@@ -770,9 +767,7 @@ def process_generate_options(app: Sphinx) -> None:
         env = app.builder.env
         genfiles = [env.doc2path(x, base=None) for x in env.found_docs
                     if os.path.isfile(env.doc2path(x))]
-    elif genfiles is False:
-        pass
-    else:
+    elif genfiles is not False:
         ext = list(app.config.source_suffix)
         genfiles = [genfile + (ext[0] if not genfile.endswith(tuple(ext)) else '')
                     for genfile in genfiles]

@@ -55,13 +55,11 @@ class GenericObject(ObjectDescription[str]):
 
     def handle_signature(self, sig: str, signode: desc_signature) -> str:
         if self.parse_node:
-            name = self.parse_node(self.env, sig, signode)
-        else:
-            signode.clear()
-            signode += addnodes.desc_name(sig, sig)
+            return self.parse_node(self.env, sig, signode)
+        signode.clear()
+        signode += addnodes.desc_name(sig, sig)
             # normalize whitespace like XRefRole does
-            name = ws_re.sub(' ', sig)
-        return name
+        return ws_re.sub(' ', sig)
 
     def add_target_and_index(self, name: str, sig: str, signode: desc_signature) -> None:
         node_id = make_id(self.env, self.state.document, self.objtype, name)
@@ -94,7 +92,7 @@ class GenericObject(ObjectDescription[str]):
         .. note:: Old Styled node_id was used until Sphinx-3.0.
                   This will be removed in Sphinx-5.0.
         """
-        return self.objtype + '-' + name
+        return f'{self.objtype}-{name}'
 
 
 class EnvVar(GenericObject):
@@ -173,7 +171,7 @@ class Target(SphinxDirective):
         .. note:: Old Styled node_id was used until Sphinx-3.0.
                   This will be removed in Sphinx-5.0.
         """
-        return self.name + '-' + name
+        return f'{self.name}-{name}'
 
 
 class Cmdoption(ObjectDescription[str]):
@@ -198,7 +196,7 @@ class Cmdoption(ObjectDescription[str]):
             if optname.endswith('[') and args.endswith(']'):
                 # optional value surrounded by brackets (ex. foo[=bar])
                 optname = optname[:-1]
-                args = '[' + args
+                args = f'[{args}'
 
             if count:
                 signode += addnodes.desc_addname(', ', ', ')
@@ -253,7 +251,7 @@ class Cmdoption(ObjectDescription[str]):
         .. note:: Old Styled node_id was used until Sphinx-3.0.
                   This will be removed in Sphinx-5.0.
         """
-        return nodes.make_id(prefix + '-' + optname)
+        return nodes.make_id(f'{prefix}-{optname}')
 
 
 class Program(SphinxDirective):
@@ -284,9 +282,7 @@ class OptionXRefRole(XRefRole):
 
 
 def split_term_classifiers(line: str) -> List[Optional[str]]:
-    # split line into a term and classifiers. if no classifier, None is used..
-    parts: List[Optional[str]] = re.split(' +: +', line) + [None]
-    return parts
+    return re.split(' +: +', line) + [None]
 
 
 def make_glossary_term(env: "BuildEnvironment", textnodes: Iterable[Node], index_key: str,
@@ -384,9 +380,7 @@ class Glossary(SphinxDirective):
                         messages.append(self.state.reporter.warning(
                             _('glossary seems to be misformatted, check indentation'),
                             source=source, line=lineno))
-            elif in_comment:
-                pass
-            else:
+            elif not in_comment:
                 if not in_definition:
                     # first line of definition, determines indentation
                     in_definition = True
@@ -441,7 +435,7 @@ class Glossary(SphinxDirective):
 
 
 def token_xrefs(text: str, productionGroup: str = '') -> List[Node]:
-    if len(productionGroup) != 0:
+    if productionGroup != '':
         productionGroup += ':'
     retnodes: List[Node] = []
     pos = 0
@@ -535,7 +529,7 @@ class ProductionList(SphinxDirective):
         .. note:: Old Styled node_id was used until Sphinx-3.0.
                   This will be removed in Sphinx-5.0.
         """
-        return nodes.make_id('grammar-token-' + token)
+        return nodes.make_id(f'grammar-token-{token}')
 
 
 class TokenXRefRole(XRefRole):
@@ -794,7 +788,7 @@ class StandardDomain(Domain):
         innernode = nodes.inline(sectname, sectname)
         if innernode.get('classes') is not None:
             innernode['classes'].append('std')
-            innernode['classes'].append('std-' + rolename)
+            innernode['classes'].append(f'std-{rolename}')
         if docname == fromdocname:
             newnode['refid'] = labelid
         else:
@@ -807,7 +801,7 @@ class StandardDomain(Domain):
             newnode['refuri'] = builder.get_relative_uri(
                 fromdocname, docname)
             if labelid:
-                newnode['refuri'] += '#' + labelid
+                newnode['refuri'] += f'#{labelid}'
         newnode.append(innernode)
         return newnode
 
@@ -930,14 +924,13 @@ class StandardDomain(Domain):
         docname = docname_join(refdoc, node['reftarget'])
         if docname not in env.all_docs:
             return None
+        if node['refexplicit']:
+            # reference with explicit title
+            caption = node.astext()
         else:
-            if node['refexplicit']:
-                # reference with explicit title
-                caption = node.astext()
-            else:
-                caption = clean_astext(env.titles[docname])
-            innernode = nodes.inline(caption, caption, classes=['doc'])
-            return make_refnode(builder, fromdocname, docname, None, innernode)
+            caption = clean_astext(env.titles[docname])
+        innernode = nodes.inline(caption, caption, classes=['doc'])
+        return make_refnode(builder, fromdocname, docname, None, innernode)
 
     def _resolve_option_xref(self, env: "BuildEnvironment", fromdocname: str,
                              builder: "Builder", typ: str, target: str,
@@ -964,28 +957,30 @@ class StandardDomain(Domain):
     def _resolve_term_xref(self, env: "BuildEnvironment", fromdocname: str,
                            builder: "Builder", typ: str, target: str,
                            node: pending_xref, contnode: Element) -> Element:
-        result = self._resolve_obj_xref(env, fromdocname, builder, typ,
-                                        target, node, contnode)
-        if result:
+        if result := self._resolve_obj_xref(
+            env, fromdocname, builder, typ, target, node, contnode
+        ):
             return result
+        # fallback to case insentive match
+        if target.lower() in self._terms:
+            docname, labelid = self._terms[target.lower()]
+            return make_refnode(builder, fromdocname, docname, labelid, contnode)
         else:
-            # fallback to case insentive match
-            if target.lower() in self._terms:
-                docname, labelid = self._terms[target.lower()]
-                return make_refnode(builder, fromdocname, docname, labelid, contnode)
-            else:
-                return None
+            return None
 
     def _resolve_obj_xref(self, env: "BuildEnvironment", fromdocname: str,
                           builder: "Builder", typ: str, target: str,
                           node: pending_xref, contnode: Element) -> Optional[Element]:
         objtypes = self.objtypes_for_role(typ) or []
-        for objtype in objtypes:
-            if (objtype, target) in self.objects:
-                docname, labelid = self.objects[objtype, target]
-                break
-        else:
-            docname, labelid = '', ''
+        docname, labelid = next(
+            (
+                self.objects[objtype, target]
+                for objtype in objtypes
+                if (objtype, target) in self.objects
+            ),
+            ('', ''),
+        )
+
         if not docname:
             return None
         return make_refnode(builder, fromdocname, docname,
@@ -1001,7 +996,7 @@ class StandardDomain(Domain):
                                     ltarget if role == 'ref' else target,
                                     node, contnode)
             if res:
-                results.append(('std:' + role, res))
+                results.append((f'std:{role}', res))
         # all others
         for objtype in self.object_types:
             key = (objtype, target)
@@ -1009,9 +1004,15 @@ class StandardDomain(Domain):
                 key = (objtype, ltarget)
             if key in self.objects:
                 docname, labelid = self.objects[key]
-                results.append(('std:' + self.role_for_objtype(objtype),
-                                make_refnode(builder, fromdocname, docname,
-                                             labelid, contnode)))
+                results.append(
+                    (
+                        f'std:{self.role_for_objtype(objtype)}',
+                        make_refnode(
+                            builder, fromdocname, docname, labelid, contnode
+                        ),
+                    )
+                )
+
         return results
 
     def get_objects(self) -> Iterator[Tuple[str, str, str, str, str, int]]:
@@ -1049,10 +1050,9 @@ class StandardDomain(Domain):
             _, title_getter = self.enumerable_nodes.get(elem.__class__, (None, None))
             if title_getter:
                 return title_getter(elem)
-            else:
-                for subnode in elem:
-                    if isinstance(subnode, (nodes.caption, nodes.title)):
-                        return clean_astext(subnode)
+            for subnode in elem:
+                if isinstance(subnode, (nodes.caption, nodes.title)):
+                    return clean_astext(subnode)
 
         return None
 
@@ -1096,33 +1096,28 @@ class StandardDomain(Domain):
                 raise ValueError from exc
 
     def get_full_qualified_name(self, node: Element) -> Optional[str]:
-        if node.get('reftype') == 'option':
-            progname = node.get('std:program')
-            command = ws_re.split(node.get('reftarget'))
-            if progname:
-                command.insert(0, progname)
-            option = command.pop()
-            if command:
-                return '.'.join(['-'.join(command), option])
-            else:
-                return None
-        else:
+        if node.get('reftype') != 'option':
             return None
+        progname = node.get('std:program')
+        command = ws_re.split(node.get('reftarget'))
+        if progname:
+            command.insert(0, progname)
+        option = command.pop()
+        return '.'.join(['-'.join(command), option]) if command else None
 
 
 def warn_missing_reference(app: "Sphinx", domain: Domain, node: pending_xref
                            ) -> Optional[bool]:
     if (domain and domain.name != 'std') or node['reftype'] != 'ref':
         return None
+    target = node['reftarget']
+    if target not in domain.anonlabels:  # type: ignore
+        msg = __('undefined label: %s')
     else:
-        target = node['reftarget']
-        if target not in domain.anonlabels:  # type: ignore
-            msg = __('undefined label: %s')
-        else:
-            msg = __('Failed to create a cross reference. A title or caption not found: %s')
+        msg = __('Failed to create a cross reference. A title or caption not found: %s')
 
-        logger.warning(msg % target, location=node, type='ref', subtype=node['reftype'])
-        return True
+    logger.warning(msg % target, location=node, type='ref', subtype=node['reftype'])
+    return True
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

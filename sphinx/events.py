@@ -116,7 +116,13 @@ class EventManager:
 
         This returns the result of the first handler that doesn't return ``None``.
         """
-        for result in self.emit(name, *args, allowed_exceptions=allowed_exceptions):
-            if result is not None:
-                return result
-        return None
+        return next(
+            (
+                result
+                for result in self.emit(
+                    name, *args, allowed_exceptions=allowed_exceptions
+                )
+                if result is not None
+            ),
+            None,
+        )

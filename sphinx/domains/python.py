@@ -82,11 +82,7 @@ class ModuleEntry(NamedTuple):
 
 def type_to_xref(target: str, env: BuildEnvironment = None) -> addnodes.pending_xref:
     """Convert a type string to a cross reference node."""
-    if target == 'None':
-        reftype = 'obj'
-    else:
-        reftype = 'class'
-
+    reftype = 'obj' if target == 'None' else 'class'
     if env:
         kwargs = {'py:module': env.ref_context.get('py:module'),
                   'py:class': env.ref_context.get('py:class')}
@@ -185,8 +181,13 @@ def _parse_annotation(annotation: str, env: BuildEnvironment = None) -> List[Nod
                 result = []
                 for elem in node.elts:
                     result.extend(unparse(elem))
-                    result.append(addnodes.desc_sig_punctuation('', ','))
-                    result.append(addnodes.desc_sig_space())
+                    result.extend(
+                        (
+                            addnodes.desc_sig_punctuation('', ','),
+                            addnodes.desc_sig_space(),
+                        )
+                    )
+
                 result.pop()
                 result.pop()
             else:
@@ -238,13 +239,9 @@ def _parse_arglist(arglist: str, env: BuildEnvironment = None) -> addnodes.desc_
         node = addnodes.desc_parameter()
         if param.kind == param.VAR_POSITIONAL:
             node += addnodes.desc_sig_operator('', '*')
-            node += addnodes.desc_sig_name('', param.name)
         elif param.kind == param.VAR_KEYWORD:
             node += addnodes.desc_sig_operator('', '**')
-            node += addnodes.desc_sig_name('', param.name)
-        else:
-            node += addnodes.desc_sig_name('', param.name)
-
+        node += addnodes.desc_sig_name('', param.name)
         if param.annotation is not param.empty:
             children = _parse_annotation(param.annotation, env)
             node += addnodes.desc_sig_punctuation('', ':')
@@ -480,18 +477,19 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
         classname = self.env.ref_context.get('py:class')
         if classname:
             add_module = False
-            if prefix and (prefix == classname or
-                           prefix.startswith(classname + ".")):
+            if prefix and (
+                prefix == classname or prefix.startswith(f'{classname}.')
+            ):
                 fullname = prefix + name
                 # class name is given again in the signature
                 prefix = prefix[len(classname):].lstrip('.')
             elif prefix:
                 # class name is given in the signature, but different
                 # (shouldn't happen)
-                fullname = classname + '.' + prefix + name
+                fullname = f'{classname}.{prefix}{name}'
             else:
                 # class name is not given in the signature
-                fullname = classname + '.' + name
+                fullname = f'{classname}.{name}'
         else:
             add_module = True
             if prefix:
@@ -505,8 +503,7 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
         signode['class'] = classname
         signode['fullname'] = fullname
 
-        sig_prefix = self.get_signature_prefix(sig)
-        if sig_prefix:
+        if sig_prefix := self.get_signature_prefix(sig):
             if type(sig_prefix) is str:
                 warnings.warn(
                     "Python directive method get_signature_prefix()"
@@ -522,7 +519,7 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
         if prefix:
             signode += addnodes.desc_addname(prefix, prefix)
         elif modname and add_module and self.env.config.add_module_names:
-            nodetext = modname + '.'
+            nodetext = f'{modname}.'
             signode += addnodes.desc_addname(nodetext, nodetext)
 
         signode += addnodes.desc_name(name, name)
@@ -537,20 +534,19 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
                 logger.warning("could not parse arglist (%r): %s", arglist, exc,
                                location=signode)
                 _pseudo_parse_arglist(signode, arglist)
-        else:
-            if self.needs_arglist():
-                # for callables, add an empty parameter list
-                signode += addnodes.desc_parameterlist()
+        elif self.needs_arglist():
+            # for callables, add an empty parameter list
+            signode += addnodes.desc_parameterlist()
 
         if retann:
             children = _parse_annotation(retann, self.env)
             signode += addnodes.desc_returns(retann, '', *children)
 
-        anno = self.options.get('annotation')
-        if anno:
-            signode += addnodes.desc_annotation(' ' + anno, '',
-                                                addnodes.desc_sig_space(),
-                                                nodes.Text(anno))
+        if anno := self.options.get('annotation'):
+            signode += addnodes.desc_annotation(
+                f' {anno}', '', addnodes.desc_sig_space(), nodes.Text(anno)
+            )
+
 
         return fullname, prefix
 
@@ -561,7 +557,7 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
     def add_target_and_index(self, name_cls: Tuple[str, str], sig: str,
                              signode: desc_signature) -> None:
         modname = self.options.get('module', self.env.ref_context.get('py:module'))
-        fullname = (modname + '.' if modname else '') + name_cls[0]
+        fullname = (f'{modname}.' if modname else '') + name_cls[0]
         node_id = make_id(self.env, self.state.document, '', fullname)
         signode['ids'].append(node_id)
 
@@ -575,14 +571,12 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
         domain = cast(PythonDomain, self.env.get_domain('py'))
         domain.note_object(fullname, self.objtype, node_id, location=signode)
 
-        canonical_name = self.options.get('canonical')
-        if canonical_name:
+        if canonical_name := self.options.get('canonical'):
             domain.note_object(canonical_name, self.objtype, node_id, aliased=True,
                                location=signode)
 
         if 'noindexentry' not in self.options:
-            indextext = self.get_index_text(modname, name_cls)
-            if indextext:
+            if indextext := self.get_index_text(modname, name_cls):
                 self.indexnode['entries'].append(('single', indextext, node_id, '', None))
 
     def before_content(self) -> None:
@@ -637,8 +631,7 @@ class PyObject(ObjectDescription[Tuple[str, str]]):
         self.env.ref_context['py:class'] = (classes[-1] if len(classes) > 0
                                             else None)
         if 'module' in self.options:
-            modules = self.env.ref_context.setdefault('py:modules', [])
-            if modules:
+            if modules := self.env.ref_context.setdefault('py:modules', []):
                 self.env.ref_context['py:module'] = modules.pop()
             else:
                 self.env.ref_context.pop('py:module')
@@ -711,15 +704,13 @@ class PyVariable(PyObject):
     def handle_signature(self, sig: str, signode: desc_signature) -> Tuple[str, str]:
         fullname, prefix = super().handle_signature(sig, signode)
 
-        typ = self.options.get('type')
-        if typ:
+        if typ := self.options.get('type'):
             annotations = _parse_annotation(typ, self.env)
             signode += addnodes.desc_annotation(typ, '',
                                                 addnodes.desc_sig_punctuation('', ':'),
                                                 addnodes.desc_sig_space(), *annotations)
 
-        value = self.options.get('value')
-        if value:
+        if value := self.options.get('value'):
             signode += addnodes.desc_annotation(value, '',
                                                 addnodes.desc_sig_space(),
                                                 addnodes.desc_sig_punctuation('', '='),
@@ -780,31 +771,22 @@ class PyMethod(PyObject):
     })
 
     def needs_arglist(self) -> bool:
-        if 'property' in self.options:
-            return False
-        else:
-            return True
+        return 'property' not in self.options
 
     def get_signature_prefix(self, sig: str) -> List[nodes.Node]:
         prefix: List[nodes.Node] = []
         if 'final' in self.options:
-            prefix.append(nodes.Text('final'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('final'), addnodes.desc_sig_space()))
         if 'abstractmethod' in self.options:
-            prefix.append(nodes.Text('abstract'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('abstract'), addnodes.desc_sig_space()))
         if 'async' in self.options:
-            prefix.append(nodes.Text('async'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('async'), addnodes.desc_sig_space()))
         if 'classmethod' in self.options:
-            prefix.append(nodes.Text('classmethod'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('classmethod'), addnodes.desc_sig_space()))
         if 'property' in self.options:
-            prefix.append(nodes.Text('property'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('property'), addnodes.desc_sig_space()))
         if 'staticmethod' in self.options:
-            prefix.append(nodes.Text('static'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('static'), addnodes.desc_sig_space()))
         return prefix
 
     def get_index_text(self, modname: str, name_cls: Tuple[str, str]) -> str:
@@ -881,16 +863,14 @@ class PyAttribute(PyObject):
     def handle_signature(self, sig: str, signode: desc_signature) -> Tuple[str, str]:
         fullname, prefix = super().handle_signature(sig, signode)
 
-        typ = self.options.get('type')
-        if typ:
+        if typ := self.options.get('type'):
             annotations = _parse_annotation(typ, self.env)
             signode += addnodes.desc_annotation(typ, '',
                                                 addnodes.desc_sig_punctuation('', ':'),
                                                 addnodes.desc_sig_space(),
                                                 *annotations)
 
-        value = self.options.get('value')
-        if value:
+        if value := self.options.get('value'):
             signode += addnodes.desc_annotation(value, '',
                                                 addnodes.desc_sig_space(),
                                                 addnodes.desc_sig_punctuation('', '='),
@@ -906,11 +886,7 @@ class PyAttribute(PyObject):
             if modname and self.env.config.add_module_names:
                 clsname = '.'.join([modname, clsname])
         except ValueError:
-            if modname:
-                return _('%s (in module %s)') % (name, modname)
-            else:
-                return name
-
+            return _('%s (in module %s)') % (name, modname) if modname else name
         return _('%s (%s attribute)') % (attrname, clsname)
 
 
@@ -927,8 +903,7 @@ class PyProperty(PyObject):
     def handle_signature(self, sig: str, signode: desc_signature) -> Tuple[str, str]:
         fullname, prefix = super().handle_signature(sig, signode)
 
-        typ = self.options.get('type')
-        if typ:
+        if typ := self.options.get('type'):
             annotations = _parse_annotation(typ, self.env)
             signode += addnodes.desc_annotation(typ, '',
                                                 addnodes.desc_sig_punctuation('', ':'),
@@ -940,14 +915,10 @@ class PyProperty(PyObject):
     def get_signature_prefix(self, sig: str) -> List[nodes.Node]:
         prefix: List[nodes.Node] = []
         if 'abstractmethod' in self.options:
-            prefix.append(nodes.Text('abstract'))
-            prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('abstract'), addnodes.desc_sig_space()))
         if 'classmethod' in self.options:
-            prefix.append(nodes.Text('class'))
-            prefix.append(addnodes.desc_sig_space())
-
-        prefix.append(nodes.Text('property'))
-        prefix.append(addnodes.desc_sig_space())
+            prefix.extend((nodes.Text('class'), addnodes.desc_sig_space()))
+        prefix.extend((nodes.Text('property'), addnodes.desc_sig_space()))
         return prefix
 
     def get_index_text(self, modname: str, name_cls: Tuple[str, str]) -> str:
@@ -957,11 +928,7 @@ class PyProperty(PyObject):
             if modname and self.env.config.add_module_names:
                 clsname = '.'.join([modname, clsname])
         except ValueError:
-            if modname:
-                return _('%s (in module %s)') % (name, modname)
-            else:
-                return name
-
+            return _('%s (in module %s)') % (name, modname) if modname else name
         return _('%s (%s property)') % (attrname, clsname)
 
 
@@ -1082,14 +1049,14 @@ class PyXRefRole(XRefRole):
             target = target.lstrip('~')  # only has a meaning for the title
             # if the first character is a tilde, don't display the module/class
             # parts of the contents
-            if title[0:1] == '~':
+            if title[:1] == '~':
                 title = title[1:]
                 dot = title.rfind('.')
                 if dot != -1:
                     title = title[dot + 1:]
         # if the first character is a dot, search more specific namespaces first
         # else search builtins first
-        if target[0:1] == '.':
+        if target[:1] == '.':
             target = target[1:]
             refnode['refspecific'] = True
         return title, target
@@ -1245,7 +1212,7 @@ class PythonDomain(Domain):
         """
         if name in self.objects:
             other = self.objects[name]
-            if other.aliased and aliased is False:
+            if other.aliased and not aliased:
                 # The original definition found. Override it!
                 pass
             elif other.aliased is False and aliased:
@@ -1311,35 +1278,39 @@ class PythonDomain(Domain):
                 objtypes = self.objtypes_for_role(type)
             if objtypes is not None:
                 if modname and classname:
-                    fullname = modname + '.' + classname + '.' + name
+                    fullname = f'{modname}.{classname}.{name}'
                     if fullname in self.objects and self.objects[fullname].objtype in objtypes:
                         newname = fullname
                 if not newname:
-                    if modname and modname + '.' + name in self.objects and \
-                       self.objects[modname + '.' + name].objtype in objtypes:
-                        newname = modname + '.' + name
+                    if (
+                        modname
+                        and f'{modname}.{name}' in self.objects
+                        and self.objects[f'{modname}.{name}'].objtype in objtypes
+                    ):
+                        newname = f'{modname}.{name}'
                     elif name in self.objects and self.objects[name].objtype in objtypes:
                         newname = name
                     else:
                         # "fuzzy" searching mode
-                        searchname = '.' + name
+                        searchname = f'.{name}'
                         matches = [(oname, self.objects[oname]) for oname in self.objects
                                    if oname.endswith(searchname) and
                                    self.objects[oname].objtype in objtypes]
-        else:
-            # NOTE: searching for exact match, object type is not considered
-            if name in self.objects:
-                newname = name
-            elif type == 'mod':
-                # only exact matches allowed for modules
-                return []
-            elif classname and classname + '.' + name in self.objects:
-                newname = classname + '.' + name
-            elif modname and modname + '.' + name in self.objects:
-                newname = modname + '.' + name
-            elif modname and classname and \
-                    modname + '.' + classname + '.' + name in self.objects:
-                newname = modname + '.' + classname + '.' + name
+        elif name in self.objects:
+            newname = name
+        elif type == 'mod':
+            # only exact matches allowed for modules
+            return []
+        elif classname and f'{classname}.{name}' in self.objects:
+            newname = f'{classname}.{name}'
+        elif modname and f'{modname}.{name}' in self.objects:
+            newname = f'{modname}.{name}'
+        elif (
+            modname
+            and classname
+            and f'{modname}.{classname}.{name}' in self.objects
+        ):
+            newname = f'{modname}.{classname}.{name}'
         if newname is not None:
             matches.append((newname, self.objects[newname]))
         return matches
@@ -1381,9 +1352,7 @@ class PythonDomain(Domain):
         if obj[2] == 'module':
             return self._make_module_refnode(builder, fromdocname, name, contnode)
         else:
-            # determine the content of the reference by conditions
-            content = find_pending_xref_condition(node, 'resolved')
-            if content:
+            if content := find_pending_xref_condition(node, 'resolved'):
                 children = content.children
             else:
                 # if not found, use contnode
@@ -1406,9 +1375,7 @@ class PythonDomain(Domain):
                                 self._make_module_refnode(builder, fromdocname,
                                                           name, contnode)))
             else:
-                # determine the content of the reference by conditions
-                content = find_pending_xref_condition(node, 'resolved')
-                if content:
+                if content := find_pending_xref_condition(node, 'resolved'):
                     children = content.children
                 else:
                     # if not found, use contnode
@@ -1425,11 +1392,11 @@ class PythonDomain(Domain):
         module = self.modules[name]
         title = name
         if module.synopsis:
-            title += ': ' + module.synopsis
+            title += f': {module.synopsis}'
         if module.deprecated:
             title += _(' (deprecated)')
         if module.platform:
-            title += ' (' + module.platform + ')'
+            title += f' ({module.platform})'
         return make_refnode(builder, fromdocname, module.docname, module.node_id,
                             contnode, title)
 

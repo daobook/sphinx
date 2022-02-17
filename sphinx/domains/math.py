@@ -68,10 +68,7 @@ class MathDomain(Domain):
         self.equations[labelid] = (docname, self.env.new_serialno('eqno') + 1)
 
     def get_equation_number_for(self, labelid: str) -> int:
-        if labelid in self.equations:
-            return self.equations[labelid][1]
-        else:
-            return None
+        return self.equations[labelid][1] if labelid in self.equations else None
 
     def process_doc(self, env: BuildEnvironment, docname: str,
                     document: nodes.document) -> None:
@@ -98,7 +95,7 @@ class MathDomain(Domain):
     def resolve_xref(self, env: BuildEnvironment, fromdocname: str, builder: "Builder",
                      typ: str, target: str, node: pending_xref, contnode: Element
                      ) -> Optional[Element]:
-        assert typ in ('eq', 'numref')
+        assert typ in {'eq', 'numref'}
         docname, number = self.equations.get(target, (None, None))
         if docname:
             # TODO: perhaps use rather a sphinx-core provided prefix here?
@@ -128,10 +125,7 @@ class MathDomain(Domain):
                          target: str, node: pending_xref, contnode: Element
                          ) -> List[Tuple[str, Element]]:
         refnode = self.resolve_xref(env, fromdocname, builder, 'eq', target, node, contnode)
-        if refnode is None:
-            return []
-        else:
-            return [('eq', refnode)]
+        return [] if refnode is None else [('eq', refnode)]
 
     def get_objects(self) -> List:
         return []

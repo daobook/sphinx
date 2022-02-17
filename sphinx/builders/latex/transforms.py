@@ -459,11 +459,15 @@ class LaTeXFootnoteVisitor(nodes.NodeVisitor):
 
     def get_footnote_by_reference(self, node: nodes.footnote_reference) -> nodes.footnote:
         docname = node['docname']
-        for footnote in self.footnotes:
-            if docname == footnote['docname'] and footnote['ids'][0] == node['refid']:
-                return footnote
-
-        return None
+        return next(
+            (
+                footnote
+                for footnote in self.footnotes
+                if docname == footnote['docname']
+                and footnote['ids'][0] == node['refid']
+            ),
+            None,
+        )
 
 
 class BibliographyTransform(SphinxPostTransform):
@@ -567,8 +571,7 @@ class DocumentTargetTransform(SphinxPostTransform):
 
     def run(self, **kwargs: Any) -> None:
         for node in self.document.traverse(addnodes.start_of_file):
-            section = node.next_node(nodes.section)
-            if section:
+            if section := node.next_node(nodes.section):
                 section['ids'].append(':doc')  # special label for :doc:
 
 
