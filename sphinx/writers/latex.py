@@ -304,6 +304,7 @@ class LaTeXTranslator(SphinxTranslator):
         self.in_parsed_literal = 0
         self.compact_list = 0
         self.first_param = 0
+        self.in_desc_signature = False
 
         sphinxpkgoptions = []
 
@@ -571,6 +572,7 @@ class LaTeXTranslator(SphinxTranslator):
 
     def visit_start_of_file(self, node: Element) -> None:
         self.curfilestack.append(node['docname'])
+        self.body.append(CR + r'\sphinxstepscope' + CR)
 
     def depart_start_of_file(self, node: Element) -> None:
         self.curfilestack.pop()
@@ -715,6 +717,9 @@ class LaTeXTranslator(SphinxTranslator):
             self.table.has_problematic = True
 
     def depart_desc(self, node: Element) -> None:
+        if self.in_desc_signature:
+            self.body.append(CR + r'\pysigstopsignatures')
+            self.in_desc_signature = False
         if self.config.latex_show_urls == 'footnote':
             self.body.append(CR + r'\end{fulllineitems}\end{savenotes}' + BLANKLINE)
         else:
@@ -723,10 +728,10 @@ class LaTeXTranslator(SphinxTranslator):
     def _visit_signature_line(self, node: Element) -> None:
         for child in node:
             if isinstance(child, addnodes.desc_parameterlist):
-                self.body.append(r'\pysiglinewithargsret{')
+                self.body.append(CR + r'\pysiglinewithargsret{')
                 break
         else:
-            self.body.append(r'\pysigline{')
+            self.body.append(CR + r'\pysigline{')
 
     def _depart_signature_line(self, node: Element) -> None:
         self.body.append('}')
@@ -737,18 +742,19 @@ class LaTeXTranslator(SphinxTranslator):
         else:
             hyper = ''
         self.body.append(hyper)
+        if not self.in_desc_signature:
+            self.in_desc_signature = True
+            self.body.append(CR + r'\pysigstartsignatures')
         if not node.get('is_multiline'):
             self._visit_signature_line(node)
         else:
-            self.body.append('%' + CR)
-            self.body.append(r'\pysigstartmultiline' + CR)
+            self.body.append(CR + r'\pysigstartmultiline')
 
     def depart_desc_signature(self, node: Element) -> None:
         if not node.get('is_multiline'):
             self._depart_signature_line(node)
         else:
-            self.body.append('%' + CR)
-            self.body.append(r'\pysigstopmultiline')
+            self.body.append(CR + r'\pysigstopmultiline')
 
     def visit_desc_signature_line(self, node: Element) -> None:
         self._visit_signature_line(node)
@@ -757,7 +763,9 @@ class LaTeXTranslator(SphinxTranslator):
         self._depart_signature_line(node)
 
     def visit_desc_content(self, node: Element) -> None:
-        pass
+        assert self.in_desc_signature
+        self.body.append(CR + r'\pysigstopsignatures')
+        self.in_desc_signature = False
 
     def depart_desc_content(self, node: Element) -> None:
         pass
@@ -856,14 +864,14 @@ class LaTeXTranslator(SphinxTranslator):
     def visit_footnote(self, node: Element) -> None:
         self.in_footnote += 1
         label = cast(nodes.label, node[0])
-        if 'auto' not in node:
+        if 'referred' in node:
             self.body.append(r'\sphinxstepexplicit ')
         if self.in_parsed_literal:
             self.body.append(r'\begin{footnote}[%s]' % label.astext())
         else:
             self.body.append('%' + CR)
             self.body.append(r'\begin{footnote}[%s]' % label.astext())
-        if 'auto' not in node:
+        if 'referred' in node:
             self.body.append(r'\phantomsection'
                              r'\label{\thesphinxscope.%s}%%' % label.astext() + CR)
         self.body.append(r'\sphinxAtStartFootnote' + CR)
