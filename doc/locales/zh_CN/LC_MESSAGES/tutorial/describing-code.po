@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 12:47+0800\n"
+"POT-Creation-Date: 2022-02-22 16:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,8 +73,9 @@ msgid "Which will render like this:"
 msgstr "这将呈现出这样的效果："
 
 #: ../../tutorial/describing-code.rst:53
-msgid "在 Sphinx 中记录一个 Python 函数的 HTML 结果"
-msgstr ""
+#, fuzzy
+msgid "HTML result of documenting a Python function in Sphinx"
+msgstr "在 Sphinx 中记录一个 Python 函数的渲染结果"
 
 #: ../../tutorial/describing-code.rst:53
 msgid "The rendered result of documenting a Python function in Sphinx"
@@ -148,8 +149,11 @@ msgid "And finally, this is how the result would look:"
 msgstr "最后，这就是结果的样子："
 
 #: ../../tutorial/describing-code.rst:124
-msgid "在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
-msgstr ""
+#, fuzzy
+msgid ""
+"HTML result of documenting a Python function in Sphinx\n"
+"with cross-references"
+msgstr "在 Sphinx 中记录 Python 函数的HTML结果与交叉引用"
 
 #: ../../tutorial/describing-code.rst:124
 msgid ""
@@ -328,4 +332,10 @@ msgstr "这将产生一个指向先前定义的超链接： :cpp:type:`CustomLis
 #~ "HTML result of documenting a Python function in Sphinx\n"
 #~ "with cross-references"
 #~ msgstr "在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
+
+#~ msgid "在 Sphinx 中记录一个 Python 函数的 HTML 结果"
+#~ msgstr ""
+
+#~ msgid "在 Sphinx 中记录 Python 函数的 HTML 结果与交叉引用"
+#~ msgstr ""
 

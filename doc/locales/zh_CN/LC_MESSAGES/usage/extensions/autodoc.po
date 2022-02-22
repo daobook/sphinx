@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 12:47+0800\n"
+"POT-Creation-Date: 2022-02-22 16:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -594,22 +594,27 @@ msgid ""
 "The supported options are ``'members'``, ``'member-order'``, ``'undoc-"
 "members'``, ``'private-members'``, ``'special-members'``, ``'inherited-"
 "members'``, ``'show-inheritance'``, ``'ignore-module-all'``, ``'imported-"
-"members'``, ``'exclude-members'`` and ``'class-doc-from'``."
+"members'``, ``'exclude-members'``, ``'class-doc-from'`` and ``'no-"
+"value'``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:535
+#: ../../usage/extensions/autodoc.rst:536
 msgid "Accepts ``True`` as a value."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:538
+#: ../../usage/extensions/autodoc.rst:539
 msgid "Added ``'imported-members'``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:541
+#: ../../usage/extensions/autodoc.rst:542
 msgid "Added ``'class-doc-from'``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:546
+#: ../../usage/extensions/autodoc.rst:545
+msgid "Added ``'no-value'``."
+msgstr ""
+
+#: ../../usage/extensions/autodoc.rst:550
 msgid ""
 "Functions imported from C modules cannot be introspected, and therefore "
 "the signature for such functions cannot be automatically determined.  "
@@ -617,7 +622,7 @@ msgid ""
 "first line of the function's docstring."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:551
+#: ../../usage/extensions/autodoc.rst:555
 msgid ""
 "If this boolean value is set to ``True`` (which is the default), autodoc "
 "will look at the first line of the docstring for functions and methods, "
@@ -625,22 +630,22 @@ msgid ""
 "remove it from the docstring content."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:556
+#: ../../usage/extensions/autodoc.rst:560
 msgid ""
 "autodoc will continue to look for multiple signature lines, stopping at "
 "the first line that does not look like a signature. This is useful for "
 "declaring overloaded function signatures."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:563
+#: ../../usage/extensions/autodoc.rst:567
 msgid "Support overloaded signatures"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:567
+#: ../../usage/extensions/autodoc.rst:571
 msgid "Overloaded signatures do not need to be separated by a backslash"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:571
+#: ../../usage/extensions/autodoc.rst:575
 msgid ""
 "This value contains a list of modules to be mocked up. This is useful "
 "when some external dependencies are not met at build time and break the "
@@ -648,180 +653,180 @@ msgid ""
 "dependencies themselves and omit the sub-modules:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:580
+#: ../../usage/extensions/autodoc.rst:584
 msgid "Will mock all imports under the ``django`` package."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:584
+#: ../../usage/extensions/autodoc.rst:588
 msgid ""
 "This config value only requires to declare the top-level modules that "
 "should be mocked."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:590
+#: ../../usage/extensions/autodoc.rst:594
 msgid ""
 "This value controls how to represent typehints.  The setting takes the "
 "following values:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:593
+#: ../../usage/extensions/autodoc.rst:597
 msgid "``'signature'`` -- Show typehints in the signature (default)"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:594
+#: ../../usage/extensions/autodoc.rst:598
 msgid ""
 "``'description'`` -- Show typehints as content of the function or method "
 "The typehints of overloaded functions or methods will still be "
 "represented in the signature."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:597
+#: ../../usage/extensions/autodoc.rst:601
 msgid "``'none'`` -- Do not show typehints"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:598
+#: ../../usage/extensions/autodoc.rst:602
 msgid ""
 "``'both'`` -- Show typehints in the signature and as content of the "
 "function or method"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:601
+#: ../../usage/extensions/autodoc.rst:605
 msgid ""
 "Overloaded functions or methods will not have typehints included in the "
 "description because it is impossible to accurately represent all possible"
 " overloads as a list of parameters."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:608
+#: ../../usage/extensions/autodoc.rst:612
 msgid "New option ``'description'`` is added."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:612
+#: ../../usage/extensions/autodoc.rst:616
 msgid "New option ``'both'`` is added."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:616
+#: ../../usage/extensions/autodoc.rst:620
 msgid ""
 "This value controls whether the types of undocumented parameters and "
 "return values are documented when ``autodoc_typehints`` is set to "
 "``description``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:619
+#: ../../usage/extensions/autodoc.rst:623
 msgid ""
 "The default value is ``\"all\"``, meaning that types are documented for "
 "all parameters and return values, whether they are documented or not."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:622
+#: ../../usage/extensions/autodoc.rst:626
 msgid ""
 "When set to ``\"documented\"``, types will only be documented for a "
 "parameter or a return value that is already documented by the docstring."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:629
+#: ../../usage/extensions/autodoc.rst:633
 msgid ""
 "A dictionary for users defined `type aliases`__ that maps a type name to "
 "the full-qualified object name.  It is used to keep type aliases not "
 "evaluated in the document.  Defaults to empty (``{}``)."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:633
+#: ../../usage/extensions/autodoc.rst:637
 msgid ""
 "The type aliases are only available if your program enables `Postponed "
 "Evaluation of Annotations (PEP 563)`__ feature via ``from __future__ "
 "import annotations``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:637
+#: ../../usage/extensions/autodoc.rst:641
 msgid "For example, there is code using a type alias::"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:646
+#: ../../usage/extensions/autodoc.rst:650
 msgid ""
 "If ``autodoc_type_aliases`` is not set, autodoc will generate internal "
 "mark-up from this code as following::"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:653
+#: ../../usage/extensions/autodoc.rst:657
 msgid ""
 "If you set ``autodoc_type_aliases`` as ``{'AliasType': "
 "'your.module.AliasType'}``, it generates the following document "
 "internally::"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:667
+#: ../../usage/extensions/autodoc.rst:671
 msgid ""
 "This value controls the format of typehints.  The setting takes the "
 "following values:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:670
+#: ../../usage/extensions/autodoc.rst:674
 msgid ""
 "``'fully-qualified'`` -- Show the module name and its name of typehints "
 "(default)"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:672
+#: ../../usage/extensions/autodoc.rst:676
 msgid ""
 "``'short'`` -- Suppress the leading module names of the typehints (ex. "
 "``io.StringIO`` -> ``StringIO``)"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:679
+#: ../../usage/extensions/autodoc.rst:683
 msgid ""
 "If True, the default argument values of functions will be not evaluated "
 "on generating document.  It preserves them as is in the source code."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:684
+#: ../../usage/extensions/autodoc.rst:688
 msgid ""
 "Added as an experimental feature.  This will be integrated into autodoc "
 "core in the future."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:689
+#: ../../usage/extensions/autodoc.rst:693
 msgid ""
 "This value controls the behavior of :option:`sphinx-build -W` during "
 "importing modules. If ``False`` is given, autodoc forcedly suppresses the"
 " error if the imported module emits warnings.  By default, ``True``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:696
+#: ../../usage/extensions/autodoc.rst:700
 msgid ""
 "This value controls the docstrings inheritance. If set to True the "
 "docstring for classes or methods, if not explicitly set, is inherited "
 "from parents."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:700
+#: ../../usage/extensions/autodoc.rst:704
 msgid "The default is ``True``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:707
+#: ../../usage/extensions/autodoc.rst:711
 msgid ""
 ":mod:`autodoc` supports to suppress warning messages via "
 ":confval:`suppress_warnings`.  It allows following warnings types in "
 "addition:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:711
+#: ../../usage/extensions/autodoc.rst:715
 msgid "autodoc"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:712
+#: ../../usage/extensions/autodoc.rst:716
 msgid "autodoc.import_object"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:716
+#: ../../usage/extensions/autodoc.rst:720
 msgid "Docstring preprocessing"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:718
+#: ../../usage/extensions/autodoc.rst:722
 msgid "autodoc provides the following additional events:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:724
+#: ../../usage/extensions/autodoc.rst:728
 msgid ""
 "Emitted when autodoc has read and processed a docstring.  *lines* is a "
 "list of strings -- the lines of the processed docstring -- that the event"
@@ -833,41 +838,41 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:728
-#: ../../usage/extensions/autodoc.rst:747
-#: ../../usage/extensions/autodoc.rst:759
-#: ../../usage/extensions/autodoc.rst:788
-#: ../../usage/extensions/autodoc.rst:820
+#: ../../usage/extensions/autodoc.rst:732
+#: ../../usage/extensions/autodoc.rst:751
+#: ../../usage/extensions/autodoc.rst:763
+#: ../../usage/extensions/autodoc.rst:792
+#: ../../usage/extensions/autodoc.rst:824
 msgid "the Sphinx application object"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:729
-#: ../../usage/extensions/autodoc.rst:760
-#: ../../usage/extensions/autodoc.rst:821
+#: ../../usage/extensions/autodoc.rst:733
+#: ../../usage/extensions/autodoc.rst:764
+#: ../../usage/extensions/autodoc.rst:825
 msgid ""
 "the type of the object which the docstring belongs to (one of "
 "``\"module\"``, ``\"class\"``, ``\"exception\"``, ``\"function\"``, "
 "``\"method\"``, ``\"attribute\"``)"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:732
-#: ../../usage/extensions/autodoc.rst:763
-#: ../../usage/extensions/autodoc.rst:789
-#: ../../usage/extensions/autodoc.rst:824
+#: ../../usage/extensions/autodoc.rst:736
+#: ../../usage/extensions/autodoc.rst:767
+#: ../../usage/extensions/autodoc.rst:793
+#: ../../usage/extensions/autodoc.rst:828
 msgid "the fully qualified name of the object"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:733
-#: ../../usage/extensions/autodoc.rst:748
-#: ../../usage/extensions/autodoc.rst:764
-#: ../../usage/extensions/autodoc.rst:790
-#: ../../usage/extensions/autodoc.rst:825
+#: ../../usage/extensions/autodoc.rst:737
+#: ../../usage/extensions/autodoc.rst:752
+#: ../../usage/extensions/autodoc.rst:768
+#: ../../usage/extensions/autodoc.rst:794
+#: ../../usage/extensions/autodoc.rst:829
 msgid "the object itself"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:734
-#: ../../usage/extensions/autodoc.rst:765
-#: ../../usage/extensions/autodoc.rst:828
+#: ../../usage/extensions/autodoc.rst:738
+#: ../../usage/extensions/autodoc.rst:769
+#: ../../usage/extensions/autodoc.rst:832
 msgid ""
 "the options given to the directive: an object with attributes "
 "``inherited_members``, ``undoc_members``, ``show_inheritance`` and "
@@ -875,41 +880,41 @@ msgid ""
 "the auto directive"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:738
+#: ../../usage/extensions/autodoc.rst:742
 msgid "the lines of the docstring, see above"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:744
+#: ../../usage/extensions/autodoc.rst:748
 msgid ""
 "Emitted before autodoc formats a signature for an object. The event "
 "handler can modify an object to change its signature."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:749
+#: ../../usage/extensions/autodoc.rst:753
 msgid "a boolean indicates an object is bound method or not"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:755
+#: ../../usage/extensions/autodoc.rst:759
 msgid ""
 "Emitted when autodoc has formatted a signature for an object. The event "
 "handler can return a new tuple ``(signature, return_annotation)`` to "
 "change what Sphinx puts into the output."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:769
+#: ../../usage/extensions/autodoc.rst:773
 msgid ""
 "function signature, as a string of the form ``\"(parameter_1, "
 "parameter_2)\"``, or ``None`` if introspection didn't succeed and "
 "signature wasn't specified in the directive."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:772
+#: ../../usage/extensions/autodoc.rst:776
 msgid ""
 "function return annotation as a string of the form ``\" -> "
 "annotation\"``, or ``None`` if there is no return annotation"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:775
+#: ../../usage/extensions/autodoc.rst:779
 msgid ""
 "The :mod:`sphinx.ext.autodoc` module provides factory functions for "
 "commonly needed docstring processing in event :event:`autodoc-process-"
@@ -947,7 +952,7 @@ msgid ""
 "will be processed."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:783
+#: ../../usage/extensions/autodoc.rst:787
 msgid ""
 "Emitted when autodoc has read and processed a class to determine the "
 "base-classes.  *bases* is a list of classes that the event handler can "
@@ -955,39 +960,39 @@ msgid ""
 "emitted only if ``show-inheritance`` option given."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:791
+#: ../../usage/extensions/autodoc.rst:795
 msgid "the options given to the class directive"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:792
+#: ../../usage/extensions/autodoc.rst:796
 msgid "the list of base classes signature. see above."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:797
+#: ../../usage/extensions/autodoc.rst:801
 msgid ""
 "``bases`` can contain a string as a base class name.  It will be "
 "processed as reST mark-up'ed text."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:802
+#: ../../usage/extensions/autodoc.rst:806
 msgid "Skipping members"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:804
+#: ../../usage/extensions/autodoc.rst:808
 msgid ""
 "autodoc allows the user to define a custom method for determining whether"
 " a member should be included in the documentation by using the following "
 "event:"
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:811
+#: ../../usage/extensions/autodoc.rst:815
 msgid ""
 "Emitted when autodoc has to decide whether a member should be included in"
 " the documentation.  The member is excluded if a handler returns "
 "``True``.  It is included if the handler returns ``False``."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:815
+#: ../../usage/extensions/autodoc.rst:819
 msgid ""
 "If more than one enabled extension handles the ``autodoc-skip-member`` "
 "event, autodoc will use the first non-``None`` value returned by a "
@@ -995,7 +1000,7 @@ msgid ""
 "behavior of autodoc and other enabled extensions."
 msgstr ""
 
-#: ../../usage/extensions/autodoc.rst:826
+#: ../../usage/extensions/autodoc.rst:830
 msgid ""
 "a boolean indicating if autodoc will skip this member if the user handler"
 " does not override the decision"
@@ -1006,5 +1011,15 @@ msgstr ""
 #~ "will be displayed for the class "
 #~ "defined by :rst:dir:`autoclass` directive.  "
 #~ "The possible values are:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The supported options are ``'members'``, "
+#~ "``'member-order'``, ``'undoc-members'``, "
+#~ "``'private-members'``, ``'special-members'``, "
+#~ "``'inherited-members'``, ``'show-inheritance'``, "
+#~ "``'ignore-module-all'``, ``'imported-members'``,"
+#~ " ``'exclude-members'`` and ``'class-doc-"
+#~ "from'``."
 #~ msgstr ""
 
