@@ -19,22 +19,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: "3.10"
       # 设定 conda 环境
       - uses: s-weigand/setup-conda@v1
       - run: conda --version
       - run: which python
 
+      - name: Install graphviz
+        run: sudo apt-get install graphviz
+
       # 安装依赖包
       - name: Install dependencies
         run: |
-          python setup.py install
           pip install sphinx-intl sphinxcontrib-websupport
-          pip install sphinxcontrib-serializinghtml
+          python setup.py install
           
-      - name: Install graphviz
-        run: sudo apt-get install graphviz
-      
       # # 克隆
       # - name: Clone
       #   run: |
@@ -47,9 +46,6 @@ jobs:
           sphinx-build -b gettext ./ _build/gettext
           sphinx-intl update -p _build/gettext -l zh_CN
           sphinx-build -D language=zh_CN -b html ./ _build/html/
-          cd ..
-          cp -rf doc/_build/ _build/
-          rm -rf doc/_build/
 
       # 部署 HTML 到 gh-pages 分支
       - name: GitHub Pages action
@@ -57,5 +53,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/html
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          
