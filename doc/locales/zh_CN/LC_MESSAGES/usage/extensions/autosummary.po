@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-06 12:47+0800\n"
+"POT-Creation-Date: 2022-02-23 10:32+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,7 +84,7 @@ msgstr "产生一个类似这样的表格："
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
 msgid ""
-":py:obj:`environment.BuildEnvironment "
+":obj:`environment.BuildEnvironment "
 "<sphinx.environment.BuildEnvironment>`\\ \\(\\[app\\]\\)"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgid "The environment in which the ReST files are translated."
 msgstr "翻译 ReST 文件的 environment。"
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
-msgid ":py:obj:`util.relative_uri <sphinx.util.relative_uri>`\\ \\(base\\, to\\)"
+msgid ":obj:`util.relative_uri <sphinx.util.relative_uri>`\\ \\(base\\, to\\)"
 msgstr ""
 
 #: ../../usage/extensions/autosummary.rst:57:<autosummary>:1
@@ -471,5 +471,15 @@ msgstr ""
 #~ "\"public\" here means that the name "
 #~ "does not start with an underscore. "
 #~ "Only available for modules."
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`environment.BuildEnvironment "
+#~ "<sphinx.environment.BuildEnvironment>`\\ \\(\\[app\\]\\)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ ":py:obj:`util.relative_uri <sphinx.util.relative_uri>`\\ "
+#~ "\\(base\\, to\\)"
 #~ msgstr ""
 

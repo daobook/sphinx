@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 16:45+0800\n"
+"POT-Creation-Date: 2022-02-23 10:32+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,14 +71,12 @@ msgstr "将 *version* 与运行中的 Sphinx 的版本进行比较，当它太�
 
 #: of sphinx.application.Sphinx.add_builder
 #: sphinx.application.Sphinx.add_config_value
-#: sphinx.application.Sphinx.add_css_file
 #: sphinx.application.Sphinx.add_directive
 #: sphinx.application.Sphinx.add_directive_to_domain
 #: sphinx.application.Sphinx.add_domain
 #: sphinx.application.Sphinx.add_enumerable_node
 #: sphinx.application.Sphinx.add_event
 #: sphinx.application.Sphinx.add_index_to_domain
-#: sphinx.application.Sphinx.add_js_file
 #: sphinx.application.Sphinx.add_message_catalog
 #: sphinx.application.Sphinx.add_node
 #: sphinx.application.Sphinx.add_post_transform
@@ -639,14 +637,14 @@ msgstr ""
 msgid "priority range categories for Sphinx transforms"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:28
-#: sphinx.application.Sphinx.add_js_file:32
+#: of sphinx.application.Sphinx.add_css_file:26
+#: sphinx.application.Sphinx.add_js_file:26
 #: sphinx.application.Sphinx.add_transform:12
 msgid "Priority"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:29
-#: sphinx.application.Sphinx.add_js_file:33
+#: of sphinx.application.Sphinx.add_css_file:27
+#: sphinx.application.Sphinx.add_js_file:27
 #: sphinx.application.Sphinx.add_transform:13
 msgid "Main purpose in Sphinx"
 msgstr ""
@@ -727,92 +725,69 @@ msgstr ""
 
 #: of sphinx.application.Sphinx.add_js_file:3
 msgid ""
-"The filename of the JavaScript file.  It must be relative to the HTML "
-"static path, a full URI with scheme, or ``None`` value.  The ``None`` "
-"value is used to create inline ``<script>`` tag.  See the description of "
-"*kwargs* below."
+"Add *filename* to the list of JavaScript files that the default HTML "
+"template will include in order of *priority* (ascending).  The filename "
+"must be relative to the HTML static path , or a full URI with scheme. If "
+"the priority of the JavaScript file is the same as others, the JavaScript"
+" files will be included in order of registration.  If the keyword "
+"argument ``body`` is given, its value will be added between the "
+"``<script>`` tags. Extra keyword arguments are included as attributes of "
+"the ``<script>`` tag."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:7
-msgid ""
-"The priority to determine the order of ``<script>`` tag for JavaScript "
-"files.  See list of \"prority range for JavaScript files\" below.  If the"
-" priority of the JavaScript files it the same as others, the JavaScript "
-"files will be loaded in order of registration."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_js_file:12
-msgid ""
-"The loading method of the JavaScript file.  ``'async'`` or ``'defer'`` is"
-" allowed."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_js_file:14
-msgid ""
-"Extra keyword arguments are included as attributes of the ``<script>`` "
-"tag.  A special keyword argument ``body`` is given, its value will be "
-"added between the ``<script>`` tag."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_css_file:12
-#: sphinx.application.Sphinx.add_js_file:18
+#: of sphinx.application.Sphinx.add_css_file:10
+#: sphinx.application.Sphinx.add_js_file:12
 msgid "Example::"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:29
+#: of sphinx.application.Sphinx.add_js_file:23
 msgid "priority range for JavaScript files"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:30
-#: sphinx.application.Sphinx.add_js_file:34
+#: of sphinx.application.Sphinx.add_css_file:28
+#: sphinx.application.Sphinx.add_js_file:28
 msgid "200"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:35
+#: of sphinx.application.Sphinx.add_js_file:29
 msgid "default priority for built-in JavaScript files"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:32
-#: sphinx.application.Sphinx.add_js_file:36
+#: of sphinx.application.Sphinx.add_css_file:30
+#: sphinx.application.Sphinx.add_js_file:30
 msgid "500"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:33
-#: sphinx.application.Sphinx.add_js_file:37
+#: of sphinx.application.Sphinx.add_css_file:31
+#: sphinx.application.Sphinx.add_js_file:31
 msgid "default priority for extensions"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:34
-#: sphinx.application.Sphinx.add_js_file:38
+#: of sphinx.application.Sphinx.add_css_file:32
+#: sphinx.application.Sphinx.add_js_file:32
 msgid "800"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:39
+#: of sphinx.application.Sphinx.add_js_file:33
 msgid "default priority for :confval:`html_js_files`"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:41
+#: of sphinx.application.Sphinx.add_js_file:35
 msgid ""
 "A JavaScript file can be added to the specific HTML page when an "
 "extension calls this method on :event:`html-page-context` event."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:46
+#: of sphinx.application.Sphinx.add_js_file:40
 msgid ""
 "Renamed from ``app.add_javascript()``. And it allows keyword arguments as"
 " attributes of script tag."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_js_file:50
+#: of sphinx.application.Sphinx.add_js_file:44
 msgid ""
 "Take priority argument.  Allow to add a JavaScript file to the specific "
 "page."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_js_file:52
-msgid ""
-"Take loading_method argument.  Allow to change the loading method of the "
-"JavaScript file."
 msgstr ""
 
 #: of sphinx.application.Sphinx.add_css_file:1
@@ -821,41 +796,33 @@ msgstr ""
 
 #: of sphinx.application.Sphinx.add_css_file:3
 msgid ""
-"The filename of the CSS file.  It must be relative to the HTML static "
-"path, or a full URI with scheme."
+"Add *filename* to the list of CSS files that the default HTML template "
+"will include in order of *priority* (ascending).  The filename must be "
+"relative to the HTML static path, or a full URI with scheme.  If the "
+"priority of the CSS file is the same as others, the CSS files will be "
+"included in order of registration.  The keyword arguments are also "
+"accepted for attributes of ``<link>`` tag."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:5
-msgid ""
-"The priority to determine the order of ``<link>`` tag for the CSS files."
-"  See list of \"prority range for CSS files\" below. If the priority of "
-"the CSS files it the same as others, the CSS files will be loaded in "
-"order of registration."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_css_file:9
-msgid "Extra keyword arguments are included as attributes of the ``<link>`` tag."
-msgstr ""
-
-#: of sphinx.application.Sphinx.add_css_file:25
+#: of sphinx.application.Sphinx.add_css_file:23
 msgid "priority range for CSS files"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:31
+#: of sphinx.application.Sphinx.add_css_file:29
 msgid "default priority for built-in CSS files"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:35
+#: of sphinx.application.Sphinx.add_css_file:33
 msgid "default priority for :confval:`html_css_files`"
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:37
+#: of sphinx.application.Sphinx.add_css_file:35
 msgid ""
 "A CSS file can be added to the specific HTML page when an extension calls"
 " this method on :event:`html-page-context` event."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:42
+#: of sphinx.application.Sphinx.add_css_file:40
 msgid ""
 "Optional ``alternate`` and/or ``title`` attributes can be supplied with "
 "the arguments *alternate* (a Boolean) and *title* (a string). The default"
@@ -863,13 +830,13 @@ msgid ""
 "the `documentation <https://mdn.io/Web/CSS/Alternative_style_sheets>`__."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:49
+#: of sphinx.application.Sphinx.add_css_file:47
 msgid ""
 "Renamed from ``app.add_stylesheet()``. And it allows keyword arguments as"
 " attributes of link tag."
 msgstr ""
 
-#: of sphinx.application.Sphinx.add_css_file:53
+#: of sphinx.application.Sphinx.add_css_file:51
 msgid "Take priority argument.  Allow to add a CSS file to the specific page."
 msgstr ""
 
@@ -1575,5 +1542,69 @@ msgstr ""
 #~ " registration.  The keyword arguments are"
 #~ " also accepted for attributes of "
 #~ "``<link>`` tag."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The filename of the JavaScript file."
+#~ "  It must be relative to the "
+#~ "HTML static path, a full URI with"
+#~ " scheme, or ``None`` value.  The "
+#~ "``None`` value is used to create "
+#~ "inline ``<script>`` tag.  See the "
+#~ "description of *kwargs* below."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The priority to determine the order "
+#~ "of ``<script>`` tag for JavaScript "
+#~ "files.  See list of \"prority range "
+#~ "for JavaScript files\" below.  If the"
+#~ " priority of the JavaScript files it"
+#~ " the same as others, the JavaScript"
+#~ " files will be loaded in order "
+#~ "of registration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The loading method of the JavaScript "
+#~ "file.  ``'async'`` or ``'defer'`` is "
+#~ "allowed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Extra keyword arguments are included as"
+#~ " attributes of the ``<script>`` tag.  "
+#~ "A special keyword argument ``body`` is"
+#~ " given, its value will be added "
+#~ "between the ``<script>`` tag."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Take loading_method argument.  Allow to "
+#~ "change the loading method of the "
+#~ "JavaScript file."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The filename of the CSS file.  It"
+#~ " must be relative to the HTML "
+#~ "static path, or a full URI with"
+#~ " scheme."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The priority to determine the order "
+#~ "of ``<link>`` tag for the CSS "
+#~ "files.  See list of \"prority range "
+#~ "for CSS files\" below. If the "
+#~ "priority of the CSS files it the"
+#~ " same as others, the CSS files "
+#~ "will be loaded in order of "
+#~ "registration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Extra keyword arguments are included as"
+#~ " attributes of the ``<link>`` tag."
 #~ msgstr ""
 
