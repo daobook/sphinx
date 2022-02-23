@@ -339,11 +339,12 @@ msgstr ""
 "users\">sphinx-users</a> 邮件列表："
 
 #: ../../_templates/indexsidebar.html:21
-#, fuzzy
 msgid ""
 "or come to the <tt>#sphinx-doc</tt> channel on <a "
 "href=\"https://web.libera.chat/?channel=#sphinx-doc\">libera.chat</a>."
-msgstr "或者到 FreeNode 的 <tt>#sphinx-doc</tt> 频道来。"
+msgstr ""
+"或者登陆 <a href=\"https://web.libera.chat/?channel=#sphinx-doc\">libera.chat</a> "
+"上的 <tt>#sphinx-doc</tt>  频道。"
 
 #: ../../_templates/indexsidebar.html:22
 msgid ""
