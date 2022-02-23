@@ -30,6 +30,7 @@ jobs:
         run: |
           python setup.py install
           pip install sphinx-intl sphinxcontrib-websupport
+          pip install sphinxcontrib-serializinghtml
           
       - name: Install graphviz
         run: sudo apt-get install graphviz
