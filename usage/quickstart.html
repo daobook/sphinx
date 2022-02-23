@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>快速上手 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="安装 Sphinx" href="installation.html" />
+    <link rel="prev" title="使用 Sphinx" href="index.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="安装 Sphinx"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="使用 Sphinx"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">使用 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">快速上手</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">快速上手</a><ul>
+<li><a class="reference internal" href="#setting-up-the-documentation-sources">设置文档源目录</a></li>
+<li><a class="reference internal" href="#defining-document-structure">定义文档结构</a></li>
+<li><a class="reference internal" href="#adding-content">添加内容</a></li>
+<li><a class="reference internal" href="#running-the-build">运行 build</a></li>
+<li><a class="reference internal" href="#documenting-objects">文档对象</a></li>
+<li><a class="reference internal" href="#basic-configuration">基本配置</a></li>
+<li><a class="reference internal" href="#autodoc">Autodoc</a></li>
+<li><a class="reference internal" href="#intersphinx">跨 Sphinx 引用</a></li>
+<li><a class="reference internal" href="#more-topics-to-be-covered">其他常用功能举例</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="index.html"
+                          title="上一章">使用 Sphinx</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="installation.html"
+                          title="下一章">安装 Sphinx</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/usage/quickstart.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="getting-started">
+<h1>快速上手<a class="headerlink" href="#getting-started" title="永久链接至标题">¶</a></h1>
+<p>Sphinx 是一个 <strong>文档生成器</strong>，您也可以把它看成一种工具，它可以将一组纯文本源文件转换成各种输出格式，并且自动生成交叉引用、索引等。也就是说，如果您的目录包含一堆 <a class="reference internal" href="restructuredtext/index.html"><span class="doc">reStructuredText</span></a> 或 <a class="reference internal" href="markdown.html"><span class="doc">Markdown</span></a> 文档，那么 Sphinx 就能生成一系列 HTML 文件，PDF 文件（通过 LaTeX），手册页等。</p>
+<p>Sphinx 专注于文档，尤其是 手写文档，然而，Sphinx 也可以用来生成博客、主页甚至书籍。Sphinx 的大部分功能来自于 <a class="reference internal" href="restructuredtext/index.html"><span class="doc">reStructuredText</span></a>，它是一种纯文本标记格式，有着丰富的功能和 <a class="reference internal" href="../development/index.html"><span class="doc">卓越的扩展能力</span></a>。</p>
+<p>本文档的目的是让您快速了解什么是 Sphinx 以及如何使用 Sphinx。之后，您可以查看 <a class="reference internal" href="installation.html"><span class="doc">安装指南</span></a>，后面是关于 Sphinx 使用的默认标记格式的 <a class="reference internal" href="restructuredtext/index.html"><span class="doc">reStucturedText</span></a> 的介绍。</p>
+<p>如果你想了解如何撰写文档，请参考 Eric Holscher 写的 <a class="reference external" href="https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/">撰写文档</a>。</p>
+<section id="setting-up-the-documentation-sources">
+<h2>设置文档源目录<a class="headerlink" href="#setting-up-the-documentation-sources" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 文档有一个根目录，里面存放着很多纯文本格式的源文件，这个根目录称为 <a class="reference internal" href="../glossary.html#term-source-directory"><span class="xref std std-term">源目录</span></a>。该目录还包含 Sphinx 配置文件 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>，您可以在其中指定 Sphinx 如何读取源代码和生成文档。<a class="footnote-reference brackets" href="#id7" id="id2">1</a></p>
+<p>Sphinx 附带一个名为 <strong class="program">sphinx-quickstart</strong> 的脚本，这个脚本会设置一个源目录并创建一个默认的 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 配置文件，在创建时，它还会问你一些问题，并把从中得到配置值填入配置文件中。要使用此脚本，请运行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sphinx-quickstart
+</pre></div>
+</div>
+</section>
+<section id="defining-document-structure">
+<h2>定义文档结构<a class="headerlink" href="#defining-document-structure" title="永久链接至标题">¶</a></h2>
+<p>让我们假设你运行 <strong class="program">sphinx-quickstart</strong>。它创建了一个带有配置文件 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 和一个根文件 <code class="file docutils literal notranslate"><span class="pre">index.rst</span></code> 的源目录。<a class="reference internal" href="../glossary.html#term-root-document"><span class="xref std std-term">根文件</span></a> 的主要功能是作为一个欢迎页，并包含 <em>toctree</em>。这也是 Sphinx 为 reStructuredText 增加的主要内容之一，一种将多个文件链接到一个单一层次的文件。</p>
+<aside class="sidebar">
+<p class="sidebar-title">reStructuredText 指令</p>
+<p><code class="docutils literal notranslate"><span class="pre">toctree</span></code> 是一个 reStructuredText <em class="dfn">指令</em>，一个非常通用的标记。指令可以有参数、选项和内容。</p>
+<p><strong>参数</strong> 可以直接跟在指令的的两个英文冒号后面。不同指令有不同数量的参数，亦或没有。</p>
+<p><strong>选项</strong> 以“字段列表”的形式跟在参数后面。<code class="docutils literal notranslate"><span class="pre">maxdepth</span></code> 就是 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 指令的一个选项。</p>
+<p><strong>内容</strong> 跟在选项或参数后面，它和选项/参数之间要空一行。每个指令决定是否允许内容，以及如何处理内容。</p>
+<p>指令的一个常见问题是 <strong>内容的第一行必须缩进到与选项相同的级别</strong>。</p>
+</aside>
+<p><code class="docutils literal notranslate"><span class="pre">toctree</span></code> 指令最初是空的，看起来像这样：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+</pre></div>
+</div>
+<p>您在指令的 <strong>内容</strong> 中添加列出它们的文档：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:maxdepth:</span> 2
+
+   usage/installation
+   usage/quickstart
+<span class="cp">   ...</span>
+</pre></div>
+</div>
+<p>这正是本文档的 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 的样子。要包含的文档以 <a class="reference internal" href="../glossary.html#term-document-name"><span class="xref std std-term">文档名</span></a> 形式给出，简而言之，这意味着您无需使用文件扩展名并使用正斜杠（<code class="docutils literal notranslate"><span class="pre">/</span></code>）作为目录分隔符。</p>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 阅读更多关于 <a class="reference internal" href="restructuredtext/directives.html#toctree-directive"><span class="std std-ref">toctree 指令</span></a>。</p>
+<p>现在可以创建在 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 中列出的文件并添加内容，并且它们的部分标题将插入到放置 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 指令的位置（最高到 <code class="docutils literal notranslate"><span class="pre">maxdepth</span></code> 级别）。此外，Sphinx 现在知道文档的顺序和层次结构。（它们本身可能包含 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 指令，这意味着您可以在必要时创建深度嵌套的层次结构。）</p>
+</section>
+<section id="adding-content">
+<h2>添加内容<a class="headerlink" href="#adding-content" title="永久链接至标题">¶</a></h2>
+<p>在 Sphinx 源文件中，您可以使用标准的 <a class="reference internal" href="../glossary.html#term-reStructuredText"><span class="xref std std-term">reStructuredText</span></a> 的大部分功能。Sphinx 还添加了一些功能。例如，您可以使用 <a class="reference internal" href="restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a> 角色以可移植的方式（适用于所有输出类型）添加跨文件引用。</p>
+<p>例如，如果您正在查看 HTML 版本，您可以查看此文档的源代码——使用侧栏中的“显示源代码”链接。</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">待处理</p>
+<p>当我们添加新指南时，请更新以下链接。</p>
+</div>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 有关 reStructuredText 的更深入介绍，请参阅 <a class="reference internal" href="restructuredtext/index.html"><span class="doc">reStructuredText</span></a>，这里面包括 Sphinx 添加的标记。</p>
+</section>
+<section id="running-the-build">
+<h2>运行 build<a class="headerlink" href="#running-the-build" title="永久链接至标题">¶</a></h2>
+<p>现在已经添加了一些文件和内容，那么让我们构建文档吧。使用 <strong class="program">sphinx-build</strong> 程序启动构建：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sphinx-build -b html sourcedir builddir
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">sourcedir</span></code> 是 <a class="reference internal" href="../glossary.html#term-source-directory"><span class="xref std std-term">源目录</span></a>，<code class="docutils literal notranslate"><span class="pre">builddir</span></code> 是您要在其中放置构建文档的目录。<a class="reference internal" href="../man/sphinx-build.html#cmdoption-sphinx-build-b"><code class="xref std std-option docutils literal notranslate"><span class="pre">-b</span></code></a> 选项选择一个构建器；在这个例子中，Sphinx 将构建 HTML 文件。</p>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 参考 <a class="reference internal" href="../man/sphinx-build.html"><span class="doc">sphinx-build 手册</span></a> 以了解 <strong class="program">sphinx-build</strong> 支持的所有选项。</p>
+<p>但是，<strong class="program">sphinx-quickstart</strong> 脚本创建了一个 <code class="file docutils literal notranslate"><span class="pre">Makefile</span></code> 和一个 <code class="file docutils literal notranslate"><span class="pre">make.bat</span></code>，它让你的生活更加轻松。这些可以通过运行 <strong class="command">make</strong> 来执行，其中包含构建器的名称。例如：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make html
+</pre></div>
+</div>
+<p>这将在您选择的构建目录中构建 HTML 文档。执行 <strong class="command">make</strong> 不带参数来查看哪些目标可用。</p>
+<div class="admonition-how-do-i-generate-pdf-documents admonition">
+<p class="admonition-title">如何生成 PDF 文档？</p>
+<p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latexpdf</span></code> 运行 <a class="reference internal" href="builders/index.html#sphinx.builders.latex.LaTeXBuilder" title="sphinx.builders.latex.LaTeXBuilder"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LaTeX</span> <span class="pre">builder</span></code></a> 并且很容易为你调用 pdfTeX 工具链。</p>
+</div>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">待处理</p>
+<p>将整个部分移动到有关 rST 或指令的指南中</p>
+</div>
+</section>
+<section id="documenting-objects">
+<h2>文档对象<a class="headerlink" href="#documenting-objects" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 的主要目标之一是在任何  <em class="dfn">域</em>  中轻松记录  <em class="dfn">对象</em> （在一个非常普遍的意义上）。一个域是属于一起的对象类型的集合，有完整的标记来创建和引用这些对象的描述。</p>
+<p>最突出的域是 Python 域。例如，要记录 Python 的内置函数 <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>，可以将其添加到您的源文件中。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">py:function</span><span class="p">::</span> enumerate(sequence[, start=0])
+
+   Return an iterator that yields tuples of an index and an item of the
+   <span class="ge">*sequence*</span>. (And so on.)
+</pre></div>
+</div>
+<p>这是这样呈现的：</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="enumerate">
+<span class="sig-name descname"><span class="pre">enumerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">start=0</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#enumerate" title="永久链接至目标">¶</a></dt>
+<dd><p>Return an iterator that yields tuples of an index and an item of the
+<em>sequence</em>. (And so on.)</p>
+</dd></dl>
+
+<p>该指令的参数是你描述的对象的 <em class="dfn">签名</em>，内容是它的文档。可以给出多个签名，每个签名都在其自己的行中。</p>
+<p>Python 域也恰好是默认域，因此您不需要在标记前加上域名。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">function</span><span class="p">::</span> enumerate(sequence[, start=0])
+
+<span class="cp">   ...</span>
+</pre></div>
+</div>
+<p>如果您保留默认域的默认设置，则执行相同的工作。</p>
+<p>还有几个指令用于记录其他类型的 Python 对象，例如 <a class="reference internal" href="restructuredtext/domains.html#directive-py-class" title="py:class directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">py:class</span></code></a> 或 <a class="reference internal" href="restructuredtext/domains.html#directive-py-method" title="py:method directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">py:method</span></code></a>。还有一个也有一个交叉引用的 <em class="dfn">角色</em>，用于这些对象类型中的每一个。这个标记将创建一个指向 <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> 文档的链接。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The :py:func:`enumerate` function can be used for ...
+</pre></div>
+</div>
+<p>这是证据：链接到 <a class="reference internal" href="#enumerate" title="enumerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a>。</p>
+<p>同样，如果 Python 域是默认域，则可以省略 <code class="docutils literal notranslate"><span class="pre">py:</span></code>。哪个文件包含 <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> 的实际文档并不重要；Sphinx 会找到它并创建一个链接。</p>
+<p>每个域都有特殊的规则来表示签名的外观，并使格式化的输出看起来很漂亮，或添加特定的功能，如链接到参数类型，例如在 C/C ++ 域中。</p>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 有关所有可用域及其指令/角色，请参阅 <a class="reference internal" href="restructuredtext/domains.html"><span class="doc">域</span></a></p>
+</section>
+<section id="basic-configuration">
+<h2>基本配置<a class="headerlink" href="#basic-configuration" title="永久链接至标题">¶</a></h2>
+<p>之前我们提到过 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 文件控制着 Sphinx 处理文档的方式。在该文件中，它作为 Python 源文件执行，您可以分配配置值。对于高级用户：由于它是由 Sphinx 执行的，因此您可以在其中执行非平凡的任务，例如扩展 <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path" title="(在 Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> 或导入模块以找出您正在记录的版本。</p>
+<p>您可能想要更改的配置值已经放入 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 由 <strong class="program">sphinx-quickstart</strong> 并且最初被注释掉（使用标准的 Python 语法: <code class="docutils literal notranslate"><span class="pre">#</span></code> 注释其余的这行）。要更改默认值，请删除 <code class="docutils literal notranslate"><span class="pre">#</span></code> 并修改该值。要自定义一个不会自动添加的配置值 <strong class="program">sphinx-quickstart</strong>，只需添加一个额外的赋值。</p>
+<p>请记住，该文件使用 Python 语法来表示字符串，数字，列表等。默认情况下，文件以 UTF-8 保存，如第一行中的编码声明所示。</p>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 阅读 <a class="reference internal" href="configuration.html"><span class="doc">配置</span></a> 了解配置值的更多信息。</p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">待处理</p>
+<p>将整个文档移动到不同的部分</p>
+</div>
+</section>
+<section id="autodoc">
+<h2>Autodoc<a class="headerlink" href="#autodoc" title="永久链接至标题">¶</a></h2>
+<p>给 Python 代码写文档的一种常见做法是，在 Python 源文件里以文档字符串的形式在代码中插入文档。使用 <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> 插件（插件是给 Sphinx 项目提供更多的功能的 Python 模块），Sphinx 就可以把你模块中的文档字符串插入进来。</p>
+<p>为了使用 <code class="docutils literal notranslate"><span class="pre">autodoc</span></code>，你需要在 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 中激活它，方法是将字符串 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.autodoc'</span></code> 放入分配给 <a class="reference internal" href="configuration.html#confval-extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">extensions</span></code></a> 配置的列表中值:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>然后，您可以使用其他一些指令。例如，要记录函数 <code class="docutils literal notranslate"><span class="pre">io.open()</span></code>，从源文件中读取它的签名和 docstring，你就写下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">autofunction</span><span class="p">::</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span>
+</pre></div>
+</div>
+<p>您还可以使用 <code class="docutils literal notranslate"><span class="pre">auto</span></code> 指令的成员选项自动记录整个类甚至模块，例如:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">automodule</span><span class="p">::</span> <span class="n">io</span>
+   <span class="p">:</span><span class="n">members</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">autodoc</span></code> 需要导入您的模块才能提取文档字符串。因此，您必须在 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 中添加适当的路径 <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path" title="(在 Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><a class="reference internal" href="extensions/autodoc.html#module-sphinx.ext.autodoc" title="sphinx.ext.autodoc: Include documentation from docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">autodoc</span></code></a> <strong>导入</strong> 所有需要自动生成文档的模块。如果某些模块在导入时有一些额外的操作，在运行 <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> 时，也会被 <code class="docutils literal notranslate"><span class="pre">autodoc</span></code> 执行。</p>
+<p>如果你要引入脚本（而不是库模块），确保主程序 main 有这个条件保护着：<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code>。</p>
+</div>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 关于 autodoc 的完整功能请查阅：<a class="reference internal" href="extensions/autodoc.html#module-sphinx.ext.autodoc" title="sphinx.ext.autodoc: Include documentation from docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.autodoc</span></code></a>。</p>
+<div class="admonition-todo admonition" id="id6">
+<p class="admonition-title">待处理</p>
+<p>将此文档移到另一部分</p>
+</div>
+</section>
+<section id="intersphinx">
+<h2>跨 Sphinx 引用<a class="headerlink" href="#intersphinx" title="永久链接至标题">¶</a></h2>
+<p>包括 <a class="reference external" href="https://docs.python.org/3">Python 文档</a> 在内的许多 Sphinx 文档都在互联网上发布。如果要从文档中链接到此类文档，可以使用 <a class="reference internal" href="extensions/intersphinx.html#module-sphinx.ext.intersphinx" title="sphinx.ext.intersphinx: Link to other Sphinx documentation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.intersphinx</span></code></a>。</p>
+<p>要使用 intersphinx，需要在 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 文件中配置 <a class="reference internal" href="configuration.html#confval-extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">extensions</span></code></a> 变量，把字符串 <code class="docutils literal notranslate"><span class="pre">'sphinx.ext.intersphinx'</span></code> 附加到列表，还要设置参数 <a class="reference internal" href="extensions/intersphinx.html#confval-intersphinx_mapping"><code class="xref std std-confval docutils literal notranslate"><span class="pre">intersphinx_mapping</span></code></a>。</p>
+<p>比如，要链接到 Python 库官方文档的 <code class="docutils literal notranslate"><span class="pre">io.open()</span></code>，要对 <a class="reference internal" href="extensions/intersphinx.html#confval-intersphinx_mapping"><code class="xref std std-confval docutils literal notranslate"><span class="pre">intersphinx_mapping</span></code></a> 进行如下配置:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">intersphinx_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;python&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;https://docs.python.org/3&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>现在，你可以编写一个交叉引用，比如 <code class="docutils literal notranslate"><span class="pre">:py:func:`io.open`</span></code>。在当前文档集中没有匹配目标的任何交叉引用，将在 <a class="reference internal" href="extensions/intersphinx.html#confval-intersphinx_mapping"><code class="xref std std-confval docutils literal notranslate"><span class="pre">intersphinx_mapping</span></code></a> 中配置的文档集中查找（这需要访问 URL 以下载有效目标列表）。Intersphinx 也适用于其他一些 <a class="reference internal" href="../glossary.html#term-domain"><span class="xref std std-term">域</span></a> 的角色，包括 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code>，但它不适用于 <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> 因为那是非域角色。</p>
+<p><img alt="more info" class="align-middle" src="../_images/more.png" /> 完整的跨 Sphinx 引用的功能介绍，参考 <a class="reference internal" href="extensions/intersphinx.html#module-sphinx.ext.intersphinx" title="sphinx.ext.intersphinx: Link to other Sphinx documentation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.intersphinx</span></code></a>。</p>
+</section>
+<section id="more-topics-to-be-covered">
+<h2>其他常用功能举例<a class="headerlink" href="#more-topics-to-be-covered" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="extensions/index.html"><span class="doc">其他插件</span></a>:</p></li>
+<li><p>静态文件</p></li>
+<li><p><a class="reference internal" href="theming.html"><span class="doc">选择主题</span></a></p></li>
+<li><p><a class="reference internal" href="advanced/setuptools.html"><span class="doc">Setuptools integration</span></a></p></li>
+<li><p><a class="reference internal" href="../templating.html#templating"><span class="std std-ref">使用模板</span></a></p></li>
+<li><p>使用插件</p></li>
+<li><p><a class="reference internal" href="../extdev/index.html#dev-extensions"><span class="std std-ref">编写插件</span></a></p></li>
+</ul>
+<p class="rubric">脚注</p>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>这是通常的设置。然而，<code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 也可以在其他的目录中，即 <a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">配置目录</span></a>。更多信息请参考 <a class="reference internal" href="../man/sphinx-build.html"><span class="doc">sphinx-build 手册</span></a>。</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="安装 Sphinx"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="使用 Sphinx"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >使用 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">快速上手</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sphinx 教程 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/tutorial/index.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="入门" href="getting-started.html" />
+    <link rel="prev" title="Storage Backends" href="../usage/advanced/websupport/storagebackends.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="getting-started.html" title="入门"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="../usage/advanced/websupport/storagebackends.html" title="Storage Backends"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Sphinx 教程</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="../usage/advanced/websupport/storagebackends.html"
+                          title="上一章">Storage Backends</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="getting-started.html"
+                          title="下一章">入门</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/index.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sphinx-tutorial">
+<span id="tutorial"></span><h1>Sphinx 教程<a class="headerlink" href="#sphinx-tutorial" title="永久链接至标题">¶</a></h1>
+<p>在本教程中，你将使用 Sphinx 建立一个简单的文档项目，并在浏览器中以 HTML 形式查看。该项目将包括叙述性的、手写的文档，以及自动生成的 API 文档。</p>
+<p>该教程针对的是愿意学习如何创建和构建项目的基本原理的 Sphinx 新人。你将创建一个虚构的软件库来生成随机的食物食谱，它将作为整个过程的指南，目的是正确记录它。</p>
+<p>为了展示 Sphinx 在代码文档方面的能力，你将使用 Python，它也支持 <em>自动</em> 文档生成。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>其他几种语言在 Sphinx 中原生支持 <em>手动</em> 代码文档，然而它们需要扩展到 <em>自动</em> 代码文档，比如 <a class="reference external" href="https://breathe.readthedocs.io/">Breathe</a>。</p>
+</div>
+<p>遵循说明，需要访问类似于 Linux 的命令行，并对其工作原理有基本的了解，还要有一个用于开发的工作的 Python 安装，因为你将使用 <em>Python 虚拟环境</em> 来创建项目。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">入门</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#setting-up-your-project-and-development-environment">设置你的项目和开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#creating-the-documentation-layout">创建文档布局</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="first-steps.html">使用 Sphinx 记录你的项目的第一个步骤</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="first-steps.html#building-your-html-documentation">构建你的 HTML 文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-steps.html#building-your-documentation-in-other-formats">以其他格式建立你的文件</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more-sphinx-customization.html">更多的 Sphinx 定制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more-sphinx-customization.html#enabling-a-built-in-extension">启用一个内置插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more-sphinx-customization.html#using-a-third-party-html-theme">使用第三方 HTML 主题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="narrative-documentation.html">Sphinx 中的叙事性文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="narrative-documentation.html#structuring-your-documentation-across-multiple-pages">在多个页面上构建你的文档结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="narrative-documentation.html#adding-cross-references">添加交叉引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="describing-code.html">在 Sphinx 中描述代码</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="describing-code.html#python">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="describing-code.html#documenting-python-objects">记录 Python 对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="describing-code.html#cross-referencing-python-objects">交叉引用 Python 对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="describing-code.html#including-doctests-in-your-documentation">在你的文档中包括 doctest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="describing-code.html#other-languages-c-c-others">其他语言（C、C++、其他）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="describing-code.html#documenting-and-cross-referencing-objects">记录和交叉引用的对象</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="automatic-doc-generation.html">从代码中自动生成文档</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="automatic-doc-generation.html#reusing-signatures-and-docstrings-with-autodoc">用 autodoc 复用使用签名和文档串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic-doc-generation.html#generating-comprehensive-api-references">生成全面的 API 参考资料</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deploying.html">附录：在线部署 Sphinx 项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deploying.html#sphinx-friendly-deployment-options">对 Sphinx 友好的部署选项</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploying.html#embracing-the-docs-as-code-philosophy">拥护 “文档即代码” 理念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploying.html#publishing-your-documentation-sources">发布你的文档源码</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deploying.html#id1">GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploying.html#id2">GitLab</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deploying.html#publishing-your-html-documentation">发布你的 HTML 文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deploying.html#id4">Read the Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploying.html#id5">GitHub Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploying.html#id6">GitLab Pages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="end.html">今后的发展方向</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="getting-started.html" title="入门"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="../usage/advanced/websupport/storagebackends.html" title="Storage Backends"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Sphinx 教程</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

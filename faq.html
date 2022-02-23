@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sphinx 常见问题 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/faq.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="_static/favicon.svg"/>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="术语表" href="glossary.html" />
+    <link rel="prev" title="Sphinx authors" href="internals/authors.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="usage/installation.html">Get it</a></li>
+    <li><a href="contents.html">Docs</a></li>
+    <li><a href="development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="index.html">
+      <img src="_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="glossary.html" title="术语表"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="internals/authors.html" title="Sphinx authors"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Sphinx 常见问题</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Sphinx 常见问题</a><ul>
+<li><a class="reference internal" href="#how-do-i">我如何 …</a></li>
+<li><a class="reference internal" href="#using-sphinx-with">将 Sphinx 与 …</a></li>
+<li><a class="reference internal" href="#sphinx-vs-docutils">Sphinx vs. Docutils</a></li>
+<li><a class="reference internal" href="#epub-info">Epub 信息</a></li>
+<li><a class="reference internal" href="#texinfo-info">Texinfo info</a><ul>
+<li><a class="reference internal" href="#displaying-links">Displaying Links</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="internals/authors.html"
+                          title="上一章">Sphinx authors</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="glossary.html"
+                          title="下一章">术语表</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/faq.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="sphinx-faq">
+<span id="faq"></span><h1>Sphinx 常见问题<a class="headerlink" href="#sphinx-faq" title="永久链接至标题">¶</a></h1>
+<p>这是一份关于 Sphinx 的常见问题清单。欢迎提出新的条目！</p>
+<section id="how-do-i">
+<h2>我如何 …<a class="headerlink" href="#how-do-i" title="永久链接至标题">¶</a></h2>
+<dl class="simple">
+<dt>… 不用 LaTeX 就能创建 PDF 文件？</dt><dd><p><a class="reference external" href="https://github.com/brechtm/rinohtype">rinohtype</a> 提供了一个 PDF 生成器，可以作为 LaTeX 生成器的直接替代。</p>
+</dd>
+<dt>… 获得章节编号？</dt><dd><p>它们在 LaTeX 输出中是自动的；对于 HTML，在你想开始编号的地方给 <a class="reference internal" href="usage/restructuredtext/directives.html#directive-toctree" title="toctree directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">toctree</span></code></a> 指令一个 <cite>:numbered:</cite> 选项。</p>
+</dd>
+<dt>… 自定义内置 HTML 文件的外观？</dt><dd><p>使用主题，参阅 <a class="reference internal" href="usage/theming.html"><span class="doc">HTML 主题化</span></a>。</p>
+</dd>
+<dt>… 添加全局替换或包括？</dt><dd><p>在 <a class="reference internal" href="usage/configuration.html#confval-rst_prolog"><code class="xref std std-confval docutils literal notranslate"><span class="pre">rst_prolog</span></code></a> 或 <a class="reference internal" href="usage/configuration.html#confval-rst_epilog"><code class="xref std std-confval docutils literal notranslate"><span class="pre">rst_epilog</span></code></a> 配置值中添加它们。</p>
+</dd>
+<dt>… 在侧边栏显示整个 TOC 树？</dt><dd><p>在自定义布局模板中使用 <a class="reference internal" href="templating.html#toctree" title="toctree"><code class="xref py py-data docutils literal notranslate"><span class="pre">toctree</span></code></a> 可调用，可能在 <code class="docutils literal notranslate"><span class="pre">sidebartoc</span></code> 块中。</p>
+</dd>
+<dt>… 编写我自己的插件？</dt><dd><p>参阅 <a class="reference internal" href="development/tutorials/index.html"><span class="doc">插件教程</span></a>。</p>
+</dd>
+<dt>… 使用 MoinMoin 标记从我现有的文档转换？</dt><dd><p>最简单的方法是转换为 xhtml，然后将 <a class="reference external" href="https://docutils.sourceforge.io/sandbox/xhtml2rest/xhtml2rest.py">xhtml 转换为 reST</a>。你仍然需要标记类和类似的东西，但标题和代码示例会很干净。</p>
+</dd>
+</dl>
+<p>更多的插件和其他贡献的东西，请看 <a class="reference external" href="https://bitbucket.org/birkenfeld/sphinx-contrib/">sphinx-contrib</a> 仓库。</p>
+</section>
+<section id="using-sphinx-with">
+<span id="usingwith"></span><h2>将 Sphinx 与 …<a class="headerlink" href="#using-sphinx-with" title="永久链接至标题">¶</a></h2>
+<dl>
+<dt>Read the Docs</dt><dd><p><a class="reference external" href="https://readthedocs.org">Read the Docs</a> 是一个基于 Sphinx 的文档托管服务。他们将托管 sphinx 文档，同时支持其他一些功能，包括版本支持、PDF 生成等等。<a class="reference external" href="https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html">Getting Started</a>  是一个很好的开始。</p>
+</dd>
+<dt>Epydoc</dt><dd><p>有一个第三方扩展提供了一个 <a class="reference external" href="https://git.savannah.gnu.org/cgit/kenozooid.git/tree/doc/extapi.py">api role</a>，它指的是 Epydoc 的 API 文档，用于给定的标识符。</p>
+</dd>
+<dt>Doxygen</dt><dd><p>Michael Jones 正在开发一个 reST/Sphinx 与 doxygen 的桥梁，名为 <a class="reference external" href="https://github.com/michaeljones/breathe/tree/master">breathe</a>。</p>
+</dd>
+<dt>SCons</dt><dd><p>Glenn Hutchings 写了一个 SCons 构建脚本来构建 Sphinx 文档；它的被托管在：<a class="reference external" href="https://bitbucket.org/zondo/sphinx-scons">https://bitbucket.org/zondo/sphinx-scons</a></p>
+</dd>
+<dt>PyPI</dt><dd><p>Jannis Leidel 写了一个 <a class="reference external" href="https://pypi.org/project/Sphinx-PyPI-upload/">setuptools 命令</a>，可以自动将 Sphinx 文档上传到 PyPI 软件包文档区 <a class="reference external" href="https://pythonhosted.org/">https://pythonhosted.org/</a>。</p>
+</dd>
+<dt>GitHub Pages</dt><dd><p>请将 <a class="reference internal" href="usage/extensions/githubpages.html#module-sphinx.ext.githubpages" title="sphinx.ext.githubpages: Publish HTML docs in GitHub Pages"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.githubpages</span></code></a> 添加到你的项目中。它允许你在 GitHub Pages 中发布你的文档。它为 GitHub Pages 自动生成关于构建 HTML 文档的辅助文件。</p>
+</dd>
+<dt>MediaWiki</dt><dd><p>See <a class="reference external" href="https://bitbucket.org/kevindunn/sphinx-wiki/wiki/Home">https://bitbucket.org/kevindunn/sphinx-wiki/wiki/Home</a>, a project by
+Kevin Dunn.</p>
+</dd>
+<dt>Google Analytics</dt><dd><p>你可以使用一个自定义的 <code class="docutils literal notranslate"><span class="pre">layout.html</span></code> 模板，像这样：</p>
+<div class="highlight-html+jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;!layout.html&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span>- <span class="k">block</span> <span class="nv">extrahead</span> <span class="cp">%}</span>
+<span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="kd">var</span> <span class="nx">_gaq</span> <span class="o">=</span> <span class="nx">_gaq</span> <span class="o">||</span> <span class="p">[];</span>
+  <span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_setAccount&#39;</span><span class="p">,</span> <span class="s1">&#39;XXX account number XXX&#39;</span><span class="p">]);</span>
+  <span class="nx">_gaq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s1">&#39;_trackPageview&#39;</span><span class="p">]);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">footer</span> <span class="cp">%}</span>
+<span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span>This page uses <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://analytics.google.com/&quot;</span><span class="p">&gt;</span>
+Google Analytics<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> to collect statistics. You can disable it by blocking
+the JavaScript coming from www.google-analytics.com.
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">ga</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+    <span class="nx">ga</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;https:&#39;</span> <span class="o">==</span> <span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">?</span>
+              <span class="s1">&#39;https://ssl&#39;</span> <span class="o">:</span> <span class="s1">&#39;http://www&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.google-analytics.com/ga.js&#39;</span><span class="p">;</span>
+    <span class="nx">ga</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;async&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">ga</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</dd>
+<dt>Google Search</dt><dd><p>用谷歌搜索替换 Sphinx 的内置搜索功能，步骤如下：</p>
+<ol class="arabic">
+<li><p>去 <a class="reference external" href="https://cse.google.com/cse/all">https://cse.google.com/cse/all</a>，创建谷歌搜索的代码片段。</p></li>
+<li><p>复制代码片段并将其粘贴到你的 Sphinx 项目中的 <code class="docutils literal notranslate"><span class="pre">_templates/searchbox.html</span></code> 中：</p>
+<div class="highlight-html+jinja notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span><span class="cp">{{</span> <span class="kp">_</span><span class="o">(</span><span class="s1">&#39;Quick search&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+      <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+         <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="s1">&#39;......&#39;</span><span class="p">;</span>
+         <span class="kd">var</span> <span class="nx">gcse</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+         <span class="nx">gcse</span><span class="p">.</span><span class="k">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+         <span class="nx">gcse</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;https://cse.google.com/cse.js?cx=&#39;</span> <span class="o">+</span> <span class="nx">cx</span><span class="p">;</span>
+         <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span>
+         <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">gcse</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+      <span class="p">})();</span>
+   <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">gcse:search</span><span class="p">&gt;&lt;/</span><span class="nt">gcse:search</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>在 <a class="reference internal" href="usage/configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a> 配置值中添加 <code class="docutils literal notranslate"><span class="pre">searchbox.html</span></code>。</p></li>
+</ol>
+</dd>
+</dl>
+</section>
+<section id="sphinx-vs-docutils">
+<h2>Sphinx vs. Docutils<a class="headerlink" href="#sphinx-vs-docutils" title="永久链接至标题">¶</a></h2>
+<p>tl;dr: <em>docutils</em> 将 reStructuredText 转换为多种输出格式。Sphinx 建立在 docutils 的基础上，允许构建交叉引用和索引的文档体。</p>
+<p><a class="reference external" href="https://docutils.sourceforge.io/">docutils</a> 是一个文本处理系统，用于将纯文本文档转换为其他更丰富的格式。正如 <a class="reference external" href="https://docutils.sourceforge.io/docs/dev/hacking.html">docutils 文档</a> 中所指出的，docutils 使用 <em>读取器</em> 来读取文档，<em>解析器</em> 将纯文本格式解析为由不同类型的 <em>节点</em> 组成的内部树状表示，<em>写入器</em> 以各种文档格式输出该树状表示。docutils 为一种纯文本格式提供了解析器 —— <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> —— 尽管其他 <em>out-of-tree</em> 解析器已经被实现，包括 Sphinx 的 <a class="reference internal" href="usage/markdown.html"><span class="doc">Markdown 解析器</span></a>。另一方面，它为许多不同的格式提供了写入器，包括 HTML、LaTeX、man pages、Open Document Format 和 XML。</p>
+<p>docutils 通过各种 <a class="reference external" href="https://docutils.sourceforge.io/docs/user/tools.html">前端工具</a> 暴露其所有功能，如 <code class="docutils literal notranslate"><span class="pre">rst2html</span></code>、<code class="docutils literal notranslate"><span class="pre">rst2odt</span></code> 和 <code class="docutils literal notranslate"><span class="pre">rst2xml</span></code>。但重要的是，所有这些工具，以及 docutils 本身，都与单个文档有关。它们不支持交叉引用、文档索引或构建文档层次结构（通常表现为目录）等概念”</p>
+<p>Sphinx 以 docutils 为基础，利用 docutils 的阅读器和解析器，并提供自己的 <a class="reference internal" href="usage/builders/index.html"><span class="doc">构建器</span></a>。因此，Sphinx 包装了一些由 docutils 提供的 <em>writers</em>。这使得 Sphinx 可以提供许多用 docutils 根本不可能实现的功能，比如上面提到的那些。</p>
+</section>
+<section id="epub-info">
+<span id="epub-faq"></span><h2>Epub 信息<a class="headerlink" href="#epub-info" title="永久链接至标题">¶</a></h2>
+<p>以下列表给出了创建 epub 文件的一些提示：</p>
+<ul>
+<li><p>将文本分成几个文件。单个 HTML 文件越长，电子书阅读器渲染它们所需的时间就越长。在极端情况下，渲染时间可能长达一分钟。</p></li>
+<li><p>尽量减少标记。这也是对渲染时间的回报。</p></li>
+<li><p>For some readers you can use embedded or external fonts using the CSS
+<code class="docutils literal notranslate"><span class="pre">&#64;font-face</span></code> directive.  This is <em>extremely</em> useful for code listings which
+are often cut at the right margin.  The default Courier font (or variant) is
+quite wide and you can only display up to 60 characters on a line.  If you
+replace it with a narrower font, you can get more characters on a line.  You
+may even use <a class="reference external" href="https://fontforge.github.io/">FontForge</a> and create
+narrow variants of some free font.  In my case I get up to 70 characters on a
+line.</p>
+<p>You may have to experiment a little until you get reasonable results.</p>
+</li>
+<li><p>Test the created epubs. You can use several alternatives.  The ones I am aware
+of are <a class="reference external" href="https://github.com/IDPF/epubcheck">Epubcheck</a>, <a class="reference external" href="https://calibre-ebook.com/">Calibre</a>, <a class="reference external" href="https://fbreader.org/">FBreader</a> (although it does not render the CSS),
+and <a class="reference external" href="https://www.oreilly.com/bookworm/index.html">Bookworm</a>.  For Bookworm, you can download the source from
+<a class="reference external" href="https://code.google.com/archive/p/threepress">https://code.google.com/archive/p/threepress</a> and run your own local server.</p></li>
+<li><p>Large floating divs are not displayed properly.
+If they cover more than one page, the div is only shown on the first page.
+In that case you can copy the <code class="file docutils literal notranslate"><span class="pre">epub.css</span></code> from the
+<code class="docutils literal notranslate"><span class="pre">sphinx/themes/epub/static/</span></code> directory to your local <code class="docutils literal notranslate"><span class="pre">_static/</span></code>
+directory and remove the float settings.</p></li>
+<li><p>Files that are inserted outside of the <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive must be manually
+included. This sometimes applies to appendixes, e.g. the glossary or
+the indices.  You can add them with the <a class="reference internal" href="usage/configuration.html#confval-epub_post_files"><code class="xref std std-confval docutils literal notranslate"><span class="pre">epub_post_files</span></code></a> option.</p></li>
+<li><p>The handling of the epub cover page differs from the reStructuredText
+procedure which automatically resolves image paths and puts the images
+into the <code class="docutils literal notranslate"><span class="pre">_images</span></code> directory.  For the epub cover page put the image in the
+<a class="reference internal" href="usage/configuration.html#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> directory and reference it with its full path in
+the <a class="reference internal" href="usage/configuration.html#confval-epub_cover"><code class="xref std std-confval docutils literal notranslate"><span class="pre">epub_cover</span></code></a> config option.</p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/gp/feature.html?docId=1000765211">kindlegen</a> command can convert from epub3 resulting file to <code class="docutils literal notranslate"><span class="pre">.mobi</span></code> file
+for Kindle. You can get <code class="docutils literal notranslate"><span class="pre">yourdoc.mobi</span></code> under <code class="docutils literal notranslate"><span class="pre">_build/epub</span></code> after the
+following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make epub
+$ kindlegen _build/epub/yourdoc.epub
+</pre></div>
+</div>
+<p>The kindlegen command doesn’t accept documents that have section
+titles surrounding <code class="docutils literal notranslate"><span class="pre">toctree</span></code> directive:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Section Title</span>
+<span class="gh">=============</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+
+   subdocument
+
+<span class="gh">Section After Toc Tree</span>
+<span class="gh">======================</span>
+</pre></div>
+</div>
+<p>kindlegen assumes all documents order in line, but the resulting document
+has complicated order for kindlegen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``parent.xhtml`` -&gt; ``child.xhtml`` -&gt; ``parent.xhtml``
+</pre></div>
+</div>
+<p>If you get the following error, fix your document structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Error(prcgen):E24011: TOC section scope is not included in the parent chapter:(title)
+Error(prcgen):E24001: The table of content could not be built.
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="texinfo-info">
+<span id="texinfo-faq"></span><h2>Texinfo info<a class="headerlink" href="#texinfo-info" title="永久链接至标题">¶</a></h2>
+<p>There are two main programs for reading Info files, <code class="docutils literal notranslate"><span class="pre">info</span></code> and GNU Emacs.  The
+<code class="docutils literal notranslate"><span class="pre">info</span></code> program has less features but is available in most Unix environments
+and can be quickly accessed from the terminal.  Emacs provides better font and
+color display and supports extensive customization (of course).</p>
+<section id="displaying-links">
+<span id="texinfo-links"></span><h3>Displaying Links<a class="headerlink" href="#displaying-links" title="永久链接至标题">¶</a></h3>
+<p>One noticeable problem you may encounter with the generated Info files is how
+references are displayed.  If you read the source of an Info file, a reference
+to this section would look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">note</span> <span class="n">Displaying</span> <span class="n">Links</span><span class="p">:</span> <span class="n">target</span><span class="o">-</span><span class="nb">id</span>
+</pre></div>
+</div>
+<p>In the stand-alone reader, <code class="docutils literal notranslate"><span class="pre">info</span></code>, references are displayed just as they
+appear in the source.  Emacs, on the other-hand, will by default replace
+<code class="docutils literal notranslate"><span class="pre">*note:</span></code> with <code class="docutils literal notranslate"><span class="pre">see</span></code> and hide the <code class="docutils literal notranslate"><span class="pre">target-id</span></code>.  For example:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#texinfo-links"><span class="std std-ref">Displaying Links</span></a></p>
+</div></blockquote>
+<p>One can disable generation of the inline references in a document
+with <a class="reference internal" href="usage/configuration.html#confval-texinfo_cross_references"><code class="xref std std-confval docutils literal notranslate"><span class="pre">texinfo_cross_references</span></code></a>.  That makes
+an info file more readable with stand-alone reader (<code class="docutils literal notranslate"><span class="pre">info</span></code>).</p>
+<p>The exact behavior of how Emacs displays references is dependent on the variable
+<code class="docutils literal notranslate"><span class="pre">Info-hide-note-references</span></code>.  If set to the value of <code class="docutils literal notranslate"><span class="pre">hide</span></code>, Emacs will hide
+both the <code class="docutils literal notranslate"><span class="pre">*note:</span></code> part and the <code class="docutils literal notranslate"><span class="pre">target-id</span></code>.  This is generally the best way
+to view Sphinx-based documents since they often make frequent use of links and
+do not take this limitation into account.  However, changing this variable
+affects how all Info documents are displayed and most do take this behavior
+into account.</p>
+<p>If you want Emacs to display Info files produced by Sphinx using the value
+<code class="docutils literal notranslate"><span class="pre">hide</span></code> for <code class="docutils literal notranslate"><span class="pre">Info-hide-note-references</span></code> and the default value for all other
+Info files, try adding the following Emacs Lisp code to your start-up file,
+<code class="docutils literal notranslate"><span class="pre">~/.emacs.d/init.el</span></code>.</p>
+<div class="highlight-elisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defadvice</span> <span class="nv">info-insert-file-contents</span> <span class="p">(</span><span class="nv">after</span>
+                                      <span class="nv">sphinx-info-insert-file-contents</span>
+                                      <span class="nv">activate</span><span class="p">)</span>
+  <span class="s">&quot;Hack to make </span><span class="ss">`Info-hide-note-references&#39;</span><span class="s"> buffer-local and</span>
+<span class="s">automatically set to </span><span class="ss">`hide&#39;</span><span class="s"> iff it can be determined that this file</span>
+<span class="s">was created from a Texinfo file generated by Docutils or Sphinx.&quot;</span>
+  <span class="p">(</span><span class="nf">set</span> <span class="p">(</span><span class="nf">make-local-variable</span> <span class="ss">&#39;Info-hide-note-references</span><span class="p">)</span>
+       <span class="p">(</span><span class="nf">default-value</span> <span class="ss">&#39;Info-hide-note-references</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">save-excursion</span>
+    <span class="p">(</span><span class="k">save-restriction</span>
+      <span class="p">(</span><span class="nf">widen</span><span class="p">)</span> <span class="p">(</span><span class="nf">goto-char</span> <span class="p">(</span><span class="nf">point-min</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">re-search-forward</span>
+             <span class="s">&quot;^Generated by \\(Sphinx\\|Docutils\\)&quot;</span>
+             <span class="p">(</span><span class="k">save-excursion</span> <span class="p">(</span><span class="nf">search-forward</span> <span class="s">&quot;\x1f&quot;</span> <span class="no">nil</span> <span class="no">t</span><span class="p">))</span> <span class="no">t</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">set</span> <span class="p">(</span><span class="nf">make-local-variable</span> <span class="ss">&#39;Info-hide-note-references</span><span class="p">)</span>
+             <span class="ss">&#39;hide</span><span class="p">)))))</span>
+</pre></div>
+</div>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="永久链接至标题">¶</a></h3>
+<p>The following notes may be helpful if you want to create Texinfo files:</p>
+<ul>
+<li><p>Each section corresponds to a different <code class="docutils literal notranslate"><span class="pre">node</span></code> in the Info file.</p></li>
+<li><p>Colons (<code class="docutils literal notranslate"><span class="pre">:</span></code>) cannot be properly escaped in menu entries and xrefs.
+They will be replaced with semicolons (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p></li>
+<li><p>Links to external Info files can be created using the somewhat official URI
+scheme <code class="docutils literal notranslate"><span class="pre">info</span></code>.  For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">:</span><span class="n">Texinfo</span><span class="c1">#makeinfo_options</span>
+</pre></div>
+</div>
+</li>
+<li><p>Inline markup</p>
+<p>The standard formatting for <code class="docutils literal notranslate"><span class="pre">*strong*</span></code> and <code class="docutils literal notranslate"><span class="pre">_emphasis_</span></code> can
+result in ambiguous output when used to markup parameter names and
+other values.  Since this is a fairly common practice, the default
+formatting has been changed so that <code class="docutils literal notranslate"><span class="pre">emphasis</span></code> and <code class="docutils literal notranslate"><span class="pre">strong</span></code> are
+now displayed like <code class="docutils literal notranslate"><span class="pre">`literal'</span></code>s.</p>
+<p>The standard formatting can be re-enabled by adding the following to
+your <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">texinfo_elements</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;preamble&#39;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">@definfoenclose strong,*,*</span>
+<span class="s2">@definfoenclose emph,_,_</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="glossary.html" title="术语表"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="internals/authors.html" title="Sphinx authors"
+             >上一页</a> |</li>
+        <li><a href="index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">Sphinx 常见问题</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

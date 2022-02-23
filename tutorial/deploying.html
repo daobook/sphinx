@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>附录：在线部署 Sphinx 项目 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/tutorial/deploying.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="今后的发展方向" href="end.html" />
+    <link rel="prev" title="从代码中自动生成文档" href="automatic-doc-generation.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="end.html" title="今后的发展方向"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="automatic-doc-generation.html" title="从代码中自动生成文档"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">附录：在线部署 Sphinx 项目</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">附录：在线部署 Sphinx 项目</a><ul>
+<li><a class="reference internal" href="#sphinx-friendly-deployment-options">对 Sphinx 友好的部署选项</a></li>
+<li><a class="reference internal" href="#embracing-the-docs-as-code-philosophy">拥护 “文档即代码” 理念</a></li>
+<li><a class="reference internal" href="#publishing-your-documentation-sources">发布你的文档源码</a><ul>
+<li><a class="reference internal" href="#id1">GitHub</a></li>
+<li><a class="reference internal" href="#id2">GitLab</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#publishing-your-html-documentation">发布你的 HTML 文档</a><ul>
+<li><a class="reference internal" href="#id4">Read the Docs</a></li>
+<li><a class="reference internal" href="#id5">GitHub Pages</a></li>
+<li><a class="reference internal" href="#id6">GitLab Pages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="automatic-doc-generation.html"
+                          title="上一章">从代码中自动生成文档</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="end.html"
+                          title="下一章">今后的发展方向</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/deploying.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="appendix-deploying-a-sphinx-project-online">
+<h1>附录：在线部署 Sphinx 项目<a class="headerlink" href="#appendix-deploying-a-sphinx-project-online" title="永久链接至标题">¶</a></h1>
+<p>当你准备好向世界展示你的文档项目时，有很多选择可以做到这一点。由于 Sphinx 生成的 HTML 是静态的，你可以把建立 HTML 文档的过程与在你选择的平台上托管这些文件的过程分开。你不需要一个运行 Python 的复杂服务器：几乎所有的网络托管服务都足够了。</p>
+<p>因此，挑战不在于如何或在哪里提供静态 HTML，而在于如何挑选一个工作流程，在每次源文件有变化时自动更新部署的文档。</p>
+<p>以下各节描述了一些可用的选项来部署你的在线文档，并给出了一些背景信息。如果你想直接进入实践部分，你可以跳到 <a class="reference internal" href="#publishing-sources"><span class="std std-ref">发布你的文档源码</span></a>。</p>
+<section id="sphinx-friendly-deployment-options">
+<h2>对 Sphinx 友好的部署选项<a class="headerlink" href="#sphinx-friendly-deployment-options" title="永久链接至标题">¶</a></h2>
+<p>你有几个可能的选择来托管你的Sphinx文档。其中一些是：</p>
+<dl class="simple">
+<dt><strong>Read the Docs</strong></dt><dd><p><a class="reference external" href="https://readthedocs.org/">Read the Docs</a> 是一项在线服务，专门托管用 Sphinx 以及 MkDocs 编写的技术文件。他们有一些额外的功能，如版本化的文档，流量和搜索分析，自定义域名，用户定义的重定向，等等。</p>
+</dd>
+<dt><strong>GitHub Pages</strong></dt><dd><p><a class="reference external" href="https://pages.github.com/">GitHub Pages</a> 是一个与 <a class="reference external" href="https://github.com/">GitHub</a> 紧密结合的简单静态网站托管：静态 HTML 从项目的一个分支中提供，通常源代码存储在另一个分支中，以便每次源代码改变时都能更新输出（例如，使用 <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a>）。它是免费使用的，并支持自定义域名。</p>
+</dd>
+<dt><strong>GitLab Pages</strong></dt><dd><p><a class="reference external" href="https://about.gitlab.com/stages-devops-lifecycle/pages/">GitLab Pages</a> 是一个类似于 GitHub Pages 的概念，与 <a class="reference external" href="https://gitlab.com/">GitLab</a> 集成，通常用 <a class="reference external" href="https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/">GitLab CI</a> 代替自动。</p>
+</dd>
+<dt><strong>Netlify</strong></dt><dd><p><a class="reference external" href="https://www.netlify.com/">Netlify</a> 是一个复杂的托管，用于通过客户端网络技术如 JavaScript（所谓的 <a class="reference external" href="https://jamstack.org/">Jamstack</a>）来增强静态网站。他们提供对 headless 内容管理系统和 serverless 计算的支持。</p>
+</dd>
+<dt><strong>你自己的服务器</strong></dt><dd><p>你可以随时使用你自己的网络服务器来托管 Sphinx HTML 文档。这是给人更多灵活性的选择，但也更复杂。</p>
+</dd>
+</dl>
+<p>所有这些选项都是零成本，可以选择为额外的功能付费。</p>
+</section>
+<section id="embracing-the-docs-as-code-philosophy">
+<h2>拥护 “文档即代码” 理念<a class="headerlink" href="#embracing-the-docs-as-code-philosophy" title="永久链接至标题">¶</a></h2>
+<p>上面列出的大多数选项的免费服务要求你的文件来源是公开可用的。此外，这些服务希望你使用 <a class="reference external" href="https://en.wikipedia.org/wiki/Version_control">Version Control System</a>，这是一种以一系列快照（”commits”）来跟踪文件集合的演变的技术。用与软件开发相同的工具在纯文本文件中编写文档的做法通常被称为 <a class="reference external" href="https://www.writethedocs.org/guide/docs-as-code/">“Docs as Code”</a> 。</p>
+<p>现在最流行的版本控制系统是 <a class="reference external" href="https://git-scm.com/">Git</a>，一个免费的开源工具，是 GitHub 和 GitLab 等服务的骨干。由于 Read the Docs 和 Netlify 都与 GitHub 和 GitLab 有集成，而且 GitHub 和 GitLab 都有集成的 Pages 产品，所以自动在线建立文档的最有效方法是将你的源代码上传到这些 Git 托管服务中的任何一个。</p>
+</section>
+<section id="publishing-your-documentation-sources">
+<span id="publishing-sources"></span><h2>发布你的文档源码<a class="headerlink" href="#publishing-your-documentation-sources" title="永久链接至标题">¶</a></h2>
+<section id="id1">
+<h3>GitHub<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>将现有项目上传到 GitHub 的最快捷方式是：</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/signup">注册一个 GitHub 账户</a>。</p></li>
+<li><p><a class="reference external" href="https://github.com/new">创建应该新的仓库</a>。</p></li>
+<li><p>打开新版本库的 <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository">the “Upload files” page</a>。</p></li>
+<li><p>在你的操作系统文件浏览器上选择文件（在你的例子中是 <code class="docutils literal notranslate"><span class="pre">README.rst</span></code>，<code class="docutils literal notranslate"><span class="pre">lumache.py</span></code>，<code class="docutils literal notranslate"><span class="pre">docs</span></code> 目录下的 makefiles，以及 <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> 下的所有文件），然后把它们拖到 GitHub 界面，把它们全部上传。</p></li>
+<li><p>点击 <span class="guilabel">Commit changes</span> 按钮。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>确保你不上传 <code class="docutils literal notranslate"><span class="pre">docs/build</span></code> 目录，因为它包含了 Sphinx 生成的输出，每次你改变源头时它都会改变，使你的工作流程复杂化。</p>
+</div>
+<p>这些步骤不需要访问命令行或安装任何其他软件。要了解更多，你可以：</p>
+<ul class="simple">
+<li><p>Follow <a class="reference external" href="https://lab.github.com/githubtraining/introduction-to-github">this interactive GitHub course</a> to learn more about how the GitHub
+interface works.</p></li>
+<li><p>Read <a class="reference external" href="https://docs.github.com/en/get-started/quickstart">this quickstart tutorial</a> to install extra software on your machine
+and have more flexibility. You can either use the Git command line, or the
+GitHub Desktop application.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>GitLab<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>Similarly to GitHub, the fastest way to upload your project to GitLab is
+using the web interface:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://gitlab.com/users/sign_up">Sign up for a GitLab account</a>.</p></li>
+<li><p><a class="reference external" href="https://gitlab.com/projects/new">Create a new blank project</a>.</p></li>
+<li><p>Upload the project files (in your case <code class="docutils literal notranslate"><span class="pre">README.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">lumache.py</span></code>, the
+makefiles under the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory, and everything under
+<code class="docutils literal notranslate"><span class="pre">docs/source</span></code>) one by one using the <span class="guilabel">Upload File</span> button <a class="footnote-reference brackets" href="#f1" id="id3">1</a>.</p></li>
+</ol>
+<p>Again, these steps do not require additional software on your computer. To
+learn more, you can:</p>
+<ul class="simple">
+<li><p>Follow <a class="reference external" href="https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html">this tutorial</a> to install Git on your machine.</p></li>
+<li><p>Browse the <a class="reference external" href="https://docs.gitlab.com/ee/user/index.html">GitLab User documentation</a> to understand the possibilities of
+the platform.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>确保你不上传 <code class="docutils literal notranslate"><span class="pre">docs/build</span></code> 目录，因为它包含了 Sphinx 生成的输出，每次你改变源头时它都会改变，使你的工作流程复杂化。</p>
+</div>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>At the time of writing, <a class="reference external" href="https://gitlab.com/gitlab-org/gitlab/-/issues/228490">uploading whole directories to GitLab using
+only the web
+interface</a> is
+not yet implemented.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="publishing-your-html-documentation">
+<h2>发布你的 HTML 文档<a class="headerlink" href="#publishing-your-html-documentation" title="永久链接至标题">¶</a></h2>
+<section id="id4">
+<h3>Read the Docs<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://readthedocs.org/">Read the Docs</a> 提供了与 GitHub 和 GitLab 的整合。最快的入门方法是遵循 <a class="reference external" href="https://docs.readthedocs.io/en/stable/tutorial/index.html" title="(在 Read the Docs user documentation v7.3.0)"><span class="xref std std-doc">RTD 教程</span></a>，它是松散地基于这个教程的。你可以在 GitHub 上发布你的源代码，如 <a class="reference internal" href="#publishing-sources"><span class="std std-ref">上一节</span></a> 所解释的那样，然后直接跳到 <a class="reference external" href="https://docs.readthedocs.io/en/stable/tutorial/index.html#sign-up-for-read-the-docs" title="(在 Read the Docs user documentation v7.3.0)"><span>Sign up for Read the Docs</span></a>。如果你选择 GitLab，过程也类似。</p>
+</section>
+<section id="id5">
+<h3>GitHub Pages<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://pages.github.com/">GitHub Pages</a> 要求你 <a class="reference internal" href="#publishing-sources"><span class="std std-ref">发布源码</span></a> 在 <a class="reference external" href="https://github.com/">GitHub</a> 上发布。之后，你将需要一个自动程序，在每次改变源的时候执行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 步骤。这可以用 <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a> 来实现。</p>
+<p>在 GitHub 上发布你的源代码后，在你的仓库中创建一个名为 <code class="docutils literal notranslate"><span class="pre">.github/workflows/sphinx.yml</span></code> 的文件，内容如下：</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">.github/workflows/</span><a class="headerlink" href="#id7" title="永久链接至代码">¶</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sphinx build</span><span class="w"></span>
+
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">push</span><span class="w"></span>
+
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build HTML</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ammaraskar/sphinx-action@0.4</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload artifacts</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">html-docs</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/build/html/</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span><span class="w"></span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/main&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span><span class="w"></span>
+<span class="w">        </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/build/html</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>这包含了一个 GitHub Actions 的工作流程，其中有四个步骤的单一工作：</p>
+<ol class="arabic simple">
+<li><p>签出代码。</p></li>
+<li><p>使用 Sphinx 建立 HTML 文档。</p></li>
+<li><p>将工件的 HTML 输出附加到 GitHub Actions 作业中，以便于自省。</p></li>
+<li><p>如果改变发生在默认分支上，就把 <code class="docutils literal notranslate"><span class="pre">docs/build/html</span></code> 的内容推送到 <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> 分支。</p></li>
+</ol>
+<p>接下来，你需要为 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 步骤的成功指定依赖性。为此，创建一个文件 <code class="docutils literal notranslate"><span class="pre">docs/requirements.txt</span></code> 并添加以下内容：</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">docs/requirements.txt</span><a class="headerlink" href="#id8" title="永久链接至代码">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">furo</span><span class="o">==</span><span class="mf">2021.11.16</span>
+</pre></div>
+</div>
+</div>
+<p>最后，你已经准备好 <a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">在你的仓库上启用 GitHub 页面</a> 了。为此，进入 <span class="guilabel">Settings</span>，然后在左侧的 <span class="guilabel">Pages</span>，在 <cite>Source</cite> 下拉菜单中选择 <cite>gh-pages</cite> 分支，然后点击 <span class="guilabel">Save</span>。几分钟后，你应该能在指定的 URL 上看到你的 HTML。</p>
+</section>
+<section id="id6">
+<h3>GitLab Pages<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://about.gitlab.com/stages-devops-lifecycle/pages/">GitLab Pages</a>, on the other hand, requires you to <a class="reference internal" href="#publishing-sources"><span class="std std-ref">publish your
+sources</span></a> on <a class="reference external" href="https://gitlab.com/">GitLab</a>. When you are ready, you can
+automate the process of running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> using <a class="reference external" href="https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/">GitLab CI</a>.</p>
+<p>After you have published your sources on GitLab, create a file named
+<code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> in your repository with these contents:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">.gitlab-ci.yml</span><a class="headerlink" href="#id9" title="永久链接至代码">¶</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span><span class="w"></span>
+
+<span class="nt">pages</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span><span class="w"></span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:3.9-slim</span><span class="w"></span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update &amp;&amp; apt-get install make --no-install-recommends -y</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pip install sphinx furo</span><span class="w"></span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd docs &amp;&amp; make html</span><span class="w"></span>
+<span class="w">  </span><span class="nt">after_script</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv docs/build/html/ ./public/</span><span class="w"></span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>This contains a GitLab CI workflow with one job of several steps:</p>
+<ol class="arabic simple">
+<li><p>Install the necessary dependencies.</p></li>
+<li><p>使用 Sphinx 建立 HTML 文档。</p></li>
+<li><p>Move the output to a known artifacts location.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You will need to <a class="reference external" href="https://about.gitlab.com/blog/2021/05/17/prevent-crypto-mining-abuse/#validating-an-account">validate your account</a> by entering a payment method
+(you will be charged a small amount that will then be reimbursed).</p>
+</div>
+<p>After that, if the pipeline is successful, you should be able to see your HTML
+at the designated URL.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="end.html" title="今后的发展方向"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="automatic-doc-generation.html" title="从代码中自动生成文档"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">附录：在线部署 Sphinx 项目</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

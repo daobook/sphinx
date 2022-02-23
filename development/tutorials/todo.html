@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>开发一个 “TODO” 插件 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/development/tutorials/todo.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Developing a “recipe” extension" href="recipe.html" />
+    <link rel="prev" title="开发一个 “Hello world” 插件" href="helloworld.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../usage/installation.html">Get it</a></li>
+    <li><a href="../../contents.html">Docs</a></li>
+    <li><a href="../index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../../index.html">
+      <img src="../../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="recipe.html" title="Developing a “recipe” extension"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="helloworld.html" title="开发一个 “Hello world” 插件"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >拓展 Sphinx</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">插件教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">开发一个 “TODO” 插件</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">开发一个 “TODO” 插件</a><ul>
+<li><a class="reference internal" href="#overview">概述</a></li>
+<li><a class="reference internal" href="#prerequisites">前提条件</a></li>
+<li><a class="reference internal" href="#writing-the-extension">编写插件</a></li>
+<li><a class="reference internal" href="#using-the-extension">Using the extension</a></li>
+<li><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="helloworld.html"
+                          title="上一章">开发一个 “Hello world” 插件</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="recipe.html"
+                          title="下一章">Developing a “recipe” extension</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/development/tutorials/todo.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="developing-a-todo-extension">
+<h1>开发一个 “TODO” 插件<a class="headerlink" href="#developing-a-todo-extension" title="永久链接至标题">¶</a></h1>
+<p>本教程的目的是创建一个比 <a class="reference internal" href="helloworld.html"><span class="doc">开发一个 “Hello world” 插件</span></a> 中创建的更全面的插件。那个指南只是涵盖了编写一个自定义的 <a class="reference internal" href="../../glossary.html#term-directive"><span class="xref std std-term">指令</span></a>，而本指南增加了多个指令，以及自定义节点、额外的配置值和自定义事件处理程序。为此，我们将介绍 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 插件，它可以在文档中加入 todo 项，并将其收集在一个中心位置。这与 Sphinx 的 <code class="docutils literal notranslate"><span class="pre">sphinxext.todo</span></code> 插件类似。</p>
+<section id="overview">
+<h2>概述<a class="headerlink" href="#overview" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>要了解这个插件的设计，请参考 <a class="reference internal" href="../../extdev/index.html#important-objects"><span class="std std-ref">重要对象</span></a> 和 <a class="reference internal" href="../../extdev/index.html#build-phases"><span class="std std-ref">构建阶段</span></a>。</p>
+</div>
+<p>我们希望这个插件能给 Sphinx 增加以下内容:</p>
+<ul class="simple">
+<li><p>一个 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 指令，包含一些标有 “TODO” 的内容，只有在设置了新的配置值后才会在输出中显示。默认情况下，Todo 条目不应该出现在输出中。</p></li>
+<li><p>一个 <code class="docutils literal notranslate"><span class="pre">todolist</span></code> 指令，创建了整个文档中所有 todo 条目的列表。</p></li>
+</ul>
+<p>为此，我们需要向 Sphinx 添加以下元素：</p>
+<ul class="simple">
+<li><p>新指令，称为 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 和 <code class="docutils literal notranslate"><span class="pre">todolist</span></code>。</p></li>
+<li><p>新建文档树节点来代表这些指令，传统上也称为 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 和 <code class="docutils literal notranslate"><span class="pre">todolist</span></code>。如果新指令只产生一些可由现有节点表示的内容，我们就不需要新的节点。</p></li>
+<li><p>一个新的配置值 <code class="docutils literal notranslate"><span class="pre">todo_include_todos</span></code> （配置值的名字应该以扩展名开始，以便保持唯一），控制 todo 条目是否进入输出。</p></li>
+<li><p>新的事件处理程序：一个用于 <a class="reference internal" href="../../extdev/appapi.html#event-doctree-resolved"><code class="xref std std-event docutils literal notranslate"><span class="pre">doctree-resolved</span></code></a> 事件，以替换 todo 和 todolist 节点，一个用于 <a class="reference internal" href="../../extdev/appapi.html#event-env-merge-info"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-merge-info</span></code></a>，以合并并行构建的中间结果，一个用于 <a class="reference internal" href="../../extdev/appapi.html#event-env-purge-doc"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-purge-doc</span></code></a> （其原因将在后面介绍）。</p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2>前提条件<a class="headerlink" href="#prerequisites" title="永久链接至标题">¶</a></h2>
+<p>和 <a class="reference internal" href="helloworld.html"><span class="doc">开发一个 “Hello world” 插件</span></a> 一样，我们不会通过 PyPI 发布这个插件，所以我们再次需要一个 Sphinx 项目来调用它。你可以使用现有的项目或使用 <strong class="program">sphinx-quickstart</strong> 创建一个新项目。</p>
+<p>我们假设你在使用独立的源文件（<code class="file docutils literal notranslate"><span class="pre">source</span></code>）和构建文件（<code class="file docutils literal notranslate"><span class="pre">build</span></code>）文件夹。你的扩展文件可以在你项目的任何文件夹中。在我们的例子中，让我们做以下事情：</p>
+<ol class="arabic simple">
+<li><p>在 <code class="file docutils literal notranslate"><span class="pre">source</span></code> 中创建一个 <code class="file docutils literal notranslate"><span class="pre">_ext</span></code> 文件夹</p></li>
+<li><p>在 <code class="file docutils literal notranslate"><span class="pre">_ext</span></code> 文件夹下创建一个新的 Python 文件，名为 <code class="file docutils literal notranslate"><span class="pre">todo.py</span></code>。</p></li>
+</ol>
+<p>下面是一个你可能获得的文件夹结构的例子：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>└── source
+    ├── _ext
+    │   └── todo.py
+    ├── _static
+    ├── conf.py
+    ├── somefolder
+    ├── index.rst
+    ├── somefile.rst
+    └── someotherfile.rst
+</pre></div>
+</div>
+</section>
+<section id="writing-the-extension">
+<h2>编写插件<a class="headerlink" href="#writing-the-extension" title="永久链接至标题">¶</a></h2>
+<p>打开 <code class="file docutils literal notranslate"><span class="pre">todo.py</span></code>，并在其中粘贴以下代码，所有这些我们很快会详细解释：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">from</span> <span class="nn">docutils</span> <span class="kn">import</span> <span class="n">nodes</span>
+<span class="linenos">  2</span><span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="kn">from</span> <span class="nn">sphinx.locale</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="linenos">  5</span><span class="kn">from</span> <span class="nn">sphinx.util.docutils</span> <span class="kn">import</span> <span class="n">SphinxDirective</span>
+<span class="linenos">  6</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="k">class</span> <span class="nc">todo</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Admonition</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+<span class="linenos">  9</span>    <span class="k">pass</span>
+<span class="linenos"> 10</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="k">class</span> <span class="nc">todolist</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">General</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+<span class="linenos"> 13</span>    <span class="k">pass</span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="k">def</span> <span class="nf">visit_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="linenos"> 17</span>    <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="k">def</span> <span class="nf">depart_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="linenos"> 21</span>    <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span>
+<span class="linenos"> 24</span><span class="k">class</span> <span class="nc">TodolistDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 27</span>        <span class="k">return</span> <span class="p">[</span><span class="n">todolist</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)]</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="k">class</span> <span class="nc">TodoDirective</span><span class="p">(</span><span class="n">SphinxDirective</span><span class="p">):</span>
+<span class="linenos"> 31</span>
+<span class="linenos"> 32</span>    <span class="c1"># this enables content in the directive</span>
+<span class="linenos"> 33</span>    <span class="n">has_content</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 34</span>
+<span class="linenos"> 35</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 36</span>        <span class="n">targetid</span> <span class="o">=</span> <span class="s1">&#39;todo-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">)</span>
+<span class="linenos"> 37</span>        <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetid</span><span class="p">])</span>
+<span class="linenos"> 38</span>
+<span class="linenos"> 39</span>        <span class="n">todo_node</span> <span class="o">=</span> <span class="n">todo</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="linenos"> 40</span>        <span class="n">todo_node</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">))</span>
+<span class="linenos"> 41</span>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span><span class="p">,</span> <span class="n">todo_node</span><span class="p">)</span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos"> 44</span>            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span>        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+<span class="linenos"> 47</span>            <span class="s1">&#39;docname&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span>
+<span class="linenos"> 48</span>            <span class="s1">&#39;lineno&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span>
+<span class="linenos"> 49</span>            <span class="s1">&#39;todo&#39;</span><span class="p">:</span> <span class="n">todo_node</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(),</span>
+<span class="linenos"> 50</span>            <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">targetnode</span><span class="p">,</span>
+<span class="linenos"> 51</span>        <span class="p">})</span>
+<span class="linenos"> 52</span>
+<span class="linenos"> 53</span>        <span class="k">return</span> <span class="p">[</span><span class="n">targetnode</span><span class="p">,</span> <span class="n">todo_node</span><span class="p">]</span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span>
+<span class="linenos"> 56</span><span class="k">def</span> <span class="nf">purge_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docname</span><span class="p">):</span>
+<span class="linenos"> 57</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos"> 58</span>        <span class="k">return</span>
+<span class="linenos"> 59</span>
+<span class="linenos"> 60</span>    <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span>
+<span class="linenos"> 61</span>                          <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">docname</span><span class="p">]</span>
+<span class="linenos"> 62</span>
+<span class="linenos"> 63</span>
+<span class="linenos"> 64</span><span class="k">def</span> <span class="nf">merge_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos"> 65</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos"> 66</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 67</span>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos"> 68</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">)</span>
+<span class="linenos"> 69</span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span><span class="k">def</span> <span class="nf">process_todo_nodes</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">):</span>
+<span class="linenos"> 72</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">todo_include_todos</span><span class="p">:</span>
+<span class="linenos"> 73</span>        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todo</span><span class="p">):</span>
+<span class="linenos"> 74</span>            <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span>    <span class="c1"># Replace all todolist nodes with a list of the collected todos.</span>
+<span class="linenos"> 77</span>    <span class="c1"># Augment each todo with a backlink to the original location.</span>
+<span class="linenos"> 78</span>    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos"> 81</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 82</span>
+<span class="linenos"> 83</span>    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todolist</span><span class="p">):</span>
+<span class="linenos"> 84</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">todo_include_todos</span><span class="p">:</span>
+<span class="linenos"> 85</span>            <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">([])</span>
+<span class="linenos"> 86</span>            <span class="k">continue</span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span>        <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 89</span>
+<span class="linenos"> 90</span>        <span class="k">for</span> <span class="n">todo_info</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">:</span>
+<span class="linenos"> 91</span>            <span class="n">para</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">()</span>
+<span class="linenos"> 92</span>            <span class="n">filename</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">],</span> <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="linenos"> 93</span>            <span class="n">description</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos"> 94</span>                <span class="n">_</span><span class="p">(</span><span class="s1">&#39;(The original entry is located in </span><span class="si">%s</span><span class="s1">, line </span><span class="si">%d</span><span class="s1"> and can be found &#39;</span><span class="p">)</span> <span class="o">%</span>
+<span class="linenos"> 95</span>                <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;lineno&#39;</span><span class="p">]))</span>
+<span class="linenos"> 96</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span>            <span class="c1"># Create a reference</span>
+<span class="linenos"> 99</span>            <span class="n">newnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="linenos">100</span>            <span class="n">innernode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">))</span>
+<span class="linenos">101</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refdocname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span>
+<span class="linenos">102</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span><span class="p">(</span>
+<span class="linenos">103</span>                <span class="n">fromdocname</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">])</span>
+<span class="linenos">104</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">][</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span>
+<span class="linenos">105</span>            <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">innernode</span><span class="p">)</span>
+<span class="linenos">106</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">newnode</span>
+<span class="linenos">107</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;.)&#39;</span><span class="p">,</span> <span class="s1">&#39;.)&#39;</span><span class="p">)</span>
+<span class="linenos">108</span>
+<span class="linenos">109</span>            <span class="c1"># Insert into the todolist</span>
+<span class="linenos">110</span>            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;todo&#39;</span><span class="p">])</span>
+<span class="linenos">111</span>            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span>        <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span>
+<span class="linenos">116</span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+<span class="linenos">117</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;todo_include_todos&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+<span class="linenos">118</span>
+<span class="linenos">119</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todolist</span><span class="p">)</span>
+<span class="linenos">120</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span>
+<span class="linenos">121</span>                 <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+<span class="linenos">122</span>                 <span class="n">latex</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+<span class="linenos">123</span>                 <span class="n">text</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">))</span>
+<span class="linenos">124</span>
+<span class="linenos">125</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">,</span> <span class="n">TodoDirective</span><span class="p">)</span>
+<span class="linenos">126</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todolist&#39;</span><span class="p">,</span> <span class="n">TodolistDirective</span><span class="p">)</span>
+<span class="linenos">127</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-resolved&#39;</span><span class="p">,</span> <span class="n">process_todo_nodes</span><span class="p">)</span>
+<span class="linenos">128</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-purge-doc&#39;</span><span class="p">,</span> <span class="n">purge_todos</span><span class="p">)</span>
+<span class="linenos">129</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-merge-info&#39;</span><span class="p">,</span> <span class="n">merge_todos</span><span class="p">)</span>
+<span class="linenos">130</span>
+<span class="linenos">131</span>    <span class="k">return</span> <span class="p">{</span>
+<span class="linenos">132</span>        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+<span class="linenos">133</span>        <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">134</span>        <span class="s1">&#39;parallel_write_safe&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">135</span>    <span class="p">}</span>
+</pre></div>
+</div>
+<p>这比 <a class="reference internal" href="helloworld.html"><span class="doc">开发一个 “Hello world” 插件</span></a> 中详细介绍的扩展要广泛得多，然而，我们将逐步查看每一块，解释发生了什么。</p>
+<p class="rubric">节点类</p>
+<p>让我们从节点类开始：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">todo</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">Admonition</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="k">pass</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">todolist</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">General</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span>
+<span class="linenos"> 6</span>    <span class="k">pass</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">def</span> <span class="nf">visit_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="linenos">10</span>    <span class="bp">self</span><span class="o">.</span><span class="n">visit_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">def</span> <span class="nf">depart_todo_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="linenos">14</span>    <span class="bp">self</span><span class="o">.</span><span class="n">depart_admonition</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>节点类通常不需要做任何事情，除了继承 <code class="xref py py-mod docutils literal notranslate"><span class="pre">docutils.nodes</span></code> 中定义的标准 docutils 类。<code class="docutils literal notranslate"><span class="pre">todo</span></code> 继承自 <code class="docutils literal notranslate"><span class="pre">Admonition</span></code>，因为它应该像注释或警告一样被处理，<code class="docutils literal notranslate"><span class="pre">todolist</span></code> 只是一个 “通用” 节点。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>许多扩展将不必创建他们自己的节点类，并与已经由 <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/doctree.html">docutils</a> 和 <a class="reference internal" href="../../extdev/nodes.html#nodes"><span class="std std-ref">Sphinx</span></a> 提供的节点顺利工作。</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>需要知道的是，虽然你可以在不离开 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 的情况下扩展 Sphinx，但如果你在那里声明一个继承的节点，你会遇到一个不明显的 <code class="xref py py-class docutils literal notranslate"><span class="pre">PickleError</span></code>。所以如果出了问题，请确保你把继承的节点放到一个单独的 Python 模块中。</p>
+<p>更多细节见：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/sphinx-doc/sphinx/issues/6751">https://github.com/sphinx-doc/sphinx/issues/6751</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sphinx-doc/sphinx/issues/1493">https://github.com/sphinx-doc/sphinx/issues/1493</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sphinx-doc/sphinx/issues/1424">https://github.com/sphinx-doc/sphinx/issues/1424</a></p></li>
+</ul>
+</div>
+<p class="rubric">指令类</p>
+<p>指令类是一个通常从 <a class="reference internal" href="../../extdev/markupapi.html#docutils.parsers.rst.Directive" title="docutils.parsers.rst.Directive"><code class="xref py py-class docutils literal notranslate"><span class="pre">docutils.parsers.rst.Directive</span></code></a> 派生出来的类。指令接口在 <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html">docutils 文档</a> 中也有详细介绍；重要的是，该类应该有配置允许标记的属性，以及一个返回节点列表的 <code class="docutils literal notranslate"><span class="pre">run</span></code> 方法。</p>
+<p>首先看一下 <code class="docutils literal notranslate"><span class="pre">TodolistDirective</span></code> 指令。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span> <span class="nc">TodolistDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">4</span>        <span class="k">return</span> <span class="p">[</span><span class="n">todolist</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>这很简单，创建并返回我们的 <code class="docutils literal notranslate"><span class="pre">todolist</span></code> 节点类的实例。<code class="docutils literal notranslate"><span class="pre">TodolistDirective</span></code> 指令本身既没有内容也没有需要处理的参数。这给我们带来了 <code class="docutils literal notranslate"><span class="pre">TodoDirective</span></code> 指令：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">TodoDirective</span><span class="p">(</span><span class="n">SphinxDirective</span><span class="p">):</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="c1"># this enables content in the directive</span>
+<span class="linenos"> 4</span>    <span class="n">has_content</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">targetid</span> <span class="o">=</span> <span class="s1">&#39;todo-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">new_serialno</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>        <span class="n">targetnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">target</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="n">targetid</span><span class="p">])</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>        <span class="n">todo_node</span> <span class="o">=</span> <span class="n">todo</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="linenos">11</span>        <span class="n">todo_node</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Todo&#39;</span><span class="p">))</span>
+<span class="linenos">12</span>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">nested_parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_offset</span><span class="p">,</span> <span class="n">todo_node</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos">15</span>            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+<span class="linenos">18</span>            <span class="s1">&#39;docname&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">docname</span><span class="p">,</span>
+<span class="linenos">19</span>            <span class="s1">&#39;lineno&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span>
+<span class="linenos">20</span>            <span class="s1">&#39;todo&#39;</span><span class="p">:</span> <span class="n">todo_node</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(),</span>
+<span class="linenos">21</span>            <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">targetnode</span><span class="p">,</span>
+<span class="linenos">22</span>        <span class="p">})</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>        <span class="k">return</span> <span class="p">[</span><span class="n">targetnode</span><span class="p">,</span> <span class="n">todo_node</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>这里涵盖了几件重要的事情。首先，正如你所看到的，我们现在把 <a class="reference internal" href="../../extdev/utils.html#sphinx.util.docutils.SphinxDirective" title="sphinx.util.docutils.SphinxDirective"><code class="xref py py-class docutils literal notranslate"><span class="pre">SphinxDirective</span></code></a> 辅助类，而不是通常的 <a class="reference internal" href="../../extdev/markupapi.html#docutils.parsers.rst.Directive" title="docutils.parsers.rst.Directive"><code class="xref py py-class docutils literal notranslate"><span class="pre">Directive</span></code></a> 类进行子类化。这让我们可以使用 <code class="docutils literal notranslate"><span class="pre">self.env</span></code> 属性访问 <a class="reference internal" href="../../extdev/index.html#important-objects"><span class="std std-ref">build environment 实例</span></a>。如果没有这个，我们将不得不使用相当复杂的 <code class="docutils literal notranslate"><span class="pre">self.state.document.settings.env</span></code>。然后，为了充当链接目标（来自 <code class="docutils literal notranslate"><span class="pre">TodolistDirective</span></code> ），<code class="docutils literal notranslate"><span class="pre">TodoDirective</span></code> 指令需要在 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 节点之外返回一个目标节点。目标 ID（在 HTML 中，这将是锚的名称）是通过使用 <code class="docutils literal notranslate"><span class="pre">env.new_serialno</span></code> 来生成的，它在每次调用时都会返回一个新的唯一的整数，因此导致了唯一的目标名称。目标节点被实例化，没有任何文本（前两个参数）”</p>
+<p>在创建告诫节点时，指令的内容体使用 <code class="docutils literal notranslate"><span class="pre">self.state.nested_parse</span></code> 进行解析。第一个参数给出内容主体，第二个参数给出内容偏移。第三个参数给出解析结果的父节点，在我们的例子中是 <code class="docutils literal notranslate"><span class="pre">todo</span></code> 节点。之后，“todo” 节点被添加到环境中。这是需要的，以便能够在作者放置 <code class="docutils literal notranslate"><span class="pre">todolist</span></code> 指令的地方，创建整个文档中所有 todo 条目的列表。在这种情况下，环境属性 <code class="docutils literal notranslate"><span class="pre">todo_all_todos</span></code> 被使用（同样，这个名字应该是唯一的，所以它以扩展名为前缀）。 当一个新环境被创建时，它并不存在，所以指令必须检查并在必要时创建它。关于 todo 条目的位置的各种信息与节点的副本一起被存储。</p>
+<p>在最后一行，应该被放入 doctree 中的节点被返回：目标节点和训诫节点。</p>
+<p>该指令返回的节点结构看起来像这样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------------+</span>
+<span class="o">|</span> <span class="n">target</span> <span class="n">node</span>        <span class="o">|</span>
+<span class="o">+--------------------+</span>
+<span class="o">+--------------------+</span>
+<span class="o">|</span> <span class="n">todo</span> <span class="n">node</span>          <span class="o">|</span>
+<span class="o">+--------------------+</span>
+  \<span class="n">__</span><span class="o">+--------------------+</span>
+     <span class="o">|</span> <span class="n">admonition</span> <span class="n">title</span>   <span class="o">|</span>
+     <span class="o">+--------------------+</span>
+     <span class="o">|</span> <span class="n">paragraph</span>          <span class="o">|</span>
+     <span class="o">+--------------------+</span>
+     <span class="o">|</span> <span class="o">...</span>                <span class="o">|</span>
+     <span class="o">+--------------------+</span>
+</pre></div>
+</div>
+<p class="rubric">事件处理者</p>
+<p>Event handlers are one of Sphinx’s most powerful features, providing a way to
+do hook into any part of the documentation process. There are many events
+provided by Sphinx itself, as detailed in <a class="reference internal" href="../../extdev/appapi.html#events"><span class="std std-ref">the API guide</span></a>, and
+we’re going to use a subset of them here.</p>
+<p>Let’s look at the event handlers used in the above example.  First, the one for
+the <a class="reference internal" href="../../extdev/appapi.html#event-env-purge-doc"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-purge-doc</span></code></a> event:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">purge_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docname</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="k">return</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>    <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span>
+<span class="linenos">6</span>                          <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">docname</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Since we store information from source files in the environment, which is
+persistent, it may become out of date when the source file changes.  Therefore,
+before each source file is read, the environment’s records of it are cleared,
+and the <a class="reference internal" href="../../extdev/appapi.html#event-env-purge-doc"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-purge-doc</span></code></a> event gives extensions a chance to do the same.
+Here we clear out all todos whose docname matches the given one from the
+<code class="docutils literal notranslate"><span class="pre">todo_all_todos</span></code> list.  If there are todos left in the document, they will be
+added again during parsing.</p>
+<p>The next handler, for the <a class="reference internal" href="../../extdev/appapi.html#event-env-merge-info"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-merge-info</span></code></a> event, is used
+during parallel builds. As during parallel builds all threads have
+their own <code class="docutils literal notranslate"><span class="pre">env</span></code>, there’s multiple <code class="docutils literal notranslate"><span class="pre">todo_all_todos</span></code> lists that need
+to be merged:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">merge_todos</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">docnames</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">4</span>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos">5</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The other handler belongs to the <a class="reference internal" href="../../extdev/appapi.html#event-doctree-resolved"><code class="xref std std-event docutils literal notranslate"><span class="pre">doctree-resolved</span></code></a> event:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">process_todo_nodes</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">doctree</span><span class="p">,</span> <span class="n">fromdocname</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">todo_include_todos</span><span class="p">:</span>
+<span class="linenos"> 3</span>        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todo</span><span class="p">):</span>
+<span class="linenos"> 4</span>            <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="c1"># Replace all todolist nodes with a list of the collected todos.</span>
+<span class="linenos"> 7</span>    <span class="c1"># Augment each todo with a backlink to the original location.</span>
+<span class="linenos"> 8</span>    <span class="n">env</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">env</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">&#39;todo_all_todos&#39;</span><span class="p">):</span>
+<span class="linenos">11</span>        <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">doctree</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">todolist</span><span class="p">):</span>
+<span class="linenos">14</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">todo_include_todos</span><span class="p">:</span>
+<span class="linenos">15</span>            <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">([])</span>
+<span class="linenos">16</span>            <span class="k">continue</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>        <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>        <span class="k">for</span> <span class="n">todo_info</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">todo_all_todos</span><span class="p">:</span>
+<span class="linenos">21</span>            <span class="n">para</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">paragraph</span><span class="p">()</span>
+<span class="linenos">22</span>            <span class="n">filename</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">doc2path</span><span class="p">(</span><span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">],</span> <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="linenos">23</span>            <span class="n">description</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos">24</span>                <span class="n">_</span><span class="p">(</span><span class="s1">&#39;(The original entry is located in </span><span class="si">%s</span><span class="s1">, line </span><span class="si">%d</span><span class="s1"> and can be found &#39;</span><span class="p">)</span> <span class="o">%</span>
+<span class="linenos">25</span>                <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;lineno&#39;</span><span class="p">]))</span>
+<span class="linenos">26</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>            <span class="c1"># Create a reference</span>
+<span class="linenos">29</span>            <span class="n">newnode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reference</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="linenos">30</span>            <span class="n">innernode</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">emphasis</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">),</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">))</span>
+<span class="linenos">31</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refdocname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">]</span>
+<span class="linenos">32</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">get_relative_uri</span><span class="p">(</span>
+<span class="linenos">33</span>                <span class="n">fromdocname</span><span class="p">,</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;docname&#39;</span><span class="p">])</span>
+<span class="linenos">34</span>            <span class="n">newnode</span><span class="p">[</span><span class="s1">&#39;refuri&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">][</span><span class="s1">&#39;refid&#39;</span><span class="p">]</span>
+<span class="linenos">35</span>            <span class="n">newnode</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">innernode</span><span class="p">)</span>
+<span class="linenos">36</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">newnode</span>
+<span class="linenos">37</span>            <span class="n">para</span> <span class="o">+=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;.)&#39;</span><span class="p">,</span> <span class="s1">&#39;.)&#39;</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>            <span class="c1"># Insert into the todolist</span>
+<span class="linenos">40</span>            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">todo_info</span><span class="p">[</span><span class="s1">&#39;todo&#39;</span><span class="p">])</span>
+<span class="linenos">41</span>            <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span>        <span class="n">node</span><span class="o">.</span><span class="n">replace_self</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../extdev/appapi.html#event-doctree-resolved"><code class="xref std std-event docutils literal notranslate"><span class="pre">doctree-resolved</span></code></a> event is emitted at the end of <a class="reference internal" href="../../extdev/index.html#build-phases"><span class="std std-ref">phase 3
+(resolving)</span></a> and allows custom resolving to be done. The handler
+we have written for this event is a bit more involved. If the
+<code class="docutils literal notranslate"><span class="pre">todo_include_todos</span></code> config value (which we’ll describe shortly) is false,
+all <code class="docutils literal notranslate"><span class="pre">todo</span></code> and <code class="docutils literal notranslate"><span class="pre">todolist</span></code> nodes are removed from the documents. If not,
+<code class="docutils literal notranslate"><span class="pre">todo</span></code> nodes just stay where and how they are.  <code class="docutils literal notranslate"><span class="pre">todolist</span></code> nodes are
+replaced by a list of todo entries, complete with backlinks to the location
+where they come from.  The list items are composed of the nodes from the
+<code class="docutils literal notranslate"><span class="pre">todo</span></code> entry and docutils nodes created on the fly: a paragraph for each
+entry, containing text that gives the location, and a link (reference node
+containing an italic node) with the backreference. The reference URI is built
+by <a class="reference internal" href="../../extdev/builderapi.html#sphinx.builders.Builder.get_relative_uri" title="sphinx.builders.Builder.get_relative_uri"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sphinx.builders.Builder.get_relative_uri()</span></code></a> which creates a suitable
+URI depending on the used builder, and appending the todo node’s (the target’s)
+ID as the anchor name.</p>
+<p class="rubric">The <code class="docutils literal notranslate"><span class="pre">setup</span></code> function</p>
+<p>As noted <a class="reference internal" href="helloworld.html"><span class="doc">previously</span></a>, the <code class="docutils literal notranslate"><span class="pre">setup</span></code> function is a requirement
+and is used to plug directives into Sphinx. However, we also use it to hook up
+the other parts of our extension. Let’s look at our <code class="docutils literal notranslate"><span class="pre">setup</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;todo_include_todos&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todolist</span><span class="p">)</span>
+<span class="linenos"> 5</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span>
+<span class="linenos"> 6</span>                 <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+<span class="linenos"> 7</span>                 <span class="n">latex</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">),</span>
+<span class="linenos"> 8</span>                 <span class="n">text</span><span class="o">=</span><span class="p">(</span><span class="n">visit_todo_node</span><span class="p">,</span> <span class="n">depart_todo_node</span><span class="p">))</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todo&#39;</span><span class="p">,</span> <span class="n">TodoDirective</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;todolist&#39;</span><span class="p">,</span> <span class="n">TodolistDirective</span><span class="p">)</span>
+<span class="linenos">12</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;doctree-resolved&#39;</span><span class="p">,</span> <span class="n">process_todo_nodes</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-purge-doc&#39;</span><span class="p">,</span> <span class="n">purge_todos</span><span class="p">)</span>
+<span class="linenos">14</span>    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;env-merge-info&#39;</span><span class="p">,</span> <span class="n">merge_todos</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>    <span class="k">return</span> <span class="p">{</span>
+<span class="linenos">17</span>        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+<span class="linenos">18</span>        <span class="s1">&#39;parallel_read_safe&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">19</span>        <span class="s1">&#39;parallel_write_safe&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The calls in this function refer to the classes and functions we added earlier.
+What the individual calls do is the following:</p>
+<ul>
+<li><p><a class="reference internal" href="../../extdev/appapi.html#sphinx.application.Sphinx.add_config_value" title="sphinx.application.Sphinx.add_config_value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_config_value()</span></code></a> lets Sphinx know that it should recognize the
+new <em>config value</em> <code class="docutils literal notranslate"><span class="pre">todo_include_todos</span></code>, whose default value should be
+<code class="docutils literal notranslate"><span class="pre">False</span></code> (this also tells Sphinx that it is a boolean value).</p>
+<p>If the third argument was <code class="docutils literal notranslate"><span class="pre">'html'</span></code>, HTML documents would be full rebuild if the
+config value changed its value.  This is needed for config values that
+influence reading (build <a class="reference internal" href="../../extdev/index.html#build-phases"><span class="std std-ref">phase 1 (reading)</span></a>).</p>
+</li>
+<li><p><a class="reference internal" href="../../extdev/appapi.html#sphinx.application.Sphinx.add_node" title="sphinx.application.Sphinx.add_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_node()</span></code></a> adds a new <em>node class</em> to the build system.  It also
+can specify visitor functions for each supported output format.  These visitor
+functions are needed when the new nodes stay until <a class="reference internal" href="../../extdev/index.html#build-phases"><span class="std std-ref">phase 4 (writing)</span></a>. Since the <code class="docutils literal notranslate"><span class="pre">todolist</span></code> node is always replaced in
+<a class="reference internal" href="../../extdev/index.html#build-phases"><span class="std std-ref">phase 3 (resolving)</span></a>, it doesn’t need any.</p></li>
+<li><p><a class="reference internal" href="../../extdev/appapi.html#sphinx.application.Sphinx.add_directive" title="sphinx.application.Sphinx.add_directive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_directive()</span></code></a> adds a new <em>directive</em>, given by name and class.</p></li>
+<li><p>Finally, <a class="reference internal" href="../../extdev/appapi.html#sphinx.application.Sphinx.connect" title="sphinx.application.Sphinx.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a> adds an <em>event handler</em> to the event whose
+name is given by the first argument.  The event handler function is called
+with several arguments which are documented with the event.</p></li>
+</ul>
+<p>With this, our extension is complete.</p>
+</section>
+<section id="using-the-extension">
+<h2>Using the extension<a class="headerlink" href="#using-the-extension" title="永久链接至标题">¶</a></h2>
+<p>As before, we need to enable the extension by declaring it in our
+<code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file. There are two steps necessary here:</p>
+<ol class="arabic simple">
+<li><p>Add the <code class="file docutils literal notranslate"><span class="pre">_ext</span></code> directory to the <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH">Python path</a> using
+<code class="docutils literal notranslate"><span class="pre">sys.path.append</span></code>. This should be placed at the top of the file.</p></li>
+<li><p>Update or create the <a class="reference internal" href="../../usage/configuration.html#confval-extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">extensions</span></code></a> list and add the extension file
+name to the list</p></li>
+</ol>
+<p>In addition, we may wish to set the <code class="docutils literal notranslate"><span class="pre">todo_include_todos</span></code> config value. As
+noted above, this defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code> but we can set it explicitly.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;./_ext&quot;</span><span class="p">))</span>
+
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;todo&#39;</span><span class="p">]</span>
+
+<span class="n">todo_include_todos</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>You can now use the extension throughout your project. For example:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">index.rst</span><a class="headerlink" href="#id1" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Hello, world</span>
+<span class="gh">============</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   somefile.rst
+   someotherfile.rst
+
+Hello world. Below is the list of TODOs.
+
+<span class="p">..</span> <span class="ow">todolist</span><span class="p">::</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">somefile.rst</span><a class="headerlink" href="#id2" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">foo</span>
+<span class="gh">===</span>
+
+Some intro text here...
+
+<span class="p">..</span> <span class="ow">todo</span><span class="p">::</span> Fix this
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">someotherfile.rst</span><a class="headerlink" href="#id3" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">bar</span>
+<span class="gh">===</span>
+
+Some more text here...
+
+<span class="p">..</span> <span class="ow">todo</span><span class="p">::</span> Fix that
+</pre></div>
+</div>
+</div>
+<p>Because we have configured <code class="docutils literal notranslate"><span class="pre">todo_include_todos</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>, we won’t
+actually see anything rendered for the <code class="docutils literal notranslate"><span class="pre">todo</span></code> and <code class="docutils literal notranslate"><span class="pre">todolist</span></code> directives.
+However, if we toggle this to true, we will see the output described
+previously.</p>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="永久链接至标题">¶</a></h2>
+<p>For more information, refer to the <a class="reference external" href="https://docutils.sourceforge.io/docs/">docutils</a> documentation and
+<a class="reference internal" href="../../extdev/index.html"><span class="doc">为 Sphinx 开发插件</span></a>.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="recipe.html" title="Developing a “recipe” extension"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="helloworld.html" title="开发一个 “Hello world” 插件"
+             >上一页</a> |</li>
+        <li><a href="../../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >拓展 Sphinx</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >插件教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">开发一个 “TODO” 插件</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>为 Sphinx 开发插件 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/extdev/index.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Application API" href="appapi.html" />
+    <link rel="prev" title="LaTeX customization" href="../latex.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="appapi.html" title="Application API"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="../latex.html" title="LaTeX customization"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">为 Sphinx 开发插件</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">为 Sphinx 开发插件</a><ul>
+<li><a class="reference internal" href="#important-objects">重要对象</a></li>
+<li><a class="reference internal" href="#build-phases">构建阶段</a></li>
+<li><a class="reference internal" href="#extension-metadata">插件元数据</a></li>
+<li><a class="reference internal" href="#apis-used-for-writing-extensions">用来编写插件程序的 API</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="../latex.html"
+                          title="上一章">LaTeX customization</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="appapi.html"
+                          title="下一章">Application API</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/extdev/index.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="developing-extensions-for-sphinx">
+<span id="dev-extensions"></span><h1>为 Sphinx 开发插件<a class="headerlink" href="#developing-extensions-for-sphinx" title="永久链接至标题">¶</a></h1>
+<p>由于许多项目在文件中需要特殊的功能，Sphinx 被设计成可在多个层面上进行扩展。</p>
+<p>这里有几件你可以在插件中做的事情：</p>
+<ul class="simple">
+<li><p>增加新的 <a class="reference internal" href="../glossary.html#term-builder"><span class="xref std std-term">构建器</span></a>，以支持新的输出格式或对解析后的文件的操作。</p></li>
+<li><p>使用 <a class="reference internal" href="markupapi.html"><span class="doc">Docutils markup API</span></a> 扩展标记，注册自定义的 reStructuredText 角色和指令。</p></li>
+<li><p>在整个构建过程中的战略位置添加自定义代码到所谓的 “钩子点”，允许你注册一个钩子并运行专门的代码。例如，请参阅 <a class="reference internal" href="appapi.html#events"><span class="std std-ref">Sphinx 核心事件</span></a>。</p></li>
+</ul>
+<p>一个插件只是一个带有 <code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数的 Python 模块。用户通过将插件的模块名称（或一个子模块）放在他们的 <a class="reference internal" href="../usage/configuration.html#confval-extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">extensions</span></code></a> 配置值中来激活插件。</p>
+<p>当 <strong class="program">sphinx-build</strong> 被执行时，Sphinx 会尝试导入每个被列出的模块，并执行 <cite>yourmodule.setup(app)</cite>。这个函数用来准备插件（比如执行 Python 代码），链接 Sphinx 在构建过程中使用的资源（比如 CSS 或 HTML 文件），并通知 Sphinx 插件提供的一切（比如指令或角色定义）。<code class="docutils literal notranslate"><span class="pre">app</span></code> 参数是 <a class="reference internal" href="appapi.html#sphinx.application.Sphinx" title="sphinx.application.Sphinx"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sphinx</span></code></a> 的一个实例，让你控制 Sphinx 构建的大部分方面。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果配置文件本身包含 <code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数，就可以被视为一个插件。所有其他要加载的插件必须在 <a class="reference internal" href="../usage/configuration.html#confval-extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">extensions</span></code></a> 配置值中列出。</p>
+</div>
+<p>本页面的其余部分描述了开发插件的一些高层次方面，以及你能控制的 Sphinx 行为的各个部分。关于如何建立和使用插件来控制 Sphinx 的不同部分的一些例子，请看 <a class="reference internal" href="../development/tutorials/index.html#extension-tutorials-index"><span class="std std-ref">插件教程</span></a>。</p>
+<section id="important-objects">
+<span id="id1"></span><h2>重要对象<a class="headerlink" href="#important-objects" title="永久链接至标题">¶</a></h2>
+<p>在编写插件时，有几个关键对象的 API 你会用到。这些对象是：</p>
+<dl>
+<dt><strong>Application</strong></dt><dd><p>应用程序对象（通常称为 <code class="docutils literal notranslate"><span class="pre">app</span></code>）是 <a class="reference internal" href="appapi.html#sphinx.application.Sphinx" title="sphinx.application.Sphinx"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sphinx</span></code></a> 的一个实例。它控制大多数高级功能，如插件的设置、事件调度和产生输出（日志）。</p>
+<p>如果你有环境对象，应用程序就可以作为 <code class="docutils literal notranslate"><span class="pre">env.app</span></code> 使用。</p>
+</dd>
+<dt><strong>Environment</strong></dt><dd><p>构建环境对象（通常称为 <code class="docutils literal notranslate"><span class="pre">env</span></code>）是 <a class="reference internal" href="envapi.html#sphinx.environment.BuildEnvironment" title="sphinx.environment.BuildEnvironment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BuildEnvironment</span></code></a> 的一个实例。它负责解析源文件，存储所有关于文件集的元数据，并在每次构建后被序列化到磁盘。</p>
+<p>它的 API 提供了访问元数据的方法，解决了引用等问题。它也可以被扩展用于缓存信息，这些信息应该在增量重建中持续存在。</p>
+<p>如果你有应用程序或构建器对象，环境可作为 <code class="docutils literal notranslate"><span class="pre">app.env</span></code> 或 <code class="docutils literal notranslate"><span class="pre">builder.env</span></code>。</p>
+</dd>
+<dt><strong>Builder</strong></dt><dd><p>构建器对象（通常称为 <code class="docutils literal notranslate"><span class="pre">builder</span></code>）是 <a class="reference internal" href="builderapi.html#sphinx.builders.Builder" title="sphinx.builders.Builder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Builder</span></code></a> 的特定子类的一个实例。每个构建器类都知道如何将解析后的文件转换为输出格式，或以其他方式处理它们（例如，检查外部链接）。</p>
+<p>如果你有应用程序对象，构建器可以作为 <code class="docutils literal notranslate"><span class="pre">app.builder</span></code> 使用。</p>
+</dd>
+<dt><strong>Config</strong></dt><dd><p>config 对象（通常称为 <code class="docutils literal notranslate"><span class="pre">config</span></code>）提供了 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 中设置的配置值作为属性。它是 <a class="reference internal" href="appapi.html#sphinx.config.Config" title="sphinx.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a> 的一个实例。</p>
+<p>该配置可作为 <code class="docutils literal notranslate"><span class="pre">app.config</span></code> 或 <code class="docutils literal notranslate"><span class="pre">env.config</span></code>。</p>
+</dd>
+</dl>
+<p>要看这些对象的使用实例，请参考 <a class="reference internal" href="../development/tutorials/index.html"><span class="doc">插件教程</span></a>。</p>
+</section>
+<section id="build-phases">
+<span id="id2"></span><h2>构建阶段<a class="headerlink" href="#build-phases" title="永久链接至标题">¶</a></h2>
+<p>为了理解插件机制，至关重要的一点是 Sphinx 项目的构建方式：这分几个阶段进行。</p>
+<p><strong>阶段 0：初始化</strong></p>
+<blockquote>
+<div><p>在这个阶段，几乎没有发生我们感兴趣的事情。源目录被搜索为源文件，插件被初始化。如果存在一个存储的构建环境，它将被加载，否则将创建一个新的环境。</p>
+</div></blockquote>
+<p><strong>阶段 1：阅读</strong></p>
+<blockquote>
+<div><p>在第一阶段，所有的源文件（以及在随后的构建中，那些新的或改变的文件）都被读取和解析。这是 docutils 遇到指令和角色的阶段，相应的代码被执行。这个阶段的输出是每个源文件的 <em>doctree</em>；也就是 docutils 节点的树。对于那些在读取所有现有文件之前并不完全知道的文件元素，会创建临时节点。</p>
+<p>有一些节点是由 docutils 提供的，这些节点在 <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/doctree.html">docutils 文档</a> 中都有记载。额外的节点由 Sphinx 提供， <a class="reference internal" href="nodes.html#nodes"><span class="std std-ref">这里有记录</span></a>。</p>
+<p>在阅读过程中，构建环境会更新所有已读文件的元数据和交叉参考数据，如标签、标题的名称、描述的 Python 对象和索引条目。这以后将被用来替换临时节点。</p>
+<p>解析后的 doctree 存储在磁盘上，因为不可能在内存中容纳所有的 doctree。</p>
+</div></blockquote>
+<p><strong>阶段 2：一致性检查</strong></p>
+<blockquote>
+<div><p>做了一些检查，以确保建成的文件中没有意外。</p>
+</div></blockquote>
+<p><strong>阶段 3：解决问题</strong></p>
+<blockquote>
+<div><p>现在，所有现有文件的元数据和交叉引用数据都是已知的，所有的临时节点都被可以使用称为变换的组件转换为输出的节点所取代。例如，为存在的对象参考创建链接，为不存在的对象创建简单的 literal 节点。</p>
+</div></blockquote>
+<p><strong>阶段 4：写作</strong></p>
+<blockquote>
+<div><p>这一阶段将解决的 doctrees 转换为所需的输出格式，如 HTML 或 LaTeX。这是通过一个所谓的 docutils writer 实现的，它访问每个 doctree 的各个节点，并在这个过程中产生一些输出。</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>一些构建器偏离了这个一般的构建计划，例如，检查外部链接的构建器除了解析的 doctrees 之外不需要其他东西，因此没有第2–4阶段。</p>
+</div>
+<p>要看一个应用程序的例子，请参考 <a class="reference internal" href="../development/tutorials/todo.html"><span class="doc">开发一个 “TODO” 插件</span></a>。</p>
+</section>
+<section id="extension-metadata">
+<span id="ext-metadata"></span><h2>插件元数据<a class="headerlink" href="#extension-metadata" title="永久链接至标题">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">1.3 新版功能.</span></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数可以返回一个字典。这被 Sphinx 视为插件的元数据。目前识别的元数据键有：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'version'</span></code> ：一个标识插件版本的字符串。它是用于检查插件的版本要求（见 <a class="reference internal" href="../usage/configuration.html#confval-needs_extensions"><code class="xref std std-confval docutils literal notranslate"><span class="pre">needs_extensions</span></code></a>）和信息用途。如果不给，则替换为 <code class="docutils literal notranslate"><span class="pre">&quot;unknown</span> <span class="pre">version&quot;</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'env_version'</span></code>：一个整数，如果插件将任何数据存储到环境中，则标识 env 数据结构的版本。它被用来检测数据结构是否在上次构建时发生了变化。当数据结构发生变化时，插件必须增加该版本。 如果没有给出，Sphinx 认为该插件没有存储任何数据到环境中。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parallel_read_safe'</span></code>：一个布尔值，用于指定在加载扩展时是否可以使用源文件的并行读取。它的默认值是 <code class="docutils literal notranslate"><span class="pre">False</span></code>，也就是说，你必须在检查后明确指定你的扩展是并行阅读安全的。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><em>parallel-read-safe</em> 插件必须满足以下条件：</p>
+<ul class="simple">
+<li><p>插件的核心逻辑在阅读阶段是可以并行执行的。</p></li>
+<li><p>如果在读取阶段将 dataa 存储到构建环境对象（env）中，它有 <a class="reference internal" href="appapi.html#event-env-merge-info"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-merge-info</span></code></a> 和 <a class="reference internal" href="appapi.html#event-env-purge-doc"><code class="xref std std-event docutils literal notranslate"><span class="pre">env-purge-doc</span></code></a> 事件的处理程序。</p></li>
+</ul>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'parallel_write_safe'</span></code>：一个布尔值，指定在加载扩展时是否可以使用输出文件的并行写入。由于扩展通常不会对进程产生负面影响，因此默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><em>parallel-write-safe</em> 插件必须满足以下条件：</p>
+<ul class="simple">
+<li><p>插件的核心逻辑在编写阶段是可以并行执行的。</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</section>
+<section id="apis-used-for-writing-extensions">
+<h2>用来编写插件程序的 API<a class="headerlink" href="#apis-used-for-writing-extensions" title="永久链接至标题">¶</a></h2>
+<p>这些部分提供了一个更完整的描述，在开发 Sphinx 插件时你可以使用的工具。有些是 Sphinx 的核心（比如 <a class="reference internal" href="appapi.html"><span class="doc">Application API</span></a>），而其他的则是触发特定的行为（比如 <a class="reference internal" href="i18n.html"><span class="doc">i18n API</span></a>）</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="appapi.html">Application API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#extension-setup">插件设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#emitting-events">Emitting events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#sphinx-runtime-information">Sphinx runtime information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#sphinx-core-events">Sphinx 核心事件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#checking-the-sphinx-version">Checking the Sphinx version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#the-config-object">The Config object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#the-template-bridge">The template bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appapi.html#exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projectapi.html">Project API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="envapi.html">Build environment API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builderapi.html">Builder API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collectorapi.html">Environment Collector API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markupapi.html">Docutils markup API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="markupapi.html#roles">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markupapi.html#directives">Directives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="domainapi.html">Domain API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domainapi.html#module-sphinx.domains.python">Python Domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parserapi.html">Parser API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">Doctree node classes added by Sphinx</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#nodes-for-domain-specific-object-descriptions">Nodes for domain-specific object descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#new-admonition-like-constructs">New admonition-like constructs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#other-paragraph-level-nodes">Other paragraph-level nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#new-inline-nodes">New inline nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#special-nodes">Special nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i18n.html">i18n API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="i18n.html#extension-internationalization-i18n-and-localization-l10n-using-i18n-api">Extension internationalization (<cite>i18n</cite>) and localization (<cite>l10n</cite>) using i18n API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#base-classes-for-components">Base classes for components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#utility-components">Utility components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deprecated.html">Deprecated APIs</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="appapi.html" title="Application API"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="../latex.html" title="LaTeX customization"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+        <li class="nav-item nav-item-this"><a href="">为 Sphinx 开发插件</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

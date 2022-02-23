@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>HTML 主题开发 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/development/theming.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Man Pages" href="../man/index.html" />
+    <link rel="prev" title="配置构建器" href="builders.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="../man/index.html" title="Man Pages"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="builders.html" title="配置构建器"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">拓展 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HTML 主题开发</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">HTML 主题开发</a><ul>
+<li><a class="reference internal" href="#creating-themes">创建主题</a></li>
+<li><a class="reference internal" href="#distribute-your-theme-as-a-python-package">将你的主题作为一个Python包发布</a></li>
+<li><a class="reference internal" href="#templating">模板化</a><ul>
+<li><a class="reference internal" href="#static-templates">静态模板</a></li>
+<li><a class="reference internal" href="#use-custom-page-metadata-in-html-templates">在 HTML 模板中使用自定义的页面元数据</a></li>
+<li><a class="reference internal" href="#defining-custom-template-functions">定义自定义模板函数</a></li>
+<li><a class="reference internal" href="#add-your-own-static-files-to-the-build-assets">将你自己的静态文件添加到构建 assets 中</a></li>
+<li><a class="reference internal" href="#inject-javascript-based-on-user-configuration">根据用户配置注入 JavaScript</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="builders.html"
+                          title="上一章">配置构建器</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="../man/index.html"
+                          title="下一章">Man Pages</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/development/theming.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="html-theme-development">
+<h1>HTML 主题开发<a class="headerlink" href="#html-theme-development" title="永久链接至标题">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">0.6 新版功能.</span></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>本文档提供了关于创建你自己的主题的信息。如果你只是想使用一个预先存在的 HTML 主题，请参考 <a class="reference internal" href="../usage/theming.html"><span class="doc">HTML 主题化</span></a>。</p>
+</div>
+<p>Sphinx 支持通过 <em>主题</em> 改变其 HTML 输出的外观。 一个主题是一个 HTML 模板、样式表和其他静态文件的集合。此外，它有一个配置文件，指定从哪个主题继承，使用哪种高亮风格，以及有哪些选项可以定制主题的外观和感觉。</p>
+<p>主题是为了不受项目影响，所以它们可以用于不同的项目而不需要改变。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>参见 <a class="reference internal" href="../extdev/index.html#dev-extensions"><span class="std std-ref">为 Sphinx 开发插件</span></a>，了解更多信息，可能对开发主题有帮助。</p>
+</div>
+<section id="creating-themes">
+<h2>创建主题<a class="headerlink" href="#creating-themes" title="永久链接至标题">¶</a></h2>
+<p>主题的形式是一个目录或一个压缩文件（其名称是主题名称），包含以下内容：</p>
+<ul class="simple">
+<li><p>一个 <code class="file docutils literal notranslate"><span class="pre">theme.conf</span></code> 文件。</p></li>
+<li><p>如果需要，可提供 HTML 模板。</p></li>
+<li><p>一个包含任何静态文件的 <code class="docutils literal notranslate"><span class="pre">static/</span></code> 目录，这些文件将在构建时被复制到输出静态目录。这些可以是图像、样式、脚本文件。</p></li>
+</ul>
+<p><code class="file docutils literal notranslate"><span class="pre">theme.conf</span></code> 文件是 INI 格式 <a class="footnote-reference brackets" href="#id2" id="id1">1</a> （可由标准的 Python <code class="xref py py-mod docutils literal notranslate"><span class="pre">ConfigParser</span></code> 模块读取），有以下结构：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[theme]</span><span class="w"></span>
+<span class="na">inherit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">base theme</span><span class="w"></span>
+<span class="na">stylesheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">main CSS name</span><span class="w"></span>
+<span class="na">pygments_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">stylename</span><span class="w"></span>
+<span class="na">sidebars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">localtoc.html, relations.html, sourcelink.html, searchbox.html</span><span class="w"></span>
+
+<span class="k">[options]</span><span class="w"></span>
+<span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">default value</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>inherit</strong> 设置给出了一个 “base theme” 的名称，或者是 <code class="docutils literal notranslate"><span class="pre">none</span></code>。基础主题将被用来定位缺少的模板（如果使用 <code class="docutils literal notranslate"><span class="pre">basic</span></code> 作为基础主题，大多数主题将不必提供大多数模板），它的选项将被继承，它的所有静态文件也将被使用。如果你想同时继承样式表，通过 CSS 的 <code class="docutils literal notranslate"><span class="pre">&#64;import</span></code> 在你自己的样式表中包含它。</p></li>
+<li><p><strong>stylesheet</strong> 设置给出了一个 CSS 文件的名称，它将在 HTML header 中被引用。如果你需要一个以上的 CSS 文件，可以通过 CSS 的 <code class="docutils literal notranslate"><span class="pre">&#64;import</span></code> 从其他文件中包含一个，或者使用一个自定义的 HTML 模板，根据需要添加 <code class="docutils literal notranslate"><span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;&gt;</span></code> 标签。 设置 <a class="reference internal" href="../usage/configuration.html#confval-html_style"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_style</span></code></a> 配置值将覆盖此设置。</p></li>
+<li><p><strong>pygments_style</strong> 设置给出了用于高亮显示的 Pygments 样式的名称。这可以由用户在 <a class="reference internal" href="../usage/configuration.html#confval-pygments_style"><code class="xref std std-confval docutils literal notranslate"><span class="pre">pygments_style</span></code></a> 配置值中覆盖。</p></li>
+<li><p><strong>pygments_dark_style</strong> 设置给出了 Pygments 样式的名称，当 CSS 媒体查询 <code class="docutils literal notranslate"><span class="pre">(prefers-color-scheme:</span> <span class="pre">dark)</span></code> 评估为 true 时，该样式用于高亮显示。它被注入到页面中，使用 <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_css_file()</span></code>。</p></li>
+<li><p><strong>sidebars</strong> 设置给出了用于构建侧边栏的逗号分隔的侧边栏模板列表。这可以由用户在 <a class="reference internal" href="../usage/configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a> 配置值中覆盖。</p></li>
+<li><p><strong>options</strong> 部分包含一对变量名称和默认值。这些选项可以由用户在 <a class="reference internal" href="../usage/configuration.html#confval-html_theme_options"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_theme_options</span></code></a> 中重写，并且可以从所有模板中以 <code class="docutils literal notranslate"><span class="pre">theme_&lt;name&gt;</span></code> 的形式访问。</p></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified added">1.7 新版功能: </span>侧边栏设定</p>
+</div>
+</section>
+<section id="distribute-your-theme-as-a-python-package">
+<span id="distribute-your-theme"></span><h2>将你的主题作为一个Python包发布<a class="headerlink" href="#distribute-your-theme-as-a-python-package" title="永久链接至标题">¶</a></h2>
+<p>As a way to distribute your theme, you can use a Python package.  This makes it
+easier for users to set up your theme.</p>
+<p>要将你的主题作为 Python包 发布，请在你的 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 文件中定义一个名为 <code class="docutils literal notranslate"><span class="pre">sphinx.html_themes</span></code> 的切入点，并在其中编写一个 <code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数，使用 <code class="docutils literal notranslate"><span class="pre">add_html_theme()</span></code> API 注册你的主题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;setup.py&#39;</span>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;sphinx.html_themes&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;name_of_theme = your_package&#39;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+
+<span class="c1"># &#39;your_package.py&#39;</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_html_theme</span><span class="p">(</span><span class="s1">&#39;name_of_theme&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>如果你的主题包包含两个或更多的主题，请调用 <code class="docutils literal notranslate"><span class="pre">add_html_theme()</span></code> 两次或以上。</p>
+<div class="versionadded">
+<p><span class="versionmodified added">1.2 新版功能: </span>“sphinx_themes” 切入点的特征</p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">1.6 版后已移除: </span><code class="docutils literal notranslate"><span class="pre">sphinx_themes</span></code> 切入点已被弃用。</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">1.6 新版功能: </span><code class="docutils literal notranslate"><span class="pre">sphinx.html_themes</span></code> 切入点特征</p>
+</div>
+</section>
+<section id="templating">
+<h2>模板化<a class="headerlink" href="#templating" title="永久链接至标题">¶</a></h2>
+<p>如果你想写你自己的模板，<a class="reference internal" href="../templating.html"><span class="doc">模板指南</span></a> 很有帮助。需要记住的是 Sphinx 搜索模板的顺序：</p>
+<ul class="simple">
+<li><p>首先，在用户的 <code class="docutils literal notranslate"><span class="pre">templates_path</span></code> 目录下。</p></li>
+<li><p>接着，在选定的主题中。</p></li>
+<li><p>然后，在其基础主题中，其基础的基础主题，等等。</p></li>
+</ul>
+<p>当扩展基本主题中的同名模板时，使用主题名称作为明确的目录： <code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">&quot;basic/layout.html&quot;</span> <span class="pre">%}</span></code>。从用户的 <code class="docutils literal notranslate"><span class="pre">templates_path</span></code> 模板，你仍然可以使用 “感叹号” 语法，如模板文件中所述。</p>
+<section id="static-templates">
+<span id="theming-static-templates"></span><h3>静态模板<a class="headerlink" href="#static-templates" title="永久链接至标题">¶</a></h3>
+<p>由于主题选项是为了让用户更容易地配置一个主题，而不需要写一个自定义的样式表，所以有必要能够对静态文件和 HTML 文件进行模板化。因此，Sphinx 支持所谓的 “静态模板”，像这样：</p>
+<p>如果一个主题的 <code class="docutils literal notranslate"><span class="pre">static/</span></code> 目录中的文件名（或者用户的静态路径中的文件名）以 <code class="docutils literal notranslate"><span class="pre">_t</span></code> 结尾，它将被模板引擎处理。<code class="docutils literal notranslate"><span class="pre">_t</span></code> 将从最终的文件名中留下。例如，<em>classic</em> 主题有一个文件 <code class="docutils literal notranslate"><span class="pre">static/classic.css_t</span></code>，它使用模板将颜色选项放入样式表。当用 classic 主题构建文档时，输出目录将包含一个 <code class="docutils literal notranslate"><span class="pre">_static/classic.css</span></code> 文件，其中所有模板标签都已被处理。</p>
+</section>
+<section id="use-custom-page-metadata-in-html-templates">
+<h3>在 HTML 模板中使用自定义的页面元数据<a class="headerlink" href="#use-custom-page-metadata-in-html-templates" title="永久链接至标题">¶</a></h3>
+<p>在 <a class="reference internal" href="../usage/restructuredtext/field-lists.html"><span class="doc">字段列表</span></a> 中的任何键/值对，如果放在页面的标题之前，在构建页面时，在 <a class="reference internal" href="../templating.html#meta" title="meta"><code class="xref py py-data docutils literal notranslate"><span class="pre">meta</span></code></a> 属性中，Jinja 模板可以使用。例如，如果一个页面在其第一个标题之前有以下文字：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="nc">:mykey:</span> My value
+
+<span class="gh">My first title</span>
+<span class="gh">--------------</span>
+</pre></div>
+</div>
+<p>然后可以像这样在 Jinja 模板中访问它。</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span>- <span class="k">if</span> <span class="nv">meta</span> <span class="k">is</span> <span class="nf">mapping</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    </span><span class="cp">{{</span> <span class="nv">meta.get</span><span class="o">(</span><span class="s2">&quot;mykey&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span>- <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>注意检查 <code class="docutils literal notranslate"><span class="pre">meta</span></code> 是一个字典（在 Jinja 术语中是 “映射”），以确保以这种方式使用它是有效的。</p>
+</section>
+<section id="defining-custom-template-functions">
+<h3>定义自定义模板函数<a class="headerlink" href="#defining-custom-template-functions" title="永久链接至标题">¶</a></h3>
+<p>有时，在 Python 中定义你自己的函数，然后在模板中使用是很有用的。例如，如果你想插入一个模板值，其逻辑取决于用户在项目中的配置，或者你想在模板中包含非琐碎的检查并为不正确的配置提供友好的错误信息。</p>
+<p>为了定义你自己的模板函数，你需要在你的模块内定义两个函数：</p>
+<ul class="simple">
+<li><p>一个 <strong>页面上下文事件处理</strong> （或 <strong>注册</strong>）函数。它通过一个事件回调连接到  <a class="reference internal" href="../extdev/appapi.html#sphinx.application.Sphinx" title="sphinx.application.Sphinx"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sphinx</span></code></a> 应用程序。</p></li>
+<li><p><strong>模板函数</strong>，你将在你的 Jinja 模板中使用。</p></li>
+</ul>
+<p>首先，定义注册函数，它接受 <a class="reference internal" href="../extdev/appapi.html#event-html-page-context"><code class="xref std std-event docutils literal notranslate"><span class="pre">html-page-context</span></code></a> 的参数。</p>
+<p>在注册函数中，定义你想在 Jinja 中使用的模板函数。模板函数应该返回一个字符串或 Python 对象（列表、字典），里面有 Jinja 在模板制作过程中使用的字符串</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>模板函数将可以访问传递给注册函数的所有变量。</p>
+</div>
+<p>在注册函数的末尾，用 <code class="docutils literal notranslate"><span class="pre">context['template_func']</span> <span class="pre">=</span> <span class="pre">template_func</span></code> 将模板函数添加到 Sphinx 应用程序的上下文中。</p>
+<p>最后，在你的插件的 <code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数中，添加你的注册函数作为 <a class="reference internal" href="../extdev/appapi.html#event-html-page-context"><code class="xref std std-event docutils literal notranslate"><span class="pre">html-page-context</span></code></a> 的回调。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The registration function</span>
+ <span class="k">def</span> <span class="nf">setup_my_func</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">pagename</span><span class="p">,</span> <span class="n">templatename</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">doctree</span><span class="p">):</span>
+     <span class="c1"># The template function</span>
+     <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">mystring</span><span class="p">):</span>
+         <span class="k">return</span> <span class="s2">&quot;Your string is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">mystring</span>
+     <span class="c1"># Add it to the page&#39;s context</span>
+     <span class="n">context</span><span class="p">[</span><span class="s1">&#39;my_func&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_func</span>
+
+ <span class="c1"># Your extension&#39;s setup function</span>
+ <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+     <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;html-page-context&quot;</span><span class="p">,</span> <span class="n">setup_my_func</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在，你将可以像这样在 jinja 中访问这个函数：</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;div&gt;</span>
+<span class="cp">{{</span> <span class="nv">my_func</span><span class="o">(</span><span class="s2">&quot;some string&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="add-your-own-static-files-to-the-build-assets">
+<h3>将你自己的静态文件添加到构建 assets 中<a class="headerlink" href="#add-your-own-static-files-to-the-build-assets" title="永久链接至标题">¶</a></h3>
+<p>如果你将自己的构建 assets 用插件打包（例如，一个 CSS 或 JavaScript 文件），你需要确保它们被放置在 HTML 输出的 <code class="docutils literal notranslate"><span class="pre">_static/</span></code> 文件夹中。要做到这一点，你可以在构建时将它们直接复制到构建的 <code class="docutils literal notranslate"><span class="pre">_static/</span></code> 文件夹中，一般是通过一个事件钩。下面是一些实现这一目的的示例代码：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.fileutil</span> <span class="kn">import</span> <span class="n">copy_asset_file</span>
+
+<span class="k">def</span> <span class="nf">copy_custom_files</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">exc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="n">staticdir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="s1">&#39;_static&#39;</span><span class="p">)</span>
+        <span class="n">copy_asset_file</span><span class="p">(</span><span class="s1">&#39;path/to/myextension/_static/myjsfile.js&#39;</span><span class="p">,</span> <span class="n">staticdir</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;builder-inited&#39;</span><span class="p">,</span> <span class="n">copy_custom_files</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="inject-javascript-based-on-user-configuration">
+<h3>根据用户配置注入 JavaScript<a class="headerlink" href="#inject-javascript-based-on-user-configuration" title="永久链接至标题">¶</a></h3>
+<p>如果你的扩展使用了 JavaScript，允许用户使用他们的 Sphinx 配置来控制其行为是很有用的。然而，如果你的 JavaScript 是以静态库的形式出现（不会用 Jinja 构建），这就很难做到</p>
+<p>有两种方法可以根据用户的配置向 JavaScript 空间注入变量”</p>
+<p>首先，你可以把 <code class="docutils literal notranslate"><span class="pre">_t'</span></code> 加到任何包含在你的扩展中的静态文件末尾。这将使 Sphinx 用模板引擎处理这些文件，允许你嵌入变量和控制行为。</p>
+<p>例如，下面的 JavaScript 结构：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mymodule/
+├── _static
+│   └── myjsfile.js_t
+└── mymodule.py
+</pre></div>
+</div>
+<p>将导致以下静态文件放在你的 HTML 的构建输出中：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>_build/
+└── html
+    └── _static
+        └── myjsfile.js
+</pre></div>
+</div>
+<p>更多信息见 <a class="reference internal" href="#theming-static-templates"><span class="std std-ref">静态模板</span></a>。</p>
+<p>第二，你可以使用 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.add_js_file()</span></code> 方法，而不把它指向一个文件。通常情况下，这个方法是用来插入一个新的 JavaScript 文件到你的网站。然而，如果你不传递文件路径，而是传递一个字符串给参数 “body”，那么这个文本将作为 JavaScript 插入到你的网站头部。这允许你从 Python 中向你项目的 JavaScript 插入变量。</p>
+<p>例如，下面的代码将读入一个用户配置的值，然后将这个值作为一个 JavaScript 变量插入，你插件的 JavaScript 代码可以使用：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function reads in a variable and inserts it into JavaScript</span>
+<span class="k">def</span> <span class="nf">add_js_variable</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="c1"># This is a configuration that you&#39;ve specified for users in `conf.py`</span>
+    <span class="n">js_variable</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;my_javascript_variable&#39;</span><span class="p">]</span>
+    <span class="n">js_text</span> <span class="o">=</span> <span class="s2">&quot;var my_variable = &#39;</span><span class="si">%s</span><span class="s2">&#39;;&quot;</span> <span class="o">%</span> <span class="n">js_variable</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_js_file</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">js_text</span><span class="p">)</span>
+<span class="c1"># We connect this function to the step after the builder is initialized</span>
+<span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="c1"># Tell Sphinx about this configuration variable</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_config_value</span><span class="p">(</span><span class="s1">&#39;my_javascript_variable&#39;</span><span class="p">)</span>
+    <span class="c1"># Run the function after the builder is initialized</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;builder-inited&#39;</span><span class="p">,</span> <span class="n">add_js_variable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>因此，在你的主题中，你可以使用依赖于该变量存在的代码。用户可以通过在他们的 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 文件中定义这个变量来控制它的值。</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>它不是一个可执行的 Python 文件，与 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 相反，因为如果主题被共享，这将构成不必要的安全风险。</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="../man/index.html" title="Man Pages"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="builders.html" title="配置构建器"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >拓展 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HTML 主题开发</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

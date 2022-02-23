@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sphinx 中的叙事性文件 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/tutorial/narrative-documentation.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="在 Sphinx 中描述代码" href="describing-code.html" />
+    <link rel="prev" title="更多的 Sphinx 定制" href="more-sphinx-customization.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="describing-code.html" title="在 Sphinx 中描述代码"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="more-sphinx-customization.html" title="更多的 Sphinx 定制"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事性文件</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Sphinx 中的叙事性文件</a><ul>
+<li><a class="reference internal" href="#structuring-your-documentation-across-multiple-pages">在多个页面上构建你的文档结构</a></li>
+<li><a class="reference internal" href="#adding-cross-references">添加交叉引用</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="more-sphinx-customization.html"
+                          title="上一章">更多的 Sphinx 定制</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="describing-code.html"
+                          title="下一章">在 Sphinx 中描述代码</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/narrative-documentation.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="narrative-documentation-in-sphinx">
+<h1>Sphinx 中的叙事性文件<a class="headerlink" href="#narrative-documentation-in-sphinx" title="永久链接至标题">¶</a></h1>
+<section id="structuring-your-documentation-across-multiple-pages">
+<h2>在多个页面上构建你的文档结构<a class="headerlink" href="#structuring-your-documentation-across-multiple-pages" title="永久链接至标题">¶</a></h2>
+<p>由 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> 创建的 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 文件是 <a class="reference internal" href="../glossary.html#term-root-document"><span class="xref std std-term">根文件</span></a>，其主要功能是作为欢迎页和包含 “目录树”（或 <em>toctree</em>）的根。Sphinx 允许你从不同的文件中组装一个项目，这在项目增长时很有帮助。</p>
+<p>作为一个例子，创建一个新的文件 <code class="docutils literal notranslate"><span class="pre">docs/source/usage.rst</span></code> （在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 旁边），内容如下：</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id1" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Usage</span>
+<span class="gh">=====</span>
+
+<span class="gh">Installation</span>
+<span class="gh">------------</span>
+
+To use Lumache, first install it using pip:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> console
+
+   (.venv) $ pip install lumache
+</pre></div>
+</div>
+</div>
+<p>这个新文件包含两个 <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-sections"><span class="std std-ref">章节</span></a> 标题，正常的段落文本，以及一个 <a class="reference internal" href="../usage/restructuredtext/directives.html#directive-code-block" title="code-block directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">code-block</span></code></a> 指令，该指令将一个内容块渲染成源代码，并有适当的语法高亮显示（在本例中是通用的 <code class="docutils literal notranslate"><span class="pre">console</span></code> 文本）。</p>
+<p>文件的结构是由连续的标题决定的样式，这意味着在 “Installation” 部分使用 “—-”，而在 “Usage” 部分使用 “=====”，就意味着你已经声明了。“Installation” 是 “Usage” 的小节。</p>
+<p>为了完成这个过程，在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 的末尾添加一个 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-directives"><span class="std std-ref">指令</span></a>，包括你刚刚创建的文件，如下所示：</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">docs/source/index.rst</span><a class="headerlink" href="#id2" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Contents</span>
+<span class="gh">--------</span>
+
+<span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+
+   usage
+</pre></div>
+</div>
+</div>
+<p>这一步将该文件插入 <em>toctree</em> 的根部，所以现在它属于你的项目结构，到目前为止，它看起来像这样：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>index
+└── usage
+</pre></div>
+</div>
+<p>如果你运行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 构建 HTML 文档，你会看到 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 被渲染成一个超链接的列表，这允许你导航到你刚刚创建的新页面。很好！</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在 <em>toctree</em> 之外的文档将导致在构建过程中出现 <code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">文档没有加入到任何目录树中</span></code> 的信息，并且对用户来说将无法访问。</p>
+</div>
+</section>
+<section id="adding-cross-references">
+<h2>添加交叉引用<a class="headerlink" href="#adding-cross-references" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 的一个强大的功能是能够无缝添加 <a class="reference internal" href="../usage/restructuredtext/roles.html#xref-syntax"><span class="std std-ref">交叉引用</span></a> 到文档的特定部分：一个文档，一个章节，一个图，一个代码对象，等等。这个教程中充满了这些内容！</p>
+<p>要增加一个交叉引用，请在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 中的介绍段之后写下这句话：</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">docs/source/index.rst</span><a class="headerlink" href="#id3" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Check out the <span class="na">:doc:</span><span class="nv">`usage`</span> section for further information.
+</pre></div>
+</div>
+</div>
+<p>你使用的 <a class="reference internal" href="../usage/restructuredtext/roles.html#role-doc" title="doc role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">doc</span></code></a> <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-roles-alt"><span class="std std-ref">角色</span></a> 自动引用项目中的一个特定文件，在这种情况下，你先前创建的 <code class="docutils literal notranslate"><span class="pre">usage.rst</span></code>。</p>
+<p>另外，你也可以向项目的任意部分添加一个交叉引用。为此，你需要使用 <a class="reference internal" href="../usage/restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a> 角色，并添加一个明确的 <em>标签</em>，作为 <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html#hyperlink-targets">目标</a>。</p>
+<p>例如，为了引用 “Installation” 小节，在标题前添加一个标签，如下所示：</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id4" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Usage</span>
+<span class="gh">=====</span>
+
+<span class="hll"><span class="p">..</span> <span class="nt">_installation:</span>
+</span>
+<span class="gh">Installation</span>
+<span class="gh">------------</span>
+
+<span class="cp">...</span>
+</pre></div>
+</div>
+</div>
+<p>并使你在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 中添加的句子看起来像这样：</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">docs/source/index.rst</span><a class="headerlink" href="#id5" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Check out the <span class="na">:doc:</span><span class="nv">`usage`</span> section for further information, including how to
+<span class="na">:ref:</span><span class="nv">`install &lt;installation&gt;`</span> the project.
+</pre></div>
+</div>
+</div>
+<p>注意这里有一个技巧：<code class="docutils literal notranslate"><span class="pre">install</span></code> 部分指定了链接的样子（我们希望它是一个特定的词，这样句子才有意义），而 <code class="docutils literal notranslate"><span class="pre">&lt;installation&gt;</span></code> 部分指的是我们要添加一个交叉引用的实际标签。如果你不包括一个明确的标题，因此使用 <code class="docutils literal notranslate"><span class="pre">:ref:`installation`</span></code>，则将使用该部分的标题（在本例中，<code class="docutils literal notranslate"><span class="pre">Installation</span></code>）。<code class="docutils literal notranslate"><span class="pre">:doc:</span></code> 和 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 这两个角色都将在 HTML 文档中呈现为超链接。</p>
+<p>那么 <a class="reference internal" href="describing-code.html"><span class="doc">在 Sphinx 中记录代码对象</span></a> 呢？请继续阅读！</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="describing-code.html" title="在 Sphinx 中描述代码"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="more-sphinx-customization.html" title="更多的 Sphinx 定制"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事性文件</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

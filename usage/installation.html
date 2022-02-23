@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>安装 Sphinx &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/usage/installation.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="reStructuredText" href="restructuredtext/index.html" />
+    <link rel="prev" title="快速上手" href="quickstart.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="restructuredtext/index.html" title="reStructuredText"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="quickstart.html" title="快速上手"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">使用 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">安装 Sphinx</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">安装 Sphinx</a><ul>
+<li><a class="reference internal" href="#overview">概述</a></li>
+<li><a class="reference internal" href="#linux">Linux</a><ul>
+<li><a class="reference internal" href="#debian-ubuntu">Debian/Ubuntu</a></li>
+<li><a class="reference internal" href="#rhel-centos">RHEL, CentOS</a></li>
+<li><a class="reference internal" href="#other-distributions">其他发行版</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#macos">macOS</a><ul>
+<li><a class="reference internal" href="#homebrew">Homebrew</a></li>
+<li><a class="reference internal" href="#macports">MacPorts</a></li>
+<li><a class="reference internal" href="#anaconda">Anaconda</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#windows">Windows</a><ul>
+<li><a class="reference internal" href="#chocolatey">Chocolatey</a></li>
+<li><a class="reference internal" href="#other-methods">其他方式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-from-pypi">从 PyPI 安装</a><ul>
+<li><a class="reference internal" href="#using-virtual-environments">使用虚拟环境</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#docker">Docker</a></li>
+<li><a class="reference internal" href="#installation-from-source">从源码安装</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="quickstart.html"
+                          title="上一章">快速上手</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="restructuredtext/index.html"
+                          title="下一章">reStructuredText</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/usage/installation.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="installing-sphinx">
+<h1>安装 Sphinx<a class="headerlink" href="#installing-sphinx" title="永久链接至标题">¶</a></h1>
+<div class="contents local topic" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id18">概述</a></p></li>
+<li><p><a class="reference internal" href="#linux" id="id19">Linux</a></p></li>
+<li><p><a class="reference internal" href="#macos" id="id20">macOS</a></p></li>
+<li><p><a class="reference internal" href="#windows" id="id21">Windows</a></p></li>
+<li><p><a class="reference internal" href="#installation-from-pypi" id="id22">从 PyPI 安装</a></p></li>
+<li><p><a class="reference internal" href="#docker" id="id23">Docker</a></p></li>
+<li><p><a class="reference internal" href="#installation-from-source" id="id24">从源码安装</a></p></li>
+</ul>
+</div>
+<section id="overview">
+<h2>概述<a class="headerlink" href="#overview" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 是用 <a class="reference external" href="https://docs.python-guide.org/">Python</a>  写的，支持 Python 3.6+。它建立在许多第三方库之上，如 <a class="reference external" href="https://docutils.sourceforge.io/">Docutils</a>  和 <a class="reference external" href="https://jinja.palletsprojects.com/">Jinja</a> 。这些库在安装 Sphinx 的时候会被安装。</p>
+</section>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
+<section id="debian-ubuntu">
+<h3>Debian/Ubuntu<a class="headerlink" href="#debian-ubuntu" title="永久链接至标题">¶</a></h3>
+<p>使用 <strong class="command">apt-get</strong> 也可以安装 <code class="docutils literal notranslate"><span class="pre">python3-sphinx</span></code>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>apt-get install python3-sphinx
+</pre></div>
+</div>
+<p>如果它还没有出现，这将为你安装 Python。</p>
+</section>
+<section id="rhel-centos">
+<h3>RHEL, CentOS<a class="headerlink" href="#rhel-centos" title="永久链接至标题">¶</a></h3>
+<p>使用 <strong class="command">yum</strong> 安装 <code class="docutils literal notranslate"><span class="pre">python-sphinx</span></code>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>yum install python-sphinx
+</pre></div>
+</div>
+<p>如果它还没有出现，这将为你安装 Python。</p>
+</section>
+<section id="other-distributions">
+<h3>其他发行版<a class="headerlink" href="#other-distributions" title="永久链接至标题">¶</a></h3>
+<p>大多数 Linux 发行版的软件包库中都有 Sphinx。通常情况下包被称为 <code class="docutils literal notranslate"><span class="pre">python3-sphinx</span></code>, <code class="docutils literal notranslate"><span class="pre">python-sphinx</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>。请注意，至少还有两个名称中带有 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> 的软件包。一个语音识别工具包（<em>CMU Sphinx</em>）和一个全文搜索数据库 (<em>Sphinx search</em>)。</p>
+</section>
+</section>
+<section id="macos">
+<h2>macOS<a class="headerlink" href="#macos" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 可以用 <a class="reference external" href="https://brew.sh/">Homebrew</a> ，<a class="reference external" href="https://www.macports.org/">MacPorts</a>  安装，也可以作为 Python 发行版的一部分，如 <a class="reference external" href="https://www.anaconda.com/download/#macos">Anaconda</a>。</p>
+<section id="homebrew">
+<h3>Homebrew<a class="headerlink" href="#homebrew" title="永久链接至标题">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>brew install sphinx-doc
+</pre></div>
+</div>
+<p>更多信息，请参考 <a class="reference external" href="https://formulae.brew.sh/formula/sphinx-doc">软件包概述</a> 。</p>
+</section>
+<section id="macports">
+<h3>MacPorts<a class="headerlink" href="#macports" title="永久链接至标题">¶</a></h3>
+<p>使用 <strong class="command">port</strong> 安装 <code class="docutils literal notranslate"><span class="pre">python3x-sphinx</span></code>。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo port install py38-sphinx
+</pre></div>
+</div>
+<p>要设置可执行路径，使用 <code class="docutils literal notranslate"><span class="pre">port</span> <span class="pre">select</span></code> 命令：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo port <span class="k">select</span> --set python python38
+<span class="gp">$ </span>sudo port <span class="k">select</span> --set sphinx py38-sphinx
+</pre></div>
+</div>
+<p>更多信息，请参考 <a class="reference external" href="https://www.macports.org/ports.php?by=library&amp;substr=py38-sphinx">软件包概述</a> 。</p>
+</section>
+<section id="anaconda">
+<h3>Anaconda<a class="headerlink" href="#anaconda" title="永久链接至标题">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install sphinx
+</pre></div>
+</div>
+</section>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 可以用 <a class="reference external" href="https://chocolatey.org/">Chocolatey</a>  来安装，或者  <a class="reference internal" href="#windows-other-method"><span class="std std-ref">手动安装</span></a>。</p>
+<section id="chocolatey">
+<h3>Chocolatey<a class="headerlink" href="#chocolatey" title="永久链接至标题">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>choco install sphinx
+</pre></div>
+</div>
+<p>You would need to <a class="reference external" href="https://chocolatey.org/install">install Chocolatey</a>
+before running this.</p>
+<p>欲了解更多信息，请参考 <a class="reference external" href="https://chocolatey.org/packages/sphinx/">chocolatey 页面</a>。</p>
+</section>
+<section id="other-methods">
+<span id="windows-other-method"></span><h3>其他方式<a class="headerlink" href="#other-methods" title="永久链接至标题">¶</a></h3>
+<p>大多数 Windows 用户都没有默认安装 Python，所以我们先从安装 Python 本身开始。要检查你是否已经安装了 Python 安装，打开  <em>命令提示符</em> （ <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⊞Win</kbd>-<kbd class="kbd docutils literal notranslate">r</kbd></kbd> 并输入 <strong class="command">cmd</strong>）。一旦命令提示符打开，输入 <strong class="command">python --version</strong>，然后按回车。如果 Python 已经安装，你会看到 Python 的版本被打印到屏幕上。如果你没有安装 Python，请参考 <a class="reference external" href="https://docs.python-guide.org/">Hitchhikers Guide to Python</a> 中的在 Windows 上的安装 Python。你必须安装 <a class="reference external" href="https://docs.python-guide.org/starting/install3/win/">Python 3</a>。</p>
+<p>一旦 Python 安装完毕，你可以用 <strong class="command">pip</strong> 安装 Sphinx。请参考 <a class="reference internal" href="#install-pypi"><span class="std std-ref">pip 安装说明</span></a> 以获得更多信息。</p>
+</section>
+</section>
+<section id="installation-from-pypi">
+<span id="install-pypi"></span><h2>从 PyPI 安装<a class="headerlink" href="#installation-from-pypi" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 软件包在 <a class="reference external" href="https://pypi.org/project/Sphinx/">Python 软件包索引</a> 上发布。安装 PyPI 软件包的首选工具 <strong class="command">pip</strong>。这个工具在所有现代版本的Python中都有提供。</p>
+<p>在 Linux 或 MacOS 上，你应该打开你的终端并运行以下命令。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install -U sphinx
+</pre></div>
+</div>
+<p>在 Windows 中，你应该打开 <em>命令提示符</em> （<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">⊞Win</kbd>-<kbd class="kbd docutils literal notranslate">r</kbd></kbd> 并输入 <strong class="command">cmd</strong>）并运行相同的命令。</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="gp">C:\&gt;</span> pip install -U sphinx
+</pre></div>
+</div>
+<p>安装后，在命令提示符上输入 <strong class="command">sphinx-build --version</strong>。提示符。如果一切正常，你会看到刚刚安装的 Sphinx 包的版本号。</p>
+<p>从 <em>PyPI</em> 安装也允许你安装最新的开发版本。你一般不需要（或不想）这样做，但如果你在最新的稳定版中发现了一个可能的错误，它可能会很有用。要做到这一点，请使用 <code class="docutils literal notranslate"><span class="pre">--pre</span></code> 标志。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install -U --pre sphinx
+</pre></div>
+</div>
+<section id="using-virtual-environments">
+<h3>使用虚拟环境<a class="headerlink" href="#using-virtual-environments" title="永久链接至标题">¶</a></h3>
+<p>当使用 pip 安装 Sphinx 时。强烈建议使用 <em>虚拟环境</em>。它将安装的软件包与系统软件包隔离。因此不需要使用管理员的权限。要在 <code class="docutils literal notranslate"><span class="pre">.venv</span></code> 目录下创建一个虚拟环境。使用以下命令。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python -m venv .venv
+</pre></div>
+</div>
+<p>你可以在 <a class="reference external" href="https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment">Python 打包用户指南</a> 中阅读更多关于它们的信息。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>请注意，在某些Linux发行版中，如 Debian 和 Ubuntu。这可能需要一个额外的安装步骤，如下所示。</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>apt-get install python3-venv
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</section>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
+<p>Sphinx 的 Docker 镜像发布在 <a class="reference external" href="https://hub.docker.com/">Docker Hub</a> 。有两种镜像：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hub.docker.com/repository/docker/sphinxdoc/sphinx">sphinxdoc/sphinx</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/repository/docker/sphinxdoc/sphinx-latexpdf">sphinxdoc/sphinx-latexpdf</a></p></li>
+</ul>
+<p>前者用于 Sphinx 的标准使用，后者主要用于使用 LaTeX 的 PDF 制作。请根据你的目的选择一个。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>sphinxdoc/sphinx-latexpdf 包含 TeXLive 软件包。所以这个镜像非常大（超过 2GB！）。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>当使用 docker 镜像时，请使用 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 命令来调用 sphinx 命令。例如，你可以用下面的命令来创建一个 Sphinx 项目：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker run -it --rm -v /path/to/document:/docs sphinxdoc/sphinx sphinx-quickstart
+</pre></div>
+</div>
+<p>你可以按照这个命令来建立 HTML 文档：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker run --rm -v /path/to/document:/docs sphinxdoc/sphinx make html
+</pre></div>
+</div>
+</div>
+<p>更多细节，请阅读 docker 镜像的 <a class="reference external" href="https://hub.docker.com/repository/docker/sphinxdoc/sphinx">README 文件</a>。</p>
+</section>
+<section id="installation-from-source">
+<h2>从源码安装<a class="headerlink" href="#installation-from-source" title="永久链接至标题">¶</a></h2>
+<p>你可以直接从 <a class="reference external" href="https://github.com/sphinx-doc/sphinx">Git 仓库</a> 的克隆中安装 Sphinx。这可以通过克隆仓库并从本地克隆中安装，也可以简单地通过 <strong class="command">git</strong> 直接安装。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/sphinx-doc/sphinx
+<span class="gp">$ </span><span class="nb">cd</span> sphinx
+<span class="gp">$ </span>pip install .
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install git+https://github.com/sphinx-doc/sphinx
+</pre></div>
+</div>
+<p>你也可以下载 Git 仓库的快照，格式可以是 <a class="reference external" href="https://github.com/sphinx-doc/sphinx/archive/master.tar.gz">tar.gz</a> 或 <a class="reference external" href="https://github.com/sphinx-doc/sphinx/archive/master.zip">zip</a> 格式。一旦下载并解压，就可以用 <strong class="command">pip</strong>。</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="restructuredtext/index.html" title="reStructuredText"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="quickstart.html" title="快速上手"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >使用 Sphinx</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">安装 Sphinx</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

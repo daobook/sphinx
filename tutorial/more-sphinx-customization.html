@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>更多的 Sphinx 定制 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/tutorial/more-sphinx-customization.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Sphinx 中的叙事性文件" href="narrative-documentation.html" />
+    <link rel="prev" title="使用 Sphinx 记录你的项目的第一个步骤" href="first-steps.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="narrative-documentation.html" title="Sphinx 中的叙事性文件"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="first-steps.html" title="使用 Sphinx 记录你的项目的第一个步骤"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">更多的 Sphinx 定制</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">更多的 Sphinx 定制</a><ul>
+<li><a class="reference internal" href="#enabling-a-built-in-extension">启用一个内置插件</a></li>
+<li><a class="reference internal" href="#using-a-third-party-html-theme">使用第三方 HTML 主题</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="first-steps.html"
+                          title="上一章">使用 Sphinx 记录你的项目的第一个步骤</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="narrative-documentation.html"
+                          title="下一章">Sphinx 中的叙事性文件</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/more-sphinx-customization.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="more-sphinx-customization">
+<h1>更多的 Sphinx 定制<a class="headerlink" href="#more-sphinx-customization" title="永久链接至标题">¶</a></h1>
+<p>有两种主要的方式来定制你的文档，超越核心 Sphinx 的可能：插件和主题。</p>
+<section id="enabling-a-built-in-extension">
+<h2>启用一个内置插件<a class="headerlink" href="#enabling-a-built-in-extension" title="永久链接至标题">¶</a></h2>
+<p>除了这些配置值，你还可以通过使用 <a class="reference internal" href="../usage/extensions/index.html"><span class="doc">插件</span></a> 来更多地定制 Sphinx。Sphinx 提供了几个 <a class="reference internal" href="../usage/extensions/index.html#builtin-extensions"><span class="std std-ref">内置的</span></a>，还有很多 <a class="reference internal" href="../usage/extensions/index.html#third-party-extensions"><span class="std std-ref">由社区维护的</span></a>。</p>
+<p>例如，要启用 <a class="reference internal" href="../usage/extensions/duration.html#module-sphinx.ext.duration" title="sphinx.ext.duration: Measure durations of Sphinx processing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sphinx.ext.duration</span></code></a> 插件，在你的 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 中找到 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> 列表，添加一个元素，如下：</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">docs/source/conf.py</span><a class="headerlink" href="#id1" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add any Sphinx extension module names here, as strings. They can be</span>
+<span class="c1"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
+<span class="c1"># ones.</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.duration&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>之后，每次生成文档时，你都会在控制台输出的最后看到一个简短的持续时间报告，就像这样：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>make html
+<span class="go">...</span>
+<span class="go">The HTML pages are in build/html.</span>
+
+<span class="go">====================== slowest reading durations =======================</span>
+<span class="go">0.042 temp/source/index</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-third-party-html-theme">
+<h2>使用第三方 HTML 主题<a class="headerlink" href="#using-a-third-party-html-theme" title="永久链接至标题">¶</a></h2>
+<p>另一方面，主题是定制你的文档外观的一种方式。Sphinx 有几个 <a class="reference internal" href="../usage/theming.html#builtin-themes"><span class="std std-ref">内置主题</span></a>，还有 <cite>第三方的 &lt;https://sphinx-themes.org/&gt;</cite>。</p>
+<p>例如，要在你的 HTML 文档中使用 <a class="reference external" href="https://pradyunsg.me/furo/">Furo</a> 第三方主题，首先你需要在你的 Python 虚拟环境中用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安装它，像这样：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install furo
+</pre></div>
+</div>
+<p>然后，在你的 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 上找到 <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> 变量，将其值替换为：</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">docs/source/conf.py</span><a class="headerlink" href="#id2" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="c1"># a list of builtin themes.</span>
+<span class="c1">#</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;furo&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>通过这一改变，你会注意到你的 HTML 文档现在有了新的外观：</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/lumache-furo.png"><img alt="使用 Furo 主题的 Lumache 的 HTML 文档" src="../_images/lumache-furo.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">使用 Furo 主题的 Lumache 的 HTML 文档</span><a class="headerlink" href="#id3" title="永久链接至图片">¶</a></p>
+</figcaption>
+</figure>
+<p>现在是时候 <a class="reference internal" href="narrative-documentation.html"><span class="doc">扩大叙述性文档，并将其分成几个文件</span></a>。</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="narrative-documentation.html" title="Sphinx 中的叙事性文件"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="first-steps.html" title="使用 Sphinx 记录你的项目的第一个步骤"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">更多的 Sphinx 定制</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

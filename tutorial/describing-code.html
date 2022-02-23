@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>在 Sphinx 中描述代码 &#8212; Sphinx documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="canonical" href="https://www.sphinx-doc.org/en/master/tutorial/describing-code.html" />
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Sphinx documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="shortcut icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="从代码中自动生成文档" href="automatic-doc-generation.html" />
+    <link rel="prev" title="Sphinx 中的叙事性文件" href="narrative-documentation.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'
+          rel='stylesheet' type='text/css' />
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+    <script>
+      // intelligent scrolling of the sidebar content
+      $(window).scroll(function() {
+        var sb = $('.sphinxsidebarwrapper');
+        var win = $(window);
+        var sbh = sb.height();
+        var offset = $('.sphinxsidebar').position()['top'];
+        var wintop = win.scrollTop();
+        var winbot = wintop + win.innerHeight();
+        var curtop = sb.position()['top'];
+        var curbot = curtop + sbh;
+        // does sidebar fit in window?
+        if (sbh < win.innerHeight()) {
+          // yes: easy case -- always keep at the top
+          sb.css('top', $u.min([$u.max([0, wintop - offset - 10]),
+                                $(document).height() - sbh - 200]));
+        } else {
+          // no: only scroll if top/bottom edge of sidebar is at
+          // top/bottom edge of window
+          if (curtop > wintop && curbot > winbot) {
+            sb.css('top', $u.max([wintop - offset - 10, 0]));
+          } else if (curtop < wintop && curbot < winbot) {
+            sb.css('top', $u.min([winbot - sbh - offset - 20,
+                                  $(document).height() - sbh - 200]));
+          }
+        }
+      });
+    </script>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../usage/installation.html">Get it</a></li>
+    <li><a href="../contents.html">Docs</a></li>
+    <li><a href="../development/index.html">Extend</a></li>
+  </ul>
+  <div>
+    <a href="../index.html">
+      <img src="../_static/sphinxheader.png" alt="SPHINX" />
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="automatic-doc-generation.html" title="从代码中自动生成文档"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="narrative-documentation.html" title="Sphinx 中的叙事性文件"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">在 Sphinx 中描述代码</a></li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">目录</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">在 Sphinx 中描述代码</a><ul>
+<li><a class="reference internal" href="#python">Python</a><ul>
+<li><a class="reference internal" href="#documenting-python-objects">记录 Python 对象</a></li>
+<li><a class="reference internal" href="#cross-referencing-python-objects">交叉引用 Python 对象</a></li>
+<li><a class="reference internal" href="#including-doctests-in-your-documentation">在你的文档中包括 doctest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-languages-c-c-others">其他语言（C、C++、其他）</a><ul>
+<li><a class="reference internal" href="#documenting-and-cross-referencing-objects">记录和交叉引用的对象</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>上一个主题</h4>
+    <p class="topless"><a href="narrative-documentation.html"
+                          title="上一章">Sphinx 中的叙事性文件</a></p>
+  </div>
+  <div>
+    <h4>下一个主题</h4>
+    <p class="topless"><a href="automatic-doc-generation.html"
+                          title="下一章">从代码中自动生成文档</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorial/describing-code.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="describing-code-in-sphinx">
+<h1>在 Sphinx 中描述代码<a class="headerlink" href="#describing-code-in-sphinx" title="永久链接至标题">¶</a></h1>
+<p>在 <a class="reference internal" href="index.html"><span class="doc">教程的前几节</span></a> 中，你可以读到如何在 Sphinx 中编写叙述性或散文性的文档。在本节中，你将描述代码对象。</p>
+<p>Sphinx 支持用几种语言记录代码对象，即 Python、C、C++、JavaScript 和 reStructuredText。它们中的每一个都可以用一系列指令和角色来记录，这些指令和角色由 <a class="reference internal" href="../usage/restructuredtext/domains.html"><span class="doc">域</span></a> 分组。在本教程的剩余部分，你将使用 Python 域，但本节中看到的所有概念也适用于其他域。</p>
+<section id="python">
+<span id="tutorial-describing-objects"></span><h2>Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h2>
+<section id="documenting-python-objects">
+<h3>记录 Python 对象<a class="headerlink" href="#documenting-python-objects" title="永久链接至标题">¶</a></h3>
+<p>Sphinx 提供了几个角色和指令来记录 Python 对象，所有这些都集中在 <a class="reference internal" href="../usage/restructuredtext/domains.html#python-domain"><span class="std std-ref">Python 域</span></a>。例如，你可以使用 <a class="reference internal" href="../usage/restructuredtext/domains.html#directive-py-function" title="py:function directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">py:function</span></code></a> 指令来记录一个 Python 函数，如下所示：</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id1" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Creating recipes</span>
+<span class="gh">----------------</span>
+
+To retrieve a list of random ingredients,
+you can use the <span class="s">``lumache.get_random_ingredients()``</span> function:
+
+<span class="p">..</span> <span class="ow">py:function</span><span class="p">::</span> lumache.get_random_ingredients(kind=None)
+
+   Return a list of random ingredients as strings.
+
+   <span class="nc">:param kind:</span> Optional &quot;kind&quot; of ingredients.
+   <span class="nc">:type kind:</span> list[str] or None
+   <span class="nc">:return:</span> The ingredients list.
+   <span class="nc">:rtype:</span> list[str]
+</pre></div>
+</div>
+</div>
+<p>这将呈现出这样的效果：</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/lumache-py-function.png"><img alt="HTML result of documenting a Python function in Sphinx" src="../_images/lumache-py-function.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">在 Sphinx 中记录一个 Python 函数的渲染结果</span><a class="headerlink" href="#id2" title="永久链接至图片">¶</a></p>
+</figcaption>
+</figure>
+<p>注意到几件事：</p>
+<ul class="simple">
+<li><p>Sphinx 解析了 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">py:function</span></code> 指令的参数，并适当地突出了模块、函数名和参数。</p></li>
+<li><p>指令内容包括对函数的单行描述，以及一个 <a class="reference internal" href="../usage/restructuredtext/domains.html#info-field-lists"><span class="std std-ref">info 字段列表</span></a>，包含函数参数、其预期类型、返回值和返回类型。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><code class="docutils literal notranslate"><span class="pre">py:</span></code> 前缀指定 <a class="reference internal" href="../glossary.html#term-domain"><span class="xref std std-term">域</span></a>。你可以配置默认域，这样你就可以省略前缀，可以使用 <a class="reference internal" href="../usage/configuration.html#confval-primary_domain"><code class="xref std std-confval docutils literal notranslate"><span class="pre">primary_domain</span></code></a> 配置全局，或者使用 <a class="reference internal" href="../usage/restructuredtext/domains.html#directive-default-domain" title="default-domain directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">default-domain</span></code></a> 指令来改变它，从它被调用到文件结束。例如，如果你把它设置为 <code class="docutils literal notranslate"><span class="pre">py</span></code> （默认），你可以直接写 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">function::</span></code> 。</p>
+</div>
+</section>
+<section id="cross-referencing-python-objects">
+<h3>交叉引用 Python 对象<a class="headerlink" href="#cross-referencing-python-objects" title="永久链接至标题">¶</a></h3>
+<p>默认情况下，大多数这些指令生成的实体可以通过使用 <a class="reference internal" href="../usage/restructuredtext/domains.html#python-roles"><span class="std std-ref">一个相应的角色</span></a> 从文档的任何部分进行交叉引用。对于函数的情况，你可以使用 <a class="reference internal" href="../usage/restructuredtext/domains.html#role-py-func" title="py:func role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">py:func</span></code></a> 来实现，如下所示：</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id3" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>The <span class="s">``kind``</span> parameter should be either <span class="s">``&quot;meat&quot;``</span>, <span class="s">``&quot;fish&quot;``</span>,
+or <span class="s">``&quot;veggies&quot;``</span>. Otherwise, <span class="na">:py:func:</span><span class="nv">`lumache.get_random_ingredients`</span>
+will raise an exception.
+</pre></div>
+</div>
+</div>
+<p>在生成代码文档时，Sphinx 只需使用对象的名字就能自动生成一个交叉引用，而不需要你明确地使用一个角色来实现。例如，你可以用 <a class="reference internal" href="../usage/restructuredtext/domains.html#directive-py-exception" title="py:exception directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">py:exception</span></code></a> 指令来描述函数引发的自定义异常：</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id4" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">py:exception</span><span class="p">::</span> lumache.InvalidKindError
+
+   Raised if the kind is invalid.
+</pre></div>
+</div>
+</div>
+<p>然后，在函数的原始描述中添加这个异常：</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id5" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">py:function</span><span class="p">::</span> lumache.get_random_ingredients(kind=None)
+
+   Return a list of random ingredients as strings.
+
+   <span class="nc">:param kind:</span> Optional &quot;kind&quot; of ingredients.
+   <span class="nc">:type kind:</span> list[str] or None
+<span class="hll">   <span class="nc">:raise lumache.InvalidKindError:</span> If the kind is invalid.
+</span>   <span class="nc">:return:</span> The ingredients list.
+   <span class="nc">:rtype:</span> list[str]
+</pre></div>
+</div>
+</div>
+<p>最后，这就是结果的样子：</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/lumache-py-function-full.png"><img alt="HTML result of documenting a Python function in Sphinx with cross-references" src="../_images/lumache-py-function-full.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">在 Sphinx 中记录 Python 函数的HTML结果与交叉引用</span><a class="headerlink" href="#id6" title="永久链接至图片">¶</a></p>
+</figcaption>
+</figure>
+<p>很漂亮，不是吗？</p>
+</section>
+<section id="including-doctests-in-your-documentation">
+<h3>在你的文档中包括 doctest<a class="headerlink" href="#including-doctests-in-your-documentation" title="永久链接至标题">¶</a></h3>
+<p>由于你现在描述的是 Python 库中的代码，尽可能保持文档和代码的同步将变得非常有用。在 Sphinx 中做到这一点的方法之一是在文档中包含代码片段，称为 <em>doctests</em>，在文档构建时被执行。</p>
+<p>为了演示本教程中涉及的 doctests 和其他 Sphinx 功能，Sphinx 需要能够导入代码。为了实现这一点，在 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 的开头写上：</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">docs/source/conf.py</span><a class="headerlink" href="#id7" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="c1"># add these directories to sys.path here.</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">pathlib</span>
+</span><span class="hll"><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class="hll"><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">())</span>
+</span></pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>改变 <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path" title="(在 Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> 变量的另一种方法是创建一个 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 文件，使代码可以安装，这样它的行为就像其他 Python 库一样。然而，<code class="docutils literal notranslate"><span class="pre">sys.path</span></code> 的方法更简单。</p>
+</div>
+<p>然后，在向你的文档添加测试之前，在 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 中启用 <a class="reference internal" href="../usage/extensions/doctest.html"><span class="doc">doctest</span></a> 插件：</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">docs/source/conf.py</span><a class="headerlink" href="#id8" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx.ext.duration&#39;</span><span class="p">,</span>
+<span class="hll">    <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>接下来，写一个测试块，如下所示：</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id9" title="永久链接至代码">¶</a></div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import lumache
+&gt;&gt;&gt; lumache.get_random_ingredients()
+[&#39;shells&#39;, &#39;gorgonzola&#39;, &#39;parsley&#39;]
+</pre></div>
+</div>
+</div>
+<p>Doctests 包括要运行的 Python 指令，前面有 <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>，标准 的Python 解释器提示，以及每条指令的预期输出。这样，Sphinx 可以检查实际输出是否与预期的一致。</p>
+<p>为了观察测试失败的样子（而不是像上面那样的代码错误），我们先把返回值写错。因此，添加一个函数 <code class="docutils literal notranslate"><span class="pre">get_random_ingredients</span></code> 像这样：</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">lumache.py</span><a class="headerlink" href="#id10" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_random_ingredients</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;eggs&quot;</span><span class="p">,</span> <span class="s2">&quot;bacon&quot;</span><span class="p">,</span> <span class="s2">&quot;spam&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>你现在可以运行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">doctest</span></code> 来执行你文档中的测试。最初这将显示一个错误，因为实际的代码并不像指定的那样：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>make doctest
+<span class="go">Running Sphinx v4.2.0</span>
+<span class="go">loading pickled environment... done</span>
+<span class="go">...</span>
+<span class="go">running tests...</span>
+
+<span class="go">Document: usage</span>
+<span class="go">---------------</span>
+<span class="go">**********************************************************************</span>
+<span class="go">File &quot;usage.rst&quot;, line 44, in default</span>
+<span class="go">Failed example:</span>
+<span class="go">    lumache.get_random_ingredients()</span>
+<span class="go">Expected:</span>
+<span class="go">    [&#39;shells&#39;, &#39;gorgonzola&#39;, &#39;parsley&#39;]</span>
+<span class="go">Got:</span>
+<span class="go">    [&#39;eggs&#39;, &#39;bacon&#39;, &#39;spam&#39;]</span>
+<span class="go">**********************************************************************</span>
+<span class="go">...</span>
+<span class="go">make: *** [Makefile:20: doctest] Error 1</span>
+</pre></div>
+</div>
+<p>正如你所看到的，doctest 报告了预期和实际的结果，以便于检查。现在是修复该函数的时候了：</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">lumache.py</span><a class="headerlink" href="#id11" title="永久链接至代码">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_random_ingredients</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="hll">    <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;shells&quot;</span><span class="p">,</span> <span class="s2">&quot;gorgonzola&quot;</span><span class="p">,</span> <span class="s2">&quot;parsley&quot;</span><span class="p">]</span>
+</span></pre></div>
+</div>
+</div>
+<p>最后，<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> 报告成功！</p>
+<p>虽然对于大项目来说，这种手工方法可能会变得有点乏味。在下一节中，你将看到 <a class="reference internal" href="automatic-doc-generation.html"><span class="doc">如何使这个过程自动化</span></a>。</p>
+</section>
+</section>
+<section id="other-languages-c-c-others">
+<h2>其他语言（C、C++、其他）<a class="headerlink" href="#other-languages-c-c-others" title="永久链接至标题">¶</a></h2>
+<section id="documenting-and-cross-referencing-objects">
+<h3>记录和交叉引用的对象<a class="headerlink" href="#documenting-and-cross-referencing-objects" title="永久链接至标题">¶</a></h3>
+<p>Sphinx也支持记录和交叉引用用其他编程语言编写的对象。有四个额外的内置域：C, C++, JavaScript, 和 reStructuredText。第三方扩展可以为更多的语言定义域，比如说</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sphinx-fortran.readthedocs.io">Fortran</a>,</p></li>
+<li><p><a class="reference external" href="http://bastikr.github.io/sphinx-julia">Julia</a>, or</p></li>
+<li><p><a class="reference external" href="https://github.com/markstory/sphinxcontrib-phpdomain">PHP</a>.</p></li>
+</ul>
+<p>例如，要记录一个 C++ 类型定义，你可以使用内置的 <a class="reference internal" href="../usage/restructuredtext/domains.html#directive-cpp-type" title="cpp:type directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">cpp:type</span></code></a> 指令，如下所示：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">cpp:type</span><span class="p">::</span> std::vector&lt;int&gt; CustomList
+
+   A typedef-like declaration of a type.
+</pre></div>
+</div>
+<p>这将得到以下结果：</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410CustomList">
+<span id="_CPPv310CustomList"></span><span id="_CPPv210CustomList"></span><span id="CustomList"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CustomList</span></span></span><a class="headerlink" href="#_CPPv410CustomList" title="永久链接至目标">¶</a><br /></dt>
+<dd><p>A typedef-like declaration of a type.</p>
+</dd></dl>
+
+<p>所有这样的指令就会产生引用，可以通过使用相应的角色进行交叉引用。例如，要引用前面的类型定义，你可以使用 <a class="reference internal" href="../usage/restructuredtext/domains.html#role-cpp-type" title="cpp:type role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">cpp:type</span></code></a> 角色，如下所示：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Cross reference to <span class="na">:cpp:type:</span><span class="nv">`CustomList`</span>.
+</pre></div>
+</div>
+<p>这将产生一个指向先前定义的超链接： <a class="reference internal" href="#_CPPv410CustomList" title="CustomList"><code class="xref cpp cpp-type docutils literal notranslate"><span class="pre">CustomList</span></code></a>。</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="通用索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python 模块索引"
+             >模块</a> |</li>
+        <li class="right" >
+          <a href="automatic-doc-generation.html" title="从代码中自动生成文档"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="narrative-documentation.html" title="Sphinx 中的叙事性文件"
+             >上一页</a> |</li>
+        <li><a href="../index.html">Sphinx home</a>&#160;|</li>
+        <li><a href="../contents.html">文档</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Sphinx 教程</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">在 Sphinx 中描述代码</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2007-2022, Georg Brandl and the Sphinx team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>
