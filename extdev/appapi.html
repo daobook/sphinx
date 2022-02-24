@@ -105,11 +105,11 @@
     <ul>
 <li><a class="reference internal" href="#">Application API</a><ul>
 <li><a class="reference internal" href="#extension-setup">插件设置</a></li>
-<li><a class="reference internal" href="#emitting-events">Emitting events</a></li>
-<li><a class="reference internal" href="#sphinx-runtime-information">Sphinx runtime information</a></li>
+<li><a class="reference internal" href="#emitting-events">触发事件</a></li>
+<li><a class="reference internal" href="#sphinx-runtime-information">Sphinx 运行时信息</a></li>
 <li><a class="reference internal" href="#sphinx-core-events">Sphinx 核心事件</a></li>
-<li><a class="reference internal" href="#checking-the-sphinx-version">Checking the Sphinx version</a></li>
-<li><a class="reference internal" href="#the-config-object">The Config object</a></li>
+<li><a class="reference internal" href="#checking-the-sphinx-version">检查 Sphinx 版本</a></li>
+<li><a class="reference internal" href="#the-config-object">Config 对象</a></li>
 <li><a class="reference internal" href="#the-template-bridge">The template bridge</a></li>
 <li><a class="reference internal" href="#exceptions">Exceptions</a></li>
 </ul>
@@ -190,34 +190,32 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.connect">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.10)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.10)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.connect"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.connect" title="永久链接至目标">¶</a></dt>
-<dd><p>Register <em>callback</em> to be called when <em>event</em> is emitted.</p>
-<p>For details on available core events and the arguments of callback
-functions, please see <a class="reference internal" href="#events"><span class="std std-ref">Sphinx 核心事件</span></a>.</p>
+<dd><p>注册 <em>callback</em> 在 <em>event</em> 被触发时调用。</p>
+<p>关于可用的核心事件和回调函数的参数的详细信息，请参阅 <a class="reference internal" href="#events"><span class="std std-ref">Sphinx 核心事件</span></a>。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – The name of target event</p></li>
-<li><p><strong>callback</strong> – Callback function for the event</p></li>
-<li><p><strong>priority</strong> – The priority of the callback.  The callbacks will be invoked
-in order of <em>priority</em> (ascending).</p></li>
+<li><p><strong>event</strong> – 目标事件的名称</p></li>
+<li><p><strong>callback</strong> – 事件的回调函数</p></li>
+<li><p><strong>priority</strong> – 回调的优先级。回调函数将按照优先级（升序）的顺序被调用。</p></li>
 </ul>
 </dd>
 <dt class="field-even">返回</dt>
-<dd class="field-even"><p>A listener ID.  It can be used for <a class="reference internal" href="#sphinx.application.Sphinx.disconnect" title="sphinx.application.Sphinx.disconnect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">disconnect()</span></code></a>.</p>
+<dd class="field-even"><p>监听 ID。它可以被 <a class="reference internal" href="#sphinx.application.Sphinx.disconnect" title="sphinx.application.Sphinx.disconnect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">disconnect()</span></code></a> 使用。</p>
 </dd>
 </dl>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 3.0 版更改: </span>Support <em>priority</em></p>
+<p><span class="versionmodified changed">在 3.0 版更改: </span>支持 <em>priority</em></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.disconnect">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listener_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.disconnect"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.disconnect" title="永久链接至目标">¶</a></dt>
-<dd><p>Unregister callback by <em>listener_id</em>.</p>
+<dd><p>通过 <em>listener_id</em> 注销回调函数。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>listener_id</strong> – A listener_id that <a class="reference internal" href="#sphinx.application.Sphinx.connect" title="sphinx.application.Sphinx.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a> returns</p>
+<dd class="field-odd"><p><strong>listener_id</strong> – <a class="reference internal" href="#sphinx.application.Sphinx.connect" title="sphinx.application.Sphinx.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a> 返回 listener_id</p>
 </dd>
 </dl>
 </dd></dl>
@@ -225,70 +223,57 @@ in order of <em>priority</em> (ascending).</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_builder">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_builder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="builderapi.html#sphinx.builders.Builder" title="sphinx.builders.Builder"><span class="pre">Builder</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_builder"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_builder" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a new builder.</p>
+<dd><p>注册新的 builder</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>builder</strong> – A builder class</p></li>
-<li><p><strong>override</strong> – If true, install the builder forcedly even if another builder
-is already installed as the same name</p></li>
+<li><p><strong>builder</strong> – builder 类</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该构建器，即使已经安装了同名的其他构建器</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_config_value">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_config_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebuild</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(在 Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_config_value"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_config_value" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a configuration value.</p>
-<p>This is necessary for Sphinx to recognize new values and set default
-values accordingly.</p>
+<dd><p>注册配置值。</p>
+<p>这对于 Sphinx 识别新值并相应地设置默认值是必要的。”</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The name of the configuration value.  It is recommended to be prefixed
-with the extension name (ex. <code class="docutils literal notranslate"><span class="pre">html_logo</span></code>, <code class="docutils literal notranslate"><span class="pre">epub_title</span></code>)</p></li>
-<li><p><strong>default</strong> – The default value of the configuration.</p></li>
-<li><p><strong>rebuild</strong> – <p>The condition of rebuild.  It must be one of those values:</p>
+<li><p><strong>name</strong> – 配置值的名称。推荐使用扩展名作为前缀（例如 <code class="docutils literal notranslate"><span class="pre">html_logo</span></code>、<code class="docutils literal notranslate"><span class="pre">epub_title</span></code>）</p></li>
+<li><p><strong>default</strong> – 配置的缺省值。</p></li>
+<li><p><strong>rebuild</strong> – <p>重建的条件。它必须是以下值之一：</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">'env'</span></code> if a change in the setting only takes effect when a
-document is parsed – this means that the whole environment must be
-rebuilt.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'html'</span></code> if a change in the setting needs a full rebuild of HTML
-documents.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">''</span></code> if a change in the setting will not need any special rebuild.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'env'</span></code> 如果更改的设置仅在文档被解析时生效——这意味着必须重新构建整个环境。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'html'</span></code> 如果改变设置需要完全重建 HTML 文档。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">''</span></code> 如果改变设置将不需要任何特殊的重建。</p></li>
 </ul>
 </p></li>
-<li><p><strong>types</strong> – The type of configuration value.  A list of types can be specified.  For
-example, <code class="docutils literal notranslate"><span class="pre">[str]</span></code> is used to describe a configuration that takes string
-value.</p></li>
+<li><p><strong>types</strong> – 配置值的类型。可以指定类型列表。例如， <code class="docutils literal notranslate"><span class="pre">[str]</span></code> 被用来描述接受字符串值的配置。</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 0.4 版更改: </span>If the <em>default</em> value is a callable, it will be called with the
-config object as its argument in order to get the default value.
-This can be used to implement config values whose default depends on
-other values.</p>
+<p><span class="versionmodified changed">在 0.4 版更改: </span>如果 <em>default</em> 值是可调用的，它将被调用配置对象作为它的参数，以获得默认值。这可以用来实现那些默认值依赖于其他值的配置值。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 0.6 版更改: </span>Changed <em>rebuild</em> from a simple boolean (equivalent to <code class="docutils literal notranslate"><span class="pre">''</span></code> or
-<code class="docutils literal notranslate"><span class="pre">'env'</span></code>) to a string.  However, booleans are still accepted and
-converted internally.</p>
+<p><span class="versionmodified changed">在 0.6 版更改: </span>将 <em>rebuild</em> 从简单的布尔值（相当于 <code class="docutils literal notranslate"><span class="pre">''</span></code> 或 <code class="docutils literal notranslate"><span class="pre">'env'</span></code>）更改为字符串。但是，布尔值仍然在内部被接受和转换。</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_event">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_event"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_event" title="永久链接至目标">¶</a></dt>
-<dd><p>Register an event called <em>name</em>.</p>
-<p>This is needed to be able to emit it.</p>
+<dd><p>注册名为 <em>name</em> 的事件。</p>
+<p>这是能够 emit 它所需要的。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>name</strong> – The name of the event</p>
+<dd class="field-odd"><p><strong>name</strong> – 事件的名称</p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,17 +281,14 @@ converted internally.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.set_translator">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">set_translator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">translator_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.NodeVisitor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.set_translator"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.set_translator" title="永久链接至目标">¶</a></dt>
-<dd><p>Register or override a Docutils translator class.</p>
-<p>This is used to register a custom output translator or to replace a
-builtin translator.  This allows extensions to use a custom translator
-and define custom nodes for the translator (see <a class="reference internal" href="#sphinx.application.Sphinx.add_node" title="sphinx.application.Sphinx.add_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_node()</span></code></a>).</p>
+<dd><p>注册或覆盖 Docutil translator 类。</p>
+<p>这用于注册自定义输出 translator 或替换内置 translator。这允许扩展使用自定义 translator，并为 translator 定义自定义节点（参见 <a class="reference internal" href="#sphinx.application.Sphinx.add_node" title="sphinx.application.Sphinx.add_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_node()</span></code></a>）。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The name of the builder for the translator</p></li>
-<li><p><strong>translator_class</strong> – A translator class</p></li>
-<li><p><strong>override</strong> – If true, install the translator forcedly even if another translator
-is already installed as the same name</p></li>
+<li><p><strong>name</strong> – translator 的 builder 名称</p></li>
+<li><p><strong>translator_class</strong> – translator 类</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装 translator，即使已经安装了另一个同名的 translator</p></li>
 </ul>
 </dd>
 </dl>
@@ -314,32 +296,25 @@ is already installed as the same name</p></li>
 <p><span class="versionmodified added">1.3 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_node">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(在 Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_node"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_node" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils node class.</p>
-<p>This is necessary for Docutils internals.  It may also be used in the
-future to validate nodes in the parsed documents.</p>
+<dd><p>注册 Docutils 节点类。</p>
+<p>这对 Docutils 内部是必要的。将来它还可能用于验证已解析文档中的节点。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>node</strong> – A node class</p></li>
-<li><p><strong>kwargs</strong> – Visitor functions for each builder (see below)</p></li>
-<li><p><strong>override</strong> – If true, install the node forcedly even if another node is already
-installed as the same name</p></li>
+<li><p><strong>node</strong> – 节点类</p></li>
+<li><p><strong>kwargs</strong> – 每个构建器的访问者函数（见下面）</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该节点，即使已经安装了同名节点</p></li>
 </ul>
 </dd>
 </dl>
-<p>Node visitor functions for the Sphinx HTML, LaTeX, text and manpage
-writers can be given as keyword arguments: the keyword should be one or
-more of <code class="docutils literal notranslate"><span class="pre">'html'</span></code>, <code class="docutils literal notranslate"><span class="pre">'latex'</span></code>, <code class="docutils literal notranslate"><span class="pre">'text'</span></code>, <code class="docutils literal notranslate"><span class="pre">'man'</span></code>, <code class="docutils literal notranslate"><span class="pre">'texinfo'</span></code>
-or any other supported translators, the value a 2-tuple of <code class="docutils literal notranslate"><span class="pre">(visit,</span>
-<span class="pre">depart)</span></code> methods.  <code class="docutils literal notranslate"><span class="pre">depart</span></code> can be <code class="docutils literal notranslate"><span class="pre">None</span></code> if the <code class="docutils literal notranslate"><span class="pre">visit</span></code>
-function raises <code class="xref py py-exc docutils literal notranslate"><span class="pre">docutils.nodes.SkipNode</span></code>.  Example:</p>
+<p>Sphinx HTML、LaTeX、text 和 manpage 的节点访问者函数可以作为关键字参数给出：关键字应该是 <code class="docutils literal notranslate"><span class="pre">'html'</span></code>、<code class="docutils literal notranslate"><span class="pre">'latex'</span></code>、<code class="docutils literal notranslate"><span class="pre">'text'</span></code>、<code class="docutils literal notranslate"><span class="pre">'man'</span></code>、<code class="docutils literal notranslate"><span class="pre">'texinfo'</span></code> 或任何其他受支持的 translator 的一个或多个，值为 <code class="docutils literal notranslate"><span class="pre">(visit,depart)</span></code> 方法的二元组。如果 <code class="docutils literal notranslate"><span class="pre">visit</span></code> 函数抛出 <code class="xref py py-exc docutils literal notranslate"><span class="pre">docutils.nodes.SkipNode</span></code>，则 <code class="docutils literal notranslate"><span class="pre">depart</span></code> 可以为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。例子：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">math</span><span class="p">(</span><span class="n">docutils</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">Element</span><span class="p">):</span> <span class="k">pass</span>
 
 <span class="k">def</span> <span class="nf">visit_math_html</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
@@ -350,37 +325,25 @@ function raises <code class="xref py py-exc docutils literal notranslate"><span 
 <span class="n">app</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="p">(</span><span class="n">visit_math_html</span><span class="p">,</span> <span class="n">depart_math_html</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Obviously, translators for which you don’t specify visitor methods will
-choke on the node when encountered in a document to translate.</p>
+<p>很明显，如果你没有为 translator 指定访问者方法，那么当你在翻译文档时，它会在节点上阻塞。</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 0.5 版更改: </span>Added the support for keyword arguments giving visit functions.</p>
+<p><span class="versionmodified changed">在 0.5 版更改: </span>增加了对访问函数关键字参数的支持。</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_enumerable_node">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_enumerable_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.Element</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">title_getter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.Node</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(在 Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_enumerable_node"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_enumerable_node" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils node class as a numfig target.</p>
-<p>Sphinx numbers the node automatically. And then the users can refer it
-using <a class="reference internal" href="../usage/restructuredtext/roles.html#role-numref" title="numref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">numref</span></code></a>.</p>
+<dd><p>将 Docutils 节点类注册为 numfig 目标。</p>
+<p>Sphinx 自动给节点编号。然后用户可以使用 <a class="reference internal" href="../usage/restructuredtext/roles.html#role-numref" title="numref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">numref</span></code></a> 引用它。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>node</strong> – A node class</p></li>
-<li><p><strong>figtype</strong> – The type of enumerable nodes.  Each figtype has individual numbering
-sequences.  As system figtypes, <code class="docutils literal notranslate"><span class="pre">figure</span></code>, <code class="docutils literal notranslate"><span class="pre">table</span></code> and
-<code class="docutils literal notranslate"><span class="pre">code-block</span></code> are defined.  It is possible to add custom nodes to
-these default figtypes.  It is also possible to define new custom
-figtype if a new figtype is given.</p></li>
-<li><p><strong>title_getter</strong> – A getter function to obtain the title of node.  It takes an
-instance of the enumerable node, and it must return its title as
-string.  The title is used to the default title of references for
-<a class="reference internal" href="../usage/restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a>.  By default, Sphinx searches
-<code class="docutils literal notranslate"><span class="pre">docutils.nodes.caption</span></code> or <code class="docutils literal notranslate"><span class="pre">docutils.nodes.title</span></code> from the
-node as a title.</p></li>
-<li><p><strong>kwargs</strong> – Visitor functions for each builder (same as <a class="reference internal" href="#sphinx.application.Sphinx.add_node" title="sphinx.application.Sphinx.add_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_node()</span></code></a>)</p></li>
-<li><p><strong>override</strong> – If true, install the node forcedly even if another node is already
-installed as the same name</p></li>
+<li><p><strong>node</strong> – 节点类</p></li>
+<li><p><strong>figtype</strong> – 可枚举节点的类型。每种图形都有各自的编号顺序。系统 figtype 定义了 <code class="docutils literal notranslate"><span class="pre">figure</span></code>、<code class="docutils literal notranslate"><span class="pre">table</span></code> 和 <code class="docutils literal notranslate"><span class="pre">code-block</span></code>。可以向这些默认图形类型添加定制节点。如果给出了新的 figtype，也可以定义新的自定义 figtype。</p></li>
+<li><p><strong>title_getter</strong> – 获取节点标题的 getter 函数。它接受可枚举节点的实例，并且必须以字符串形式返回其标题。title 用于 <a class="reference internal" href="../usage/restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a> 引用的默认标题。默认情况下，Sphinx 从节点中搜索 <code class="docutils literal notranslate"><span class="pre">docutils.nodes.caption</span></code> 或 <code class="docutils literal notranslate"><span class="pre">docutils.nodes.title</span></code> 作为标题。</p></li>
+<li><p><strong>kwargs</strong> – 每个构建器的访问函数（与 <a class="reference internal" href="#sphinx.application.Sphinx.add_node" title="sphinx.application.Sphinx.add_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_node()</span></code></a> 相同）</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该节点，即使已经安装了同名节点</p></li>
 </ul>
 </dd>
 </dl>
@@ -392,19 +355,17 @@ installed as the same name</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_directive">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_directive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="markupapi.html#docutils.parsers.rst.Directive" title="docutils.parsers.rst.Directive"><span class="pre">docutils.parsers.rst.Directive</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_directive"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_directive" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils directive.</p>
+<dd><p>注册 Docutils 指令</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The name of the directive</p></li>
-<li><p><strong>cls</strong> – A directive class</p></li>
-<li><p><strong>override</strong> – If true, install the directive forcedly even if another directive
-is already installed as the same name</p></li>
+<li><p><strong>name</strong> – 指令名称</p></li>
+<li><p><strong>cls</strong> – 指令类</p></li>
+<li><p><strong>override</strong> – 如果为真，强制安装该指令，即使已经安装了另一个同名指令</p></li>
 </ul>
 </dd>
 </dl>
-<p>For example, a custom directive named <code class="docutils literal notranslate"><span class="pre">my-directive</span></code> would be added
-like this:</p>
+<p>例如，名为 <code class="docutils literal notranslate"><span class="pre">my-directive</span></code> 的自定义指令会像这样添加：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span><span class="p">,</span> <span class="n">directives</span>
 
 <span class="k">class</span> <span class="nc">MyDirective</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
@@ -424,64 +385,60 @@ like this:</p>
     <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s1">&#39;my-directive&#39;</span><span class="p">,</span> <span class="n">MyDirective</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more details, see <a class="reference external" href="https://docutils.sourceforge.io/docs/howto/rst-directives.html">the Docutils docs</a> .</p>
+<p>更多细节见：<a class="reference external" href="https://docutils.sourceforge.io/docs/howto/rst-directives.html">Docutils docs</a> 。</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 0.6 版更改: </span>Docutils 0.5-style directive classes are now supported.</p>
+<p><span class="versionmodified changed">在 0.6 版更改: </span>现在支持 Docutils 0.5 风格的指令类。</p>
 </div>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">1.8 版后已移除: </span>Docutils 0.4-style (function based) directives support is deprecated.</p>
+<p><span class="versionmodified deprecated">1.8 版后已移除: </span>Docutils 0.4 风格（基于函数）的指令支持已弃用。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_role">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_role"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_role" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils role.</p>
+<dd><p>注册 Docutils 角色。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The name of role</p></li>
-<li><p><strong>role</strong> – A role function</p></li>
-<li><p><strong>override</strong> – If true, install the role forcedly even if another role is already
-installed as the same name</p></li>
+<li><p><strong>name</strong> – 角色名称</p></li>
+<li><p><strong>role</strong> – 角色函数</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该角色，即使已经安装了同名的其他角色</p></li>
 </ul>
 </dd>
 </dl>
-<p>For more details about role functions, see <a class="reference external" href="https://docutils.sourceforge.io/docs/howto/rst-roles.html">the Docutils docs</a> .</p>
+<p>有关角色函数的更多细节，请参阅 <a class="reference external" href="https://docutils.sourceforge.io/docs/howto/rst-roles.html">Docutils docs</a>。</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_generic_role">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_generic_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeclass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_generic_role"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_generic_role" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a generic Docutils role.</p>
-<p>Register a Docutils role that does nothing but wrap its contents in the
-node given by <em>nodeclass</em>.</p>
-<p>If <em>override</em> is True, the given <em>nodeclass</em> is forcedly installed even if
-a role named as <em>name</em> is already installed.</p>
+<dd><p>注册通用 Docutils 角色</p>
+<p>注册不做任何事情的 Docutils 角色，它只是将其内容包装在由 <em>nodeclass</em> 给出的节点中。</p>
+<p>如果 <em>override</em> 为 True，则给定的 <em>nodeclass</em> 会被强制安装，即使已经安装了名为 <em>name</em> 的角色。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.6 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_domain">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="domainapi.html#sphinx.domains.Domain" title="sphinx.domains.Domain"><span class="pre">sphinx.domains.Domain</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_domain"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_domain" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a domain.</p>
+<dd><p>注册域</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>domain</strong> – A domain class</p></li>
-<li><p><strong>override</strong> – If true, install the domain forcedly even if another domain
-is already installed as the same name</p></li>
+<li><p><strong>domain</strong> – 域类</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该域名，即使已经安装了同名域名</p></li>
 </ul>
 </dd>
 </dl>
@@ -489,24 +446,22 @@ is already installed as the same name</p></li>
 <p><span class="versionmodified added">1.0 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_directive_to_domain">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_directive_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="markupapi.html#docutils.parsers.rst.Directive" title="docutils.parsers.rst.Directive"><span class="pre">docutils.parsers.rst.Directive</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_directive_to_domain"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_directive_to_domain" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils directive in a domain.</p>
-<p>Like <a class="reference internal" href="#sphinx.application.Sphinx.add_directive" title="sphinx.application.Sphinx.add_directive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_directive()</span></code></a>, but the directive is added to the domain
-named <em>domain</em>.</p>
+<dd><p>在域中注册 Docutils 指令。</p>
+<p>像 <a class="reference internal" href="#sphinx.application.Sphinx.add_directive" title="sphinx.application.Sphinx.add_directive"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_directive()</span></code></a>，但是指令被添加到名为 <em>domain</em> 的域。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>domain</strong> – The name of target domain</p></li>
-<li><p><strong>name</strong> – A name of directive</p></li>
-<li><p><strong>cls</strong> – A directive class</p></li>
-<li><p><strong>override</strong> – If true, install the directive forcedly even if another directive
-is already installed as the same name</p></li>
+<li><p><strong>domain</strong> – 目标域名称</p></li>
+<li><p><strong>name</strong> – 指令名称</p></li>
+<li><p><strong>cls</strong> – 指令类</p></li>
+<li><p><strong>override</strong> – 如果为真，强制安装该指令，即使已经安装了另一个同名指令</p></li>
 </ul>
 </dd>
 </dl>
@@ -514,24 +469,22 @@ is already installed as the same name</p></li>
 <p><span class="versionmodified added">1.0 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_role_to_domain">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_role_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(在 Python v3.10)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">docutils.parsers.rst.states.Inliner</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(在 Python v3.10)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(在 Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.Node</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.system_message</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">sphinx.roles.XRefRole</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_role_to_domain"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_role_to_domain" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils role in a domain.</p>
-<p>Like <a class="reference internal" href="#sphinx.application.Sphinx.add_role" title="sphinx.application.Sphinx.add_role"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_role()</span></code></a>, but the role is added to the domain named
-<em>domain</em>.</p>
+<dd><p>在域中注册 Docutils 角色。</p>
+<p>像 <a class="reference internal" href="#sphinx.application.Sphinx.add_role" title="sphinx.application.Sphinx.add_role"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_role()</span></code></a>，但是角色被添加到名为 <em>domain</em> 的域。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>domain</strong> – The name of the target domain</p></li>
-<li><p><strong>name</strong> – The name of the role</p></li>
-<li><p><strong>role</strong> – The role function</p></li>
-<li><p><strong>override</strong> – If true, install the role forcedly even if another role is already
-installed as the same name</p></li>
+<li><p><strong>domain</strong> – 目标域的名称</p></li>
+<li><p><strong>name</strong> – 角色名称</p></li>
+<li><p><strong>role</strong> – 角色函数</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装该角色，即使已经安装了同名的其他角色</p></li>
 </ul>
 </dd>
 </dl>
@@ -539,22 +492,21 @@ installed as the same name</p></li>
 <p><span class="versionmodified added">1.0 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_index_to_domain">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_index_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="domainapi.html#sphinx.domains.Index" title="sphinx.domains.Index"><span class="pre">sphinx.domains.Index</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_index_to_domain"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_index_to_domain" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a custom index for a domain.</p>
-<p>Add a custom <em>index</em> class to the domain named <em>domain</em>.</p>
+<dd><p>为域注册自定义索引。</p>
+<p>添加自定义的 <em>index</em> 类到域名 <em>domain</em>。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>domain</strong> – The name of the target domain</p></li>
-<li><p><strong>index</strong> – The index class</p></li>
-<li><p><strong>override</strong> – If true, install the index forcedly even if another index is
-already installed as the same name</p></li>
+<li><p><strong>domain</strong> – 目标域的名称</p></li>
+<li><p><strong>index</strong> – 索引类</p></li>
+<li><p><strong>override</strong> – 如果为真，则强制安装索引，即使已经安装了同名的索引</p></li>
 </ul>
 </dd>
 </dl>
@@ -562,39 +514,26 @@ already installed as the same name</p></li>
 <p><span class="versionmodified added">1.0 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_object_type">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_object_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directivename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rolename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indextemplate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(在 Python v3.10)"><span class="pre">Callable</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_nodeclass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.TextElement</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_field_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_object_type"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_object_type" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a new object type.</p>
-<p>This method is a very convenient way to add a new <a class="reference internal" href="../glossary.html#term-object"><span class="xref std std-term">object</span></a> type
-that can be cross-referenced.  It will do this:</p>
+<dd><p>注册新的 object 类型。</p>
+<p>这个方法是一种非常方便的方式来添加新的 <a class="reference internal" href="../glossary.html#term-object"><span class="xref std std-term">object</span></a> 类型，它可以被交叉引用。它会这样做：</p>
 <ul class="simple">
-<li><p>Create a new directive (called <em>directivename</em>) for documenting an
-object.  It will automatically add index entries if <em>indextemplate</em>
-is nonempty; if given, it must contain exactly one instance of
-<code class="docutils literal notranslate"><span class="pre">%s</span></code>.  See the example below for how the template will be
-interpreted.</p></li>
-<li><p>Create a new role (called <em>rolename</em>) to cross-reference to these
-object descriptions.</p></li>
-<li><p>If you provide <em>parse_node</em>, it must be a function that takes a
-string and a docutils node, and it must populate the node with
-children parsed from the string.  It must then return the name of the
-item to be used in cross-referencing and index entries.  See the
-<code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file in the source for this documentation for an
-example.</p></li>
-<li><p>The <em>objname</em> (if not given, will default to <em>directivename</em>) names
-the type of object.  It is used when listing objects, e.g. in search
-results.</p></li>
+<li><p>创建新的指令（叫做 <em>directivename</em>）来记录对象。如果 <em>indextemplate</em> 是非空的，它将自动添加索引条目；如果给出，则必须包含 <code class="docutils literal notranslate"><span class="pre">%s</span></code> 的一个实例。请看下面的例子，了解如何解释这个模板。</p></li>
+<li><p>创建新的角色（称为 <em>rolename</em>）来交叉引用这些对象描述。</p></li>
+<li><p>如果您提供 <em>parse_node</em>，它必须是接受字符串和 docutils 节点的函数，并且它必须用从字符串解析的子节点填充节点。然后，它必须返回要在交叉引用和索引项中使用的项的名称。请参阅本文档源代码中的 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 文件中的示例。</p></li>
+<li><p><em>objname*（如果没有给出，将默认为 *directivename</em>）命名对象的类型。它用于列出对象，例如搜索结果。</p></li>
 </ul>
-<p>For example, if you have this call in a custom Sphinx extension:</p>
+<p>例如，如果您在自定义 Sphinx 插件中有此调用</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>app.add_object_type(&#39;directive&#39;, &#39;dir&#39;, &#39;pair: %s; directive&#39;)
 </pre></div>
 </div>
-<p>you can use this markup in your documents:</p>
+<p>您可以在文档中使用此标记</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">rst:directive</span><span class="p">::</span> function
 
    Document a function.
@@ -604,42 +543,29 @@ results.</p></li>
 See also the <span class="na">:rst:dir:</span><span class="nv">`function`</span> directive.
 </pre></div>
 </div>
-<p>For the directive, an index entry will be generated as if you had prepended</p>
+<p>对于这个指令，索引条目将会被生成，就好像你已经添加了</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">index</span><span class="p">::</span> pair: function; directive
 </pre></div>
 </div>
-<p>The reference node will be of class <code class="docutils literal notranslate"><span class="pre">literal</span></code> (so it will be rendered
-in a proportional font, as appropriate for code) unless you give the
-<em>ref_nodeclass</em> argument, which must be a docutils node class.  Most
-useful are <code class="docutils literal notranslate"><span class="pre">docutils.nodes.emphasis</span></code> or <code class="docutils literal notranslate"><span class="pre">docutils.nodes.strong</span></code> –
-you can also use <code class="docutils literal notranslate"><span class="pre">docutils.nodes.generated</span></code> if you want no further
-text decoration.  If the text should be treated as literal (e.g. no
-smart quote replacement), but not have typewriter styling, use
-<code class="docutils literal notranslate"><span class="pre">sphinx.addnodes.literal_emphasis</span></code> or
-<code class="docutils literal notranslate"><span class="pre">sphinx.addnodes.literal_strong</span></code>.</p>
-<p>For the role content, you have the same syntactical possibilities as
-for standard Sphinx roles (see <a class="reference internal" href="../usage/restructuredtext/roles.html#xref-syntax"><span class="std std-ref">交叉引用语法</span></a>).</p>
-<p>If <em>override</em> is True, the given object_type is forcedly installed even if
-an object_type having the same name is already installed.</p>
+<p>引用节点将是 <code class="docutils literal notranslate"><span class="pre">literal</span></code> 类（因此它将以比例字体呈现，适合于代码），除非你给出 <em>ref_nodeclass</em> 参数，它必须是 docutils 节点类。最有用的是 <code class="docutils literal notranslate"><span class="pre">docutils.nodes.emphasis</span></code> 或 <code class="docutils literal notranslate"><span class="pre">docutils.nodes.strong</span></code> —— 你也可以使用 <code class="docutils literal notranslate"><span class="pre">docutils.nodes.generated</span></code>，如果你不想要进一步的文本装饰。如果文本应该被视为 literal（例如，没有智能引用替换），但没有 typewriter 样式，使用 <code class="docutils literal notranslate"><span class="pre">sphinx.addnodes.literal_emphasis</span></code> 或 <code class="docutils literal notranslate"><span class="pre">sphinx.addnodes.literal_strong</span></code>。</p>
+<p>对于角色内容，您拥有与标准 Sphinx 角色相同的语法可能性（参见 <a class="reference internal" href="../usage/restructuredtext/roles.html#xref-syntax"><span class="std std-ref">交叉引用语法</span></a>）。</p>
+<p>如果 <em>override</em> 为True，则给定的 object_type 将被强制安装，即使已经安装了具有相同名称的 object_type。</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_crossref_type">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_crossref_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directivename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rolename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indextemplate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_nodeclass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.nodes.TextElement</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(在 Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_crossref_type"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_crossref_type" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a new crossref object type.</p>
-<p>This method is very similar to <a class="reference internal" href="#sphinx.application.Sphinx.add_object_type" title="sphinx.application.Sphinx.add_object_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_object_type()</span></code></a> except that the
-directive it generates must be empty, and will produce no output.</p>
-<p>That means that you can add semantic targets to your sources, and refer
-to them using custom roles instead of generic ones (like
-<a class="reference internal" href="../usage/restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a>).  Example call:</p>
+<dd><p>注册新的 crossref 对象类型</p>
+<p>这个方法非常类似 <a class="reference internal" href="#sphinx.application.Sphinx.add_object_type" title="sphinx.application.Sphinx.add_object_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_object_type()</span></code></a>，除了它生成的指令必须为空，并且不会产生任何输出。</p>
+<p>这意味着你可以添加语义目标到你的源，并使用自定义角色引用它们，而不是通用角色（如 <a class="reference internal" href="../usage/restructuredtext/roles.html#role-ref" title="ref role"><code class="xref rst rst-role docutils literal notranslate"><span class="pre">ref</span></code></a>）。示例调用:</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>app.add_crossref_type(&#39;topic&#39;, &#39;topic&#39;, &#39;single: %s&#39;,
                       docutils.nodes.emphasis)
 </pre></div>
 </div>
-<p>Example usage:</p>
+<p>示例用法</p>
 <div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">topic</span><span class="p">::</span> application API
 
 <span class="gh">The application API</span>
@@ -650,73 +576,67 @@ Some random text here.
 See also <span class="na">:topic:</span><span class="nv">`this section &lt;application API&gt;`</span>.
 </pre></div>
 </div>
-<p>(Of course, the element following the <code class="docutils literal notranslate"><span class="pre">topic</span></code> directive needn’t be a
-section.)</p>
-<p>If <em>override</em> is True, the given crossref_type is forcedly installed even if
-a crossref_type having the same name is already installed.</p>
+<p>（当然，<code class="docutils literal notranslate"><span class="pre">topic</span></code> 指令后面的元素不必是 section。)</p>
+<p>如果 <em>override</em> 为True，则给定的 crossref_type 被强制安装，即使已经安装了同名的 crossref_type。</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_transform">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.transforms.Transform</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_transform"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_transform" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils transform to be applied after parsing.</p>
-<p>Add the standard docutils <code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code> subclass <em>transform</em> to
-the list of transforms that are applied after Sphinx parses a reST
-document.</p>
+<dd><p>注册要在解析后应用的 Docutils 变换。</p>
+<p>将标准的 <code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code> 子类 <em>transform</em>  添加到 Sphinx 解析 reST 文档后应用的变换列表中。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>transform</strong> – A transform class</p>
+<dd class="field-odd"><p><strong>transform</strong> – transform 类</p>
 </dd>
 </dl>
 <table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-text">priority range categories for Sphinx transforms</span><a class="headerlink" href="#id3" title="永久链接至表格">¶</a></caption>
+<caption><span class="caption-text">Sphinx 变换的优先级范围类别</span><a class="headerlink" href="#id3" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>Priority</p></td>
-<td><p>Main purpose in Sphinx</p></td>
+<tr class="row-odd"><td><p>优先级</p></td>
+<td><p>Sphinx 的主要用途</p></td>
 </tr>
 <tr class="row-even"><td><p>0-99</p></td>
-<td><p>Fix invalid nodes by docutils. Translate a doctree.</p></td>
+<td><p>通过 docutils 修复无效节点。翻译 doctree。</p></td>
 </tr>
 <tr class="row-odd"><td><p>100-299</p></td>
-<td><p>Preparation</p></td>
+<td><p>准备</p></td>
 </tr>
 <tr class="row-even"><td><p>300-399</p></td>
-<td><p>early</p></td>
+<td><p>早期</p></td>
 </tr>
 <tr class="row-odd"><td><p>400-699</p></td>
 <td><p>main</p></td>
 </tr>
 <tr class="row-even"><td><p>700-799</p></td>
-<td><p>Post processing. Deadline to modify text and referencing.</p></td>
+<td><p>后处理。修改文本和引用的截止日期。</p></td>
 </tr>
 <tr class="row-odd"><td><p>800-899</p></td>
-<td><p>Collect referencing and referenced nodes. Domain processing.</p></td>
+<td><p>收集引用节点和被引用节点。域处理。</p></td>
 </tr>
 <tr class="row-even"><td><p>900-999</p></td>
 <td><p>Finalize and clean up.</p></td>
 </tr>
 </tbody>
 </table>
-<p>refs: <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/transforms.html#transform-priority-range-categories">Transform Priority Range Categories</a></p>
+<p>查看：<a class="reference external" href="https://docutils.sourceforge.io/docs/ref/transforms.html#transform-priority-range-categories">变换优先范围类别</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_post_transform">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_post_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><span class="pre">docutils.transforms.Transform</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_post_transform"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_post_transform" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a Docutils transform to be applied before writing.</p>
-<p>Add the standard docutils <code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code> subclass <em>transform</em> to
-the list of transforms that are applied before Sphinx writes a
-document.</p>
+<dd><p>在编写之前注册要应用的 Docutils 变换。</p>
+<p>将标准的 <code class="xref py py-class docutils literal notranslate"><span class="pre">Transform</span></code> 子类 <em>transform</em> 添加到 Sphinx 写文档之前应用的变换列表中。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
-<dd class="field-odd"><p><strong>transform</strong> – A transform class</p>
+<dd class="field-odd"><p><strong>transform</strong> – transform 类</p>
 </dd>
 </dl>
 </dd></dl>
@@ -724,7 +644,7 @@ document.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.add_js_file">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">add_js_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(在 Python v3.10)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loading_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(在 Python v3.10)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(在 Python v3.10)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.add_js_file"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.add_js_file" title="永久链接至目标">¶</a></dt>
-<dd><p>Register a JavaScript file to include in the HTML output.</p>
+<dd><p>注册 JavaScript 文件以包含在 HTML 输出中。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
@@ -763,8 +683,8 @@ app.add_js_file(None, body=&quot;var myVariable = &#39;foo&#39;;&quot;)
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>Priority</p></td>
-<td><p>Main purpose in Sphinx</p></td>
+<tr class="row-odd"><td><p>优先级</p></td>
+<td><p>Sphinx 的主要用途</p></td>
 </tr>
 <tr class="row-even"><td><p>200</p></td>
 <td><p>default priority for built-in JavaScript files</p></td>
@@ -833,8 +753,8 @@ app.add_css_file(&#39;fancy.css&#39;, rel=&#39;alternate stylesheet&#39;, title=
 <col style="width: 80%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>Priority</p></td>
-<td><p>Main purpose in Sphinx</p></td>
+<tr class="row-odd"><td><p>优先级</p></td>
+<td><p>Sphinx 的主要用途</p></td>
 </tr>
 <tr class="row-even"><td><p>200</p></td>
 <td><p>default priority for built-in CSS files</p></td>
@@ -919,7 +839,7 @@ a documenter having the same name is already installed.</p>
 <p><span class="versionmodified added">0.6 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 2.2 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 2.2 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
@@ -978,7 +898,7 @@ a parser for the same suffix is already installed.</p>
 Use <a class="reference internal" href="#sphinx.application.Sphinx.add_source_suffix" title="sphinx.application.Sphinx.add_source_suffix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_source_suffix()</span></code></a> API to register suffix instead.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>Add <em>override</em> keyword.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>添加 <em>override</em> 关键字</p>
 </div>
 </dd></dl>
 
@@ -1055,41 +975,40 @@ extension API.</p>
 
 </section>
 <section id="emitting-events">
-<h2>Emitting events<a class="headerlink" href="#emitting-events" title="永久链接至标题">¶</a></h2>
+<h2>触发事件<a class="headerlink" href="#emitting-events" title="永久链接至标题">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sphinx.application.</span></span><span class="sig-name descname"><span class="pre">Sphinx</span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.emit">
 <span class="sig-name descname"><span class="pre">emit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(在 Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(在 Python v3.10)"><span class="pre">Exception</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(在 Python v3.10)"><span class="pre">List</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.emit"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.emit" title="永久链接至目标">¶</a></dt>
-<dd><p>Emit <em>event</em> and pass <em>arguments</em> to the callback functions.</p>
-<p>Return the return values of all callbacks as a list.  Do not emit core
-Sphinx events in extensions!</p>
+<dd><p>触发 <em>event</em> 并向回调函数传递 <em>arguments</em>。</p>
+<p>以列表的形式返回所有回调函数的返回值。不要在插件中触发核心 Sphinx 事件！</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – The name of event that will be emitted</p></li>
-<li><p><strong>args</strong> – The arguments for the event</p></li>
-<li><p><strong>allowed_exceptions</strong> – The list of exceptions that are allowed in the callbacks</p></li>
+<li><p><strong>event</strong> – 将被触发的事件的名称</p></li>
+<li><p><strong>args</strong> – 事件的 arguments</p></li>
+<li><p><strong>allowed_exceptions</strong> – 回调中允许的异常列表</p></li>
 </ul>
 </dd>
 </dl>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 3.1 版更改: </span>Added <em>allowed_exceptions</em> to specify path-through exceptions</p>
+<p><span class="versionmodified changed">在 3.1 版更改: </span>增加了 <em>allowed_exceptions</em> 来指定 path-through 异常</p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.emit_firstresult">
 <span class="sig-name descname"><span class="pre">emit_firstresult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(在 Python v3.10)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(在 Python v3.10)"><span class="pre">Type</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(在 Python v3.10)"><span class="pre">Exception</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a></span></span><a class="reference internal" href="../_modules/sphinx/application.html#Sphinx.emit_firstresult"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.application.Sphinx.emit_firstresult" title="永久链接至目标">¶</a></dt>
-<dd><p>Emit <em>event</em> and pass <em>arguments</em> to the callback functions.</p>
-<p>Return the result of the first callback that doesn’t return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd><p>触发 <em>event</em> 并向回调函数传递 <em>arguments</em>。</p>
+<p>返回第一个不返回 <code class="docutils literal notranslate"><span class="pre">None</span></code> 的回调的结果。</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – The name of event that will be emitted</p></li>
-<li><p><strong>args</strong> – The arguments for the event</p></li>
-<li><p><strong>allowed_exceptions</strong> – The list of exceptions that are allowed in the callbacks</p></li>
+<li><p><strong>event</strong> – 将被触发的事件的名称</p></li>
+<li><p><strong>args</strong> – 事件的 arguments</p></li>
+<li><p><strong>allowed_exceptions</strong> – 回调中允许的异常列表</p></li>
 </ul>
 </dd>
 </dl>
@@ -1097,7 +1016,7 @@ Sphinx events in extensions!</p>
 <p><span class="versionmodified added">0.5 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 3.1 版更改: </span>Added <em>allowed_exceptions</em> to specify path-through exceptions</p>
+<p><span class="versionmodified changed">在 3.1 版更改: </span>增加了 <em>allowed_exceptions</em> 来指定 path-through 异常</p>
 </div>
 </dd></dl>
 
@@ -1105,45 +1024,42 @@ Sphinx events in extensions!</p>
 
 </section>
 <section id="sphinx-runtime-information">
-<h2>Sphinx runtime information<a class="headerlink" href="#sphinx-runtime-information" title="永久链接至标题">¶</a></h2>
-<p>The application object also provides runtime information as attributes.</p>
+<h2>Sphinx 运行时信息<a class="headerlink" href="#sphinx-runtime-information" title="永久链接至标题">¶</a></h2>
+<p>应用程序对象还提供运行时信息作为属性。</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.project">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">project</span></span><a class="headerlink" href="#sphinx.application.Sphinx.project" title="永久链接至目标">¶</a></dt>
-<dd><p>Target project.  See <a class="reference internal" href="projectapi.html#sphinx.project.Project" title="sphinx.project.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p>
+<dd><p>目标项目。查阅 <a class="reference internal" href="projectapi.html#sphinx.project.Project" title="sphinx.project.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>。</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.srcdir">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">srcdir</span></span><a class="headerlink" href="#sphinx.application.Sphinx.srcdir" title="永久链接至目标">¶</a></dt>
-<dd><p>Source directory.</p>
+<dd><p>源目录</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.confdir">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">confdir</span></span><a class="headerlink" href="#sphinx.application.Sphinx.confdir" title="永久链接至目标">¶</a></dt>
-<dd><p>Directory containing <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
+<dd><p>目录中存在 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>。</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.doctreedir">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">doctreedir</span></span><a class="headerlink" href="#sphinx.application.Sphinx.doctreedir" title="永久链接至目标">¶</a></dt>
-<dd><p>Directory for storing pickled doctrees.</p>
+<dd><p>用于存储 pickle 文档树的目录。</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sphinx.application.Sphinx.outdir">
 <span class="sig-prename descclassname"><span class="pre">Sphinx.</span></span><span class="sig-name descname"><span class="pre">outdir</span></span><a class="headerlink" href="#sphinx.application.Sphinx.outdir" title="永久链接至目标">¶</a></dt>
-<dd><p>Directory for storing built document.</p>
+<dd><p>用于存储构建文档的目录。</p>
 </dd></dl>
 
 </section>
 <section id="sphinx-core-events">
 <span id="events"></span><h2>Sphinx 核心事件<a class="headerlink" href="#sphinx-core-events" title="永久链接至标题">¶</a></h2>
-<p>These events are known to the core.  The arguments shown are given to the
-registered event handlers.  Use <a class="reference internal" href="#sphinx.application.Sphinx.connect" title="sphinx.application.Sphinx.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.connect()</span></code></a> in an extension’s
-<code class="docutils literal notranslate"><span class="pre">setup</span></code> function (note that <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> can also have a <code class="docutils literal notranslate"><span class="pre">setup</span></code> function) to
-connect handlers to the events.  Example:</p>
+<p>这些事件都是众所周知的。将显示的参数提供给已注册的事件处理程序。用 <a class="reference internal" href="#sphinx.application.Sphinx.connect" title="sphinx.application.Sphinx.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.connect()</span></code></a> 在插件的 <code class="docutils literal notranslate"><span class="pre">setup</span></code>  函数中（注意 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 也可以有 <code class="docutils literal notranslate"><span class="pre">setup</span></code> 函数）来连接事件处理程序。示例：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">source_read_handler</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">docname</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do something here...&#39;</span><span class="p">)</span>
 
@@ -1151,9 +1067,7 @@ connect handlers to the events.  Example:</p>
     <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;source-read&#39;</span><span class="p">,</span> <span class="n">source_read_handler</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Below is an overview of each event that happens during a build. In the list
-below, we include the event name, its callback parameters, and the input and output
-type for that event:</p>
+<p>下面是构建过程中发生的每个事件的概述。在下面的列表中，包括了事件的名称，它的回调参数，以及该事件的输入和输出类型：</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. event.config-inited(app,config)
 2. event.builder-inited(app)
 3. event.env-get-outdated(app, env, added, changed, removed)
@@ -1192,18 +1106,17 @@ for docname in updated-docs:
 16. event.build-finished(app, exception)
 </pre></div>
 </div>
-<p>Here is a more detailed list of these events.</p>
+<p>下面是这些事件的一个更详细的列表。</p>
 <dl class="std event">
 <dt class="sig sig-object std" id="event-builder-inited">
 <span class="sig-name descname"><span class="pre">builder-inited</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">app</span></em><span class="sig-paren">)</span><a class="headerlink" href="#event-builder-inited" title="永久链接至目标">¶</a></dt>
-<dd><p>Emitted when the builder object has been created.  It is available as
-<code class="docutils literal notranslate"><span class="pre">app.builder</span></code>.</p>
+<dd><p>在创建构建器对象时触发。它的名字是 <code class="docutils literal notranslate"><span class="pre">app.builder</span></code>。</p>
 </dd></dl>
 
 <dl class="std event">
 <dt class="sig sig-object std" id="event-config-inited">
 <span class="sig-name descname"><span class="pre">config-inited</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">app</span></em>, <em class="sig-param"><span class="pre">config</span></em><span class="sig-paren">)</span><a class="headerlink" href="#event-config-inited" title="永久链接至目标">¶</a></dt>
-<dd><p>Emitted when the config object has been initialized.</p>
+<dd><p>当配置对象被初始化时触发。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.8 新版功能.</span></p>
 </div>
@@ -1212,10 +1125,7 @@ for docname in updated-docs:
 <dl class="std event">
 <dt class="sig sig-object std" id="event-env-get-outdated">
 <span class="sig-name descname"><span class="pre">env-get-outdated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">app</span></em>, <em class="sig-param"><span class="pre">env</span></em>, <em class="sig-param"><span class="pre">added</span></em>, <em class="sig-param"><span class="pre">changed</span></em>, <em class="sig-param"><span class="pre">removed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#event-env-get-outdated" title="永久链接至目标">¶</a></dt>
-<dd><p>Emitted when the environment determines which source files have changed and
-should be re-read.  <em>added</em>, <em>changed</em> and <em>removed</em> are sets of docnames
-that the environment has determined.  You can return a list of docnames to
-re-read in addition to these.</p>
+<dd><p>当环境确定哪些源文件已更改并应重新读取时触发。<em>added</em>， <em>changed</em> 和 <em>removed</em> 是环境决定的一组文档名。除此之外，你还可以返回一个文档名列表来重新阅读。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.1 新版功能.</span></p>
 </div>
@@ -1224,13 +1134,8 @@ re-read in addition to these.</p>
 <dl class="std event">
 <dt class="sig sig-object std" id="event-env-purge-doc">
 <span class="sig-name descname"><span class="pre">env-purge-doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">app</span></em>, <em class="sig-param"><span class="pre">env</span></em>, <em class="sig-param"><span class="pre">docname</span></em><span class="sig-paren">)</span><a class="headerlink" href="#event-env-purge-doc" title="永久链接至目标">¶</a></dt>
-<dd><p>Emitted when all traces of a source file should be cleaned from the
-environment, that is, if the source file is removed or before it is freshly
-read.  This is for extensions that keep their own caches in attributes of the
-environment.</p>
-<p>For example, there is a cache of all modules on the environment.  When a
-source file has been changed, the cache’s entries for the file are cleared,
-since the module declarations could have been removed from the file.</p>
+<dd><p>当应从环境中清除源文件的所有跟踪时发出，即源文件已被删除或在其被新读取之前发出。这适用于那些在环境属性中保留自己缓存的插件。</p>
+<p>例如，环境中有所有模块的缓存。当源文件被更改时，缓存中的文件条目将被清除，因为模块声明可能已经从文件中删除了。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.5 新版功能.</span></p>
 </div>
@@ -1446,33 +1351,27 @@ cleanup actions depending on the exception status.</p>
 
 </section>
 <section id="checking-the-sphinx-version">
-<h2>Checking the Sphinx version<a class="headerlink" href="#checking-the-sphinx-version" title="永久链接至标题">¶</a></h2>
-<p>Use this to adapt your extension to API changes in Sphinx.</p>
+<h2>检查 Sphinx 版本<a class="headerlink" href="#checking-the-sphinx-version" title="永久链接至标题">¶</a></h2>
+<p>使用它来调整您的插件以适应 Sphinx 中的 API 更改。</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="sphinx.version_info">
 <span class="sig-prename descclassname"><span class="pre">sphinx.</span></span><span class="sig-name descname"><span class="pre">version_info</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(4,</span> <span class="pre">4,</span> <span class="pre">0,</span> <span class="pre">'final',</span> <span class="pre">0)</span></em><a class="headerlink" href="#sphinx.version_info" title="永久链接至目标">¶</a></dt>
-<dd><p>Version info for better programmatic use.</p>
-<p>A tuple of five elements; for Sphinx version 1.2.1 beta 3 this would be
-<code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">'beta',</span> <span class="pre">3)</span></code>. The fourth element can be one of: <code class="docutils literal notranslate"><span class="pre">alpha</span></code>,
-<code class="docutils literal notranslate"><span class="pre">beta</span></code>, <code class="docutils literal notranslate"><span class="pre">rc</span></code>, <code class="docutils literal notranslate"><span class="pre">final</span></code>. <code class="docutils literal notranslate"><span class="pre">final</span></code> always has 0 as the last element.</p>
+<dd><p>更好的程序使用的版本信息。</p>
+<p>由五个元素组成的元组；对于 Sphinx 版本 1.2.1 beta 3，这将是 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">'beta',</span> <span class="pre">3)</span></code>。第四个元素可以是：<code class="docutils literal notranslate"><span class="pre">alpha</span></code>， <code class="docutils literal notranslate"><span class="pre">beta</span></code>， <code class="docutils literal notranslate"><span class="pre">rc</span></code>， <code class="docutils literal notranslate"><span class="pre">final</span></code>。<code class="docutils literal notranslate"><span class="pre">final</span></code> 总是把 0 作为最后一个元素。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">1.2 新版功能: </span>Before version 1.2, check the string <code class="docutils literal notranslate"><span class="pre">sphinx.__version__</span></code>.</p>
+<p><span class="versionmodified added">1.2 新版功能: </span>在 1.2 版本之前，检查字符串 <code class="docutils literal notranslate"><span class="pre">sphinx.__version__</span></code>。</p>
 </div>
 </dd></dl>
 
 </section>
 <section id="the-config-object">
-<h2>The Config object<a class="headerlink" href="#the-config-object" title="永久链接至标题">¶</a></h2>
+<h2>Config 对象<a class="headerlink" href="#the-config-object" title="永久链接至标题">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sphinx.config.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sphinx.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(在 Python v3.10)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(在 Python v3.10)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(在 Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(在 Python v3.10)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sphinx/config.html#Config"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#sphinx.config.Config" title="永久链接至目标">¶</a></dt>
-<dd><p>Configuration file abstraction.</p>
-<p>The config object makes the values of all config values available as
-attributes.</p>
-<p>It is exposed via the <code class="xref py py-attr docutils literal notranslate"><span class="pre">sphinx.application.Application.config</span></code> and
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">sphinx.environment.Environment.config</span></code> attributes. For example,
-to get the value of <a class="reference internal" href="../usage/configuration.html#confval-language"><code class="xref std std-confval docutils literal notranslate"><span class="pre">language</span></code></a>, use either <code class="docutils literal notranslate"><span class="pre">app.config.language</span></code>
-or <code class="docutils literal notranslate"><span class="pre">env.config.language</span></code>.</p>
+<dd><p>配置文件的抽象。</p>
+<p>配置对象使所有配置值的值作为属性可用。</p>
+<p>它是通过 <code class="xref py py-attr docutils literal notranslate"><span class="pre">sphinx.application.Application.config</span></code> 和 <code class="xref py py-attr docutils literal notranslate"><span class="pre">sphinx.environment.Environment.config</span></code> 属性公开的。例如，要获取 <a class="reference internal" href="../usage/configuration.html#confval-language"><code class="xref std std-confval docutils literal notranslate"><span class="pre">language</span></code></a> 的值，可以使用 <code class="docutils literal notranslate"><span class="pre">app.config.language</span></code> 或 <code class="docutils literal notranslate"><span class="pre">env.config.language</span></code>。</p>
 </dd></dl>
 
 </section>
