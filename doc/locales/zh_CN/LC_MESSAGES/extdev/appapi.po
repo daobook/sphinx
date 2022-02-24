@@ -57,7 +57,8 @@ msgid ""
 "Load the extension given by the module *name*.  Use this if your "
 "extension needs the features provided by another extension.  No-op if "
 "called twice."
-msgstr "加载由模块 *名称* 给出的插件。如果你的插件需要另一个插件提供的功能，请使用此功能。如果调用两次，则没有作用。"
+msgstr "加载由模块 *name* 给出的插件。"
+"如果你的插件需要另一个插件提供的功能，请使用此功能。如果调用两次，则没有作用。"
 
 #: of sphinx.application.Sphinx.require_sphinx:1
 msgid "Check the Sphinx version if requested."
