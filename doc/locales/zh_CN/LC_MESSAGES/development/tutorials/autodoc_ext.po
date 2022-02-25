@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../development/tutorials/autodoc_ext.rst:4
 msgid "Developing autodoc extension for IntEnum"
-msgstr ""
+msgstr "为 IntEnum 开发 autodoc 插件"
 
 #: ../../development/tutorials/autodoc_ext.rst:6
 msgid ""
@@ -27,10 +27,12 @@ msgid ""
 "support for new type for autodoc. This autodoc extension will format the "
 "``IntEnum`` class from Python standard library. (module ``enum``)"
 msgstr ""
+"本教程的目的是创建插件，为 autodoc 添加新类型的支持。"
+"这个 autodoc 插件将从 Python 标准库格式化 ``IntEnum`` 类。（模块 ``enum``）"
 
 #: ../../development/tutorials/autodoc_ext.rst:11
 msgid "Overview"
-msgstr ""
+msgstr "概述"
 
 #: ../../development/tutorials/autodoc_ext.rst:13
 msgid ""
@@ -38,34 +40,37 @@ msgid ""
 "``IntEnum`` is the integer enum class from standard library ``enum`` "
 "module."
 msgstr ""
+"我们想要的插件，将创建自动文档的 IntEnum。"
+"``IntEnum`` 是来自标准库 ``enum`` 模块的整数枚举类。"
 
 #: ../../development/tutorials/autodoc_ext.rst:16
 msgid "Currently this class has no special auto documentation behavior."
-msgstr ""
+msgstr "目前这个类没有特殊的自动文档行为。"
 
 #: ../../development/tutorials/autodoc_ext.rst:18
 msgid "We want to add following to autodoc:"
-msgstr ""
+msgstr "我们想添加以下 autodoc："
 
 #: ../../development/tutorials/autodoc_ext.rst:20
 msgid "A new ``autointenum`` directive that will document the ``IntEnum`` class."
-msgstr ""
+msgstr "新的 ``autointenum`` 指令，将记录 ``IntEnum`` 类。"
 
 #: ../../development/tutorials/autodoc_ext.rst:21
 msgid ""
 "The generated documentation will have all the enum possible values with "
 "names."
-msgstr ""
+msgstr "生成的文档将包含所有具有名称的枚举可能值。"
 
 #: ../../development/tutorials/autodoc_ext.rst:23
 msgid ""
 "The ``autointenum`` directive will have an option ``:hex:`` which will "
 "cause the integers be printed in hexadecimal form."
 msgstr ""
+"``autointenum`` 指令将有选项 ``:hex:``，该选项将导致整数以十六进制形式输出。"
 
 #: ../../development/tutorials/autodoc_ext.rst:28
 msgid "Prerequisites"
-msgstr ""
+msgstr "准备"
 
 #: ../../development/tutorials/autodoc_ext.rst:30
 msgid ""
@@ -74,18 +79,21 @@ msgid ""
 ":file:`autodoc_intenum.py`. The :file:`my_enums.py` will contain the "
 "sample enums we will document."
 msgstr ""
+"我们需要相同的设置，如在 :doc:`the previous extensions <todo>`。"
+"这一次，我们将把插件放在名为 :file:`autodoc_intenum.py` 的文件中。"
+":file:`my_enums.py` 将包含我们将记录的示例枚举。"
 
 #: ../../development/tutorials/autodoc_ext.rst:34
 msgid "Here is an example of the folder structure you might obtain:"
-msgstr ""
+msgstr "下面是您可能获得的文件夹结构示例："
 
 #: ../../development/tutorials/autodoc_ext.rst:47
 msgid "Writing the extension"
-msgstr ""
+msgstr "编写插件"
 
 #: ../../development/tutorials/autodoc_ext.rst:49
 msgid "Start with ``setup`` function for the extension."
-msgstr ""
+msgstr "用 ``setup`` 函数开始扩展。"
 
 #: ../../development/tutorials/autodoc_ext.rst:57
 msgid ""
@@ -94,10 +102,12 @@ msgid ""
 ":meth:`~Sphinx.add_autodocumenter` is the method that registers our new "
 "auto documenter class."
 msgstr ""
+":meth:`~Sphinx.setup_extension` 方法将拉出 autodoc 插件，因为我们的新插件依赖于 autodoc。"
+":meth:`~Sphinx.add_autodocumenter` 是注册我们新的自动文档器类的方法"
 
 #: ../../development/tutorials/autodoc_ext.rst:61
 msgid "We want to import certain objects from the autodoc extension:"
-msgstr ""
+msgstr "我们想从 autodoc 插件导入某些对象"
 
 #: ../../development/tutorials/autodoc_ext.rst:69
 msgid ""
@@ -106,14 +116,16 @@ msgid ""
 "extension but our new class is the subclass of ``ClassDocumenter`` which "
 "a documenter class used by autodoc to document classes."
 msgstr ""
+"在 autodoc 插件中有几种不同的文档类，如 ``MethodDocumenter`` 或 ``AttributeDocumenter``，"
+"但我们的新类是 ``ClassDocumenter`` 的子类，它是 autodoc 用来记录类的文档类。"
 
 #: ../../development/tutorials/autodoc_ext.rst:74
 msgid "This is the definition of our new the auto-documenter class:"
-msgstr ""
+msgstr "下面是我们的新类 auto-documenter 的定义："
 
 #: ../../development/tutorials/autodoc_ext.rst:82
 msgid "Important attributes of the new class:"
-msgstr ""
+msgstr "新类的重要属性："
 
 #: ../../development/tutorials/autodoc_ext.rst:86
 msgid "**objtype**"
@@ -124,6 +136,8 @@ msgid ""
 "This attribute determines the ``auto`` directive name. In this case the "
 "auto directive will be ``autointenum``."
 msgstr ""
+"这个属性决定了 ``auto`` 指令的名称。"
+"在这种情况下，auto 指令将是 ``autointenum``。"
 
 #: ../../development/tutorials/autodoc_ext.rst:90
 msgid "**directivetype**"
@@ -134,6 +148,7 @@ msgid ""
 "This attribute sets the generated directive name. In this example the "
 "generated directive will be ``.. :py:class::``."
 msgstr ""
+"这个属性设置生成的指令名。在这个例子中，生成的指令是 ``.. :py:class::``。"
 
 #: ../../development/tutorials/autodoc_ext.rst:94
 msgid "**priority**"
@@ -144,6 +159,7 @@ msgid ""
 "the larger the number the higher is the priority. We want our documenter "
 "be higher priority than the parent."
 msgstr ""
+"数字越大，优先级越高。我们希望文档文件的优先级高于父文件。"
 
 #: ../../development/tutorials/autodoc_ext.rst:99
 msgid "**option_spec**"
@@ -154,10 +170,11 @@ msgid ""
 "option specifications. We copy the parent class options and add a new "
 "option *hex*."
 msgstr ""
+"选项规范。我们复制父类选项，并添加新选项 *hex*。"
 
 #: ../../development/tutorials/autodoc_ext.rst:101
 msgid "Overridden members:"
-msgstr ""
+msgstr "覆盖成员："
 
 #: ../../development/tutorials/autodoc_ext.rst:105
 msgid "**can_document_member**"
@@ -168,6 +185,7 @@ msgid ""
 "This member is important to override. It should return *True* when the "
 "passed object can be documented by this class."
 msgstr ""
+"覆写这个成员很重要。当传递的对象可以被这个类记录时，它应该返回 *True*。"
 
 #: ../../development/tutorials/autodoc_ext.rst:110
 msgid "**add_directive_header**"
@@ -178,6 +196,8 @@ msgid ""
 "This method generates the directive header. We add **:final:** directive "
 "option. Remember to call **super** or no directive will be generated."
 msgstr ""
+"这个方法生成指令头文件。我们添加了 **:final:** 指令选项。"
+"记住调用 **super**，否则不会生成任何指令。"
 
 #: ../../development/tutorials/autodoc_ext.rst:115
 msgid "**add_content**"
@@ -188,18 +208,19 @@ msgid ""
 "This method generates the body of the class documentation. After calling "
 "the super method we generate lines for enum description."
 msgstr ""
+"这个方法生成类文档的主体。在调用 super 方法后，我们生成了用于 enum description 的行。"
 
 #: ../../development/tutorials/autodoc_ext.rst:118
 msgid "Using the extension"
-msgstr ""
+msgstr "使用插件"
 
 #: ../../development/tutorials/autodoc_ext.rst:120
 msgid "You can now use the new autodoc directive to document any ``IntEnum``."
-msgstr ""
+msgstr "你现在可以使用新的 autodoc 指令来记录任何 ``IntEnum``。"
 
 #: ../../development/tutorials/autodoc_ext.rst:122
 msgid "For example, you have the following ``IntEnum``:"
-msgstr ""
+msgstr "例如，你有以下``IntEnum``："
 
 #: ../../development/tutorials/autodoc_ext.rst:124
 msgid "my_enums.py"
@@ -207,7 +228,7 @@ msgstr ""
 
 #: ../../development/tutorials/autodoc_ext.rst:135
 msgid "This will be the documentation file with auto-documentation directive:"
-msgstr ""
+msgstr "这将是带有自动文档指令的文档文件："
 
 #: ../../development/tutorials/autodoc_ext.rst:137
 msgid "index.rst"
