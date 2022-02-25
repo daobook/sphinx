@@ -792,15 +792,20 @@ msgid ""
 "``<script>`` tags. Extra keyword arguments are included as attributes of "
 "the ``<script>`` tag."
 msgstr ""
+"将 *filename*  添加到默认 HTML 模板将按照 *priority* （升序）的顺序包含的 JavaScript 文件列表中。"
+"filename 必须是相对于 HTML 静态路径，或带 scheme 的完整 URI。"
+"如果 JavaScript 文件的优先级与其他文件相同，则按注册顺序将 JavaScript 文件包含进去。"
+"如果给出了关键字参数体，那么它的值将被添加到 ``<script>`` 标记之间。"
+"额外的关键字参数包含在  ``<script>`` 标记的属性中。"
 
 #: of sphinx.application.Sphinx.add_css_file:10
 #: sphinx.application.Sphinx.add_js_file:12
 msgid "Example::"
-msgstr ""
+msgstr "示例 ::"
 
 #: of sphinx.application.Sphinx.add_js_file:23
 msgid "priority range for JavaScript files"
-msgstr ""
+msgstr "JavaScript 文件的优先级范围"
 
 #: of sphinx.application.Sphinx.add_css_file:28
 #: sphinx.application.Sphinx.add_js_file:28
@@ -809,7 +814,7 @@ msgstr ""
 
 #: of sphinx.application.Sphinx.add_js_file:29
 msgid "default priority for built-in JavaScript files"
-msgstr ""
+msgstr "内置 JavaScript 文件的默认优先级"
 
 #: of sphinx.application.Sphinx.add_css_file:30
 #: sphinx.application.Sphinx.add_js_file:30
@@ -819,7 +824,7 @@ msgstr ""
 #: of sphinx.application.Sphinx.add_css_file:31
 #: sphinx.application.Sphinx.add_js_file:31
 msgid "default priority for extensions"
-msgstr ""
+msgstr "插件的默认优先级"
 
 #: of sphinx.application.Sphinx.add_css_file:32
 #: sphinx.application.Sphinx.add_js_file:32
@@ -828,29 +833,32 @@ msgstr ""
 
 #: of sphinx.application.Sphinx.add_js_file:33
 msgid "default priority for :confval:`html_js_files`"
-msgstr ""
+msgstr ":confval:`html_js_files` 的默认优先级"
 
 #: of sphinx.application.Sphinx.add_js_file:35
 msgid ""
 "A JavaScript file can be added to the specific HTML page when an "
 "extension calls this method on :event:`html-page-context` event."
 msgstr ""
+"当插件在 :event:`html-page-context` 事件上调用此方法时，可以将 JavaScript 文件添加到特定的 HTML 页面。"
 
 #: of sphinx.application.Sphinx.add_js_file:40
 msgid ""
 "Renamed from ``app.add_javascript()``. And it allows keyword arguments as"
 " attributes of script tag."
 msgstr ""
+"更名为 ``app.add_javascript()``。它允许关键字参数作为 script 标签的属性。"
 
 #: of sphinx.application.Sphinx.add_js_file:44
 msgid ""
 "Take priority argument.  Allow to add a JavaScript file to the specific "
 "page."
 msgstr ""
+"priority 的 argument。允许添加 JavaScript 文件到特定的页面。"
 
 #: of sphinx.application.Sphinx.add_css_file:1
 msgid "Register a stylesheet to include in the HTML output."
-msgstr ""
+msgstr "注册样式表以包含在 HTML 输出中。"
 
 #: of sphinx.application.Sphinx.add_css_file:3
 msgid ""
@@ -861,24 +869,29 @@ msgid ""
 "included in order of registration.  The keyword arguments are also "
 "accepted for attributes of ``<link>`` tag."
 msgstr ""
+"将 *filename* 添加到 CSS 文件列表中，默认 HTML 模板将按照 *priority*  （升序）的顺序包含这些文件。"
+"filename 必须是相对于 HTML 静态路径，或带 scheme 的完整 URI。"
+"如果 CSS 文件的优先级与其他文件相同，则按照注册的顺序将这些 CSS 文件包含进去。"
+"关键字参数也被接受的属性 ``<link>`` 标签。"
 
 #: of sphinx.application.Sphinx.add_css_file:23
 msgid "priority range for CSS files"
-msgstr ""
+msgstr "CSS 文件的优先级范围"
 
 #: of sphinx.application.Sphinx.add_css_file:29
 msgid "default priority for built-in CSS files"
-msgstr ""
+msgstr "内置 CSS 文件的默认优先级"
 
 #: of sphinx.application.Sphinx.add_css_file:33
 msgid "default priority for :confval:`html_css_files`"
-msgstr ""
+msgstr ":confval:`html_css_files` 的默认优先级"
 
 #: of sphinx.application.Sphinx.add_css_file:35
 msgid ""
 "A CSS file can be added to the specific HTML page when an extension calls"
 " this method on :event:`html-page-context` event."
 msgstr ""
+"当插件在 :event:`html-page-context` 事件上调用此方法时，可以将 CSS 文件添加到特定的 HTML 页面。"
 
 #: of sphinx.application.Sphinx.add_css_file:40
 msgid ""
@@ -887,20 +900,25 @@ msgid ""
 " is no title and *alternate* = ``False``. For more information, refer to "
 "the `documentation <https://mdn.io/Web/CSS/Alternative_style_sheets>`__."
 msgstr ""
+"可选的 ``alternate`` 和/或 ``title`` 属性可以与参数 *alternate* （一个布尔值）"
+"和 *title* （一个字符串）一起提供。"
+"默认是没有标题，*alternate* = ``False``。"
+"有关更多信息，请参阅 `文档 <https://mdn.io/Web/CSS/Alternative_style_sheets>`__。"
 
 #: of sphinx.application.Sphinx.add_css_file:47
 msgid ""
 "Renamed from ``app.add_stylesheet()``. And it allows keyword arguments as"
 " attributes of link tag."
 msgstr ""
+"更名为 ``app.add_stylesheet()``。它允许关键字参数作为链接标签的属性。"
 
 #: of sphinx.application.Sphinx.add_css_file:51
 msgid "Take priority argument.  Allow to add a CSS file to the specific page."
-msgstr ""
+msgstr "priority 的 argument。允许添加 CSS 文件到特定的页面。"
 
 #: of sphinx.application.Sphinx.add_latex_package:1
 msgid "Register a package to include in the LaTeX source code."
-msgstr ""
+msgstr "注册包含在 LaTeX 源代码中的包。"
 
 #: of sphinx.application.Sphinx.add_latex_package:3
 msgid ""
@@ -909,28 +927,32 @@ msgid ""
 "`\\usepackage` declaration.  If you set *after_hyperref* truthy, the "
 "package will be loaded after ``hyperref`` package."
 msgstr ""
+"将 *packagename* 添加到 LaTeX 源代码将包含的包列表中。"
+"如果你提供 *options*，它将被带到 `\\usepackage` 声明中。"
+"如果你设置 *after_hyperref* truthy，这个包将会在 ``hyperref``  package 之后被加载。"
 
 #: of sphinx.application.Sphinx.add_latex_package:18
 msgid "*after_hyperref* option."
-msgstr ""
+msgstr "*after_hyperref* 选项"
 
 #: of sphinx.application.Sphinx.add_lexer:1
 msgid "Register a new lexer for source code."
-msgstr ""
+msgstr "为源代码注册新的 lexer。"
 
 #: of sphinx.application.Sphinx.add_lexer:3
 msgid "Use *lexer* to highlight code blocks with the given language *alias*."
-msgstr ""
+msgstr "使用 *lexer* 突出显示带有给定语言 *alias* 的代码块。"
 
 #: of sphinx.application.Sphinx.add_lexer:6
 msgid ""
 "Take a lexer class as an argument.  An instance of lexers are still "
 "supported until Sphinx-3.x."
 msgstr ""
+"把 lexer 类作为参数。在 Sphinx-3.x 之前，lexer 的实例仍然受到支持。"
 
 #: of sphinx.application.Sphinx.add_autodocumenter:1
 msgid "Register a new documenter class for the autodoc extension."
-msgstr ""
+msgstr "为 autodoc 插件注册新的文档器类。"
 
 #: of sphinx.application.Sphinx.add_autodocumenter:3
 msgid ""
@@ -940,20 +962,24 @@ msgid ""
 " types of objects.  See the source of the autodoc module for examples on "
 "how to subclass :class:`Documenter`."
 msgstr ""
+"添加 *cls* 作为 :mod:`sphinx.ext.autodoc` 插件的新文档器类。"
+"它必须是 :class:`sphinx.ext.autodoc.Documenter` 的子类。这允许自动记录新类型的对象。"
+"有关如何子类化 :class:`Documenter` 的例子，请参阅 autodoc 模块的源代码。"
 
 #: of sphinx.application.Sphinx.add_autodocumenter:9
 msgid ""
 "If *override* is True, the given *cls* is forcedly installed even if a "
 "documenter having the same name is already installed."
 msgstr ""
+"如果 *override* 为True，则给定的 *cls* 被强制安装，即使已经安装了同名文档。"
 
 #: of sphinx.application.Sphinx.add_autodocumenter:12
 msgid "See :ref:`autodoc_ext_tutorial`."
-msgstr ""
+msgstr "查阅 :ref:`autodoc_ext_tutorial`。"
 
 #: of sphinx.application.Sphinx.add_autodoc_attrgetter:1
 msgid "Register a new ``getattr``-like function for the autodoc extension."
-msgstr ""
+msgstr "为 autodoc 插件注册新的类 ``getattr`` 函数。"
 
 #: of sphinx.application.Sphinx.add_autodoc_attrgetter:3
 msgid ""
@@ -963,10 +989,12 @@ msgid ""
 "attribute of a type are then handled by this function instead of "
 ":func:`getattr`."
 msgstr ""
+"添加 *getter*，它必须是与 :func:`getattr` 内置接口兼容的函数，作为 *typ* 实例对象的 autodoc 属性 getter。"
+"所有 autodoc 需要获取类型属性的情况都由这个函数处理，而不是 :func:`getattr`。"
 
 #: of sphinx.application.Sphinx.add_search_language:1
 msgid "Register a new language for the HTML search index."
-msgstr ""
+msgstr "为 HTML 搜索索引注册新语言。"
 
 #: of sphinx.application.Sphinx.add_search_language:3
 msgid ""
@@ -976,60 +1004,67 @@ msgid ""
 " that indicates the language it should be used for.  See "
 ":confval:`html_search_language`."
 msgstr ""
+"添加 *cls*，它必须是 :class:`sphinx.search.SearchLanguage` 的子类，作为构建 HTML 全文搜索索引的支持语言。"
+"类必须有一个 *lang* 属性来指示它应该用于的语言。查阅 :confval:`html_search_language`。"
 
 #: of sphinx.application.Sphinx.add_source_suffix:1
 msgid "Register a suffix of source files."
-msgstr ""
+msgstr "注册源文件的后缀。"
 
 #: of sphinx.application.Sphinx.add_source_suffix:3
 msgid ""
 "Same as :confval:`source_suffix`.  The users can override this using the "
 "config setting."
 msgstr ""
+"同 :confval:`source_suffix`。用户可以通过 config 设置来覆盖它。"
 
 #: of sphinx.application.Sphinx.add_source_suffix:6
 msgid ""
 "If *override* is True, the given *suffix* is forcedly installed even if "
 "the same suffix is already installed."
 msgstr ""
+"如果 *override* 为True，则给定的 *suffix* 被强制安装，即使已经安装了相同的后缀。"
 
 #: of sphinx.application.Sphinx.add_source_parser:1
 msgid "Register a parser class."
-msgstr ""
+msgstr "注册 parser 类。"
 
 #: of sphinx.application.Sphinx.add_source_parser:3
 msgid ""
 "If *override* is True, the given *parser* is forcedly installed even if a"
 " parser for the same suffix is already installed."
 msgstr ""
+"如果 *override* 为 True，则给定的 *parser* 被强制安装，即使已经安装了相同后缀的解析器。"
 
 #: of sphinx.application.Sphinx.add_source_parser:7
 msgid ""
 "*suffix* argument is deprecated.  It only accepts *parser* argument. Use "
 ":meth:`add_source_suffix` API to register suffix instead."
 msgstr ""
+"*suffix* 参数已弃用。它只接受 *parser* 参数。使用 :meth:`add_source_suffix` API 来注册后缀。"
 
 #: of sphinx.application.Sphinx.add_env_collector:1
 msgid "Register an environment collector class."
-msgstr ""
+msgstr "注册环境收集器类。"
 
 #: of sphinx.application.Sphinx.add_env_collector:3
 msgid "Refer to :ref:`collector-api`."
-msgstr ""
+msgstr "指的是 :ref:`collector-api`。"
 
 #: of sphinx.application.Sphinx.add_html_theme:1
 msgid "Register a HTML Theme."
-msgstr ""
+msgstr "注册 HTML 状态主题。"
 
 #: of sphinx.application.Sphinx.add_html_theme:3
 msgid ""
 "The *name* is a name of theme, and *theme_path* is a full path to the "
 "theme (refs: :ref:`distribute-your-theme`)."
 msgstr ""
+"*name* 是主题的名称，*theme_path* 是主题的完整路径（引用：:ref:`distribute-your-theme`）。"
 
 #: of sphinx.application.Sphinx.add_html_math_renderer:1
 msgid "Register a math renderer for HTML."
-msgstr ""
+msgstr "为 HTML 注册数学渲染器。"
 
 #: of sphinx.application.Sphinx.add_html_math_renderer:3
 msgid ""
@@ -1039,36 +1074,41 @@ msgid ""
 "node (``nodes.math_block``).  Regarding visitor functions, see "
 ":meth:`add_node` for details."
 msgstr ""
+"这个 *name* 是数学渲染器的名字。"
+"*inline_renderers* 和 *block_renderers* 都被用作 HTML 编写器的访问者函数："
+"前者用于内联数学节点（``nodes.math``），后者用于块数学节点（``nodes.math_block``）。"
+"关于访问者函数，请参阅 :meth:`add_node` 获取详细信息。"
 
 #: of sphinx.application.Sphinx.add_message_catalog:1
 msgid "Register a message catalog."
-msgstr ""
+msgstr "注册消息 catalog。"
 
 #: of sphinx.application.Sphinx.add_message_catalog:3
 msgid "The name of the catalog"
-msgstr ""
+msgstr "catalog 的名称"
 
 #: of sphinx.application.Sphinx.add_message_catalog:4
 msgid "The base path of the message catalog"
-msgstr ""
+msgstr "消息 catalog 的基本路径"
 
 #: of sphinx.application.Sphinx.add_message_catalog:6
 msgid "For more details, see :func:`sphinx.locale.get_translation()`."
-msgstr ""
+msgstr "有关详细信息，请参见 :func:`sphinx.locale.get_translation()`。"
 
 #: of sphinx.application.Sphinx.is_parallel_allowed:1
 msgid "Check whether parallel processing is allowed or not."
-msgstr ""
+msgstr "检查是否允许并行处理。"
 
 #: of sphinx.application.Sphinx.is_parallel_allowed:3
 msgid "A type of processing; ``'read'`` or ``'write'``."
-msgstr ""
+msgstr "处理类型；``'read'`` 或 ``'write'``。"
 
 #: ../../extdev/appapi.rst:100
 msgid ""
 "All these methods raise this exception if something went wrong with the "
 "extension API."
 msgstr ""
+"如果插件 API 出了问题，所有这些方法都会引发这个异常。"
 
 #: ../../extdev/appapi.rst:105
 msgid "Emitting events"
@@ -1215,12 +1255,16 @@ msgid ""
 "more docnames that Sphinx did not consider changed (but never add any "
 "docnames that are not in ``env.found_docs``)."
 msgstr ""
+"在环境确定了所有添加和更改的文件的列表之后，在读取它们之前发出。"
+"它允许插件作者在处理之前重新排序文档名列表（*inplace*），"
+"或者添加更多 Sphinx 没有考虑更改的文档名（但永远不要添加任何不在 ``env.found_docs`` 中的文档名）。"
 
 #: ../../extdev/appapi.rst:246
 msgid ""
 "You can also remove document names; do this with caution since it will "
 "make Sphinx treat changed files as unchanged."
 msgstr ""
+"你也可以删除文档名称；这样做要小心，因为它会使 Sphinx 将更改的文件视为未更改的。"
 
 #: ../../extdev/appapi.rst:253
 msgid ""
@@ -1229,6 +1273,8 @@ msgid ""
 "process the contents and replace this item to implement source-level "
 "transformations."
 msgstr ""
+"当读取源文件时触发。*source* 参数是列表，它的单个元素是源文件的内容。"
+"您可以处理内容并替换此项，以实现源代码级变换。"
 
 #: ../../extdev/appapi.rst:257
 msgid ""
@@ -1236,6 +1282,8 @@ msgid ""
 "in LaTeX, you can use a regular expression to replace ``$...$`` by "
 "``:math:`...```."
 msgstr ""
+"例如，如果你想使用 ``$`` 符号来分隔内联数学，就像在 LaTeX 中一样，"
+"你可以使用正则表达式将 ``$...$`` 替换为 ``:math:`...```。"
 
 #: ../../extdev/appapi.rst:265
 msgid ""
@@ -1244,12 +1292,16 @@ msgid ""
 "object. And *contentnode* is a content for the object.  It can be "
 "modified in-place."
 msgstr ""
+"当对象描述指令运行时触发。"
+"参数 *domain* 和 *objtype* 是字符串，指示对象的对象描述。"
+"而 *contentnode* 是对象的内容。它可以在适当的地方进行修改。"
 
 #: ../../extdev/appapi.rst:273
 msgid ""
 "Emitted when a doctree has been parsed and read by the environment, and "
 "is about to be pickled.  The *doctree* can be modified in-place."
 msgstr ""
+"当环境解析和读取了 doctree，并准备进行 pickle 时发出。*doctree* 可以就地修改。"
 
 #: ../../extdev/appapi.rst:278
 msgid ""
@@ -1262,6 +1314,11 @@ msgid ""
 "prevent other handlers in trying and suppress a warning about this cross-"
 "reference being unresolved."
 msgstr ""
+"当无法解析对对象的交叉引用时触发。"
+"如果事件处理程序可以解析引用，它应该返回新的 docutils 节点，插入到文档树中的节点 *node* 的位置。"
+"通常这个节点是 :class:`reference` 节点，其中包含子节点。"
+"如果处理程序不能解析交叉引用，它可以返回 ``None`` 让其他处理程序尝试，"
+"或者引发 :class:`NoUri` 来阻止其他处理程序尝试，并抑制关于此交叉引用未解析的警告。"
 
 #: ../../extdev/appapi.rst
 msgid "Parameters"
@@ -1269,7 +1326,7 @@ msgstr "参数"
 
 #: ../../extdev/appapi.rst:288
 msgid "The build environment (``app.builder.env``)."
-msgstr ""
+msgstr "构建环境（``app.builder.env``）。"
 
 #: ../../extdev/appapi.rst:289
 msgid ""
@@ -1277,12 +1334,15 @@ msgid ""
 "``reftype``, ``reftarget``, ``modname`` and ``classname`` attributes "
 "determine the type and target of the reference."
 msgstr ""
+"要解析的 :class:`pending_xref` 节点。"
+"它的属性 ``reftype``、``reftarget``、``modname`` 和 ``classname`` 决定了引用的类型和目标。"
 
 #: ../../extdev/appapi.rst:292
 msgid ""
 "The node that carries the text and formatting inside the future reference"
 " and should be a child of the returned reference node."
 msgstr ""
+"在将来引用中携带文本和格式的节点，应该是返回的引用节点的子节点。"
 
 #: ../../extdev/appapi.rst:299
 msgid ""
@@ -1292,6 +1352,9 @@ msgid ""
 "variables :confval:`nitpick_ignore` and :confval:`nitpick_ignore_regex` "
 "prevent the event from being emitted for the corresponding nodes."
 msgstr ""
+"当对对象的交叉引用不能被解析时触发，即使在 :event:`missing-reference` 之后。"
+"如果事件处理程序可以对丢失的引用发出警告，那么它应该返回 ``True``。"
+"配置变量 :confval:`nitpick_ignore` 和 :confval:`nitpick_ignore_regex` 防止相应节点触发该事件。"
 
 #: ../../extdev/appapi.rst:309
 msgid ""
@@ -1299,6 +1362,8 @@ msgid ""
 " all references have been resolved and TOCs have been inserted.  The "
 "*doctree* can be modified in place."
 msgstr ""
+"当环境已经 \"resolved\" 文档树时触发，也就是说，所有的引用已经被解析并且 TOC 已经被插入。"
+"可以在适当的地方修改 *doctree*。"
 
 #: ../../extdev/appapi.rst:313
 msgid ""
@@ -1306,12 +1371,15 @@ msgid ""
 " in the writers, so that they don't cause errors when the writers "
 "encounter them."
 msgstr ""
+"这里可以替换编写器中没有访问器方法的自定义节点，这样当编写器遇到这些方法时，它们就不会导致错误。"
 
 #: ../../extdev/appapi.rst:318
 msgid ""
 "This event is only emitted when parallel reading of documents is enabled."
 "  It is emitted once for every subprocess that has read some documents."
 msgstr ""
+"此事件仅在启用文档并行读取时触发。"
+"每次读取了一些文档的子流程都会触发一次。"
 
 #: ../../extdev/appapi.rst:321
 msgid ""
@@ -1319,6 +1387,8 @@ msgid ""
 "environment in a custom location.  Otherwise the environment in the main "
 "process will not be aware of the information stored in the subprocess."
 msgstr ""
+"您必须在将数据存储在自定义位置的环境中的扩展中处理此事件。"
+"否则，主进程中的环境将无法感知存储在子进程中的信息。"
 
 #: ../../extdev/appapi.rst:325
 msgid ""
@@ -1326,12 +1396,15 @@ msgid ""
 "environment from the main process.  *docnames* is a set of document names"
 " that have been read in the subprocess."
 msgstr ""
+"*other* 是来自子进程的环境对象，*env* 是来自主进程的环境对象。"
+"*docnames* 是在子进程中读取的一组文档名。"
 
 #: ../../extdev/appapi.rst:333
 msgid ""
 "Emitted when the :meth:`update` method of the build environment has "
 "completed, that is, the environment and all doctrees are now up-to-date."
 msgstr ""
+"当构建环境的 :meth:`update` 方法完成时触发，也就是说，环境和所有的文档树现在都是最新的。"
 
 #: ../../extdev/appapi.rst:336
 msgid ""
@@ -1339,20 +1412,23 @@ msgid ""
 " will then be considered updated, and will be (re-)written during the "
 "writing phase."
 msgstr ""
+"你可以从处理器返回 docname 的可迭代对象。"
+"这些文件将被认为是更新的，并将在写作阶段（重新）编写。"
 
 #: ../../extdev/appapi.rst:342
 msgid "The handlers' return value is now used."
-msgstr ""
+msgstr "现在使用处理程序的返回值。"
 
 #: ../../extdev/appapi.rst:347
 msgid ""
 "Emitted when Consistency checks phase.  You can check consistency of "
 "metadata for whole of documents."
 msgstr ""
+"当 Consistency 检查 phase 时触发。你可以检查整个文档的元数据的一致性。"
 
 #: ../../extdev/appapi.rst:352
 msgid "As a **experimental** event"
-msgstr ""
+msgstr "作为 **experimental** 事件"
 
 #: ../../extdev/appapi.rst:356
 msgid ""
@@ -1360,6 +1436,8 @@ msgid ""
 "You can add pages to write by returning an iterable from this event "
 "consisting of ``(pagename, context, templatename)``."
 msgstr ""
+"当 HTML 构建器开始编写非文档页面时触发。"
+"你可以通过从这个事件返回由 ``(pagename, context, templatename)`` 组成的可迭代对象来添加要写入的页面。"
 
 #: ../../extdev/appapi.rst:364
 msgid ""
@@ -1367,6 +1445,7 @@ msgid ""
 "a template with -- this can be used to add custom elements to the "
 "context."
 msgstr ""
+"当 HTML 构建器创建了一个上下文字典来呈现模板时触发——这可以用来向上下文添加自定义元素。"
 
 #: ../../extdev/appapi.rst:367
 msgid ""
@@ -1375,6 +1454,8 @@ msgid ""
 "  The *templatename* is the name of the template to render, this will be "
 "``'page.html'`` for all pages from reST documents."
 msgstr ""
+"*pagename* 参数是所呈现页面的规范名称，也就是说，不带有 ``.html`` 后缀，并使用斜杠作为路径分隔符。"
+"*templatename* 是要渲染的模板的名称，这将是 ``'page.html'``  用于 reST 文档中的所有页面。"
 
 #: ../../extdev/appapi.rst:372
 msgid ""
@@ -1382,6 +1463,7 @@ msgid ""
 "template engine to render the page and can be modified to include custom "
 "values.  Keys must be strings."
 msgstr ""
+"*context* 参数是一个值字典，它被提供给模板引擎来呈现页面，并且可以修改为包含自定义值。key 一定是字符串。"
 
 #: ../../extdev/appapi.rst:376
 msgid ""
@@ -1389,22 +1471,25 @@ msgid ""
 "reST documents; it will be ``None`` when the page is created from an HTML"
 " template alone."
 msgstr ""
+"当页面从 reST 文档创建时，*doctree* 参数将是 doctree；当仅从 HTML 模板创建页面时，它将是 ``None``。"
 
 #: ../../extdev/appapi.rst:380
 msgid ""
 "You can return a string from the handler, it will then replace "
 "``'page.html'`` as the HTML template for this page."
 msgstr ""
+"你可以从处理程序返回字符串，然后它将替换 ``'page.html'`` 作为这个页面的 HTML 模板。"
 
 #: ../../extdev/appapi.rst:383
 msgid ""
 "You can install JS/CSS files for the specific page via "
 ":meth:`Sphinx.add_js_file` and :meth:`Sphinx.add_css_file` since v3.5.0."
 msgstr ""
+"你可以安装 JS/CSS 文件的特定页面通过 :meth:`Sphinx.add_js_file` 和 :meth:`Sphinx.add_css_file` （ v3.5.0）。"
 
 #: ../../extdev/appapi.rst:389
 msgid "The return value can now specify a template name."
-msgstr ""
+msgstr "返回值现在可以指定模板名称。"
 
 #: ../../extdev/appapi.rst:394
 msgid ""
@@ -1412,6 +1497,8 @@ msgid ""
 "*uri* is a collected URI.  The event handlers can modify the URI by "
 "returning a string."
 msgstr ""
+"当 linkcheck 生成器从文档中收集超链接时触发。"
+"*uri* 是一个收集的 URI。事件处理器可以通过返回字符串来修改 URI。"
 
 #: ../../extdev/appapi.rst:402
 msgid ""
@@ -1422,6 +1509,10 @@ msgid ""
 "process raised no exception, *exception* will be ``None``.  This allows "
 "to customize cleanup actions depending on the exception status."
 msgstr ""
+"当构建完成时，Sphinx 退出之前发出，通常用于清理。"
+"此事件即使在构建过程引发异常（作为 *exception* 参数给出）时也会触发。"
+"事件处理程序运行后，在应用程序中重新引发该异常。"
+"如果构建过程没有引发异常，*exception* 将为 ``None``。这允许根据异常状态定制清理操作。"
 
 #: ../../extdev/appapi.rst:413
 msgid "Checking the Sphinx version"
@@ -1475,29 +1566,33 @@ msgstr ""
 
 #: ../../extdev/appapi.rst:433
 msgid "The template bridge"
-msgstr ""
+msgstr "模板的桥梁"
 
 #: of sphinx.application.TemplateBridge:1
 msgid ""
 "This class defines the interface for a \"template bridge\", that is, a "
 "class that renders templates given a template name and a context."
 msgstr ""
+"这个类定义了 \"template bridge\" 的接口，也就是说，一个类在给定模板名称和上下文的情况下呈现模板。"
 
 #: of sphinx.application.TemplateBridge.init:1
 msgid "Called by the builder to initialize the template system."
-msgstr ""
+msgstr "由构建器调用以初始化模板系统。"
 
 #: of sphinx.application.TemplateBridge.init:3
 msgid ""
 "*builder* is the builder object; you'll probably want to look at the "
 "value of ``builder.config.templates_path``."
 msgstr ""
+"*builder* 是构建器对象；你可能想看看 ``builder.config.templates_path`` 的值。"
 
 #: of sphinx.application.TemplateBridge.init:6
 msgid ""
 "*theme* is a :class:`sphinx.theming.Theme` object or None; in the latter "
 "case, *dirs* can be list of fixed directories to look for templates."
 msgstr ""
+"*theme* 是 :class:`sphinx.theming.Theme` 对象或 None；"
+"在后一种情况下，*dirs* 可以是查找模板的固定目录列表。"
 
 #: of sphinx.application.TemplateBridge.newest_template_mtime:1
 msgid ""
@@ -1505,26 +1600,30 @@ msgid ""
 "of template changes.  Return the mtime of the newest template file that "
 "was changed.  The default implementation returns ``0``."
 msgstr ""
+"由构建器调用，以确定输出文件是否因模板更改而过时。"
+"返回被更改的最新模板文件的 mtime。默认实现返回 ``0``。"
 
 #: of sphinx.application.TemplateBridge.render:1
 msgid ""
 "Called by the builder to render a template given as a filename with a "
 "specified context (a Python dictionary)."
 msgstr ""
+"由生成器调用，以呈现带有指定上下文（Python 字典）的文件名给定的模板。"
 
 #: of sphinx.application.TemplateBridge.render_string:1
 msgid ""
 "Called by the builder to render a template given as a string with a "
 "specified context (a Python dictionary)."
 msgstr ""
+"由构造器调用，以呈现带有指定上下文（Python 字典）的字符串形式给定的模板。"
 
 #: ../../extdev/appapi.rst:444
 msgid "Exceptions"
-msgstr ""
+msgstr "异常"
 
 #: of sphinx.errors.SphinxError:1
 msgid "Base class for Sphinx errors."
-msgstr ""
+msgstr "Sphinx 错误的基类。"
 
 #: of sphinx.errors.SphinxError:3
 msgid ""
@@ -1532,12 +1631,14 @@ msgid ""
 "is raised, Sphinx will abort the build and present the exception category"
 " and message to the user."
 msgstr ""
+"这是 \"nice\" 异常的基类。当引发这样的异常时，Sphinx 将中止构建，并向用户显示异常类别和消息。"
 
 #: of sphinx.errors.SphinxError:7
 msgid ""
 "Extensions are encouraged to derive from this exception for their custom "
 "errors."
 msgstr ""
+"鼓励插件从这个异常中派生自定义错误。"
 
 #: of sphinx.errors.SphinxError:10
 msgid ""
@@ -1545,6 +1646,7 @@ msgid ""
 "unexpected and shown to the user with a part of the traceback (and the "
 "full traceback saved in a temporary file)."
 msgstr ""
+"从 :exc:`SphinxError` 派生的异常 *not* 被视为意外，并显示给用户的一部分回溯（和完整的回溯保存在一个临时文件中）。"
 
 #: of sphinx.errors.SphinxError:16
 msgid ""
@@ -1552,135 +1654,20 @@ msgid ""
 "exception to a string (\"category: message\").  Should be set accordingly"
 " in subclasses."
 msgstr ""
+"对异常的描述 \"category\"，用于将异常转换为字符串（\"category: message\"）。应该在子类中相应设置。"
 
 #: of sphinx.errors.ConfigError:1
 msgid "Configuration error."
-msgstr ""
+msgstr "配置错误"
 
 #: of sphinx.errors.ExtensionError:1
 msgid "Extension error."
-msgstr ""
+msgstr "异常错误"
 
 #: of sphinx.errors.ThemeError:1
 msgid "Theme error."
-msgstr ""
+msgstr "主题错误"
 
 #: of sphinx.errors.VersionRequirementError:1
 msgid "Incompatible Sphinx version error."
-msgstr ""
-
-#~ msgid "参数"
-#~ msgstr ""
-
-#~ msgid "返回"
-#~ msgstr ""
-
-#~ msgid "Returns"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Emitted when a cross-reference to "
-#~ "an object cannot be resolved even "
-#~ "after :event:`missing-reference`.  If the "
-#~ "event handler can emit warnings for "
-#~ "the missing reference, it should return"
-#~ " ``True``."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Add *filename* to the list of "
-#~ "JavaScript files that the default HTML"
-#~ " template will include in order of"
-#~ " *priority* (ascending).  The filename must"
-#~ " be relative to the HTML static "
-#~ "path , or a full URI with "
-#~ "scheme. If the priority of the "
-#~ "JavaScript file is the same as "
-#~ "others, the JavaScript files will be "
-#~ "included in order of registration.  If"
-#~ " the keyword argument ``body`` is "
-#~ "given, its value will be added "
-#~ "between the ``<script>`` tags. Extra "
-#~ "keyword arguments are included as "
-#~ "attributes of the ``<script>`` tag."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Add *filename* to the list of CSS"
-#~ " files that the default HTML template"
-#~ " will include in order of *priority*"
-#~ " (ascending).  The filename must be "
-#~ "relative to the HTML static path, "
-#~ "or a full URI with scheme.  If "
-#~ "the priority of the CSS file is"
-#~ " the same as others, the CSS "
-#~ "files will be included in order of"
-#~ " registration.  The keyword arguments are"
-#~ " also accepted for attributes of "
-#~ "``<link>`` tag."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The filename of the JavaScript file."
-#~ "  It must be relative to the "
-#~ "HTML static path, a full URI with"
-#~ " scheme, or ``None`` value.  The "
-#~ "``None`` value is used to create "
-#~ "inline ``<script>`` tag.  See the "
-#~ "description of *kwargs* below."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The priority to determine the order "
-#~ "of ``<script>`` tag for JavaScript "
-#~ "files.  See list of \"prority range "
-#~ "for JavaScript files\" below.  If the"
-#~ " priority of the JavaScript files it"
-#~ " the same as others, the JavaScript"
-#~ " files will be loaded in order "
-#~ "of registration."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The loading method of the JavaScript "
-#~ "file.  ``'async'`` or ``'defer'`` is "
-#~ "allowed."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Extra keyword arguments are included as"
-#~ " attributes of the ``<script>`` tag.  "
-#~ "A special keyword argument ``body`` is"
-#~ " given, its value will be added "
-#~ "between the ``<script>`` tag."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Take loading_method argument.  Allow to "
-#~ "change the loading method of the "
-#~ "JavaScript file."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The filename of the CSS file.  It"
-#~ " must be relative to the HTML "
-#~ "static path, or a full URI with"
-#~ " scheme."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The priority to determine the order "
-#~ "of ``<link>`` tag for the CSS "
-#~ "files.  See list of \"prority range "
-#~ "for CSS files\" below. If the "
-#~ "priority of the CSS files it the"
-#~ " same as others, the CSS files "
-#~ "will be loaded in order of "
-#~ "registration."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Extra keyword arguments are included as"
-#~ " attributes of the ``<link>`` tag."
-#~ msgstr ""
-
+msgstr "Sphinx 版本不兼容错误。"
