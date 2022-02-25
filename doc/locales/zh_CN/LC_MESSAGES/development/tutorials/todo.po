@@ -237,7 +237,7 @@ msgid ""
 msgstr ""
 "指令类是一个通常从 :class:`docutils.parsers.rst.Directive` 派生出来的类。"
 "指令接口在 `docutils 文档`_ 中也有详细介绍；"
-"重要的是，该类应该有配置允许标记的属性，以及一个返回节点列表的 ``run`` 方法。"
+"重要的是，该类应该有配置允许标记的属性，以及返回节点列表的 ``run`` 方法。"
 
 #: ../../development/tutorials/todo.rst:133
 msgid "Looking first at the ``TodolistDirective`` directive:"
