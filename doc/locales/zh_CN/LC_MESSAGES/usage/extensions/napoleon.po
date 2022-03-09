@@ -305,7 +305,7 @@ msgid ""
 msgstr ""
 "`PEP 484`_ 引入了一种用 Python 代码表达类型的标准方式。"
 "这是一个替代直接在文档字符串中表达类型的方法。"
-"根据 `PEP 484`_ 表示类型的一个好处是，类型检查器和 iIDE 可以利用它们进行静态代码分析。"
+"根据 `PEP 484`_ 表示类型的一个好处是，类型检查器和 IDE 可以利用它们进行静态代码分析。"
 "然后，`PEP 484`_ 被 `PEP 526`_ 扩展，后者引入了一种类似的方式来注释变量（和属性）。"
 
 #: ../../usage/extensions/napoleon.rst:209
@@ -438,7 +438,7 @@ msgid ""
 "to False.*"
 msgstr ""
 "使用 ``.. admonition::`` 指示用于 **References** 节。"
-"使用 ``.. rubric::`` 指令时为 False。*默认为 False。*”"
+"使用 ``.. rubric::`` 指令时为 False。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:420
 msgid ""
