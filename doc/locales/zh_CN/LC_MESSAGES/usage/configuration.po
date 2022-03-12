@@ -1535,6 +1535,8 @@ msgid ""
 " pages.  Single values can also be put in this dictionary using the "
 ":option:`-A <sphinx-build -A>` command-line option of ``sphinx-build``."
 msgstr ""
+"将所有页面的值传递到模板引擎上下文中的字典。"
+"也可以使用 ``sphinx-build`` 的 :option:`-A <sphinx-build -A>` 命令行选项将单个值放入这个字典。"
 
 #: ../../usage/configuration.rst:1036
 msgid ""
@@ -1544,16 +1546,20 @@ msgid ""
 "sidebar; its width should therefore not exceed 200 pixels.  Default: "
 "``None``."
 msgstr ""
+"如果给定，这必须是图像文件的名称（相对于 :term:`configuration directory` 的路径），"
+"也就是 docs 的 logo，或者指向 logo 的图像文件的 URL。"
+"它被放置在侧边栏的顶部；因此，它的宽度不应超过 200 像素。默认值：``None``。"
 
 #: ../../usage/configuration.rst:1041 ../../usage/configuration.rst:1056
 msgid ""
 "The image file will be copied to the ``_static`` directory of the output "
 "HTML, but only if the file does not already exist there."
 msgstr ""
+"图像文件将被复制到输出 HTML 的 ``_static`` 目录，但只有在该文件不存在的情况下。"
 
 #: ../../usage/configuration.rst:1045
 msgid "Also accepts the URL for the logo file."
-msgstr ""
+msgstr "也接受 logo 文件的 URL。"
 
 #: ../../usage/configuration.rst:1050
 msgid ""
@@ -1564,10 +1570,14 @@ msgid ""
 "icon file (``.ico``), which is 16x16 or 32x32 pixels large.  Default: "
 "``None``."
 msgstr ""
+"如果给定，这必须是图像文件的名称（相对于 :term:`configuration directory` 的路径），"
+"即文档的 favicon，或指向 favicon 的图像文件的 URL。"
+"现代浏览器使用它作为标签、窗口和书签的图标。"
+"它应该是 Windows 风格的图标文件（``.ico``），大小为 16x16 或 32x32 像素。默认值：``None``。"
 
 #: ../../usage/configuration.rst:1060
 msgid "Also accepts the URL for the favicon."
-msgstr ""
+msgstr "也接受 favicon 的 URL。"
 
 #: ../../usage/configuration.rst:1065
 msgid ""
@@ -1665,6 +1675,8 @@ msgid ""
 "page bottom, using the given :func:`strftime` format. The empty string is"
 " equivalent to ``'%b %d, %Y'`` (or a locale-dependent equivalent)."
 msgstr ""
+"如果这不是 None，则使用给定的 :func:`strftime` 格式在每个页面底部插入 'Last updated on:' 时间戳。"
+"空字符串相当于 ``'%b %d, %Y'`` （或 locale-dependent 的等效值）。"
 
 #: ../../usage/configuration.rst:1170
 msgid ""

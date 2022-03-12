@@ -159,11 +159,11 @@ msgid "Distribute your theme as a Python package"
 msgstr "将你的主题作为一个Python包发布"
 
 #: ../../development/theming.rst:91
-#, fuzzy
 msgid ""
 "As a way to distribute your theme, you can use a Python package.  This "
 "makes it easier for users to set up your theme."
-msgstr "作为分发你的主题的一种方式，你可以使用 Python包。Python 包给用户带来了简单的设置方式。"
+msgstr ""
+"作为分发主题的一种方式，您可以使用 Python 包。这使得用户更容易设置您的主题。"
 
 #: ../../development/theming.rst:94
 msgid ""
