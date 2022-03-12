@@ -249,46 +249,27 @@
 </tr>
 </tbody>
 </table>
-<p>Sphinx comes with a selection of themes to choose from.</p>
-<p>Note that from these themes only the Alabaster and Scrolls themes are
-mobile-optimated, the other themes resort to horizontal scrolling
-if the screen is too narrow.</p>
-<p class="clear">These themes are:</p>
+<p>Sphinx 有一系列的主题可供选择。</p>
+<p>请注意，在这些主题中，只有 Alabaster 和 Scrolls 主题是针对移动设备进行优化的，如果屏幕太窄，其他主题就会采用水平滚动。</p>
+<p class="clear">这些主题是：</p>
 <dl>
-<dt><strong>basic</strong></dt><dd><p>This is a basically unstyled layout used as the base for the
-other themes, and usable as the base for custom themes as well.  The HTML
-contains all important elements like sidebar and relation bar.  There are
-these options (which are inherited by the other themes):</p>
+<dt><strong>basic</strong></dt><dd><p>这是一个基本的无样式的布局，用作其他主题的基础，也可以作为自定义主题的基础。HTML 包含了所有重要的元素，如侧边栏和关系栏。这里有一些选项（这些选项是由其他主题所继承的）：</p>
 <ul>
-<li><p><strong>nosidebar</strong> (true or false): Don’t include the sidebar.  Defaults to
-<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>sidebarwidth</strong> (int or str): Width of the sidebar in pixels.
-This can be an int, which is interpreted as pixels or a valid CSS
-dimension string such as ‘70em’ or ‘50%’.  Defaults to 230 pixels.</p></li>
-<li><p><strong>body_min_width</strong> (int or str): Minimal width of the document body.
-This can be an int, which is interpreted as pixels or a valid CSS
-dimension string such as ‘70em’ or ‘50%’. Use 0 if you don’t want
-a width limit. Defaults may depend on the theme (often 450px).</p></li>
-<li><p><strong>body_max_width</strong> (int or str): Maximal width of the document body.
-This can be an int, which is interpreted as pixels or a valid CSS
-dimension string such as ‘70em’ or ‘50%’. Use ‘none’ if you don’t
-want a width limit. Defaults may depend on the theme (often 800px).</p></li>
-<li><p><strong>navigation_with_keys</strong> (true or false): Allow navigating
-with the following keyboard shortcuts:</p>
+<li><p><strong>nosidebar</strong> （true 或 false）：不包括侧边栏。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>sidebarwidth</strong> （int 或 str）：侧边栏的宽度（以像素为单位）。这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 ‘70em’ 或 ‘50%’。默认为 230 像素。</p></li>
+<li><p><strong>body_min_width</strong> （int 或 str）：document body 的最小宽度。这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 ‘70em’ 或 ‘50%’。如果你不想限制宽度，就使用 0。默认值可能取决于主题（通常是 450px）。</p></li>
+<li><p><strong>body_max_width</strong> （int 或 str）：文档主体的最大宽度。这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 ‘70em’ 或 ‘50%’。如果不需要宽度限制，请使用 ‘none’。默认值可能取决于主题（通常是 800px）。</p></li>
+<li><p><strong>navigation_with_keys</strong> （true 或 false）：允许使用以下键盘快捷键导航：</p>
 <ul class="simple">
-<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">arrow</kbd></kbd>: previous page</p></li>
-<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">arrow</kbd></kbd>: next page</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Left</kbd> <kbd class="kbd docutils literal notranslate">arrow</kbd></kbd>：上一页</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Right</kbd> <kbd class="kbd docutils literal notranslate">arrow</kbd></kbd>：下一页</p></li>
 </ul>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>默认 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 </li>
-<li><p><strong>enable_search_shortcuts</strong> (true or false): Allow jumping to the search box
-with <kbd class="kbd docutils literal notranslate">/</kbd> and allow removal of search highlighting with <kbd class="kbd docutils literal notranslate">Esc</kbd>.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<li><p><strong>enable_search_shortcuts</strong> （true 或 false）：允许跳转到搜索框 <kbd class="kbd docutils literal notranslate">/</kbd>，并允许移除搜索高亮显示 <kbd class="kbd docutils literal notranslate">Esc</kbd>。</p>
+<p>默认 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
 </li>
-<li><p><strong>globaltoc_collapse</strong> (true or false): Only expand subsections
-of the current document in <code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code>
-(see <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>).
-Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<li><p><strong>globaltoc_collapse</strong> （true 或 false）：只在 <code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code> 中展开当前文档的子部分（参见 <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>）。默认 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.1 新版功能.</span></p>
 </div>
