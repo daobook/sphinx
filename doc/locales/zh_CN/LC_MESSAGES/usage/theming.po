@@ -260,7 +260,7 @@ msgstr ""
 
 #: ../../usage/theming.rst:128
 msgid "Sphinx comes with a selection of themes to choose from."
-msgstr ""
+msgstr "Sphinx 有一系列的主题可供选择。"
 
 #: ../../usage/theming.rst:130
 msgid ""
@@ -268,10 +268,11 @@ msgid ""
 "mobile-optimated, the other themes resort to horizontal scrolling if the "
 "screen is too narrow."
 msgstr ""
+"请注意，在这些主题中，只有 Alabaster 和 Scrolls 主题是针对移动设备进行优化的，如果屏幕太窄，其他主题就会采用水平滚动。"
 
 #: ../../usage/theming.rst:136
 msgid "These themes are:"
-msgstr ""
+msgstr "这些主题是："
 
 #: ../../usage/theming.rst:193
 msgid "**basic**"
@@ -284,12 +285,16 @@ msgid ""
 "contains all important elements like sidebar and relation bar.  There are"
 " these options (which are inherited by the other themes):"
 msgstr ""
+"这是一个基本的无样式的布局，用作其他主题的基础，也可以作为自定义主题的基础。"
+"HTML 包含了所有重要的元素，如侧边栏和关系栏。"
+"这里有一些选项（这些选项是由其他主题所继承的）："
 
 #: ../../usage/theming.rst:144
 msgid ""
 "**nosidebar** (true or false): Don't include the sidebar.  Defaults to "
 "``False``."
 msgstr ""
+"**nosidebar** （true 或 false）：不包括侧边栏。默认为 ``False``。"
 
 #: ../../usage/theming.rst:147
 msgid ""
@@ -297,6 +302,8 @@ msgid ""
 "be an int, which is interpreted as pixels or a valid CSS dimension string"
 " such as '70em' or '50%'.  Defaults to 230 pixels."
 msgstr ""
+"**sidebarwidth** （int 或 str）：侧边栏的宽度（以像素为单位）。"
+"这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 '70em' 或 '50%'。默认为 230 像素。"
 
 #: ../../usage/theming.rst:151
 msgid ""
@@ -305,6 +312,9 @@ msgid ""
 "string such as '70em' or '50%'. Use 0 if you don't want a width limit. "
 "Defaults may depend on the theme (often 450px)."
 msgstr ""
+"**body_min_width** （int 或 str）：document body 的最小宽度。"
+"这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 '70em' 或 '50%'。如果你不想限制宽度，就使用 0。"
+"默认值可能取决于主题（通常是 450px）。"
 
 #: ../../usage/theming.rst:156
 msgid ""
@@ -313,24 +323,28 @@ msgid ""
 "string such as '70em' or '50%'. Use 'none' if you don't want a width "
 "limit. Defaults may depend on the theme (often 800px)."
 msgstr ""
+"**body_max_width** （int 或 str）：文档主体的最大宽度。"
+"这可以是 int，它被解释为像素或有效的 CSS 维度字符串，如 '70em' 或 '50%'。"
+"如果不需要宽度限制，请使用 'none'。默认值可能取决于主题（通常是 800px）。"
 
 #: ../../usage/theming.rst:161
 msgid ""
 "**navigation_with_keys** (true or false): Allow navigating with the "
 "following keyboard shortcuts:"
 msgstr ""
+"**navigation_with_keys** （true 或 false）：允许使用以下键盘快捷键导航："
 
 #: ../../usage/theming.rst:164
 msgid ":kbd:`Left arrow`: previous page"
-msgstr ""
+msgstr ":kbd:`Left arrow`：上一页"
 
 #: ../../usage/theming.rst:165
 msgid ":kbd:`Right arrow`: next page"
-msgstr ""
+msgstr ":kbd:`Right arrow`：下一页"
 
 #: ../../usage/theming.rst:167
 msgid "Defaults to ``False``."
-msgstr ""
+msgstr "默认 ``False``。"
 
 #: ../../usage/theming.rst:169
 msgid ""
@@ -338,10 +352,11 @@ msgid ""
 "box with :kbd:`/` and allow removal of search highlighting with "
 ":kbd:`Esc`."
 msgstr ""
+"**enable_search_shortcuts** （true 或 false）：允许跳转到搜索框 :kbd:`/`，并允许移除搜索高亮显示 :kbd:`Esc`。"
 
 #: ../../usage/theming.rst:172
 msgid "Defaults to ``True``."
-msgstr ""
+msgstr "默认 ``True``。"
 
 #: ../../usage/theming.rst:174
 msgid ""
@@ -349,6 +364,8 @@ msgid ""
 "current document in ``globaltoc.html`` (see :confval:`html_sidebars`). "
 "Defaults to ``True``."
 msgstr ""
+"**globaltoc_collapse** （true 或 false）：只在 ``globaltoc.html`` 中展开当前文档的子部分（参见 :confval:`html_sidebars`）。"
+"默认 ``True``。"
 
 #: ../../usage/theming.rst:181
 msgid ""
