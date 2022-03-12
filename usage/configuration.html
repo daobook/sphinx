@@ -1217,9 +1217,7 @@ header and in the HTML Help docs.  If not given, it defaults to the value of
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_context">
 <span class="sig-name descname"><span class="pre">html_context</span></span><a class="headerlink" href="#confval-html_context" title="永久链接至目标">¶</a></dt>
-<dd><p>A dictionary of values to pass into the template engine’s context for all
-pages.  Single values can also be put in this dictionary using the
-<a class="reference internal" href="../man/sphinx-build.html#cmdoption-sphinx-build-A"><code class="xref std std-option docutils literal notranslate"><span class="pre">-A</span></code></a> command-line option of <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code>.</p>
+<dd><p>将所有页面的值传递到模板引擎上下文中的字典。也可以使用 <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> 的 <a class="reference internal" href="../man/sphinx-build.html#cmdoption-sphinx-build-A"><code class="xref std std-option docutils literal notranslate"><span class="pre">-A</span></code></a> 命令行选项将单个值放入这个字典。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.5 新版功能.</span></p>
 </div>
@@ -1228,33 +1226,24 @@ pages.  Single values can also be put in this dictionary using the
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_logo">
 <span class="sig-name descname"><span class="pre">html_logo</span></span><a class="headerlink" href="#confval-html_logo" title="永久链接至目标">¶</a></dt>
-<dd><p>If given, this must be the name of an image file (path relative to the
-<a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">configuration directory</span></a>) that is the logo of the docs, or URL that
-points an image file for the logo.  It is placed at the top of the sidebar;
-its width should therefore not exceed 200 pixels.  Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd><p>如果给定，这必须是图像文件的名称（相对于 <a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">configuration directory</span></a> 的路径），也就是 docs 的 logo，或者指向 logo 的图像文件的 URL。它被放置在侧边栏的顶部；因此，它的宽度不应超过 200 像素。默认值：<code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">0.4.1 新版功能: </span>The image file will be copied to the <code class="docutils literal notranslate"><span class="pre">_static</span></code> directory of the output
-HTML, but only if the file does not already exist there.</p>
+<p><span class="versionmodified added">0.4.1 新版功能: </span>图像文件将被复制到输出 HTML 的 <code class="docutils literal notranslate"><span class="pre">_static</span></code> 目录，但只有在该文件不存在的情况下。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 4.0 版更改: </span>Also accepts the URL for the logo file.</p>
+<p><span class="versionmodified changed">在 4.0 版更改: </span>也接受 logo 文件的 URL。</p>
 </div>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_favicon">
 <span class="sig-name descname"><span class="pre">html_favicon</span></span><a class="headerlink" href="#confval-html_favicon" title="永久链接至目标">¶</a></dt>
-<dd><p>If given, this must be the name of an image file (path relative to the
-<a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">configuration directory</span></a>) that is the favicon of the docs, or URL that
-points an image file for the favicon.  Modern browsers use this as the icon
-for tabs, windows and bookmarks.  It should be a Windows-style icon file
-(<code class="docutils literal notranslate"><span class="pre">.ico</span></code>), which is 16x16 or 32x32 pixels large.  Default: <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dd><p>如果给定，这必须是图像文件的名称（相对于 <a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">configuration directory</span></a> 的路径），即文档的 favicon，或指向 favicon 的图像文件的 URL。现代浏览器使用它作为标签、窗口和书签的图标。它应该是 Windows 风格的图标文件（<code class="docutils literal notranslate"><span class="pre">.ico</span></code>），大小为 16x16 或 32x32 像素。默认值：<code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
 <div class="versionadded">
-<p><span class="versionmodified added">0.4 新版功能: </span>The image file will be copied to the <code class="docutils literal notranslate"><span class="pre">_static</span></code> directory of the output
-HTML, but only if the file does not already exist there.</p>
+<p><span class="versionmodified added">0.4 新版功能: </span>图像文件将被复制到输出 HTML 的 <code class="docutils literal notranslate"><span class="pre">_static</span></code> 目录，但只有在该文件不存在的情况下。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 4.0 版更改: </span>Also accepts the URL for the favicon.</p>
+<p><span class="versionmodified changed">在 4.0 版更改: </span>也接受 favicon 的 URL。</p>
 </div>
 </dd></dl>
 
@@ -1366,10 +1355,7 @@ files and directories, and ignores if path matches to patterns.</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_last_updated_fmt">
 <span class="sig-name descname"><span class="pre">html_last_updated_fmt</span></span><a class="headerlink" href="#confval-html_last_updated_fmt" title="永久链接至目标">¶</a></dt>
-<dd><p>If this is not None, a ‘Last updated on:’ timestamp is inserted
-at every page bottom, using the given <code class="xref py py-func docutils literal notranslate"><span class="pre">strftime()</span></code> format.
-The empty string is equivalent to <code class="docutils literal notranslate"><span class="pre">'%b</span> <span class="pre">%d,</span> <span class="pre">%Y'</span></code> (or a
-locale-dependent equivalent).</p>
+<dd><p>如果这不是 None，则使用给定的 <code class="xref py py-func docutils literal notranslate"><span class="pre">strftime()</span></code> 格式在每个页面底部插入 ‘Last updated on:’ 时间戳。空字符串相当于 <code class="docutils literal notranslate"><span class="pre">'%b</span> <span class="pre">%d,</span> <span class="pre">%Y'</span></code> （或 locale-dependent 的等效值）。</p>
 </dd></dl>
 
 <dl class="std confval">

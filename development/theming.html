@@ -202,8 +202,7 @@
 </section>
 <section id="distribute-your-theme-as-a-python-package">
 <span id="distribute-your-theme"></span><h2>将你的主题作为一个Python包发布<a class="headerlink" href="#distribute-your-theme-as-a-python-package" title="永久链接至标题">¶</a></h2>
-<p>As a way to distribute your theme, you can use a Python package.  This makes it
-easier for users to set up your theme.</p>
+<p>作为分发主题的一种方式，您可以使用 Python 包。这使得用户更容易设置您的主题。</p>
 <p>要将你的主题作为 Python包 发布，请在你的 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 文件中定义一个名为 <code class="docutils literal notranslate"><span class="pre">sphinx.html_themes</span></code> 的切入点，并在其中编写一个 <code class="docutils literal notranslate"><span class="pre">setup()</span></code> 函数，使用 <code class="docutils literal notranslate"><span class="pre">add_html_theme()</span></code> API 注册你的主题</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;setup.py&#39;</span>
 <span class="n">setup</span><span class="p">(</span>

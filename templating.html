@@ -169,9 +169,9 @@
 <p>Sphinx 的默认模板语言是 Jinja。它受 Django/Smarty 启发，易于理解。Jinja 中最重要的概念是 <em class="dfn">模板继承</em>，这意味着你可以在模板中只覆盖特定的块，定制它的同时也将变化控制在最小范围。</p>
 <p>要定制你的文档输出，你可以覆盖所有的模板（包括布局模板和子模板），方法是在 Sphinx quickstart 为你生成的结构的模板目录中添加与原始文件名相同的文件。</p>
 <p>Sphinx 会先在 <a class="reference internal" href="usage/configuration.html#confval-templates_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">templates_path</span></code></a> 的文件夹中寻找模板，如果在那里找不到它要找的模板，它就会退回到所选主题的模板。</p>
-<p>一个模板包含 <strong>变量</strong>，这些变量在模板被评估时被替换成数值，<strong>标记</strong>，控制模板的逻辑，以及 <strong>块</strong>，用于模板的继承。</p>
+<p>模板包含 <strong>variables</strong> （这些变量在模板被评估时被替换成值），<strong>tags</strong> （控制模板的逻辑）以及 <strong>blocks</strong> （用于模板的继承）。</p>
 <p>Sphinx 的 <em>basic</em> 主题提供了基础模板，它将用数据来填充几个块。这些模板位于 Sphinx 安装目录的 <code class="file docutils literal notranslate"><span class="pre">themes/basic</span></code> 子目录下，并被所有内置的 Sphinx 主题使用。在 <a class="reference internal" href="usage/configuration.html#confval-templates_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">templates_path</span></code></a> 中具有相同名称的模板会覆盖所选主题提供的模板。</p>
-<p>例如，要在包含相关链接的模板区添加一个新的链接，你所要做的就是添加一个名为 <code class="docutils literal notranslate"><span class="pre">layout.html</span></code> 的新模板，内容如下</p>
+<p>例如，要在包含相关链接的模板区添加新链接，你所要做的只是添加名为 <code class="docutils literal notranslate"><span class="pre">layout.html</span></code> 的新模板，内容如下</p>
 <div class="highlight-html+jinja notranslate"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;!layout.html&quot;</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">rootrellink</span> <span class="cp">%}</span>
     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://project.invalid/&quot;</span><span class="p">&gt;</span>Project Homepage<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="ni">&amp;raquo;</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
