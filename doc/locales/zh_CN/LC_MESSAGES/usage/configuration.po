@@ -1450,19 +1450,22 @@ msgstr ""
 
 #: ../../usage/configuration.rst:950
 msgid "Options for HTML output"
-msgstr ""
+msgstr "HTML 输出选项"
 
 #: ../../usage/configuration.rst:952
 msgid ""
 "These options influence HTML as well as HTML Help output, and other "
 "builders that use Sphinx's HTMLWriter class."
 msgstr ""
+"这些选项影响 HTML 和 HTML Help 输出，以及其他使用 Sphinx 的 HTMLWriter 类的构建器。"
 
 #: ../../usage/configuration.rst:957
 msgid ""
 "The \"theme\" that the HTML output should use.  See the :doc:`section "
 "about theming </usage/theming>`.  The default is ``'alabaster'``."
 msgstr ""
+"HTML 输出应该使用的 \"theme\"。参见 :doc:`关于主题 </usage/theming>` 部分。"
+"默认值是 ``'alabaster'``。"
 
 #: ../../usage/configuration.rst:964 ../../usage/configuration.rst:1774
 #: ../../usage/configuration.rst:2542
@@ -1471,6 +1474,8 @@ msgid ""
 "theme.  These are theme-specific.  For the options understood by the "
 "builtin themes, see :ref:`this section <builtin-themes>`."
 msgstr ""
+"影响选定主题的外观和感觉的选项字典。这些都是主题特定的。"
+"关于内置主题所理解的选项，请参见 :ref:`这部分 <builtin-themes>`。"
 
 #: ../../usage/configuration.rst:972
 msgid ""
@@ -1478,6 +1483,7 @@ msgid ""
 "as zip files.  Relative paths are taken as relative to the configuration "
 "directory."
 msgstr ""
+"包含自定义主题的路径列表，可以是子目录或 zip 文件。相对路径是相对于配置目录的。"
 
 #: ../../usage/configuration.rst:980
 msgid ""
@@ -1488,6 +1494,9 @@ msgid ""
 "compared to the theme's stylesheet, use CSS ``@import`` to import the "
 "theme's stylesheet."
 msgstr ""
+"用于 HTML 页面的样式表。"
+"该名称的文件必须存在于 Sphinx 的 :file:`static/` 路径中，或在 :confval:`html_static_path` 中给出的自定义路径之一中。"
+"默认是所选主题给出的样式表。如果你只想添加或覆盖一些与主题样式表相比较的东西，使用 CSS ``@import`` 来导入主题的样式表。"
 
 #: ../../usage/configuration.rst:989
 msgid ""
@@ -1496,6 +1505,9 @@ msgid ""
 "and used in the navigation bar as the \"topmost\" element.  It defaults "
 "to :samp:`'{<project>} v{<revision>} documentation'`."
 msgstr ""
+"\"title\" 用于使用 Sphinx 自己的模板生成的 HTML 文档。"
+"它被附加到单个页面的 ``<title>`` tag 上，并在导航栏中作为 \"topmost\" 元素使用。"
+"它默认为 :samp:`'{<project>} v{<revision>} documentation'`。"
 
 #: ../../usage/configuration.rst:996
 msgid ""
@@ -1503,6 +1515,9 @@ msgid ""
 "header and in the HTML Help docs.  If not given, it defaults to the value"
 " of :confval:`html_title`."
 msgstr ""
+"更短的 \"title\" 用于 HTML 文档。"
+"这用于 header 和 HTML 帮助文档中的链接。"
+"如果没有给出，它的默认值为 :confval:`html_title`。"
 
 #: ../../usage/configuration.rst:1004
 msgid ""
@@ -1510,24 +1525,24 @@ msgid ""
 "used to indicate the location of document using `The Canonical Link "
 "Relation`_. Default: ``''``."
 msgstr ""
-"指向 HTML 文档根部的 base URL。它用于使用 `The Canonical Link Relation`_ "
-"来表示文档的位置。默认值：``''``。"
+"指向 HTML 文档根部的 base URL。"
+"它用于使用 `The Canonical Link Relation`_ 来表示文档的位置。默认值：``''``。"
 
 #: ../../usage/configuration.rst:1014
 msgid "The style of line numbers for code-blocks."
-msgstr ""
+msgstr "代码块的行号样式。"
 
 #: ../../usage/configuration.rst:1016
 msgid "``'table'`` -- display line numbers using ``<table>`` tag"
-msgstr ""
+msgstr "``'table'`` -- 使用 ``<table>`` tag 显示行号"
 
 #: ../../usage/configuration.rst:1017
 msgid "``'inline'`` -- display line numbers using ``<span>`` tag (default)"
-msgstr ""
+msgstr "``'inline'`` -- 使用 ``<span>`` tag 显示行号"
 
 #: ../../usage/configuration.rst:1022
 msgid "It defaults to ``'inline'``."
-msgstr ""
+msgstr "默认为 ``'inline'``。"
 
 #: ../../usage/configuration.rst:1028
 msgid ""
@@ -1588,6 +1603,9 @@ msgid ""
 "*attributes* is used for attributes of ``<link>`` tag.  It defaults to an"
 " empty list."
 msgstr ""
+"CSS 文件列表。条目必须是 *filename* 字符串或包含 *filename* 字符串和 *attributes* 字典的元组。"
+"*filename* 必须相对于 :confval:`html_static_path`，或者完整的 URI，例如 ``https://example.org/style.css``。"
+"这些 *attributes* 用于 ``<link>`` tag 的属性。它默认为空列表。"
 
 #: ../../usage/configuration.rst:1077 ../../usage/configuration.rst:1100
 msgid ""
@@ -1595,10 +1613,12 @@ msgid ""
 "CSS file earlier or lazier step.  For more information, refer "
 ":meth:`Sphinx.add_css_files()`."
 msgstr ""
+"作为特殊属性，可以将 *priority* 设置为一个整数，以便在更早或更慢的步骤加载 CSS 文件。"
+"有关更多信息，请参阅 :meth:`Sphinx.add_css_files()`。"
 
 #: ../../usage/configuration.rst:1084 ../../usage/configuration.rst:1107
 msgid "Support priority attribute"
-msgstr ""
+msgstr "支持 priority 属性"
 
 #: ../../usage/configuration.rst:1088
 msgid ""
@@ -1609,6 +1629,9 @@ msgid ""
 "``https://example.org/script.js``.  The *attributes* is used for "
 "attributes of ``<script>`` tag.  It defaults to an empty list."
 msgstr ""
+"JavaScript *filename* 列表。条目必须是 *filename* 字符串或包含 *filename* 字符串和 *attributes* 字典的元组。"
+"*filename* 必须相对于 :confval:`html_static_path`，或者完整的 URI，例如 ``https://example.org/script.js``。"
+"这些 *attributes* 用于 ``<script>`` tag 的属性。它默认为空列表。"
 
 #: ../../usage/configuration.rst:1111
 msgid ""
@@ -1618,12 +1641,17 @@ msgid ""
 " directory after the theme's static files, so a file named "
 ":file:`default.css` will overwrite the theme's :file:`default.css`."
 msgstr ""
+"包含自定义静态文件(如样式表或脚本文件)的路径列表。"
+"相对于配置目录采用相对路径。"
+"它们被复制到 output :file:`_static` 目录下的主题的静态文件之后，"
+"因此名为 :file:`default.css` 的文件将覆盖主题的 :file:`default.css`。"
 
 #: ../../usage/configuration.rst:1118 ../../usage/configuration.rst:1151
 msgid ""
 "As these files are not meant to be built, they are automatically excluded"
 " from source files."
 msgstr ""
+"因为这些文件不是用来构建的，所以它们会被自动排除在源文件之外。"
 
 #: ../../usage/configuration.rst:1123
 msgid ""
@@ -1631,26 +1659,30 @@ msgid ""
 "copied.  If you would like to copy them intentionally, please add each "
 "filepath to this setting::"
 msgstr ""
+"出于安全原因，将不会复制 ``html_static_path`` 下的 dotfiles。"
+"如果你想故意复制它们，请将每个文件路径添加到这个设置 ::"
 
 #: ../../usage/configuration.rst:1129
 msgid ""
 "Another way to do that, you can also use :confval:`html_extra_path`.  It "
 "allows to copy dotfiles under the directories."
 msgstr ""
+"另一种方法，你也可以使用 :confval:`html_extra_path`。它允许在目录下复制 dotfiles。"
 
 #: ../../usage/configuration.rst:1133
 msgid "The paths in :confval:`html_static_path` can now contain subdirectories."
-msgstr ""
+msgstr ":confval:`html_static_path` 中的路径现在可以包含子目录。"
 
 #: ../../usage/configuration.rst:1136
 msgid "The entries in :confval:`html_static_path` can now be single files."
-msgstr ""
+msgstr ":confval:`html_static_path` 中的条目现在可以是单个文件。"
 
 #: ../../usage/configuration.rst:1139
 msgid ""
 "The files under :confval:`html_static_path` are excluded from source "
 "files."
 msgstr ""
+"在 :confval:`html_static_path` 下的文件被排除在源文件之外。"
 
 #: ../../usage/configuration.rst:1145
 msgid ""
@@ -1660,6 +1692,9 @@ msgid ""
 "copied to the output directory.  They will overwrite any existing file of"
 " the same name."
 msgstr ""
+"包含与文档不直接相关的额外文件的路径列表，如 :file:`robots.txt` 或 :file:`.htaccess`。"
+"相对路径被视为相对于配置目录。"
+"它们被复制到输出目录。它们将覆盖任何现有的同名文件。"
 
 #: ../../usage/configuration.rst:1156
 msgid ""
@@ -1667,6 +1702,8 @@ msgid ""
 "directory.  And it refers :confval:`exclude_patterns` on copying extra "
 "files and directories, and ignores if path matches to patterns."
 msgstr ""
+"额外目录中的 dotfiles 将被复制到输出目录中。"
+"它引用 :confval:`exclude_patterns` 来复制额外的文件和目录，如果路径匹配模式则忽略。"
 
 #: ../../usage/configuration.rst:1163
 #, python-format
@@ -1683,6 +1720,7 @@ msgid ""
 "If true, quotes and dashes are converted to typographically correct "
 "entities.  Default: ``True``."
 msgstr ""
+"如果为 true，引号和破折号将被转换为排版正确的实体。默认值： ``True``。"
 
 #: ../../usage/configuration.rst:1173
 msgid "To disable smart quotes, use rather :confval:`smartquotes`."
@@ -1720,12 +1758,14 @@ msgid ""
 "If true, Sphinx will add \"permalinks\" for each heading and description "
 "environment.  Default: ``True``."
 msgstr ""
+"如果为 true，Sphinx 将为每个标题和描述环境添加 \"永久链接\"。默认值： ``True``。"
 
 #: ../../usage/configuration.rst:1203
 msgid ""
 "A text for permalinks for each heading and description environment.  HTML"
 " tags are allowed.  Default: a paragraph sign; ``¶``"
 msgstr ""
+"每个标题和描述环境的永久链接文本。允许使用 HTML 标记。默认值：段落符号; ``¶``"
 
 #: ../../usage/configuration.rst:1210
 msgid ""
