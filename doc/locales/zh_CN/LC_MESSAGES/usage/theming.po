@@ -374,6 +374,9 @@ msgid ""
 "included with the ``:hidden:`` flag of the :rst:dir:`toctree` directive. "
 "Defaults to ``False``."
 msgstr ""
+"**globaltoc_includehidden** （true 或 false）：显示在 ``globaltoc.html`` （见 :confval:`html_sidebars`）"
+"中的那些已经包含在 :rst:dir:`toctree` 指令的 ``:hidden:`` 标志中的子部分。"
+"默认为 ``False``。"
 
 #: ../../usage/theming.rst:189
 msgid ""
@@ -382,6 +385,8 @@ msgid ""
 " unlimited depth. Defaults to the max depth selected in the toctree "
 "directive."
 msgstr ""
+"**globaltoc_maxdepth** （int）： toctree 在 ``globaltoc.html`` 中的最大深度（参见 :confval:`html_sidebars`）。"
+"将其设置为 -1 以允许无限深度。默认值为 toctree 指令中选择的最大深度。"
 
 #: ../../usage/theming.rst:203
 msgid "**alabaster**"
@@ -395,6 +400,9 @@ msgid ""
 " its `installation page`_ for information on how to configure "
 ":confval:`html_sidebars` for its use."
 msgstr ""
+"`Alabaster theme`_ 是来自 @kennethreitz（特别是在他的请求项目中使用）的修改 \"Kr\" Sphinx 主题，"
+"这本身是基于 @mitsuhiko 用于 Flask 和相关项目的主题。"
+"关于如何配置 :confval:`html_sidebars`，请参考它的 `installation page`_。"
 
 #: ../../usage/theming.rst:249
 msgid "**classic**"
@@ -405,12 +413,15 @@ msgid ""
 "This is the classic theme, which looks like `the Python 2 documentation "
 "<https://docs.python.org/2/>`_.  It can be customized via these options:"
 msgstr ""
+"这是经典的主题，看起来像 `Python 2 文档 <https://docs.python.org/2/>`_。它可以通过以下选项进行定制："
 
 #: ../../usage/theming.rst:210 ../../usage/theming.rst:337
 msgid ""
 "**rightsidebar** (true or false): Put the sidebar on the right side. "
 "Defaults to ``False``."
 msgstr ""
+"**rightsidebar** （true 或 false）：把侧边栏放在右边。"
+"默认为 ``False``。"
 
 #: ../../usage/theming.rst:213
 msgid ""
@@ -418,6 +429,8 @@ msgid ""
 "doesn't scroll out of view for long body content.  This may not work well"
 " with all browsers.  Defaults to ``False``."
 msgstr ""
+"**stickysidebar** （true 或 false）：使侧边栏“固定”，这样它不会滚动出视图长的正文内容。"
+"这可能不适用于所有浏览器。默认为 ``False``。"
 
 #: ../../usage/theming.rst:217
 msgid ""
@@ -425,84 +438,90 @@ msgid ""
 "snippet that makes the sidebar collapsible via a button on its side. "
 "Defaults to ``False``."
 msgstr ""
+"**可折叠的侧边栏** （true 或 false）：添加 *实验性的* JavaScript 代码片段，使侧边栏可以通过按钮折叠。"
+"默认为 ``False``。"
 
 #: ../../usage/theming.rst:221
 msgid ""
 "**externalrefs** (true or false): Display external links differently from"
 " internal links.  Defaults to ``False``."
 msgstr ""
+"**externalrefs** (true 或 false)：显示外部链接与内部链接不同。默认为 ``False``。"
 
 #: ../../usage/theming.rst:224
 msgid ""
 "There are also various color and font options that can change the color "
 "scheme without having to write a custom stylesheet:"
 msgstr ""
+"也有各种颜色和字体选项，可以改变配色方案，而不必编写自定义样式表："
 
 #: ../../usage/theming.rst:227
 msgid "**footerbgcolor** (CSS color): Background color for the footer line."
-msgstr ""
+msgstr "**footerbgcolor** (CSS 颜色)：页脚线的背景颜色。"
 
 #: ../../usage/theming.rst:228
 msgid "**footertextcolor** (CSS color): Text color for the footer line."
-msgstr ""
+msgstr "**footertextcolor** (CSS 颜色)：页脚的文本颜色。"
 
 #: ../../usage/theming.rst:229
 msgid "**sidebarbgcolor** (CSS color): Background color for the sidebar."
-msgstr ""
+msgstr "**sidebarbgcolor** (CSS 颜色)：侧边栏的背景颜色。"
 
 #: ../../usage/theming.rst:230
 msgid ""
 "**sidebarbtncolor** (CSS color): Background color for the sidebar "
 "collapse button (used when *collapsiblesidebar* is ``True``)."
 msgstr ""
+"**sidebarbtncolor** (CSS 颜色): 侧边栏折叠按钮的背景颜色"
+"（当 *collapsiblesidebar* 为 ``True`` 时使用）。"
 
 #: ../../usage/theming.rst:232
 msgid "**sidebartextcolor** (CSS color): Text color for the sidebar."
-msgstr ""
+msgstr "**sidebartextcolor** （CSS 颜色）：侧边栏的文本颜色。"
 
 #: ../../usage/theming.rst:233
 msgid "**sidebarlinkcolor** (CSS color): Link color for the sidebar."
-msgstr ""
+msgstr "**sidebarlinkcolor** (CSS 颜色)：侧边栏的链接颜色。"
 
 #: ../../usage/theming.rst:234
 msgid "**relbarbgcolor** (CSS color): Background color for the relation bar."
-msgstr ""
+msgstr "**relbarbgcolor** (CSS 颜色)：关系栏的背景颜色。"
 
 #: ../../usage/theming.rst:235
 msgid "**relbartextcolor** (CSS color): Text color for the relation bar."
-msgstr ""
+msgstr "**relbartextcolor**  (CSS 颜色)：关系栏的文本颜色。"
 
 #: ../../usage/theming.rst:236
 msgid "**relbarlinkcolor** (CSS color): Link color for the relation bar."
-msgstr ""
+msgstr "**relbarlinkcolor**  (CSS 颜色)：关系栏的链接颜色。"
 
 #: ../../usage/theming.rst:237
 msgid "**bgcolor** (CSS color): Body background color."
-msgstr ""
+msgstr "**bgcolor**  (CSS 颜色)：Body 背景颜色。"
 
 #: ../../usage/theming.rst:238
 msgid "**textcolor** (CSS color): Body text color."
-msgstr ""
+msgstr "**textcolor**  (CSS 颜色)：Body 文本颜色。"
 
 #: ../../usage/theming.rst:239 ../../usage/theming.rst:289
 msgid "**linkcolor** (CSS color): Body link color."
-msgstr ""
+msgstr "**linkcolor**  (CSS 颜色)：Body 链接颜色。"
 
 #: ../../usage/theming.rst:240
 msgid "**visitedlinkcolor** (CSS color): Body color for visited links."
-msgstr ""
+msgstr "**visitedlinkcolor**  (CSS 颜色)：Body 已访问链接颜色。"
 
 #: ../../usage/theming.rst:241
 msgid "**headbgcolor** (CSS color): Background color for headings."
-msgstr ""
+msgstr "**headbgcolor**  (CSS 颜色)：heading 背景颜色。"
 
 #: ../../usage/theming.rst:242
 msgid "**headtextcolor** (CSS color): Text color for headings."
-msgstr ""
+msgstr "**headtextcolor**  (CSS 颜色)：heading 文本颜色。"
 
 #: ../../usage/theming.rst:243
 msgid "**headlinkcolor** (CSS color): Link color for headings."
-msgstr ""
+msgstr "**headlinkcolor**  (CSS 颜色)：heading 链接颜色。"
 
 #: ../../usage/theming.rst:244
 msgid "**codebgcolor** (CSS color): Background color for code blocks."
@@ -532,6 +551,7 @@ msgid ""
 " the right side. There are currently no options beyond *nosidebar* and "
 "*sidebarwidth*."
 msgstr ""
+"本文档最初使用的主题。它在右侧有一个侧边栏。目前除了 *nosidebar* 和 *sidebarwidth* 没有其他选项。"
 
 #: ../../usage/theming.rst:258
 msgid ""
@@ -539,6 +559,8 @@ msgid ""
 "theme <https://github.com/sphinx-"
 "doc/sphinx/tree/master/doc/_themes/sphinx13>`_."
 msgstr ""
+"Sphinx 文档现在使用 `sphinxdoc 主题的调整版本 <https://github.com/sphinx-"
+"doc/sphinx/tree/master/doc/_themes/sphinx13>`_。"
 
 #: ../../usage/theming.rst:271
 msgid "**scrolls**"
@@ -550,6 +572,7 @@ msgid ""
 "<https://jinja.palletsprojects.com/>`_.  The following color options are "
 "available:"
 msgstr ""
+"更轻量级的主题，基于 `Jinja 文档 <https://jinja.palletsprojects.com/>`_。以下颜色可供选择："
 
 #: ../../usage/theming.rst:267
 msgid "**headerbordercolor**"
