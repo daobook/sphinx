@@ -274,65 +274,45 @@
 <p><span class="versionmodified added">3.1 新版功能.</span></p>
 </div>
 </li>
-<li><p><strong>globaltoc_includehidden</strong> (true or false): Show even those
-subsections in <code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code> (see <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>)
-which have been included with the <code class="docutils literal notranslate"><span class="pre">:hidden:</span></code> flag of the
-<a class="reference internal" href="restructuredtext/directives.html#directive-toctree" title="toctree directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">toctree</span></code></a> directive.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<li><p><strong>globaltoc_includehidden</strong> （true 或 false）：显示在 <code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code> （见 <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>）中的那些已经包含在 <a class="reference internal" href="restructuredtext/directives.html#directive-toctree" title="toctree directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">toctree</span></code></a> 指令的 <code class="docutils literal notranslate"><span class="pre">:hidden:</span></code> 标志中的子部分。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.1 新版功能.</span></p>
 </div>
 </li>
-<li><p><strong>globaltoc_maxdepth</strong> (int): The maximum depth of the toctree in
-<code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code> (see <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>).  Set it to -1 to allow
-unlimited depth. Defaults to the max depth selected in the toctree directive.</p>
+<li><p><strong>globaltoc_maxdepth</strong> （int）： toctree 在 <code class="docutils literal notranslate"><span class="pre">globaltoc.html</span></code> 中的最大深度（参见 <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>）。将其设置为 -1 以允许无限深度。默认值为 toctree 指令中选择的最大深度。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 新版功能.</span></p>
 </div>
 </li>
 </ul>
 </dd>
-<dt><strong>alabaster</strong></dt><dd><p><a class="reference external" href="https://pypi.org/project/alabaster/">Alabaster theme</a> is a modified “Kr” Sphinx theme from &#64;kennethreitz
-(especially as used in his Requests project), which was itself originally
-based on &#64;mitsuhiko’s theme used for Flask &amp; related projects.  Refer to its
-<a class="reference external" href="https://alabaster.readthedocs.io/en/latest/installation.html">installation page</a> for information on how to configure
-<a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a> for its use.</p>
+<dt><strong>alabaster</strong></dt><dd><p><a class="reference external" href="https://pypi.org/project/alabaster/">Alabaster theme</a> 是来自 &#64;kennethreitz（特别是在他的请求项目中使用）的修改 “Kr” Sphinx 主题，这本身是基于 &#64;mitsuhiko 用于 Flask 和相关项目的主题。关于如何配置 <a class="reference internal" href="configuration.html#confval-html_sidebars"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_sidebars</span></code></a>，请参考它的 <a class="reference external" href="https://alabaster.readthedocs.io/en/latest/installation.html">installation page</a>。</p>
 </dd>
-<dt><strong>classic</strong></dt><dd><p>This is the classic theme, which looks like <a class="reference external" href="https://docs.python.org/2/">the Python 2
-documentation</a>.  It can be customized via
-these options:</p>
+<dt><strong>classic</strong></dt><dd><p>这是经典的主题，看起来像 <a class="reference external" href="https://docs.python.org/2/">Python 2 文档</a>。它可以通过以下选项进行定制：</p>
 <ul class="simple">
-<li><p><strong>rightsidebar</strong> (true or false): Put the sidebar on the right side.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>stickysidebar</strong> (true or false): Make the sidebar “fixed” so that it
-doesn’t scroll out of view for long body content.  This may not work well
-with all browsers.  Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>collapsiblesidebar</strong> (true or false): Add an <em>experimental</em> JavaScript
-snippet that makes the sidebar collapsible via a button on its side.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-<li><p><strong>externalrefs</strong> (true or false): Display external links differently from
-internal links.  Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>rightsidebar</strong> （true 或 false）：把侧边栏放在右边。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>stickysidebar</strong> （true 或 false）：使侧边栏“固定”，这样它不会滚动出视图长的正文内容。这可能不适用于所有浏览器。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>可折叠的侧边栏</strong> （true 或 false）：添加 <em>实验性的</em> JavaScript 代码片段，使侧边栏可以通过按钮折叠。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><strong>externalrefs</strong> (true 或 false)：显示外部链接与内部链接不同。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
-<p>There are also various color and font options that can change the color scheme
-without having to write a custom stylesheet:</p>
+<p>也有各种颜色和字体选项，可以改变配色方案，而不必编写自定义样式表：</p>
 <ul class="simple">
-<li><p><strong>footerbgcolor</strong> (CSS color): Background color for the footer line.</p></li>
-<li><p><strong>footertextcolor</strong> (CSS color): Text color for the footer line.</p></li>
-<li><p><strong>sidebarbgcolor</strong> (CSS color): Background color for the sidebar.</p></li>
-<li><p><strong>sidebarbtncolor</strong> (CSS color): Background color for the sidebar collapse
-button (used when <em>collapsiblesidebar</em> is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></li>
-<li><p><strong>sidebartextcolor</strong> (CSS color): Text color for the sidebar.</p></li>
-<li><p><strong>sidebarlinkcolor</strong> (CSS color): Link color for the sidebar.</p></li>
-<li><p><strong>relbarbgcolor</strong> (CSS color): Background color for the relation bar.</p></li>
-<li><p><strong>relbartextcolor</strong> (CSS color): Text color for the relation bar.</p></li>
-<li><p><strong>relbarlinkcolor</strong> (CSS color): Link color for the relation bar.</p></li>
-<li><p><strong>bgcolor</strong> (CSS color): Body background color.</p></li>
-<li><p><strong>textcolor</strong> (CSS color): Body text color.</p></li>
-<li><p><strong>linkcolor</strong> (CSS color): Body link color.</p></li>
-<li><p><strong>visitedlinkcolor</strong> (CSS color): Body color for visited links.</p></li>
-<li><p><strong>headbgcolor</strong> (CSS color): Background color for headings.</p></li>
-<li><p><strong>headtextcolor</strong> (CSS color): Text color for headings.</p></li>
-<li><p><strong>headlinkcolor</strong> (CSS color): Link color for headings.</p></li>
+<li><p><strong>footerbgcolor</strong> (CSS 颜色)：页脚线的背景颜色。</p></li>
+<li><p><strong>footertextcolor</strong> (CSS 颜色)：页脚的文本颜色。</p></li>
+<li><p><strong>sidebarbgcolor</strong> (CSS 颜色)：侧边栏的背景颜色。</p></li>
+<li><p><strong>sidebarbtncolor</strong> (CSS 颜色): 侧边栏折叠按钮的背景颜色（当 <em>collapsiblesidebar</em> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时使用）。</p></li>
+<li><p><strong>sidebartextcolor</strong> （CSS 颜色）：侧边栏的文本颜色。</p></li>
+<li><p><strong>sidebarlinkcolor</strong> (CSS 颜色)：侧边栏的链接颜色。</p></li>
+<li><p><strong>relbarbgcolor</strong> (CSS 颜色)：关系栏的背景颜色。</p></li>
+<li><p><strong>relbartextcolor</strong>  (CSS 颜色)：关系栏的文本颜色。</p></li>
+<li><p><strong>relbarlinkcolor</strong>  (CSS 颜色)：关系栏的链接颜色。</p></li>
+<li><p><strong>bgcolor</strong>  (CSS 颜色)：Body 背景颜色。</p></li>
+<li><p><strong>textcolor</strong>  (CSS 颜色)：Body 文本颜色。</p></li>
+<li><p><strong>linkcolor</strong>  (CSS 颜色)：Body 链接颜色。</p></li>
+<li><p><strong>visitedlinkcolor</strong>  (CSS 颜色)：Body 已访问链接颜色。</p></li>
+<li><p><strong>headbgcolor</strong>  (CSS 颜色)：heading 背景颜色。</p></li>
+<li><p><strong>headtextcolor</strong>  (CSS 颜色)：heading 文本颜色。</p></li>
+<li><p><strong>headlinkcolor</strong>  (CSS 颜色)：heading 链接颜色。</p></li>
 <li><p><strong>codebgcolor</strong> (CSS color): Background color for code blocks.</p></li>
 <li><p><strong>codetextcolor</strong> (CSS color): Default text color for code blocks, if not
 set differently by the highlighting style.</p></li>
@@ -340,17 +320,13 @@ set differently by the highlighting style.</p></li>
 <li><p><strong>headfont</strong> (CSS font-family): Font for headings.</p></li>
 </ul>
 </dd>
-<dt><strong>sphinxdoc</strong></dt><dd><p>The theme originally used by this documentation. It features
-a sidebar on the right side. There are currently no options beyond
-<em>nosidebar</em> and <em>sidebarwidth</em>.</p>
+<dt><strong>sphinxdoc</strong></dt><dd><p>本文档最初使用的主题。它在右侧有一个侧边栏。目前除了 <em>nosidebar</em> 和 <em>sidebarwidth</em> 没有其他选项。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>The Sphinx documentation now uses
-<a class="reference external" href="https://github.com/sphinx-doc/sphinx/tree/master/doc/_themes/sphinx13">an adjusted version of the sphinxdoc theme</a>.</p>
+<p>Sphinx 文档现在使用 <a class="reference external" href="https://github.com/sphinx-doc/sphinx/tree/master/doc/_themes/sphinx13">sphinxdoc 主题的调整版本</a>。</p>
 </div>
 </dd>
-<dt><strong>scrolls</strong></dt><dd><p>A more lightweight theme, based on <a class="reference external" href="https://jinja.palletsprojects.com/">the Jinja documentation</a>.  The following color options are
-available:</p>
+<dt><strong>scrolls</strong></dt><dd><p>更轻量级的主题，基于 <a class="reference external" href="https://jinja.palletsprojects.com/">Jinja 文档</a>。以下颜色可供选择：</p>
 <ul class="simple">
 <li><p><strong>headerbordercolor</strong></p></li>
 <li><p><strong>subheadlinecolor</strong></p></li>
@@ -374,7 +350,7 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">True</s
 default a grayish gradient.</p></li>
 <li><p><strong>footerbg</strong> (CSS value for “background”): background for the footer area,
 default a light gray gradient.</p></li>
-<li><p><strong>linkcolor</strong> (CSS color): Body link color.</p></li>
+<li><p><strong>linkcolor</strong>  (CSS 颜色)：Body 链接颜色。</p></li>
 <li><p><strong>headercolor1</strong>, <strong>headercolor2</strong> (CSS color): colors for &lt;h1&gt; and &lt;h2&gt;
 headings.</p></li>
 <li><p><strong>headerlinkcolor</strong> (CSS color): Color for the backreference link in
@@ -416,8 +392,7 @@ are supported:</p>
 <dt><strong>bizstyle</strong></dt><dd><p>A simple bluish theme. The following options are supported
 beyond <em>nosidebar</em> and <em>sidebarwidth</em>:</p>
 <ul class="simple">
-<li><p><strong>rightsidebar</strong> (true or false): Put the sidebar on the right side.
-Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>rightsidebar</strong> （true 或 false）：把侧边栏放在右边。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
 </ul>
 </dd>
 </dl>

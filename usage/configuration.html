@@ -109,7 +109,7 @@
 <li><a class="reference internal" href="#general-configuration">通用配置</a></li>
 <li><a class="reference internal" href="#options-for-internationalization">Options for internationalization</a></li>
 <li><a class="reference internal" href="#options-for-math">Options for Math</a></li>
-<li><a class="reference internal" href="#options-for-html-output">Options for HTML output</a></li>
+<li><a class="reference internal" href="#options-for-html-output">HTML 输出选项</a></li>
 <li><a class="reference internal" href="#options-for-single-html-output">Options for Single HTML output</a></li>
 <li><a class="reference internal" href="#options-for-html-help-output">Options for HTML help output</a></li>
 <li><a class="reference internal" href="#options-for-apple-help-output">Options for Apple Help output</a></li>
@@ -1120,14 +1120,12 @@ must be used to reference equation numbers.  Default is <code class="docutils li
 
 </section>
 <section id="options-for-html-output">
-<span id="html-options"></span><h2>Options for HTML output<a class="headerlink" href="#options-for-html-output" title="永久链接至标题">¶</a></h2>
-<p>These options influence HTML as well as HTML Help output, and other builders
-that use Sphinx’s HTMLWriter class.</p>
+<span id="html-options"></span><h2>HTML 输出选项<a class="headerlink" href="#options-for-html-output" title="永久链接至标题">¶</a></h2>
+<p>这些选项影响 HTML 和 HTML Help 输出，以及其他使用 Sphinx 的 HTMLWriter 类的构建器。</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_theme">
 <span class="sig-name descname"><span class="pre">html_theme</span></span><a class="headerlink" href="#confval-html_theme" title="永久链接至目标">¶</a></dt>
-<dd><p>The “theme” that the HTML output should use.  See the <a class="reference internal" href="theming.html"><span class="doc">section about
-theming</span></a>.  The default is <code class="docutils literal notranslate"><span class="pre">'alabaster'</span></code>.</p>
+<dd><p>HTML 输出应该使用的 “theme”。参见 <a class="reference internal" href="theming.html"><span class="doc">关于主题</span></a> 部分。默认值是 <code class="docutils literal notranslate"><span class="pre">'alabaster'</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.6 新版功能.</span></p>
 </div>
@@ -1136,9 +1134,7 @@ theming</span></a>.  The default is <code class="docutils literal notranslate"><
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_theme_options">
 <span class="sig-name descname"><span class="pre">html_theme_options</span></span><a class="headerlink" href="#confval-html_theme_options" title="永久链接至目标">¶</a></dt>
-<dd><p>A dictionary of options that influence the look and feel of the selected
-theme.  These are theme-specific.  For the options understood by the builtin
-themes, see <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">this section</span></a>.</p>
+<dd><p>影响选定主题的外观和感觉的选项字典。这些都是主题特定的。关于内置主题所理解的选项，请参见 <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">这部分</span></a>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.6 新版功能.</span></p>
 </div>
@@ -1147,9 +1143,7 @@ themes, see <a class="reference internal" href="theming.html#builtin-themes"><sp
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_theme_path">
 <span class="sig-name descname"><span class="pre">html_theme_path</span></span><a class="headerlink" href="#confval-html_theme_path" title="永久链接至目标">¶</a></dt>
-<dd><p>A list of paths that contain custom themes, either as subdirectories or as
-zip files.  Relative paths are taken as relative to the configuration
-directory.</p>
+<dd><p>包含自定义主题的路径列表，可以是子目录或 zip 文件。相对路径是相对于配置目录的。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.6 新版功能.</span></p>
 </div>
@@ -1158,29 +1152,19 @@ directory.</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_style">
 <span class="sig-name descname"><span class="pre">html_style</span></span><a class="headerlink" href="#confval-html_style" title="永久链接至目标">¶</a></dt>
-<dd><p>The style sheet to use for HTML pages.  A file of that name must exist
-either in Sphinx’s <code class="file docutils literal notranslate"><span class="pre">static/</span></code> path, or in one of the custom paths given
-in <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a>.  Default is the stylesheet given by the
-selected theme.  If you only want to add or override a few things compared
-to the theme’s stylesheet, use CSS <code class="docutils literal notranslate"><span class="pre">&#64;import</span></code> to import the theme’s
-stylesheet.</p>
+<dd><p>用于 HTML 页面的样式表。该名称的文件必须存在于 Sphinx 的 <code class="file docutils literal notranslate"><span class="pre">static/</span></code> 路径中，或在 <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> 中给出的自定义路径之一中。默认是所选主题给出的样式表。如果你只想添加或覆盖一些与主题样式表相比较的东西，使用 CSS <code class="docutils literal notranslate"><span class="pre">&#64;import</span></code> 来导入主题的样式表。</p>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_title">
 <span class="sig-name descname"><span class="pre">html_title</span></span><a class="headerlink" href="#confval-html_title" title="永久链接至目标">¶</a></dt>
-<dd><p>The “title” for HTML documentation generated with Sphinx’s own templates.
-This is appended to the <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> tag of individual pages, and used in the
-navigation bar as the “topmost” element.  It defaults to <code class="samp docutils literal notranslate"><span class="pre">'</span><em><span class="pre">&lt;project&gt;</span></em>
-<span class="pre">v</span><em><span class="pre">&lt;revision&gt;</span></em> <span class="pre">documentation'</span></code>.</p>
+<dd><p>“title” 用于使用 Sphinx 自己的模板生成的 HTML 文档。它被附加到单个页面的 <code class="docutils literal notranslate"><span class="pre">&lt;title&gt;</span></code> tag 上，并在导航栏中作为 “topmost” 元素使用。它默认为 <code class="samp docutils literal notranslate"><span class="pre">'</span><em><span class="pre">&lt;project&gt;</span></em> <span class="pre">v</span><em><span class="pre">&lt;revision&gt;</span></em> <span class="pre">documentation'</span></code>。</p>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_short_title">
 <span class="sig-name descname"><span class="pre">html_short_title</span></span><a class="headerlink" href="#confval-html_short_title" title="永久链接至目标">¶</a></dt>
-<dd><p>A shorter “title” for the HTML docs.  This is used for links in the
-header and in the HTML Help docs.  If not given, it defaults to the value of
-<a class="reference internal" href="#confval-html_title"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_title</span></code></a>.</p>
+<dd><p>更短的 “title” 用于 HTML 文档。这用于 header 和 HTML 帮助文档中的链接。如果没有给出，它的默认值为 <a class="reference internal" href="#confval-html_title"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_title</span></code></a>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">0.4 新版功能.</span></p>
 </div>
@@ -1198,16 +1182,16 @@ header and in the HTML Help docs.  If not given, it defaults to the value of
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_codeblock_linenos_style">
 <span class="sig-name descname"><span class="pre">html_codeblock_linenos_style</span></span><a class="headerlink" href="#confval-html_codeblock_linenos_style" title="永久链接至目标">¶</a></dt>
-<dd><p>The style of line numbers for code-blocks.</p>
+<dd><p>代码块的行号样式。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">'table'</span></code> – display line numbers using <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> tag</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'inline'</span></code> – display line numbers using <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> tag (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'table'</span></code> – 使用 <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> tag 显示行号</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'inline'</span></code> – 使用 <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> tag 显示行号</p></li>
 </ul>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 4.0 版更改: </span>It defaults to <code class="docutils literal notranslate"><span class="pre">'inline'</span></code>.</p>
+<p><span class="versionmodified changed">在 4.0 版更改: </span>默认为 <code class="docutils literal notranslate"><span class="pre">'inline'</span></code>。</p>
 </div>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">4.0 版后已移除.</span></p>
@@ -1250,105 +1234,75 @@ header and in the HTML Help docs.  If not given, it defaults to the value of
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_css_files">
 <span class="sig-name descname"><span class="pre">html_css_files</span></span><a class="headerlink" href="#confval-html_css_files" title="永久链接至目标">¶</a></dt>
-<dd><p>A list of CSS files.  The entry must be a <em>filename</em> string or a tuple
-containing the <em>filename</em> string and the <em>attributes</em> dictionary.  The
-<em>filename</em> must be relative to the <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a>, or a full URI
-with scheme like <code class="docutils literal notranslate"><span class="pre">https://example.org/style.css</span></code>.  The <em>attributes</em> is used
-for attributes of <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> tag.  It defaults to an empty list.</p>
+<dd><p>CSS 文件列表。条目必须是 <em>filename</em> 字符串或包含 <em>filename</em> 字符串和 <em>attributes</em> 字典的元组。<em>filename</em> 必须相对于 <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a>，或者完整的 URI，例如 <code class="docutils literal notranslate"><span class="pre">https://example.org/style.css</span></code>。这些 <em>attributes</em> 用于 <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code> tag 的属性。它默认为空列表。</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;custom.css&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;https://example.com/css/custom.css&#39;</span><span class="p">,</span>
                   <span class="p">(</span><span class="s1">&#39;print.css&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;media&#39;</span><span class="p">:</span> <span class="s1">&#39;print&#39;</span><span class="p">})]</span>
 </pre></div>
 </div>
-<p>As a special attribute, <em>priority</em> can be set as an integer to load the CSS
-file earlier or lazier step.  For more information, refer
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.add_css_files()</span></code>.</p>
+<p>作为特殊属性，可以将 <em>priority</em> 设置为一个整数，以便在更早或更慢的步骤加载 CSS 文件。有关更多信息，请参阅 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.add_css_files()</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.8 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 3.5 版更改: </span>Support priority attribute</p>
+<p><span class="versionmodified changed">在 3.5 版更改: </span>支持 priority 属性</p>
 </div>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_js_files">
 <span class="sig-name descname"><span class="pre">html_js_files</span></span><a class="headerlink" href="#confval-html_js_files" title="永久链接至目标">¶</a></dt>
-<dd><p>A list of JavaScript <em>filename</em>.  The entry must be a <em>filename</em> string or a
-tuple containing the <em>filename</em> string and the <em>attributes</em> dictionary.  The
-<em>filename</em> must be relative to the <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a>, or a full
-URI with scheme like <code class="docutils literal notranslate"><span class="pre">https://example.org/script.js</span></code>.  The <em>attributes</em> is
-used for attributes of <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag.  It defaults to an empty list.</p>
+<dd><p>JavaScript <em>filename</em> 列表。条目必须是 <em>filename</em> 字符串或包含 <em>filename</em> 字符串和 <em>attributes</em> 字典的元组。<em>filename</em> 必须相对于 <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a>，或者完整的 URI，例如 <code class="docutils literal notranslate"><span class="pre">https://example.org/script.js</span></code>。这些 <em>attributes</em> 用于 <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag 的属性。它默认为空列表。</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_js_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;script.js&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;https://example.com/scripts/custom.js&#39;</span><span class="p">,</span>
                  <span class="p">(</span><span class="s1">&#39;custom.js&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;async&#39;</span><span class="p">:</span> <span class="s1">&#39;async&#39;</span><span class="p">})]</span>
 </pre></div>
 </div>
-<p>As a special attribute, <em>priority</em> can be set as an integer to load the CSS
-file earlier or lazier step.  For more information, refer
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.add_css_files()</span></code>.</p>
+<p>作为特殊属性，可以将 <em>priority</em> 设置为一个整数，以便在更早或更慢的步骤加载 CSS 文件。有关更多信息，请参阅 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Sphinx.add_css_files()</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.8 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 3.5 版更改: </span>Support priority attribute</p>
+<p><span class="versionmodified changed">在 3.5 版更改: </span>支持 priority 属性</p>
 </div>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_static_path">
 <span class="sig-name descname"><span class="pre">html_static_path</span></span><a class="headerlink" href="#confval-html_static_path" title="永久链接至目标">¶</a></dt>
-<dd><p>A list of paths that contain custom static files (such as style
-sheets or script files).  Relative paths are taken as relative to
-the configuration directory.  They are copied to the output’s
-<code class="file docutils literal notranslate"><span class="pre">_static</span></code> directory after the theme’s static files, so a file
-named <code class="file docutils literal notranslate"><span class="pre">default.css</span></code> will overwrite the theme’s
-<code class="file docutils literal notranslate"><span class="pre">default.css</span></code>.</p>
-<p>As these files are not meant to be built, they are automatically excluded
-from source files.</p>
+<dd><p>包含自定义静态文件(如样式表或脚本文件)的路径列表。相对于配置目录采用相对路径。它们被复制到 output <code class="file docutils literal notranslate"><span class="pre">_static</span></code> 目录下的主题的静态文件之后，因此名为 <code class="file docutils literal notranslate"><span class="pre">default.css</span></code> 的文件将覆盖主题的 <code class="file docutils literal notranslate"><span class="pre">default.css</span></code>。</p>
+<p>因为这些文件不是用来构建的，所以它们会被自动排除在源文件之外。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>For security reasons, dotfiles under <code class="docutils literal notranslate"><span class="pre">html_static_path</span></code> will
-not be copied.  If you would like to copy them intentionally, please
-add each filepath to this setting:</p>
+<p>出于安全原因，将不会复制 <code class="docutils literal notranslate"><span class="pre">html_static_path</span></code> 下的 dotfiles。如果你想故意复制它们，请将每个文件路径添加到这个设置</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;_static/.htaccess&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Another way to do that, you can also use
-<a class="reference internal" href="#confval-html_extra_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_extra_path</span></code></a>.  It allows to copy dotfiles under
-the directories.</p>
+<p>另一种方法，你也可以使用 <a class="reference internal" href="#confval-html_extra_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_extra_path</span></code></a>。它允许在目录下复制 dotfiles。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 0.4 版更改: </span>The paths in <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> can now contain subdirectories.</p>
+<p><span class="versionmodified changed">在 0.4 版更改: </span><a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> 中的路径现在可以包含子目录。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.0 版更改: </span>The entries in <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> can now be single files.</p>
+<p><span class="versionmodified changed">在 1.0 版更改: </span><a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> 中的条目现在可以是单个文件。</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.8 版更改: </span>The files under <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> are excluded from source
-files.</p>
+<p><span class="versionmodified changed">在 1.8 版更改: </span>在 <a class="reference internal" href="#confval-html_static_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_static_path</span></code></a> 下的文件被排除在源文件之外。</p>
 </div>
 </dd></dl>
 
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_extra_path">
 <span class="sig-name descname"><span class="pre">html_extra_path</span></span><a class="headerlink" href="#confval-html_extra_path" title="永久链接至目标">¶</a></dt>
-<dd><p>A list of paths that contain extra files not directly related to
-the documentation, such as <code class="file docutils literal notranslate"><span class="pre">robots.txt</span></code> or <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code>.
-Relative paths are taken as relative to the configuration
-directory.  They are copied to the output directory.  They will
-overwrite any existing file of the same name.</p>
-<p>As these files are not meant to be built, they are automatically excluded
-from source files.</p>
+<dd><p>包含与文档不直接相关的额外文件的路径列表，如 <code class="file docutils literal notranslate"><span class="pre">robots.txt</span></code> 或 <code class="file docutils literal notranslate"><span class="pre">.htaccess</span></code>。相对路径被视为相对于配置目录。它们被复制到输出目录。它们将覆盖任何现有的同名文件。</p>
+<p>因为这些文件不是用来构建的，所以它们会被自动排除在源文件之外。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.2 新版功能.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">在 1.4 版更改: </span>The dotfiles in the extra directory will be copied to the output
-directory.  And it refers <a class="reference internal" href="#confval-exclude_patterns"><code class="xref std std-confval docutils literal notranslate"><span class="pre">exclude_patterns</span></code></a> on copying extra
-files and directories, and ignores if path matches to patterns.</p>
+<p><span class="versionmodified changed">在 1.4 版更改: </span>额外目录中的 dotfiles 将被复制到输出目录中。它引用 <a class="reference internal" href="#confval-exclude_patterns"><code class="xref std std-confval docutils literal notranslate"><span class="pre">exclude_patterns</span></code></a> 来复制额外的文件和目录，如果路径匹配模式则忽略。</p>
 </div>
 </dd></dl>
 
@@ -1361,8 +1315,7 @@ files and directories, and ignores if path matches to patterns.</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_use_smartypants">
 <span class="sig-name descname"><span class="pre">html_use_smartypants</span></span><a class="headerlink" href="#confval-html_use_smartypants" title="永久链接至目标">¶</a></dt>
-<dd><p>If true, quotes and dashes are converted to typographically correct
-entities.  Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dd><p>如果为 true，引号和破折号将被转换为排版正确的实体。默认值： <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">1.6 版后已移除: </span>To disable smart quotes, use rather <a class="reference internal" href="#confval-smartquotes"><code class="xref std std-confval docutils literal notranslate"><span class="pre">smartquotes</span></code></a>.</p>
 </div>
@@ -1390,8 +1343,7 @@ Previously, only boolean values were accepted.</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_permalinks">
 <span class="sig-name descname"><span class="pre">html_permalinks</span></span><a class="headerlink" href="#confval-html_permalinks" title="永久链接至目标">¶</a></dt>
-<dd><p>If true, Sphinx will add “permalinks” for each heading and description
-environment.  Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dd><p>如果为 true，Sphinx 将为每个标题和描述环境添加 “永久链接”。默认值： <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 新版功能.</span></p>
 </div>
@@ -1400,8 +1352,7 @@ environment.  Default: <code class="docutils literal notranslate"><span class="p
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-html_permalinks_icon">
 <span class="sig-name descname"><span class="pre">html_permalinks_icon</span></span><a class="headerlink" href="#confval-html_permalinks_icon" title="永久链接至目标">¶</a></dt>
-<dd><p>A text for permalinks for each heading and description environment.  HTML
-tags are allowed.  Default: a paragraph sign; <code class="docutils literal notranslate"><span class="pre">¶</span></code></p>
+<dd><p>每个标题和描述环境的永久链接文本。允许使用 HTML 标记。默认值：段落符号; <code class="docutils literal notranslate"><span class="pre">¶</span></code></p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 新版功能.</span></p>
 </div>
@@ -2076,9 +2027,7 @@ to save visual space.</p>
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-epub_theme_options">
 <span class="sig-name descname"><span class="pre">epub_theme_options</span></span><a class="headerlink" href="#confval-epub_theme_options" title="永久链接至目标">¶</a></dt>
-<dd><p>A dictionary of options that influence the look and feel of the selected
-theme.  These are theme-specific.  For the options understood by the builtin
-themes, see <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">this section</span></a>.</p>
+<dd><p>影响选定主题的外观和感觉的选项字典。这些都是主题特定的。关于内置主题所理解的选项，请参见 <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">这部分</span></a>。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">1.2 新版功能.</span></p>
 </div>
@@ -2961,9 +2910,7 @@ This defaults to <code class="docutils literal notranslate"><span class="pre">'n
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-qthelp_theme_options">
 <span class="sig-name descname"><span class="pre">qthelp_theme_options</span></span><a class="headerlink" href="#confval-qthelp_theme_options" title="永久链接至目标">¶</a></dt>
-<dd><p>A dictionary of options that influence the look and feel of the selected
-theme.  These are theme-specific.  For the options understood by the builtin
-themes, see <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">this section</span></a>.</p>
+<dd><p>影响选定主题的外观和感觉的选项字典。这些都是主题特定的。关于内置主题所理解的选项，请参见 <a class="reference internal" href="theming.html#builtin-themes"><span class="std std-ref">这部分</span></a>。</p>
 </dd></dl>
 
 </section>
