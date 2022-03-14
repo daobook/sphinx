@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../usage/extensions/intersphinx.rst:2
 msgid ":mod:`sphinx.ext.intersphinx` -- Link to other projects' documentation"
-msgstr ""
+msgstr ":mod:`sphinx.ext.intersphinx` —— 链接到其他项目文档"
 
 #: ../../usage/extensions/intersphinx.rst:11
 msgid ""
@@ -27,6 +27,7 @@ msgid ""
 "external projects, either explicitly through the :rst:role:`external` "
 "role, or as a fallback resolution for any other cross-reference."
 msgstr ""
+"此插件可以生成到外部项目中对象的文档的链接，要么明确地通过 :rst:role:`external` 角色，要么作为任何其他交叉引用的备用解析。"
 
 #: ../../usage/extensions/intersphinx.rst:15
 msgid ""
@@ -38,6 +39,9 @@ msgid ""
 " for the ZipFile class, without you having to specify where it is located"
 " exactly."
 msgstr ""
+"回退解析的用法很简单：每当 Sphinx 遇到交叉引用，该引用在当前文档集中没有匹配的目标，"
+"它就会在 :confval:`intersphinx_mapping` 中配置的外部文档集中寻找目标。"
+"像 ``:py:class:`zipfile.ZipFile``` 可以链接到 Python 文档的 ZipFile 类，而不必指定它的确切位置。"
 
 #: ../../usage/extensions/intersphinx.rst:23
 msgid ""
@@ -49,10 +53,14 @@ msgid ""
 "<comparisons>``` will link to the label \"comparisons\" only in the doc "
 "set \"python\", if it exists."
 msgstr ""
+"当使用 :rst:role:`external` 角色时，你可以强制查找到任何外部项目，也可以选择查找到特定的外部项目。"
+"如果存在 ``:external:ref:`comparison manual <comparisons>``` 这样的链接，则会链接到 label \"comparisons\" ，"
+"如果存在 ``:external+python:ref:`comparison manual <comparisons>``` 这样的链接，"
+"则只会链接到文档集 \"python\" 中的 label \"comparisons\"。"
 
 #: ../../usage/extensions/intersphinx.rst:31
 msgid "Behind the scenes, this works as follows:"
-msgstr ""
+msgstr "在幕后，它的工作原理如下："
 
 #: ../../usage/extensions/intersphinx.rst:33
 msgid ""
@@ -60,6 +68,7 @@ msgid ""
 "contains a mapping from object names to URIs relative to the HTML set's "
 "root."
 msgstr ""
+"每次 Sphinx HTML 构建都会创建名为 :file:`objects.inv` 的文件，它包含了相对于 HTML 集合 root 的从对象名称到 URI 的映射。"
 
 #: ../../usage/extensions/intersphinx.rst:36
 msgid ""
@@ -69,6 +78,8 @@ msgid ""
 "references, and also otherwise missing references to objects into links "
 "to the other documentation."
 msgstr ""
+"使用 Intersphinx 插件的项目可以在 :confval:`intersphinx_mapping` 配置值中指定这样的映射文件的位置。"
+"然后，这个映射将被用来解析 :rst:role:`external` 引用，以及其他文档链接中缺少的对象引用。"
 
 #: ../../usage/extensions/intersphinx.rst:41
 msgid ""
@@ -77,10 +88,11 @@ msgid ""
 " also be specified individually, e.g. if the docs should be buildable "
 "without Internet access."
 msgstr ""
+"默认情况下，映射文件被认为与文档的其他部分位于相同的位置；然而，映射文件的位置也可以单独指定，例如，如果文档应该在没有互联网接入的情况下构建。"
 
 #: ../../usage/extensions/intersphinx.rst:48
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #: ../../usage/extensions/intersphinx.rst:50
 msgid ""
@@ -88,12 +100,14 @@ msgid ""
 ":confval:`extensions` config value, and use these config values to "
 "activate linking:"
 msgstr ""
+"要使用 Intersphinx 链接，请将 ``'sphinx.ext.intersphinx'`` 添加到您的 :confval:`extensions` 配置值中，并使用这些配置值来激活链接："
 
 #: ../../usage/extensions/intersphinx.rst:56
 msgid ""
 "This config value contains the locations and names of other projects that"
 " should be linked to in this documentation."
 msgstr ""
+"这个配置值包含应该在本文档中链接到的其他项目的位置和名称。"
 
 #: ../../usage/extensions/intersphinx.rst:59
 msgid ""
@@ -101,20 +115,22 @@ msgid ""
 "base of the built documentation, while relative local paths for inventory"
 " locations are taken as relative to the source directory."
 msgstr ""
+"目标位置的相对本地路径被认为是相对于构建文档的基础，而库存（inventory）位置的相对本地路径被认为是相对于源目录。"
 
 #: ../../usage/extensions/intersphinx.rst:63
 msgid ""
 "When fetching remote inventory files, proxy settings will be read from "
 "the ``$HTTP_PROXY`` environment variable."
 msgstr ""
+"当获取远程库存文件时，代理设置将从环境变量 ``$HTTP_PROXY`` 中读取。"
 
 #: ../../usage/extensions/intersphinx.rst:66
 msgid "**Old format for this config value**"
-msgstr ""
+msgstr "**此配置值的旧格式**"
 
 #: ../../usage/extensions/intersphinx.rst:68
 msgid "This is the format used before Sphinx 1.0.  It is still recognized."
-msgstr ""
+msgstr "这是 Sphinx 1.0 之前使用的格式。它仍然是公认的。"
 
 #: ../../usage/extensions/intersphinx.rst:70
 msgid ""
@@ -124,10 +140,13 @@ msgid ""
 "found: they can be ``None`` (at the same location as the base URI) or "
 "another local or HTTP URI."
 msgstr ""
+"将 URI 映射到 ``None`` 或 URI 的字典。"
+"键是外部 Sphinx 文档集的 base URI，可以是本地路径或 HTTP URI。"
+"这些值指示库存文件可以在哪里找到：它们可以是 ``None`` （与 base URI 在同一位置）或其他本地或 HTTP URI。"
 
 #: ../../usage/extensions/intersphinx.rst:76
 msgid "**New format for this config value**"
-msgstr ""
+msgstr "**新格式的配置值**"
 
 #: ../../usage/extensions/intersphinx.rst:80
 msgid ""
@@ -138,6 +157,10 @@ msgid ""
 "``None`` (an :file:`objects.inv` file at the same location as the base "
 "URI) or another local file path or a full HTTP URI to an inventory file."
 msgstr ""
+"将唯一标识符映射到元组 ``(target, inventory)`` 的字典。"
+"每个 ``target`` 都是外部 Sphinx 文档集的 base URI，可以是本地路径或 HTTP URI。"
+"``inventory`` 表示库存文件可以在哪里找到：它可以是 ``None`` "
+"（在与 base URI 相同的位置的 :file:`objects.inv` 文件）或另一个本地文件路径或完整的 HTTP URI 到库存文件。"
 
 #: ../../usage/extensions/intersphinx.rst:87
 msgid ""
@@ -146,16 +169,20 @@ msgid ""
 "like ``external:python+ref:`comparison manual <comparisons>``` will link "
 "to the label \"comparisons\" in the doc set \"python\", if it exists."
 msgstr ""
+"可以在 :rst:role:`external` 角色中使用的唯一标识符，这样就可以清楚地知道目标是属于哪个 intersphinx 设置的。"
+"像 ``external:python+ref:`comparison manual <comparisons>``` "
+"这样的链接将链接到文档集 \"python\" 中的 label \"comparisons\"，如果它存在的话。"
 
 #: ../../usage/extensions/intersphinx.rst:92
 msgid "**Example**"
-msgstr ""
+msgstr "**示例**"
 
 #: ../../usage/extensions/intersphinx.rst:94
 msgid ""
 "To add links to modules and objects in the Python standard library "
 "documentation, use::"
 msgstr ""
+"要添加在 Python 标准库文档中模块和对象的链接，请使用 ::"
 
 #: ../../usage/extensions/intersphinx.rst:99
 msgid ""
@@ -164,12 +191,15 @@ msgid ""
 "downloaded inventory is cached in the Sphinx environment, so it must be "
 "re-downloaded whenever you do a full rebuild."
 msgstr ""
+"这将下载相应的 :file:`objects.inv` 文件，并生成指向给定 URI 下的页面的链接。"
+"下载的目录被缓存在 Sphinx 环境中，所以当你进行全面重建时必须重新下载。"
 
 #: ../../usage/extensions/intersphinx.rst:104
 msgid ""
 "A second example, showing the meaning of a non-``None`` value of the "
 "second tuple item::"
 msgstr ""
+"第二个例子，显示第二个元组项的非 ``None`` 值的含义::"
 
 #: ../../usage/extensions/intersphinx.rst:110
 msgid ""
@@ -178,10 +208,12 @@ msgid ""
 "``https://docs.python.org/3``.  It is up to you to update the inventory "
 "file as new objects are added to the Python documentation."
 msgstr ""
+"这将从源目录中的 :file:`python-inv.txt` 读取库存，但仍然生成指向 ``https://docs.python.org/3`` 下页面的链接。"
+"当新的对象被添加到 Python 文档时，更新库存文件是由你决定的。"
 
 #: ../../usage/extensions/intersphinx.rst:115
 msgid "**Multiple targets for the inventory**"
-msgstr ""
+msgstr "**库存的多个目标**"
 
 #: ../../usage/extensions/intersphinx.rst:119
 msgid ""
@@ -192,6 +224,10 @@ msgid ""
 "this to specify mirror sites for server downtime of the primary "
 "inventory::"
 msgstr ""
+"可以为每个库存指定替代文件。"
+"可以为第二个库存元组项指定一个元组，如下例所示。"
+"这将通过（第二个）元组条目迭代读取库存，直到第一次成功获取。"
+"它的主要用例是为主库存的服务器停机指定镜像站点 ::"
 
 #: ../../usage/extensions/intersphinx.rst:129
 msgid ""
@@ -199,6 +235,7 @@ msgid ""
 " it could be helpful to try a local inventory file first, to check "
 "references before publication::"
 msgstr ""
+"对于一套在本地编辑和测试后一起出版的书籍，可能会有帮助，首先尝试当地的库存文件，在出版前检查参考资料::"
 
 #: ../../usage/extensions/intersphinx.rst:141
 msgid ""
@@ -206,12 +243,14 @@ msgid ""
 "``5``, meaning five days.  Set this to a negative value to cache "
 "inventories for unlimited time."
 msgstr ""
+"缓存远程库存的最大天数。默认值是 ``5``，即 5 天。将此设置为负值，以缓存无限时间的库存。"
 
 #: ../../usage/extensions/intersphinx.rst:147
 msgid ""
 "The number of seconds for timeout.  The default is ``None``, meaning do "
 "not timeout."
 msgstr ""
+"超时的秒数。默认值为 ``None``，表示不超时。"
 
 #: ../../usage/extensions/intersphinx.rst:152
 msgid ""
@@ -219,30 +258,33 @@ msgid ""
 "exception is raised if the server has not issued a response for timeout "
 "seconds."
 msgstr ""
+"timeout 不是对整个响应下载的时间限制；相反，如果服务器没有针对超时时间发出响应，则会引发异常。"
 
 #: ../../usage/extensions/intersphinx.rst:160
 msgid "A list of strings being either:"
-msgstr ""
+msgstr "字符串列表可以是："
 
 #: ../../usage/extensions/intersphinx.rst:162
 msgid ""
 "the name of a specific reference type in a domain, e.g., ``std:doc``, "
 "``py:func``, or ``cpp:class``,"
 msgstr ""
+"域中特定引用类型的名称，例如 ``std:doc``， ``py:func``，或 ``cpp:class``，"
 
 #: ../../usage/extensions/intersphinx.rst:164
 msgid ""
 "the name of a domain, and a wildcard, e.g., ``std:*``, ``py:*``, or "
 "``cpp:*``, or"
 msgstr ""
+"域的名称，通配符，如 ``std:*``，``py:*`` 或 ``cpp:*`` 或"
 
 #: ../../usage/extensions/intersphinx.rst:166
 msgid "simply a wildcard ``*``."
-msgstr ""
+msgstr "简单的通配符 ``*``。"
 
 #: ../../usage/extensions/intersphinx.rst:168
 msgid "The default value is an empty list."
-msgstr ""
+msgstr "缺省值为空列表。"
 
 #: ../../usage/extensions/intersphinx.rst:170
 msgid ""
@@ -250,6 +292,7 @@ msgid ""
 "intersphinx, skip resolution if it matches one of the specifications in "
 "this list."
 msgstr ""
+"当非 :rst:role:`external` 的交叉引用被 intersphinx 解析时，如果它符合这个列表中的规范，则跳过解析。"
 
 #: ../../usage/extensions/intersphinx.rst:174
 msgid ""
@@ -261,20 +304,24 @@ msgid ""
 "generated in, e.g., Python, declarations will still be attempted to be "
 "resolved by intersphinx."
 msgstr ""
+"例如 ``intersphinx_disabled_reftypes = ['std:doc']`` 交叉引用 ``:doc:`installation``` 不会被 intersphinx 试图解析，"
+"但 ``:external+otherbook:doc:`installation``` 将试图解析 :confval:`intersphinx_mapping` 中的库存命名 ``otherbook``。"
+"同时，所有在 Python 中生成的交叉引用，声明仍然会被 intersphinx 解析。"
 
 #: ../../usage/extensions/intersphinx.rst:182
 msgid ""
 "If ``*`` is in the list of domains, then no non-:rst:role:`external` "
 "references will be resolved by intersphinx."
 msgstr ""
+"如果 ``*`` 在域列表中，则 intersphinx 不会解析非 :rst:role:`external` 引用。"
 
 #: ../../usage/extensions/intersphinx.rst:186
 msgid "Explicitly Reference External Objects"
-msgstr ""
+msgstr "显式引用外部对象"
 
 #: ../../usage/extensions/intersphinx.rst:188
 msgid "The Intersphinx extension provides the following role."
-msgstr ""
+msgstr "Intersphinx 插件提供以下角色。"
 
 #: ../../usage/extensions/intersphinx.rst:194
 msgid ""
@@ -284,16 +331,21 @@ msgid ""
 "cross-refererence as if the object is in the current project, but then "
 "prefix it with ``:external``. The two forms are then"
 msgstr ""
+"只在外部项目中使用 Intersphinx 执行查找，而不是当前项目。"
+"Intersphinx 仍然需要知道您想要找到的对象的类型，"
+"所以这个角色的一般形式是编写交叉引用，就像对象在当前项目中一样，但然后用 ``:external`` 作为前缀。这两种形式"
 
 #: ../../usage/extensions/intersphinx.rst:201
 msgid ""
 "``:external:domain:reftype:`target```, e.g., "
 "``:external:py:class:`zipfile.ZipFile```, or"
 msgstr ""
+"``:external:domain:reftype:`target```，如 "
+"``:external:py:class:`zipfile.ZipFile``` 或者
 
 #: ../../usage/extensions/intersphinx.rst:203
 msgid "``:external:reftype:`target```, e.g., ``:external:doc:`installation```."
-msgstr ""
+msgstr "``:external:reftype:`target```，如 ``:external:doc:`installation```。"
 
 #: ../../usage/extensions/intersphinx.rst:206
 msgid ""
@@ -301,6 +353,7 @@ msgid ""
 " then the key of the project, as specified in "
 ":confval:`intersphinx_mapping`, is added as well to get the two forms"
 msgstr ""
+"如果你想限制查找到特定的外部项目，那么项目的键，如指定 :confval:`intersphinx_mapping`，也被添加，以获得两个形式"
 
 #: ../../usage/extensions/intersphinx.rst:210
 msgid ""
@@ -316,7 +369,7 @@ msgstr ""
 
 #: ../../usage/extensions/intersphinx.rst:216
 msgid "Showing all links of an Intersphinx mapping file"
-msgstr ""
+msgstr "显示 Intersphinx 映射文件的所有链接"
 
 #: ../../usage/extensions/intersphinx.rst:218
 msgid ""
@@ -326,101 +379,20 @@ msgid ""
 " a documentation project. The following example prints the Intersphinx "
 "mapping of the Python 3 documentation::"
 msgstr ""
+"运行 ``python -msphinx.ext.intersphinx url-or-path`` 命令，显示 Intersphinx 映射文件的所有链接和它们的目标。"
+"这在文档项目中搜索 Intersphinx 链接中断的根本原因时很有帮助。下面的例子打印了 Python 3 文档中的 Intersphinx 映射："
 
 #: ../../usage/extensions/intersphinx.rst:227
 msgid "Using Intersphinx with inventory file under Basic Authorization"
-msgstr ""
+msgstr "在基本授权下对库存文件使用 Intersphinx"
 
 #: ../../usage/extensions/intersphinx.rst:229
 msgid "Intersphinx supports Basic Authorization like this::"
-msgstr ""
+msgstr "Intersphinx 支持这样的基本授权::"
 
 #: ../../usage/extensions/intersphinx.rst:234
 msgid ""
 "The user and password will be stripped from the URL when generating the "
 "links."
 msgstr ""
-
-#~ msgid ""
-#~ "This extension can generate automatic "
-#~ "links to the documentation of objects"
-#~ " in other projects."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Usage is simple: whenever Sphinx "
-#~ "encounters a cross-reference that has"
-#~ " no matching target in the current"
-#~ " documentation set, it looks for "
-#~ "targets in the documentation sets "
-#~ "configured in :confval:`intersphinx_mapping`.  A "
-#~ "reference like ``:py:class:`zipfile.ZipFile``` can"
-#~ " then link to the Python "
-#~ "documentation for the ZipFile class, "
-#~ "without you having to specify where "
-#~ "it is located exactly."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "When using the \"new\" format (see "
-#~ "below), you can even force lookup "
-#~ "in a foreign set by prefixing the"
-#~ " link target appropriately.  A link "
-#~ "like ``:ref:`comparison manual "
-#~ "<python:comparisons>``` will then link to "
-#~ "the label \"comparisons\" in the doc "
-#~ "set \"python\", if it exists."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Projects using the Intersphinx extension "
-#~ "can specify the location of such "
-#~ "mapping files in the "
-#~ ":confval:`intersphinx_mapping` config value.  The"
-#~ " mapping will then be used to "
-#~ "resolve otherwise missing references to "
-#~ "objects into links to the other "
-#~ "documentation."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "The unique identifier can be used "
-#~ "to prefix cross-reference targets, so"
-#~ " that it is clear which intersphinx"
-#~ " set the target belongs to.  A "
-#~ "link like ``:ref:`comparison manual "
-#~ "<python:comparisons>``` will link to the "
-#~ "label \"comparisons\" in the doc set "
-#~ "\"python\", if it exists."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "When a cross-reference without an "
-#~ "explicit inventory specification is being "
-#~ "resolved by intersphinx, skip resolution "
-#~ "if it matches one of the "
-#~ "specifications in this list."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "For example, with ``intersphinx_disabled_reftypes"
-#~ " = ['std:doc']`` a cross-reference "
-#~ "``:doc:`installation``` will not be attempted"
-#~ " to be resolved by intersphinx, but"
-#~ " ``:doc:`otherbook:installation``` will be "
-#~ "attempted to be resolved in the "
-#~ "inventory named ``otherbook`` in "
-#~ ":confval:`intersphinx_mapping`. At the same "
-#~ "time, all cross-references generated in,"
-#~ " e.g., Python, declarations will still "
-#~ "be attempted to be resolved by "
-#~ "intersphinx."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "If ``*`` is in the list of "
-#~ "domains, then no references without an"
-#~ " explicit inventory will be resolved "
-#~ "by intersphinx."
-#~ msgstr ""
-
+"在生成链接时，用户和密码将从 URL 中剥离。"
