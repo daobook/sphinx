@@ -170,7 +170,7 @@
 <p class="admonition-title">备注</p>
 <p>本节提供关于使用预先存在的 HTML 主题的信息。如果你想创建你自己的主题，请参考 <a class="reference internal" href="../development/theming.html"><span class="doc">HTML 主题开发</span></a>。</p>
 </div>
-<p>Sphinx 支持通过 <em>主题</em> 改变其 HTML 输出的外观。一个主题是一个 HTML 模板、样式表和其他静态文件的集合。此外，它有一个配置文件，指定从哪个主题继承，使用哪种突出的风格，以及有哪些选项可以定制主题的外观和感觉。</p>
+<p>Sphinx 支持通过 <em>themes</em> 改变其 HTML 输出的外观。主题是 HTML 模板、样式表和其他静态文件的集合。此外，它有配置文件，指定从哪个主题继承，使用哪种高亮的风格，以及有哪些选项可以定制主题的外观和感觉。</p>
 <p>主题是为了不受项目影响，所以它们可以用于不同的项目而不需要改变。</p>
 <section id="using-a-theme">
 <h3>使用主题<a class="headerlink" href="#using-a-theme" title="永久链接至标题">¶</a></h3>
@@ -185,12 +185,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>如果主题没有附带 Sphinx，它可以以两种静态形式或 Python 包的形式出现。对于静态形式，可以是一个目录（包含 <code class="file docutils literal notranslate"><span class="pre">theme.conf</span></code> 和其他需要的文件），也可以是一个具有相同内容的 zip 文件。这个目录或 zip 文件必须放在 Sphinx 能找到的地方；为此有一个配置值 <a class="reference internal" href="configuration.html#confval-html_theme_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_theme_path</span></code></a>。这可以是一个目录列表，相对于包含 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的目录，它可以包含主题目录或 zip 文件。例如，如果你有一个主题文件 <code class="file docutils literal notranslate"><span class="pre">blue.zip</span></code>，你可以把它直接放在包含 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的目录中，并使用这个配置</p>
+<p>如果主题没有被 Sphinx 附带，它可以以两种静态形式或 Python 包的形式出现。对于静态形式，可以是目录（包含 <code class="file docutils literal notranslate"><span class="pre">theme.conf</span></code> 和其他需要的文件），也可以是具有相同内容的 zip 文件。这个目录或 zip 文件必须放在 Sphinx 能找到的地方；为此有配置值 <a class="reference internal" href="configuration.html#confval-html_theme_path"><code class="xref std std-confval docutils literal notranslate"><span class="pre">html_theme_path</span></code></a>。这可以是目录列表，相对于包含 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的目录，它可以包含主题目录或 zip 文件。例如，如果你有主题文件 <code class="file docutils literal notranslate"><span class="pre">blue.zip</span></code>，你可以把它直接放在包含 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的目录中，并使用这个配置</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
 <span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>第三种形式是一个 Python 包。如果你想使用的主题是作为 Python 包分发的，你可以在安装后使用它</p>
+<p>第三种形式是 Python 包。如果你想使用的主题是作为 Python 包分发的，你可以在安装后使用它</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>installing theme package
 <span class="gp">$ </span>pip install sphinxjp.themes.dotted
 </pre></div>
