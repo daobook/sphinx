@@ -171,18 +171,18 @@
 <span id="configuration"></span><span id="build-config"></span><h1>配置<a class="headerlink" href="#module-conf" title="永久链接至标题">¶</a></h1>
 <p><a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">配置目录</span></a> 必须包含一个名为 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的文件。这个文件（包含 Python 代码）被称为 “build 配置文件”，包含（几乎）所有自定义 Sphinx 输入和输出行为所需的配置。</p>
 <blockquote>
-<div><p>一个可选的文件 <a class="reference external" href="https://docutils.sourceforge.io/docs/user/config.html">docutils.conf</a> 可以被添加到配置目录中，以调整 <a class="reference external" href="https://docutils.sourceforge.io/">Docutils</a> 配置，如果没有被 Sphinx 覆盖或设置的话。</p>
+<div><p>可选的文件 <a class="reference external" href="https://docutils.sourceforge.io/docs/user/config.html">docutils.conf</a> 可以被添加到配置目录中，以调整 <a class="reference external" href="https://docutils.sourceforge.io/">Docutils</a> 配置，如果没有被 Sphinx 覆盖或设置的话。</p>
 </div></blockquote>
 <p>配置文件在构建时作为 Python 代码执行（使用 <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(在 Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>，并且当前目录设置为其包含目录），因此可以执行任意复杂的代码。然后 Sphinx 从文件的命名空间中读取简单的名称作为其配置。</p>
 <p>需要注意的重要事项：</p>
 <ul class="simple">
-<li><p>如果没有其他文件规定，值必须是字符串，其默认值是空字符串。</p></li>
-<li><p>术语 “完全限定名”（fully-qualified name）指的是一个字符串，它命名了一个模块中可导入的 Python 对象；例如，FQN <code class="docutils literal notranslate"><span class="pre">&quot;sphinx.builders.Builder&quot;</span></code> 意味着 <code class="docutils literal notranslate"><span class="pre">sphinx.builders</span></code> 模块中的 <code class="docutils literal notranslate"><span class="pre">Builder</span></code> 类。</p></li>
+<li><p>如果没有其他文档，值必须是字符串，其默认值是空字符串。</p></li>
+<li><p>术语 “完全限定名”（fully-qualified name）指的是字符串，它命名了模块中可导入的 Python 对象；例如，FQN <code class="docutils literal notranslate"><span class="pre">&quot;sphinx.builders.Builder&quot;</span></code> 意味着 <code class="docutils literal notranslate"><span class="pre">sphinx.builders</span></code> 模块中的 <code class="docutils literal notranslate"><span class="pre">Builder</span></code> 类。</p></li>
 <li><p>记住，文件名使用 <code class="docutils literal notranslate"><span class="pre">/</span></code> 作为路径分隔符，不包含文件名的扩展名。</p></li>
-<li><p>由于 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 是作为一个 Python 文件被读取的，通常的规则适用于编码和 Unicode 支持。</p></li>
-<li><p>config 命名空间的内容是腌制的（这样 Sphinx 可以在配置改变时发现），所以它可能不包含不可腌制的值–如果合适的话用 <code class="docutils literal notranslate"><span class="pre">del</span></code> 从命名空间中删除它们。模块会自动删除，所以你不需要在使用后 <code class="docutils literal notranslate"><span class="pre">del</span></code> 你的导入。</p>
+<li><p>由于 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 是作为 Python 文件被读取的，通常的规则适用于编码和 Unicode 支持。</p></li>
+<li><p>config 命名空间的内容是 pickled（这样 Sphinx 可以在配置改变时发现），所以它可能不包含 unpickleable 值 —— 如果合适的话用 <code class="docutils literal notranslate"><span class="pre">del</span></code> 从命名空间中删除它们。模块会被自动删除，所以你不需要在使用后 <code class="docutils literal notranslate"><span class="pre">del</span></code> 你的导入。</p>
 </li>
-<li id="conf-tags"><p>在配置文件中，有一个名为 <code class="docutils literal notranslate"><span class="pre">tags</span></code> 的特殊对象可用。它可以用来查询和改变标签（见 <a class="reference internal" href="restructuredtext/directives.html#tags"><span class="std std-ref">包含基于标记的内容</span></a>）。使用 <code class="docutils literal notranslate"><span class="pre">tags.has('tag')</span></code>  来查询，<code class="docutils literal notranslate"><span class="pre">tags.add('tag')</span></code> 和 <code class="docutils literal notranslate"><span class="pre">tags.remove('tag')</span></code> 来改变。只有通过 <code class="docutils literal notranslate"><span class="pre">-t</span></code> 命令行选项或 <code class="docutils literal notranslate"><span class="pre">tags.add('tag')</span></code> 设置的标签可以使用 <code class="docutils literal notranslate"><span class="pre">tags.has('tag')</span></code> 进行查询。注意，当前的构建器标签在 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 中是不可用的，因为它是在构建器被初始化之后创建的。”</p></li>
+<li id="conf-tags"><p>在配置文件中，有名为 <code class="docutils literal notranslate"><span class="pre">tags</span></code> 的特殊对象可用。它可以用来查询和改变 tags（见 <a class="reference internal" href="restructuredtext/directives.html#tags"><span class="std std-ref">包含基于标记的内容</span></a>）。使用 <code class="docutils literal notranslate"><span class="pre">tags.has('tag')</span></code>  来查询，<code class="docutils literal notranslate"><span class="pre">tags.add('tag')</span></code> 和 <code class="docutils literal notranslate"><span class="pre">tags.remove('tag')</span></code> 来改变。只有通过 <code class="docutils literal notranslate"><span class="pre">-t</span></code> 命令行选项或 <code class="docutils literal notranslate"><span class="pre">tags.add('tag')</span></code> 设置的标签可以使用 <code class="docutils literal notranslate"><span class="pre">tags.has('tag')</span></code> 进行查询。注意，当前的构建器 tag 在 <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> 中是不可用的，因为它是在构建器被初始化之后创建的。</p></li>
 </ul>
 <section id="project-information">
 <h2>项目信息<a class="headerlink" href="#project-information" title="永久链接至标题">¶</a></h2>
@@ -283,7 +283,7 @@
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-source_parsers">
 <span class="sig-name descname"><span class="pre">source_parsers</span></span><a class="headerlink" href="#confval-source_parsers" title="永久链接至目标">¶</a></dt>
-<dd><p>如果给定，一个不同来源的解析器类的字典就足够了。键是后缀，值可以是一个类，也可以是一个字符串，给出一个解析器类的全称名称。解析器类可以是 <code class="docutils literal notranslate"><span class="pre">docutils.parsers.Parser</span></code> 或 <code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.parsers.Parser`</span></code>。后缀不在字典中的文件将用默认的 reStructuredText 解析器进行解析。</p>
+<dd><p>如果给定，一个不同来源的解析器类的字典就足够了。键是后缀，值可以是一个类，也可以是一个字符串，给出一个解析器类的全称名称。解析器类可以是 <code class="docutils literal notranslate"><span class="pre">docutils.parsers.Parser</span></code> 或 <a class="reference internal" href="../extdev/parserapi.html#sphinx.parsers.Parser" title="sphinx.parsers.Parser"><code class="xref py py-class docutils literal notranslate"><span class="pre">sphinx.parsers.Parser</span></code></a>。后缀不在字典中的文件将用默认的 reStructuredText 解析器进行解析。</p>
 <p>例如</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">source_parsers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;recommonmark.parser.CommonMarkParser&#39;</span><span class="p">}</span>
 </pre></div>
