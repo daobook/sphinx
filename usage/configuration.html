@@ -169,7 +169,7 @@
             
   <section id="module-conf">
 <span id="configuration"></span><span id="build-config"></span><h1>配置<a class="headerlink" href="#module-conf" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">配置目录</span></a> 必须包含一个名为 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的文件。这个文件（包含 Python 代码）被称为 “build 配置文件”，包含（几乎）所有自定义 Sphinx 输入和输出行为所需的配置。</p>
+<p><a class="reference internal" href="../glossary.html#term-configuration-directory"><span class="xref std std-term">配置目录</span></a> 必须包含名为 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> 的文件。这个文件（包含 Python 代码）被称为 “build 配置文件”，包含（几乎）所有自定义 Sphinx 输入和输出行为所需的配置。</p>
 <blockquote>
 <div><p>可选的文件 <a class="reference external" href="https://docutils.sourceforge.io/docs/user/config.html">docutils.conf</a> 可以被添加到配置目录中，以调整 <a class="reference external" href="https://docutils.sourceforge.io/">Docutils</a> 配置，如果没有被 Sphinx 覆盖或设置的话。</p>
 </div></blockquote>
@@ -241,8 +241,8 @@
 <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;extname&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>这样，你就可以从 <code class="docutils literal notranslate"><span class="pre">sphinxext</span></code> 子目录中加载一个名为 <code class="docutils literal notranslate"><span class="pre">extname</span></code> 的扩展。</p>
-<p>配置文件本身可以是一个插件；为此，你只需要在其中提供一个 <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> 函数。</p>
+<p>这样，你就可以从 <code class="docutils literal notranslate"><span class="pre">sphinxext</span></code> 子目录中加载名为 <code class="docutils literal notranslate"><span class="pre">extname</span></code> 的扩展。</p>
+<p>配置文件本身可以是插件；为此，你只需要在其中提供 <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> 函数。</p>
 </dd></dl>
 
 <dl class="std confval">
