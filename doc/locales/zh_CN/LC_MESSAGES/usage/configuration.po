@@ -28,8 +28,9 @@ msgid ""
 " configuration file\" and contains (almost) all configuration needed to "
 "customize Sphinx input and output behavior."
 msgstr ""
-":term:`配置目录` 必须包含一个名为 :file:`conf.py` 的文件。这个文件（包含 Python 代码）被称为 “build "
-"配置文件”，包含（几乎）所有自定义 Sphinx 输入和输出行为所需的配置。"
+":term:`配置目录` 必须包含名为 :file:`conf.py` 的文件。"
+"这个文件（包含 Python 代码）被称为 “build 配置文件”，"
+"包含（几乎）所有自定义 Sphinx 输入和输出行为所需的配置。"
 
 #: ../../usage/configuration.rst:17
 msgid ""
@@ -173,20 +174,20 @@ msgid ""
 "paths. If your extension path is relative to the :term:`configuration "
 "directory`, use :func:`os.path.abspath` like so::"
 msgstr ""
-"注意，如果你的插件在另一个目录中，你可以在 conf 文件中扩展 :data:`sys.path` -- "
-"但要确保你使用绝对路径。如果你的扩展路径是相对于 :term:`配置目录`，请使用 :func:`os.path.abspath`，像这样 ::"
+"注意，如果你的插件在另一个目录中，你可以在 conf 文件中扩展 :data:`sys.path` -- 但要确保你使用绝对路径。"
+"如果你的扩展路径是相对于 :term:`配置目录`，请使用 :func:`os.path.abspath`，像这样 ::"
 
 #: ../../usage/configuration.rst:117
 msgid ""
 "That way, you can load an extension called ``extname`` from the "
 "subdirectory ``sphinxext``."
-msgstr "这样，你就可以从 ``sphinxext`` 子目录中加载一个名为 ``extname`` 的扩展。"
+msgstr "这样，你就可以从 ``sphinxext`` 子目录中加载名为 ``extname`` 的扩展。"
 
 #: ../../usage/configuration.rst:120
 msgid ""
 "The configuration file itself can be an extension; for that, you only "
 "need to provide a :func:`setup` function in it."
-msgstr "配置文件本身可以是一个插件；为此，你只需要在其中提供一个 :func:`setup` 函数。"
+msgstr "配置文件本身可以是插件；为此，你只需要在其中提供 :func:`setup` 函数。"
 
 #: ../../usage/configuration.rst:125
 msgid ""
