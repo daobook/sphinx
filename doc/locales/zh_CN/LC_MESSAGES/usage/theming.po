@@ -786,14 +786,3 @@ msgid ""
 msgstr ""
 "sphinx-themes.org__ 是一个画廊，展示了 Sphinx 的各种主题，每个主题下都有演示文档呈现。主题也可以在 PyPI__ "
 "（使用分类器 ``Framework :: Sphinx :: Theme``）、GitHub__ 和 GitLab__ 找到。"
-
-#~ msgid "Todo"
-#~ msgstr ""
-
-#~ msgid ""
-#~ "**navigation_with_keys** (true or false): "
-#~ "Allow navigating to the previous/next "
-#~ "page using the keyboard's left and "
-#~ "right arrows.  Defaults to ``False``."
-#~ msgstr ""
-
