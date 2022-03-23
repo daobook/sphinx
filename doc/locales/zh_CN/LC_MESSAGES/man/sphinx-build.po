@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sphinx 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-20 19:07+0800\n"
+"POT-Creation-Date: 2022-03-23 23:39+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -459,11 +459,25 @@ msgid ""
 " set via the shortcut variable **O** (capital 'o')."
 msgstr ""
 
-#: ../../man/sphinx-build.rst:310
+#: ../../man/sphinx-build.rst:309
+msgid ""
+"When set (regardless of value), :program:`sphinx-build`  will not use "
+"color in terminal output. ``NO_COLOR`` takes precedence over "
+"``FORCE_COLOR``. See `no-color.org <https://no-color.org/>`__ for other "
+"libraries supporting this community standard."
+msgstr ""
+
+#: ../../man/sphinx-build.rst:318
+msgid ""
+"When set (regardless of value), :program:`sphinx-build` will use color in"
+" terminal output. ``NO_COLOR`` takes precedence over ``FORCE_COLOR``."
+msgstr ""
+
+#: ../../man/sphinx-build.rst:326
 msgid "Deprecation Warnings"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:312
+#: ../../man/sphinx-build.rst:328
 msgid ""
 "If any deprecation warning like ``RemovedInSphinxXXXWarning`` are "
 "displayed when building a user's document, some Sphinx extension is using"
@@ -471,33 +485,33 @@ msgid ""
 "extension."
 msgstr ""
 
-#: ../../man/sphinx-build.rst:316
+#: ../../man/sphinx-build.rst:332
 msgid ""
 "To disable the deprecation warnings, please set ``PYTHONWARNINGS=`` "
 "environment variable to your environment. For example:"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:319
+#: ../../man/sphinx-build.rst:335
 msgid "``PYTHONWARNINGS= make html`` (Linux/Mac)"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:320
+#: ../../man/sphinx-build.rst:336
 msgid "``export PYTHONWARNINGS=`` and do ``make html`` (Linux/Mac)"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:321
+#: ../../man/sphinx-build.rst:337
 msgid "``set PYTHONWARNINGS=`` and do ``make html`` (Windows)"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:322
+#: ../../man/sphinx-build.rst:338
 msgid "modify your Makefile/make.bat and set the environment variable"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:325
+#: ../../man/sphinx-build.rst:341
 msgid "See also"
 msgstr ""
 
-#: ../../man/sphinx-build.rst:327
+#: ../../man/sphinx-build.rst:343
 msgid ":manpage:`sphinx-quickstart(1)`"
 msgstr ""
 
