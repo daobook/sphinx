@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../usage/extensions/duration.rst:2
 msgid ":mod:`sphinx.ext.duration` -- Measure durations of Sphinx processing"
-msgstr ""
+msgstr ":mod:`sphinx.ext.duration` —— 度量 Sphinx 处理的持续时间"
 
 #: ../../usage/extensions/duration.rst:9
 msgid ""
@@ -27,4 +27,5 @@ msgid ""
 "result at end of the build.  It is useful for inspecting what document is"
 " slowly built."
 msgstr ""
-
+"此插件度量 Sphinx 处理的持续时间，并在构建结束时显示其结果。"
+"这对于检查构建缓慢的文档非常有用。"
