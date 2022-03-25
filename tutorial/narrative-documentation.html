@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Sphinx 中的叙事性文件 &#8212; Sphinx documentation</title>
+    <title>Sphinx 中的叙事文档 &#8212; Sphinx documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx13.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -95,7 +95,7 @@
         <li><a href="../contents.html">文档</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sphinx 教程</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事性文件</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事文档</a></li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -103,7 +103,7 @@
   <div>
     <h3><a href="../contents.html">目录</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Sphinx 中的叙事性文件</a><ul>
+<li><a class="reference internal" href="#">Sphinx 中的叙事文档</a><ul>
 <li><a class="reference internal" href="#structuring-your-documentation-across-multiple-pages">在多个页面上构建你的文档结构</a></li>
 <li><a class="reference internal" href="#adding-cross-references">添加交叉引用</a></li>
 </ul>
@@ -147,11 +147,11 @@
           <div class="body" role="main">
             
   <section id="narrative-documentation-in-sphinx">
-<h1>Sphinx 中的叙事性文件<a class="headerlink" href="#narrative-documentation-in-sphinx" title="永久链接至标题">¶</a></h1>
+<h1>Sphinx 中的叙事文档<a class="headerlink" href="#narrative-documentation-in-sphinx" title="永久链接至标题">¶</a></h1>
 <section id="structuring-your-documentation-across-multiple-pages">
 <h2>在多个页面上构建你的文档结构<a class="headerlink" href="#structuring-your-documentation-across-multiple-pages" title="永久链接至标题">¶</a></h2>
-<p>由 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> 创建的 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 文件是 <a class="reference internal" href="../glossary.html#term-root-document"><span class="xref std std-term">根文件</span></a>，其主要功能是作为欢迎页和包含 “目录树”（或 <em>toctree</em>）的根。Sphinx 允许你从不同的文件中组装一个项目，这在项目增长时很有帮助。</p>
-<p>作为一个例子，创建一个新的文件 <code class="docutils literal notranslate"><span class="pre">docs/source/usage.rst</span></code> （在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 旁边），内容如下：</p>
+<p>由 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> 创建的 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 文件是 <a class="reference internal" href="../glossary.html#term-root-document"><span class="xref std std-term">根文件</span></a>，其主要功能是作为欢迎页和包含 “目录树”（或 <em>toctree</em>）的根。Sphinx 允许你从不同的文件中组装项目，这在项目增长时很有帮助。</p>
+<p>作为一个例子，创建新的文件 <code class="docutils literal notranslate"><span class="pre">docs/source/usage.rst</span></code> （在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 旁边），内容如下：</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">docs/source/usage.rst</span><a class="headerlink" href="#id1" title="永久链接至代码">¶</a></div>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Usage</span>
@@ -168,9 +168,9 @@ To use Lumache, first install it using pip:
 </pre></div>
 </div>
 </div>
-<p>这个新文件包含两个 <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-sections"><span class="std std-ref">章节</span></a> 标题，正常的段落文本，以及一个 <a class="reference internal" href="../usage/restructuredtext/directives.html#directive-code-block" title="code-block directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">code-block</span></code></a> 指令，该指令将一个内容块渲染成源代码，并有适当的语法高亮显示（在本例中是通用的 <code class="docutils literal notranslate"><span class="pre">console</span></code> 文本）。</p>
-<p>文件的结构是由连续的标题决定的样式，这意味着在 “Installation” 部分使用 “—-”，而在 “Usage” 部分使用 “=====”，就意味着你已经声明了。“Installation” 是 “Usage” 的小节。</p>
-<p>为了完成这个过程，在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 的末尾添加一个 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-directives"><span class="std std-ref">指令</span></a>，包括你刚刚创建的文件，如下所示：</p>
+<p>这个新文件包含两个 <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-sections"><span class="std std-ref">章节</span></a> 标题，正常的段落文本，以及 <a class="reference internal" href="../usage/restructuredtext/directives.html#directive-code-block" title="code-block directive"><code class="xref rst rst-dir docutils literal notranslate"><span class="pre">code-block</span></code></a> 指令，该指令将内容块渲染成源代码，并有适当的语法高亮显示（在本例中是通用的 <code class="docutils literal notranslate"><span class="pre">console</span></code> 文本）。</p>
+<p>文件的结构是由连续的标题决定的样式，这意味着在 “Installation” 部分使用 <code class="docutils literal notranslate"><span class="pre">---</span></code>，而在 “Usage” 部分使用 <code class="docutils literal notranslate"><span class="pre">===</span></code>，就意味着你已经声明了 “Installation” 是 “Usage” 的小节。</p>
+<p>为了完成这个过程，在 <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> 的末尾添加 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> <a class="reference internal" href="../usage/restructuredtext/basics.html#rst-directives"><span class="std std-ref">指令</span></a>，包括你刚刚创建的文件，如下所示：</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">docs/source/index.rst</span><a class="headerlink" href="#id2" title="永久链接至代码">¶</a></div>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Contents</span>
@@ -228,7 +228,7 @@ To use Lumache, first install it using pip:
 </pre></div>
 </div>
 </div>
-<p>注意这里有一个技巧：<code class="docutils literal notranslate"><span class="pre">install</span></code> 部分指定了链接的样子（我们希望它是一个特定的词，这样句子才有意义），而 <code class="docutils literal notranslate"><span class="pre">&lt;installation&gt;</span></code> 部分指的是我们要添加一个交叉引用的实际标签。如果你不包括一个明确的标题，因此使用 <code class="docutils literal notranslate"><span class="pre">:ref:`installation`</span></code>，则将使用该部分的标题（在本例中，<code class="docutils literal notranslate"><span class="pre">Installation</span></code>）。<code class="docutils literal notranslate"><span class="pre">:doc:</span></code> 和 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 这两个角色都将在 HTML 文档中呈现为超链接。</p>
+<p>注意这里有个技巧：<code class="docutils literal notranslate"><span class="pre">install</span></code> 部分指定了链接的样子（我们希望它是一个特定的词，这样句子才有意义），而 <code class="docutils literal notranslate"><span class="pre">&lt;installation&gt;</span></code> 部分指的是我们要添加一个交叉引用的实际标签。如果你不包括一个明确的标题，因此使用 <code class="docutils literal notranslate"><span class="pre">:ref:`installation`</span></code>，则将使用该部分的标题（在本例中，<code class="docutils literal notranslate"><span class="pre">Installation</span></code>）。<code class="docutils literal notranslate"><span class="pre">:doc:</span></code> 和 <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> 这两个角色都将在 HTML 文档中呈现为超链接。</p>
 <p>那么 <a class="reference internal" href="describing-code.html"><span class="doc">在 Sphinx 中记录代码对象</span></a> 呢？请继续阅读！</p>
 </section>
 </section>
@@ -259,7 +259,7 @@ To use Lumache, first install it using pip:
         <li><a href="../contents.html">文档</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Sphinx 教程</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事性文件</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Sphinx 中的叙事文档</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
