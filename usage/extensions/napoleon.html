@@ -174,7 +174,7 @@
 :rtype: BufferedFileStorage
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> 很好，但它创建了视觉密集，难以阅读 <a class="reference external" href="https://www.python.org/dev/peps/pep-0287/">docstrings</a>。将上面的混乱与根据 <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a> 重写的相同内容进行比较:</p>
+<p><a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> 很好，但它创建了视觉密集，难以阅读 <a class="reference external" href="https://peps.python.org/pep-0287/">docstrings</a>。将上面的混乱与根据 <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a> 重写的相同内容进行比较:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Args:
     path (str): The path of the file to wrap
     field_storage (FileStorage): The :class:`FileStorage` instance to wrap
@@ -307,7 +307,7 @@ extensions = [&#39;sphinx.ext.napoleon&#39;]
 </section>
 <section id="type-annotations">
 <h3>类型注解<a class="headerlink" href="#type-annotations" title="永久链接至标题">¶</a></h3>
-<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a> 引入了一种用 Python 代码表达类型的标准方式。这是一个替代直接在文档字符串中表达类型的方法。根据 <a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a> 表示类型的一个好处是，类型检查器和 IDE 可以利用它们进行静态代码分析。然后，<a class="reference external" href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a> 被 <a class="reference external" href="https://www.python.org/dev/peps/pep-0526/">PEP 526</a> 扩展，后者引入了一种类似的方式来注释变量（和属性）。</p>
+<p><a class="reference external" href="https://peps.python.org/pep-0484/">PEP 484</a> 引入了一种用 Python 代码表达类型的标准方式。这是一个替代直接在文档字符串中表达类型的方法。根据 <a class="reference external" href="https://peps.python.org/pep-0484/">PEP 484</a> 表示类型的一个好处是，类型检查器和 IDE 可以利用它们进行静态代码分析。然后，<a class="reference external" href="https://peps.python.org/pep-0484/">PEP 484</a> 被 <a class="reference external" href="https://peps.python.org/pep-0526/">PEP 526</a> 扩展，后者引入了一种类似的方式来注释变量（和属性）。</p>
 <p>使用 Python 3 类型注释的 Google 样式</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>def func(arg1: int, arg2: str) -&gt; bool:
     &quot;&quot;&quot;Summary line.
@@ -367,7 +367,7 @@ class Class:
 </div>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code">Python 2/3 兼容的注释</a> 目前不被 Sphinx 支持，也不会出现在文档中。</p>
+<p><a class="reference external" href="https://peps.python.org/pep-0484/#suggested-syntax-for-python-2-7-and-straddling-code">Python 2/3 兼容的注释</a> 目前不被 Sphinx 支持，也不会出现在文档中。</p>
 </div>
 </section>
 </section>
@@ -643,7 +643,7 @@ arg2 : dict-like
 <dl class="std confval">
 <dt class="sig sig-object std" id="confval-napoleon_attr_annotations">
 <span class="sig-name descname"><span class="pre">napoleon_attr_annotations</span></span><a class="headerlink" href="#confval-napoleon_attr_annotations" title="永久链接至目标">¶</a></dt>
-<dd><p>True 表示允许在类中使用 <a class="reference external" href="https://www.python.org/dev/peps/pep-0526/">PEP 526</a> 属性注解。如果一个属性在没有类型的文档字符串中被记录，并且在类主体中有注解，则使用该类型。</p>
+<dd><p>True 表示允许在类中使用 <a class="reference external" href="https://peps.python.org/pep-0526/">PEP 526</a> 属性注解。如果一个属性在没有类型的文档字符串中被记录，并且在类主体中有注解，则使用该类型。</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.4 新版功能.</span></p>
 </div>
