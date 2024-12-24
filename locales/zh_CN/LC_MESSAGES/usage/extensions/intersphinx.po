@@ -138,8 +138,9 @@ msgid ""
 "``None`` (an :file:`objects.inv` file at the same location as the base "
 "URI) or another local file path or a full HTTP URI to an inventory file."
 msgstr ""
-"将唯一标识符映射到元组 ``(target, inventory)`` 的字典。每个 ``target`` 是外部 Sphinx 文档集的基本 URI，可以是本地路径或 HTTP URI。"
-"``inventory`` 指示清单文件的位置：它可以是 ``None``（与基本 URI 相同位置的 :file:`objects.inv` 文件）或另一个本地文件路径或完整的 HTTP URI 到清单文件。"
+"将唯一标识符映射到元组 ``(target, inventory)`` 的字典。"
+"每个 ``target`` 是外部 Sphinx 文档集的基本 URI，可以是本地路径或 HTTP URI。"
+"``inventory`` 指示清单文件的位置：它可以是 ``None`` （与基本 URI 相同位置的 :file:`objects.inv` 文件）或另一个本地文件路径或完整的 HTTP URI 到清单文件。"
 
 #: ../../usage/extensions/intersphinx.rst:79
 msgid ""
