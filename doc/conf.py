@@ -172,6 +172,9 @@ intersphinx_mapping = {
     'readthedocs': ('https://docs.readthedocs.io/en/stable', None),
 }
 
+# == 国际化输出 ========================================================================
+language = 'zh_CN'
+locale_dirs = ['../locales/']  # po files will be created in this directory
 # Sphinx document translation with sphinx gettext feature uses these settings:
 gettext_compact = False
 
