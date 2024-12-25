@@ -24,14 +24,15 @@ msgid ""
 ":mod:`sphinx.ext.napoleon` -- Support for NumPy and Google style "
 "docstrings"
 msgstr ""
+":mod:`sphinx.ext.napoleon` -- 支持 NumPy 和 Google 风格的文档字符串"
 
 #: ../../usage/extensions/napoleon.rst:12
 msgid "Overview"
-msgstr ""
+msgstr "概览"
 
 #: ../../usage/extensions/napoleon.rst:16
 msgid "Are you tired of writing docstrings that look like this::"
-msgstr ""
+msgstr "你厌倦了编写像这样的文档字符串吗？"
 
 #: ../../usage/extensions/napoleon.rst:28
 msgid ""
@@ -39,10 +40,12 @@ msgid ""
 " :pep:`docstrings <287>`. Compare the jumble above to the same thing "
 "rewritten according to the `Google Python Style Guide`_::"
 msgstr ""
+"`reStructuredText`_ 很棒，但它生成的文档字符串（docstrings）在视觉上显得密集，难以阅读。"
+" :pep:`文档字符串 <287>`. 将上面的混乱与根据 `Google Python 风格指南`_ 重写的相同内容进行比较::"
 
 #: ../../usage/extensions/napoleon.rst:41
 msgid "Much more legible, no?"
-msgstr ""
+msgstr "更多的可读性，不是吗？"
 
 #: ../../usage/extensions/napoleon.rst:43
 msgid ""
@@ -50,6 +53,8 @@ msgid ""
 "`NumPy`_ and `Google`_ style docstrings - the style recommended by `Khan "
 "Academy`_."
 msgstr ""
+"Napoleon :term:`extension` 使 Sphinx 能够解析 `NumPy`_ 和 `Google`_ 风格的文档字符串"
+"——由 `Khan Academy`_ 推荐的风格。"
 
 #: ../../usage/extensions/napoleon.rst:46
 msgid ""
@@ -59,24 +64,29 @@ msgid ""
 "processing the documentation, so it doesn't modify any of the docstrings "
 "in your actual source code files."
 msgstr ""
+"Napoleon 是一个预处理器，它解析 `NumPy`_ 和 `Google`_ 风格的文档字符串，"
+"并在 Sphinx 尝试解析它们之前将它们转换为 reStructuredText。"
+"这是在 Sphinx 处理文档的过程中发生的中间步骤，因此它不会修改您实际的源代码文件中的任何文档字符串。"
 
 #: ../../usage/extensions/napoleon.rst:63
 msgid "Getting Started"
-msgstr ""
+msgstr "快速入门"
 
 #: ../../usage/extensions/napoleon.rst:65
 msgid ""
 "After :doc:`setting up Sphinx </usage/quickstart>` to build your docs, "
 "enable napoleon in the Sphinx ``conf.py`` file::"
 msgstr ""
+"在 :doc:`设置 Sphinx </usage/quickstart>` 以构建你的文档后，"
+"在 Sphinx 的 ``conf.py`` 文件中启用 Napoleon::"
 
 #: ../../usage/extensions/napoleon.rst:73
 msgid "Use ``sphinx-apidoc`` to build your API documentation::"
-msgstr ""
+msgstr "使用 ``sphinx-apidoc`` 构建你的 API 文档::"
 
 #: ../../usage/extensions/napoleon.rst:79
 msgid "Docstrings"
-msgstr ""
+msgstr "文档字符串"
 
 #: ../../usage/extensions/napoleon.rst:81
 msgid ""
@@ -86,18 +96,21 @@ msgid ""
 "``variables``. Inside each docstring, specially formatted `Sections`_ are"
 " parsed and converted to reStructuredText."
 msgstr ""
+"Napoleon 解析 :mod:`autodoc <sphinx.ext.autodoc>` 可以找到的每个文档字符串，包括："
+"  ``modules``, ``classes``, ``attributes``, ``methods``, ``functions`` 和 ``variables`` 的文档字符串。"
+"在每个文档字符串中，特殊格式的 `Sections`_ 被解析并转换为 reStructuredText。"
 
 #: ../../usage/extensions/napoleon.rst:87
 msgid "All standard reStructuredText formatting still works as expected."
-msgstr ""
+msgstr "所有标准的 reStructuredText 格式仍然可以正常工作。"
 
 #: ../../usage/extensions/napoleon.rst:93
 msgid "Docstring Sections"
-msgstr ""
+msgstr "文档字符串部分"
 
 #: ../../usage/extensions/napoleon.rst:95
 msgid "All of the following section headers are supported:"
-msgstr ""
+msgstr "以下部分 headers 被支持："
 
 #: ../../usage/extensions/napoleon.rst:97
 msgid "``Args`` *(alias of Parameters)*"
@@ -237,6 +250,8 @@ msgid ""
 "main difference between the two styles is that Google uses indentation to"
 " separate sections, whereas NumPy uses underlines."
 msgstr ""
+"Napoleon 支持两种风格的文档字符串：`Google`_ 和 `NumPy`_。"
+"这两种风格的主要区别在于，Google 使用缩进来分隔部分，而 NumPy 使用下划线。"
 
 #: ../../usage/extensions/napoleon.rst:137
 msgid "Google style:"
@@ -253,6 +268,8 @@ msgid ""
 "read for short and simple docstrings, whereas NumPy style tends be easier"
 " to read for long and in-depth docstrings."
 msgstr ""
+"NumPy style 需要更多的垂直空间，而 Google style 倾向于使用更多的水平空间。"
+"Google style 更容易阅读短和简单的文档字符串，而 NumPy style 更容易阅读长和深入的文档字符串。"
 
 #: ../../usage/extensions/napoleon.rst:185
 msgid ""
@@ -260,10 +277,11 @@ msgid ""
 " not be mixed. Choose one style for your project and be consistent with "
 "it."
 msgstr ""
+"选择风格主要是审美，但是两种风格不应该混合。为您的项目选择一种风格，并保持一致。"
 
 #: ../../usage/extensions/napoleon.rst:190
 msgid "For complete examples:"
-msgstr ""
+msgstr "完整例子："
 
 #: ../../usage/extensions/napoleon.rst:192
 msgid ":ref:`example_google`"
@@ -286,24 +304,27 @@ msgid ""
 " was then extended by :pep:`526` which introduced a similar way to "
 "annotate variables (and attributes)."
 msgstr ""
+":pep:`484` 引入了一种在 Python 代码中表达类型的标准方法。"
+"这种方法是通过在文档字符串中直接表达类型来实现的。"
 
 #: ../../usage/extensions/napoleon.rst:206
 msgid "Google style with Python 3 type annotations::"
-msgstr ""
+msgstr "带有 Python 3 类型注解的 Google 风格::"
 
 #: ../../usage/extensions/napoleon.rst:236
 msgid "Google style with types in docstrings::"
-msgstr ""
+msgstr "带有类型注解的 Google 风格文档字符串::"
 
 #: ../../usage/extensions/napoleon.rst:264
 msgid ""
 "`Python 2/3 compatible annotations`_ aren't currently supported by Sphinx"
 " and won't show up in the docs."
 msgstr ""
+"`Python 2/3 兼容的注解`_ 目前不受 Sphinx 支持，并且不会显示在文档中。"
 
 #: ../../usage/extensions/napoleon.rst:271
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #: ../../usage/extensions/napoleon.rst:273
 msgid ""
@@ -311,18 +332,23 @@ msgid ""
 "values. These settings can be changed in the Sphinx ``conf.py`` file. "
 "Make sure that \"sphinx.ext.napoleon\" is enabled in ``conf.py``::"
 msgstr ""
+"在 Sphinx ``conf.py`` 文件中列出了所有由 napoleon 使用的设置及其默认值。"
+"这些设置可以在 ``conf.py`` 文件中更改。确保在 ``conf.py`` 中启用了 \"sphinx.ext.napoleon\"::"
 
 #: ../../usage/extensions/napoleon.rst:305
 msgid ""
 "True to parse `Google style`_ docstrings. False to disable support for "
 "Google style docstrings. *Defaults to True.*"
 msgstr ""
+"True 解析 `Google style`_ 文档字符串。False 禁用对 Google style 文档字符串的支持。*默认为 True。*"
+
 
 #: ../../usage/extensions/napoleon.rst:310
 msgid ""
 "True to parse `NumPy style`_ docstrings. False to disable support for "
 "NumPy style docstrings. *Defaults to True.*"
 msgstr ""
+"True 解析 `NumPy style`_ 文档字符串。False 禁用对 NumPy style 文档字符串的支持。*默认为 True。*"
 
 #: ../../usage/extensions/napoleon.rst:315
 msgid ""
@@ -331,6 +357,8 @@ msgid ""
 "considers the ``__init___`` docstring as part of the class documentation."
 " *Defaults to False.*"
 msgstr ""
+"True 将 ``__init___`` 文档字符串与类文档字符串分开列出。"
+"False 回退到 Sphinx 的默认行为，将 ``__init___`` 文档字符串视为类文档的一部分。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:320
 #: ../../usage/extensions/napoleon.rst:336
@@ -340,7 +368,7 @@ msgstr ""
 #: ../../usage/extensions/napoleon.rst:453
 #: ../../usage/extensions/napoleon.rst:495
 msgid "**If True**::"
-msgstr ""
+msgstr "**如果为 True**::"
 
 #: ../../usage/extensions/napoleon.rst:332
 msgid ""
@@ -348,6 +376,7 @@ msgid ""
 " the documentation. False to fall back to Sphinx's default behavior. "
 "*Defaults to False.*"
 msgstr ""
+"True 包含私有成员（例如 ``_membername`` ）的文档字符串。False 回退到 Sphinx 的默认行为。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:350
 msgid ""
@@ -355,6 +384,7 @@ msgid ""
 " in the documentation. False to fall back to Sphinx's default behavior. "
 "*Defaults to True.*"
 msgstr ""
+"True 包含特殊成员（例如 ``__membername__`` ）的文档字符串。False 回退到 Sphinx 的默认行为。*默认为 True。*"
 
 #: ../../usage/extensions/napoleon.rst:368
 msgid ""
@@ -363,32 +393,38 @@ msgid ""
 "instead. One may look better than the other depending on what HTML theme "
 "is used. *Defaults to False.*"
 msgstr ""
+"True 使用 ``.. admonition::`` 指令来显示 **Example** 和 **Examples** 部分。"
+"False 使用 ``.. rubric::`` 指令代替。"
+"可能会根据使用的 HTML 主题而有所不同。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:373
 #: ../../usage/extensions/napoleon.rst:418
 #: ../../usage/extensions/napoleon.rst:444
 #: ../../usage/extensions/napoleon.rst:488
 msgid "This `NumPy style`_ snippet will be converted as follows::"
-msgstr ""
+msgstr "这个 `NumPy 风格`_ 的代码片段将会被转换如下::"
 
 #: ../../usage/extensions/napoleon.rst:385
 #: ../../usage/extensions/napoleon.rst:430
 #: ../../usage/extensions/napoleon.rst:460
 #: ../../usage/extensions/napoleon.rst:500
 msgid "**If False**::"
-msgstr ""
+msgstr "**如果为 False**::"
 
 #: ../../usage/extensions/napoleon.rst:393
 msgid ""
 "True to use the ``.. admonition::`` directive for **Notes** sections. "
 "False to use the ``.. rubric::`` directive instead. *Defaults to False.*"
 msgstr ""
+"使用 ``.. admonition::`` 指令来显示 **Notes** 部分。"
+"False 使用 ``.. rubric::`` 指令代替。*默认为 False。*""
 
 #: ../../usage/extensions/napoleon.rst:396
 msgid ""
 "The singular **Note** section will always be converted to a ``.. note::``"
 " directive."
 msgstr ""
+"单个 **Note** 部分将始终被转换为 ``.. note::`` 指令。"
 
 #: ../../usage/extensions/napoleon.rst:401
 #: ../../usage/extensions/napoleon.rst:411
@@ -401,12 +437,16 @@ msgid ""
 "sections. False to use the ``.. rubric::`` directive instead. *Defaults "
 "to False.*"
 msgstr ""
+"使用 ``.. admonition::`` 指令来显示 **References** 部分。"
+"False 使用 ``.. rubric::`` 指令代替。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:415
 msgid ""
 "True to use the ``:ivar:`` role for instance variables. False to use the "
 "``.. attribute::`` directive instead. *Defaults to False.*"
 msgstr ""
+"使用 ``:ivar:`` 角色来显示实例变量。"
+"False 使用 ``.. attribute::`` 指令代替。*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:440
 msgid ""
@@ -414,6 +454,8 @@ msgid ""
 "a single ``:parameters:`` role for all the parameters. *Defaults to "
 "True.*"
 msgstr ""
+"使用 ``:param:`` 角色来显示每个函数参数。"
+"False 使用 ``:parameters:`` 角色来显示所有的参数。*默认为 True。*"
 
 #: ../../usage/extensions/napoleon.rst:469
 msgid ""
@@ -421,6 +463,8 @@ msgid ""
 "False to use a single ``:keyword arguments:`` role for all the keywords. "
 "*Defaults to True.*"
 msgstr ""
+"使用 ``:keyword:`` 角色来显示每个函数关键字参数。"
+"False 使用 ``:keyword arguments:`` 角色来显示所有的关键字。*默认为 True。*"
 
 #: ../../usage/extensions/napoleon.rst:474
 msgid ""
@@ -429,6 +473,9 @@ msgid ""
 "- there will be a separate \"Keyword Arguments\" section, rendered in the"
 " same fashion as \"Parameters\" section (type links created if possible)"
 msgstr ""
+"这样的行为与 :confval:`napoleon_use_param` 类似。注意，不同于 docutils, "
+"``:keyword:`` 和 ``:param:`` 将不会被视为相同的方式 - 会有单独的 \"Keyword Arguments\" 部分，"
+"与 \"Parameters\" 部分相同（如果可能，会创建类型链接）"
 
 #: ../../usage/extensions/napoleon.rst:481
 msgid ":confval:`napoleon_use_param`"
@@ -439,22 +486,27 @@ msgid ""
 "True to use the ``:rtype:`` role for the return type. False to output the"
 " return type inline with the description. *Defaults to True.*"
 msgstr ""
+"使用 ``:rtype:`` 角色来显示返回类型。"
+"False 内联显示返回类型。*默认为 True。*"
 
 #: ../../usage/extensions/napoleon.rst:506
 msgid ""
 "True to convert the type definitions in the docstrings as references. "
 "Defaults to *False*."
 msgstr ""
+"使用 ``:rtype:`` 角色来显示返回类型。"
+"*默认为 False。*"
 
 #: ../../usage/extensions/napoleon.rst:512
 msgid "Do preprocess the Google style docstrings also."
-msgstr ""
+msgstr "也处理 Google 风格的文档字符串。"
 
 #: ../../usage/extensions/napoleon.rst:516
 msgid ""
 "A mapping to translate type names to other names or references. Works "
 "only when ``napoleon_use_param = True``. *Defaults to None.*"
 msgstr ""
+"将类型名称映射到其他名称或引用。仅当 ``napoleon_use_param = True`` 时有效。*默认为 None。*"
 
 #: ../../usage/extensions/napoleon.rst:519
 msgid "With::"
@@ -462,11 +514,11 @@ msgstr ""
 
 #: ../../usage/extensions/napoleon.rst:526
 msgid "This `NumPy style`_ snippet::"
-msgstr ""
+msgstr "`NumPy style`_ 的代码片段::"
 
 #: ../../usage/extensions/napoleon.rst:535
 msgid "becomes::"
-msgstr ""
+msgstr "变成::"
 
 #: ../../usage/extensions/napoleon.rst:546
 msgid ""
@@ -474,26 +526,30 @@ msgid ""
 "attribute is documented in the docstring without a type and has an "
 "annotation in the class body, that type is used."
 msgstr ""
+"使用 :pep:`526` 属性注解来允许在类中使用属性。如果属性在文档字符串中没有类型，"
+"并且在类主体中具有注解，则使用该类型。"
 
 #: ../../usage/extensions/napoleon.rst:554
 msgid ""
 "Add a list of custom sections to include, expanding the list of parsed "
 "sections. *Defaults to None.*"
 msgstr ""
+"添加自定义部分列表，以扩展解析的分区列表。*默认为 None。*"
 
 #: ../../usage/extensions/napoleon.rst:557
 msgid "The entries can either be strings or tuples, depending on the intention:"
-msgstr ""
+msgstr "这些条目可以是字符串，也可以是元组，取决于意图："
 
 #: ../../usage/extensions/napoleon.rst:559
 msgid "To create a custom \"generic\" section, just pass a string."
-msgstr ""
+msgstr "要创建自定义的 \"generic\" 部分，只需传递字符串。"
 
 #: ../../usage/extensions/napoleon.rst:560
 msgid ""
 "To create an alias for an existing section, pass a tuple containing the "
 "alias name and the original, in that order."
 msgstr ""
+"要为现有的分区创建别名，请按顺序传递包含别名名称和原始名称的元组。"
 
 #: ../../usage/extensions/napoleon.rst:562
 msgid ""
@@ -501,6 +557,8 @@ msgid ""
 "section, pass a tuple containing the custom section name and a string "
 "value, \"params_style\" or \"returns_style\"."
 msgstr ""
+"要创建自定义分区，该分区显示与参数或返回部分类似的部分，"
+"请按顺序传递包含自定义分区名称和字符串值 \"params_style\" 或 \"returns_style\" 的元组。"
 
 #: ../../usage/extensions/napoleon.rst:566
 msgid ""
@@ -511,8 +569,12 @@ msgid ""
 "custom section will be displayed like the parameters section or returns "
 "section."
 msgstr ""
+"如果条目只是字符串，它被解释为通用分区的标题。"
+"如果条目是元组/列表/索引容器，第一个条目是分区的名称，第二个条目是要模仿的分区键。"
+"如果第二个条目值是 \"params_style\" 或 \"returns_style\"，"
+"自定义分区将显示与参数分区或返回分区类似的部分。"
 
 #: ../../usage/extensions/napoleon.rst:573
 msgid "Support ``params_style`` and ``returns_style``"
-msgstr ""
+msgstr "支持 ``params_style`` 和 ``returns_style``"
 

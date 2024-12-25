@@ -21,21 +21,22 @@ msgstr ""
 
 #: ../../usage/extensions/githubpages.rst:2
 msgid ":mod:`sphinx.ext.githubpages` -- Publish HTML docs in GitHub Pages"
-msgstr ""
+msgstr ":mod:`sphinx.ext.githubpages` -- 在 GitHub Pages 上发布 HTML 文档"
 
 #: ../../usage/extensions/githubpages.rst:9
 msgid "Support ``CNAME`` file"
-msgstr ""
+msgstr "支持 ``CNAME`` 文件"
 
 #: ../../usage/extensions/githubpages.rst:12
 msgid ""
 "This extension creates ``.nojekyll`` file on generated HTML directory to "
 "publish the document on GitHub Pages."
 msgstr ""
+"此扩展在生成的 HTML 目录中创建 ``.nojekyll`` 文件，以在 GitHub Pages 上发布文档。"
 
 #: ../../usage/extensions/githubpages.rst:15
 msgid ""
 "It also creates a ``CNAME`` file for custom domains when "
 ":confval:`html_baseurl` set."
 msgstr ""
-
+"当设置 :confval:`html_baseurl` 时，它还为自定义域名创建 ``CNAME`` 文件。"

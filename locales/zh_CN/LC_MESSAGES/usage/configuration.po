@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../usage/configuration.rst:5
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #: ../../usage/configuration.rst:23
 msgid ""
@@ -30,6 +30,8 @@ msgid ""
 " configuration file\" and contains (almost) all configuration needed to "
 "customise Sphinx input and output behaviour."
 msgstr ""
+":term:`配置目录` 必须包含名为 :file:`conf.py` 的文件。"
+"这个文件（包含Python代码）被称为“构建配置文件”，其中包含几乎所有需要定制的 Sphinx 输入和输出行为的配置。"
 
 #: ../../usage/configuration.rst:28
 msgid ""
@@ -37,6 +39,7 @@ msgid ""
 "directory to adjust `Docutils`_ configuration if not otherwise overridden"
 " or set by Sphinx."
 msgstr ""
+"可选的文件 `docutils.conf`_ 可以添加到配置目录中以调整 `Docutils`_ 配置，如果未被其他方式覆盖或由 Sphinx 设置。"
 
 #: ../../usage/configuration.rst:35
 msgid "Important points to note:"
@@ -1845,6 +1848,7 @@ msgid ""
 "used to indicate the location of document using :rfc:`the Canonical Link "
 "Relation <6596>`."
 msgstr ""
+"基本 URL 指向 HTML 文档的根目录。它用于指示使用 :rfc:`规范链接关系 <6596>` 的文档位置。"
 
 #: ../../usage/configuration.rst:1539
 msgid "The style of line numbers for code-blocks."

@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../usage/extensions/extlinks.rst:2
 msgid ":mod:`sphinx.ext.extlinks` -- Markup to shorten external links"
-msgstr ""
+msgstr ":mod:`sphinx.ext.extlinks` -- 缩短外部链接的标记"
 
 #: ../../usage/extensions/extlinks.rst:10
 msgid ""
@@ -31,6 +31,8 @@ msgid ""
 "other websites.  It does so by providing aliases to base URLs, so that "
 "you only need to give the subpage name when creating a link."
 msgstr ""
+"此插件旨在帮助处理常见模式，即有许多指向同一站点上的 URL 的外部链接，例如指向 bug 跟踪器、版本控制 Web 界面或其他网站中的子页面的链接。"
+"它通过提供基本 URL 的别名来实现，因此在创建链接时只需要提供子页面名称。"
 
 #: ../../usage/extensions/extlinks.rst:16
 msgid ""
@@ -39,10 +41,12 @@ msgid ""
 "Typing this URL again and again is tedious, so you can use "
 ":mod:`~sphinx.ext.extlinks` to avoid repeating yourself."
 msgstr ""
+"假设您想在 Sphinx 跟踪器上包含许多指向问题的链接，位于 :samp:`https://github.com/sphinx-doc/sphinx/issues/{num}` 上。"
+"一遍又一遍地输入此 URL 是乏味的，因此您可以使用 :mod:`~sphinx.ext.extlinks` 来避免重复。"
 
 #: ../../usage/extensions/extlinks.rst:21
 msgid "The extension adds a config value:"
-msgstr ""
+msgstr "此插件添加了配置值："
 
 #: ../../usage/extensions/extlinks.rst:25
 msgid ""
@@ -50,6 +54,7 @@ msgid ""
 "short alias names to a *base URL* and a *caption*.  For example, to "
 "create an alias for the above mentioned issues, you would add ::"
 msgstr ""
+"此配置值必须是外部站点的字典，将唯一的短别名映射到 *基本 URL* 和 *标题*。例如，要为上述问题创建别名，您可以添加："
 
 #: ../../usage/extensions/extlinks.rst:32
 #, python-format
@@ -59,14 +64,16 @@ msgid ""
 "doc/sphinx/issues/123. As you can see, the target given in the role is "
 "substituted in the *base URL* in the place of ``%s``."
 msgstr ""
+"现在，您可以使用别名作为新角色，例如 ``:issue:`123```。这将插入到  https://github.com/sphinx-"
+"doc/sphinx/issues/123 的链接。如您所见，角色中给定的目标在 *基本 URL* 中替换了 ``%s``。"
 
 #: ../../usage/extensions/extlinks.rst:37
 msgid "The link caption depends on the second item in the tuple, the *caption*:"
-msgstr ""
+msgstr "链接标题取决于元组中的第二项，即 *caption*："
 
 #: ../../usage/extensions/extlinks.rst:39
 msgid "If *caption* is ``None``, the link caption is the full URL."
-msgstr ""
+msgstr "如果 *caption* 为 ``None``，则链接标题为完整 URL。"
 
 #: ../../usage/extensions/extlinks.rst:40
 #, python-format
@@ -76,11 +83,13 @@ msgid ""
 "for ``%s`` -- in the above example, the link caption would be ``issue "
 "123``."
 msgstr ""
+"如果 *caption* 是字符串，则它必须包含 ``%s`` 一次。"
+"在这种情况下，链接标题是 *caption*，其中部分 URL 替换为 ``%s`` -- 在上面的示例中，链接标题将是 ``issue 123``。"
 
 #: ../../usage/extensions/extlinks.rst:45
 #, python-format
 msgid "To produce a literal ``%`` in either *base URL* or *caption*, use ``%%``::"
-msgstr ""
+msgstr "要在 *基本 URL* 或 *caption* 中生成文字 ``%``，请使用 ``%%``::"
 
 #: ../../usage/extensions/extlinks.rst:50
 msgid ""
@@ -88,17 +97,19 @@ msgid ""
 "roles that generate links, i.e. ``:issue:`this issue <123>```.  In this "
 "case, the *caption* is not relevant."
 msgstr ""
+"您还可以使用其他生成链接的角色支持的常规“显式标题”语法，即 ``:issue:`this issue <123>``。"
 
 #: ../../usage/extensions/extlinks.rst:56
 #, python-format
 msgid "Support to substitute by '%s' in the caption."
-msgstr ""
+msgstr "支持在标题中用 '%s' 替换。"
 
 #: ../../usage/extensions/extlinks.rst:60
 msgid ""
 "Since links are generated from the role in the reading stage, they appear"
 " as ordinary links to e.g. the ``linkcheck`` builder."
 msgstr ""
+"由于链接是从读取阶段的角色生成的，因此它们显示为普通链接，例如 ``linkcheck`` 构建器。"
 
 #: ../../usage/extensions/extlinks.rst:65
 msgid ""
@@ -106,4 +117,4 @@ msgid ""
 "by an extlink, and suggests a replacement via warning.  It defaults to "
 "``False``."
 msgstr ""
-
+"如果启用，extlinks 会发出警告，如果可以通过 extlink 替换硬编码链接，则会发出警告并建议替换。默认为 ``False``。"

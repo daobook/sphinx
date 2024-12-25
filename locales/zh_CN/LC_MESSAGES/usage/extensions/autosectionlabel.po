@@ -24,6 +24,7 @@ msgid ""
 ":mod:`sphinx.ext.autosectionlabel` -- Allow referencing sections by their"
 " title"
 msgstr ""
+":mod:`sphinx.ext.autosectionlabel` -- 允许通过标题引用章节"
 
 #: ../../usage/extensions/autosectionlabel.rst:11
 msgid ""
@@ -31,10 +32,11 @@ msgid ""
 ":rst:role:`ref`). This extension allows you to instead refer to sections "
 "by their title."
 msgstr ""
+"默认情况下，章节的交叉引用使用标签（参见 :rst:role:`ref`）。此插件允许您通过标题引用章节。"
 
 #: ../../usage/extensions/autosectionlabel.rst:14
 msgid "For example::"
-msgstr ""
+msgstr "例如::"
 
 #: ../../usage/extensions/autosectionlabel.rst:24
 msgid ""
@@ -44,10 +46,12 @@ msgid ""
 " variable can be used to make headings which appear multiple times but in"
 " different documents unique."
 msgstr ""
+"在内部，此插件为每个章节生成标签。如果整个文档中使用相同的章节名称，则默认情况下使用任何一个作为目标。"
+"可以使用 ``autosectionlabel_prefix_document`` 配置变量使在不同文档中多次出现的标题唯一。"
 
 #: ../../usage/extensions/autosectionlabel.rst:32
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #: ../../usage/extensions/autosectionlabel.rst
 msgid "Type"
@@ -65,6 +69,9 @@ msgid ""
 "for avoiding ambiguity when the same section heading appears in different"
 " documents."
 msgstr ""
+"为每个章节标签添加所在文档的名称，后跟一个冒号。例如，对于名为 ``Introduction`` 的章节，"
+"它出现在文档 ``index.rst`` 中，标签为 ``index:Introduction``。当相同的章节标题出现在不同文档中时，"
+"有助于避免歧义。"
 
 #: ../../usage/extensions/autosectionlabel.rst:48
 msgid ""
@@ -73,10 +80,12 @@ msgid ""
 "generated only for top level sections, and deeper sections are not "
 "labeled.  It defaults to ``None`` (i.e. all sections are labeled)."
 msgstr ""
+"如果设置了，autosectionlabel 通过其深度选择要标记的章节。例如，当 ``autosectionlabel_maxdepth`` 设置为 1 时，"
+"仅为顶级章节生成标签，而深层章节不会被标记。默认为 ``None`` （即所有章节都被标记）。"
 
 #: ../../usage/extensions/autosectionlabel.rst:55
 msgid "Debugging"
-msgstr ""
+msgstr "调试"
 
 #: ../../usage/extensions/autosectionlabel.rst:57
 msgid ""
@@ -86,4 +95,6 @@ msgid ""
 "that have been generated for them. This output can help finding the right"
 " reference label."
 msgstr ""
-
+"``WARNING: undefined label`` 表示您在 :rst:role:`ref` 中引用的内容拼写错误。"
+"使用 ``-vvv`` （参见 :option:`-v`）调用 :program:`sphinx-build` 将打印所有章节名称以及为其生成的标签。"
+"此输出有助于找到正确的引用标签。"
