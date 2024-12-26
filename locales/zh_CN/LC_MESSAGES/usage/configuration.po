@@ -43,13 +43,14 @@ msgstr ""
 
 #: ../../usage/configuration.rst:35
 msgid "Important points to note:"
-msgstr ""
+msgstr "需要注意的重要事项："
 
 #: ../../usage/configuration.rst:37
 msgid ""
 "If not otherwise documented, values must be strings, and their default is"
 " the empty string."
 msgstr ""
+"如无其他说明，值必须为字符串，且默认为空字符串。"
 
 #: ../../usage/configuration.rst:40
 msgid ""
@@ -58,12 +59,15 @@ msgid ""
 "qualified name :code-py:`\"sphinx.builders.Builder\"` means the :code-"
 "py:`Builder` class in the :code-py:`sphinx.builders` module."
 msgstr ""
+"术语“完全限定名称”（Fully-Qualified Name，简称 FQN）指的是一个字符串，用于命名模块内可导入的 Python 对象；"
+"例如，完全限定名称 :code-py:`\"sphinx.builders.Builder\"` 表示 :code-py:`sphinx.builders` 模块中的 :code-py:`Builder` 类。"
 
 #: ../../usage/configuration.rst:45
 msgid ""
 "Document names use ``/`` as the path separator and do not contain the "
 "file name extension."
 msgstr ""
+"文档名称使用 ``/`` 作为路径分隔符，并且不包含文件扩展名。"
 
 #: ../../usage/configuration.rst:50
 msgid ""
@@ -72,6 +76,8 @@ msgid ""
 "that none of these will match slashes (``/``). A double star ``**`` can "
 "be used to match any sequence of characters *including* slashes."
 msgstr ""
+"在允许使用通配符模式的地方，您可以使用标准的 shell 结构（``*``、``?``、``[...]`` 和 ``[!...]`` ），"
+"但需要注意的是这些通配符不会匹配斜杠（``/``）。双星号 ``**`` 可用于匹配包括斜杠在内的任意字符序列。"
 
 #: ../../usage/configuration.rst:59
 msgid ""
@@ -80,6 +86,7 @@ msgid ""
 ":term:`configuration directory`), and therefore can execute arbitrarily "
 "complex code."
 msgstr ""
+"配置文件在构建时会被作为 Python 代码执行（使用 :func:`importlib.import_module`，并将当前目录设置为 :term:`配置目录`），因此可以执行任意复杂的代码。"
 
 #: ../../usage/configuration.rst:64
 msgid ""
@@ -87,6 +94,7 @@ msgid ""
 "configuration. In general, configuration values should be simple strings,"
 " numbers, or lists or dictionaries of simple values."
 msgstr ""
+"Sphinx 随后会从文件的命名空间中读取简单名称作为其配置。通常，配置值应为简单的字符串、数字，或由简单值组成的列表或字典。"
 
 #: ../../usage/configuration.rst:68
 msgid ""
@@ -96,10 +104,12 @@ msgid ""
 "Modules are removed automatically, so deleting imported modules is not "
 "needed."
 msgstr ""
+"配置命名空间的内容会被序列化（以便 Sphinx 能够检测配置何时发生变化），因此它不能包含不可序列化的值——如果适用，"
+"请使用 ``del`` 将它们从命名空间中删除。模块会自动被移除，因此无需删除已导入的模块。"
 
 #: ../../usage/configuration.rst:77
 msgid "Project tags"
-msgstr ""
+msgstr "项目标签"
 
 #: ../../usage/configuration.rst:79
 msgid ""
@@ -109,48 +119,52 @@ msgid ""
 "py:`tags.add('tag')`. Note that the builder's name and format tags are "
 "not available in :file:`conf.py`."
 msgstr ""
+"配置文件中有名为 ``tags`` 的特殊对象，它公开了 :ref:`项目标签 <tags>`。"
+"标签可以通过 :option:`--tag <sphinx-build --tag>` 命令行选项或 :code-py:`tags.add('tag')` 来定义。"
+"请注意，构建器的名称和格式标签在 :file:`conf.py` 中不可用。"
 
 #: ../../usage/configuration.rst:86
 msgid "It can be used to query and change the defined tags as follows:"
-msgstr ""
+msgstr "它可以用于查询和更改已定义的标签，如下所示："
 
 #: ../../usage/configuration.rst:88
 msgid "To query whether a tag is set, use :code-py:`'tag' in tags`."
-msgstr ""
+msgstr "要查询某个标签是否已设置，请使用 :code-py:`'tag' in tags`。"
 
 #: ../../usage/configuration.rst:89
 msgid "To add a tag, use :code-py:`tags.add('tag')`."
-msgstr ""
+msgstr "要添加标签，请使用 :code-py:`tags.add('tag')`。"
 
 #: ../../usage/configuration.rst:90
 msgid "To remove a tag, use :code-py:`tags.remove('tag')`."
-msgstr ""
+msgstr "要移除标签，请使用 :code-py:`tags.remove('tag')`。"
 
 #: ../../usage/configuration.rst:93
 msgid "Project information"
-msgstr ""
+msgstr "项目信息"
 
 #: ../../usage/configuration.rst
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: ../../usage/configuration.rst
 msgid "Default"
-msgstr ""
+msgstr "默认值"
 
 #: ../../usage/configuration.rst:99
 msgid "The documented project's name. Example:"
-msgstr ""
+msgstr "记录项目的名称。例如："
 
 #: ../../usage/configuration.rst:110
 msgid "The project's author(s). Example:"
-msgstr ""
+msgstr "项目的作者。例如："
 
 #: ../../usage/configuration.rst:124
 msgid ""
 "A copyright statement. Permitted styles are as follows, where 'YYYY' "
 "represents a four-digit year."
 msgstr ""
+"版权声明。允许的样式如下，其中“YYYY”代表四位数的年份。"
 
 #: ../../usage/configuration.rst:127
 msgid ":code-py:`copyright = 'YYYY'`"
@@ -177,6 +191,7 @@ msgid ""
 "If the string :code-py:`'%Y'` appears in a copyright line, it will be "
 "replaced with the current four-digit year. For example:"
 msgstr ""
+"如果字符串 :code-py:`'%Y'` 出现在版权声明中，它将被替换为当前的四位数年份。例如："
 
 #: ../../usage/configuration.rst:137
 msgid ":code-py:`copyright = '%Y'`"
@@ -199,22 +214,25 @@ msgid ""
 "The value may now be a sequence of copyright statements in the above "
 "form, which will be displayed each to their own line."
 msgstr ""
+"该值现在可以是上述形式的版权声明序列，每个声明将单独显示一行。"
 
 #: ../../usage/configuration.rst:148
 msgid "Copyright statements support the :code-py:`'%Y'` placeholder."
-msgstr ""
+msgstr "版权声明支持 :code-py:`'%Y'` 占位符。"
 
 #: ../../usage/configuration.rst:155
 msgid ""
 "The major project version, used as the replacement for the :code-"
 "rst:`|version|` :ref:`default substitution <default-substitutions>`."
 msgstr ""
+"项目的主版本号，用于替换 :code-rst:`|version|` :ref:`默认替换 <default-substitutions>`。"
 
 #: ../../usage/configuration.rst:158
 msgid ""
 "This may be something like :code-py:`version = '4.2'`. The full project "
 "version is defined in :confval:`release`."
 msgstr ""
+"这可能是类似于 :code-py:`version = '4.2'` 的形式。项目的完整版本号在 :confval:`release` 中定义。"
 
 #: ../../usage/configuration.rst:161 ../../usage/configuration.rst:176
 msgid ""
@@ -222,6 +240,7 @@ msgid ""
 "'full' and 'major' version, set both :code-py:`version` and :code-"
 "py:`release` to the same value."
 msgstr ""
+"如果您的项目在“完整”版本和“主”版本之间没有明显的区别，请将 :code-py:`version` 和 :code-py:`release` 设置为相同的值。"
 
 #: ../../usage/configuration.rst:169
 msgid ""
@@ -229,16 +248,18 @@ msgid ""
 "rst:`|release|` :ref:`default substitution <default-substitutions>`, and "
 "e.g. in the HTML templates."
 msgstr ""
+"项目的完整版本号，用于替换 :code-rst:`|release|` :ref:`默认替换 <default-substitutions>`，并在 HTML 模板等中使用。"
 
 #: ../../usage/configuration.rst:173
 msgid ""
 "This may be something like :code-py:`release = '4.2.1b0'`. The major "
 "(short) project version is defined in :confval:`version`."
 msgstr ""
+"这可能是类似于 :code-py:`release = '4.2.1b0'` 的形式。项目的主（简短）版本号在 :confval:`version` 中定义。"
 
 #: ../../usage/configuration.rst:182
 msgid "General configuration"
-msgstr ""
+msgstr "通用配置"
 
 #: ../../usage/configuration.rst:188
 msgid ""
@@ -248,10 +269,12 @@ msgid ""
 "if the running version of Sphinx is too old. By default, there is no "
 "minimum version."
 msgstr ""
+"设置构建项目所需的最低支持的 Sphinx 版本。格式应为 ``'major.minor'`` 版本字符串，例如 ``'1.1'``。"
+"Sphinx 会将其与自身版本进行比较，如果运行的 Sphinx 版本过旧，将拒绝构建项目。默认情况下，没有最低版本要求。"
 
 #: ../../usage/configuration.rst:196
 msgid "Allow a ``'major.minor.micro'`` version string."
-msgstr ""
+msgstr "允许使用 ``'major.minor.micro'`` 版本字符串。"
 
 #: ../../usage/configuration.rst:203
 msgid ""
@@ -259,12 +282,15 @@ msgid ""
 "<extensions/index>`. These can be extensions bundled with Sphinx (named "
 "``sphinx.ext.*``) or custom first-party or third-party extensions."
 msgstr ""
+"字符串列表，表示 :doc:`Sphinx 插件 <extensions/index>` 的模块名称。"
+"这些插件可以是与 Sphinx 捆绑的插件（命名为 ``sphinx.ext.*``），也可以是自定义的第一方或第三方插件。"
 
 #: ../../usage/configuration.rst:208
 msgid ""
 "To use a third-party extension, you must ensure that it is installed and "
 "include it in the :code-py:`extensions` list, like so:"
 msgstr ""
+"要使用第三方插件，您必须确保它已安装，并将其包含在 :code-py:`extensions` 列表中，如下所示："
 
 #: ../../usage/configuration.rst:218
 msgid ""
@@ -274,6 +300,8 @@ msgid ""
 " extension is importable, and located in a directory that is in the "
 "Python path."
 msgstr ""
+"对于第一方插件，有两种选择。配置文件本身可以是插件；为此，您只需在其中提供 :func:`setup` 函数。"
+"否则，您必须确保您的自定义插件是可导入的，并且位于 Python 路径中的某个目录中。"
 
 #: ../../usage/configuration.rst:224
 msgid ""
@@ -282,10 +310,12 @@ msgid ""
 ":term:`configuration directory`, use :meth:`pathlib.Path.resolve` like "
 "so:"
 msgstr ""
+"在修改 :data:`sys.path` 时，请确保使用绝对路径。"
+"如果您的自定义插件位于相对于 :term:`配置目录` 的目录中，请使用 :meth:`pathlib.Path.resolve`，如下所示："
 
 #: ../../usage/configuration.rst:240
 msgid "The directory structure illustrated above would look like this:"
-msgstr ""
+msgstr "上述目录结构将如下所示："
 
 #: ../../usage/configuration.rst:254
 msgid ""
@@ -294,12 +324,15 @@ msgid ""
 " the ``'major.minor'`` form. Requirements do not have to be specified for"
 " all extensions, only for those you want to check. Example:"
 msgstr ""
+"如果设置，此值必须是字典，用于指定 :confval:`extensions` 中插件的版本要求。"
+"版本字符串应采用 ``'major.minor'`` 形式。不需要为所有插件指定要求，只需为您想要检查的插件指定。例如："
 
 #: ../../usage/configuration.rst:267
 msgid ""
 "This requires that the extension declares its version in the :code-"
 "py:`setup()` function. See :ref:`dev-extensions` for further details."
 msgstr ""
+"这要求插件在其 :code-py:`setup()` 函数中声明其版本。有关更多详细信息，请参阅 :ref:`dev-extensions`。"
 
 #: ../../usage/configuration.rst:276
 msgid ""
@@ -308,6 +341,8 @@ msgid ""
 " role will link to <https://manpages.debian.org/man(1)>. The patterns "
 "available are:"
 msgstr ""
+"用于交叉引用 :rst:role:`manpage` 角色的 URL。"
+"如果将其定义为 ``https://manpages.debian.org/{path}``，则 :literal:`:manpage:`man(1)`` 角色将链接到 <https://manpages.debian.org/man(1)>。可用的模式包括："
 
 #: ../../usage/configuration.rst:282
 msgid "``page``"
@@ -315,7 +350,7 @@ msgstr ""
 
 #: ../../usage/configuration.rst:283
 msgid "The manual page (``man``)"
-msgstr ""
+msgstr "手册页（``man``）"
 
 #: ../../usage/configuration.rst:284
 msgid "``section``"
@@ -343,16 +378,18 @@ msgid ""
 "replacement for the :code-rst:`|today|` :ref:`default substitution "
 "<default-substitutions>`."
 msgstr ""
+"这些值决定了如何格式化当前日期，用于替换 :code-rst:`|today|` :ref:`默认替换 <default-substitutions>`。"
 
 #: ../../usage/configuration.rst:311
 msgid "If you set :confval:`today` to a non-empty value, it is used."
-msgstr ""
+msgstr "如果您将 :confval:`today` 设置为非空值，则使用该值。"
 
 #: ../../usage/configuration.rst:312
 msgid ""
 "Otherwise, the current time is formatted using :func:`time.strftime` and "
 "the format given in :confval:`today_fmt`."
 msgstr ""
+"否则，当前时间将使用 :func:`time.strftime` 和 :confval:`today_fmt` 中给定的格式进行格式化。"
 
 #: ../../usage/configuration.rst:315
 #, python-format
@@ -362,10 +399,12 @@ msgid ""
 "enabled with :confval:`language`, an equivalent format for the selected "
 "locale)."
 msgstr ""
+":confval:`today` 的默认值为 :code-py:`''`，而 :confval:`today_fmt` "
+"的默认值为 :code-py:`'%b %d, %Y'` （或者，如果通过 :confval:`language` 启用了翻译功能，则为所选语言环境的等效格式）。"
 
 #: ../../usage/configuration.rst:322
 msgid "Options for figure numbering"
-msgstr ""
+msgstr "图表编号的选项"
 
 #: ../../usage/configuration.rst:328
 msgid ""
@@ -373,12 +412,15 @@ msgid ""
 "numbered if they have a caption. The :rst:role:`numref` role is enabled. "
 "Obeyed so far only by HTML and LaTeX builders."
 msgstr ""
+"如果设置为 :code-py:`True`，则图表、表格和代码块在包含标题时会自动编号。"
+"同时启用 :rst:role:`numref` 角色。目前仅 HTML 和 LaTeX 构建器支持此功能。"
 
 #: ../../usage/configuration.rst:335
 msgid ""
 "The LaTeX builder always assigns numbers whether this option is enabled "
 "or not."
 msgstr ""
+"无论此选项是否启用，LaTeX 构建器始终会分配编号。"
 
 #: ../../usage/configuration.rst:344
 #, python-format
@@ -388,16 +430,20 @@ msgid ""
 "format of figure numbers. The marker ``%s`` will be replaced with the "
 "figure number."
 msgstr ""
+"字典，用于将 :code-py:`'figure'`、:code-py:`'table'`、:code-py:`'code-block'` 和 :code-py:`'section'` "
+"映射到用于图表编号格式的字符串。"
+"标记 ``%s`` 将被替换为图表编号。"
 
 #: ../../usage/configuration.rst:349
 msgid "The defaults are:"
-msgstr ""
+msgstr "默认值："
 
 #: ../../usage/configuration.rst:366
 msgid ""
 "If set to :code-py:`0`, figures, tables, and code-blocks are continuously"
 " numbered starting at ``1``."
 msgstr ""
+"如果设置为 :code-py:`0`，图表、表格和代码块将从 ``1`` 开始连续编号。"
 
 #: ../../usage/configuration.rst:368
 msgid ""
@@ -407,6 +453,8 @@ msgid ""
 "numbering has been activated via the ``:numbered:`` option of the "
 ":rst:dir:`toctree` directive."
 msgstr ""
+"如果设置为 :code-py:`1`，编号将为 ``x.1``、``x.2``，...，其中 ``x`` 表示章节编号。（如果没有顶级章节，则不会添加前缀）。"
+"此功能仅在通过 :rst:dir:`toctree` 指令的 ``:numbered:`` 选项启用章节编号时适用。"
 
 #: ../../usage/configuration.rst:373
 msgid ""
@@ -415,20 +463,23 @@ msgid ""
 "If located directly under a section, there will be no ``y.`` prefix, and "
 "if there is no top-level section, the prefix will not be added."
 msgstr ""
+"如果设置为 :code-py:`2`，编号将为 ``x.y.1``、``x.y.2``，...，其中 ``x`` 表示章节编号，``y`` 表示子章节编号。"
+"如果直接位于章节下，则不会有 ``y.`` 前缀；如果没有顶级章节，则不会添加前缀。"
 
 #: ../../usage/configuration.rst:377
 msgid "Any other positive integer can be used, following the rules above."
-msgstr ""
+msgstr "任何其他正整数也可以使用，遵循上述规则。"
 
 #: ../../usage/configuration.rst:381
 msgid ""
 "The LaTeX builder obeys this setting if :confval:`numfig` is set to "
 ":code-py:`True`."
 msgstr ""
+"如果 :confval:`numfig` 设置为 :code-py:`True`，则 LaTeX 构建器会遵循此设置。"
 
 #: ../../usage/configuration.rst:387
 msgid "Options for highlighting"
-msgstr ""
+msgstr "代码高亮的选项"
 
 #: ../../usage/configuration.rst:393
 msgid ""
@@ -436,16 +487,18 @@ msgid ""
 "py:`'default'`, which suppresses warnings if highlighting as Python code "
 "fails."
 msgstr ""
+"用于高亮源代码的默认语言。默认值为 :code-py:`'default'`，如果作为 Python 代码高亮失败，此设置会抑制警告。"
 
 #: ../../usage/configuration.rst:397
 msgid ""
 "The value should be a valid Pygments lexer name, see :ref:`code-examples`"
 " for more details."
 msgstr ""
+"该值应为有效的 Pygments 词法分析器名称，详见 :ref:`code-examples` 获取更多信息。"
 
 #: ../../usage/configuration.rst:402
 msgid "The default is now :code-py:`'default'`."
-msgstr ""
+msgstr "默认值现在为 :code-py:`'default'`。"
 
 #: ../../usage/configuration.rst:409
 msgid ""
@@ -453,6 +506,8 @@ msgid ""
 "lexer-specific; for the options understood by each, see the `Pygments "
 "documentation <https://pygments.org/docs/lexers>`_."
 msgstr ""
+"将 Pygments 词法分析器名称映射到其选项的字典。这些选项是特定于词法分析器的；"
+"有关每个词法分析器支持的选项，请参阅 `Pygments 文档 <https://pygments.org/docs/lexers>`_。"
 
 #: ../../usage/configuration.rst:413 ../../usage/configuration.rst:1595
 #: ../../usage/configuration.rst:1619 ../../usage/configuration.rst:1648
@@ -466,11 +521,11 @@ msgstr ""
 #: ../../usage/configuration.rst:3932 ../../usage/configuration.rst:3959
 #: ../../usage/configuration.rst:3978 ../../usage/configuration.rst:4017
 msgid "Example:"
-msgstr ""
+msgstr "示例"
 
 #: ../../usage/configuration.rst:425
 msgid "Allow configuring highlight options for multiple lexers."
-msgstr ""
+msgstr "允许为多个词法分析器配置高亮选项。"
 
 #: ../../usage/configuration.rst:431
 msgid ""
@@ -478,20 +533,22 @@ msgid ""
 "set, either the theme's default style or :code-py:`'sphinx'` is selected "
 "for HTML output."
 msgstr ""
+"用于 Pygments 源代码高亮的样式名称。如果未设置，HTML 输出将选择主题的默认样式或 :code-py:`'sphinx'`。"
 
 #: ../../usage/configuration.rst:435
 msgid ""
 "If the value is a fully-qualified name of a custom Pygments style class, "
 "this is then used as custom style."
 msgstr ""
+"如果该值是自定义 Pygments 样式类的完全限定名称，则将其用作自定义样式。"
 
 #: ../../usage/configuration.rst:441
 msgid "Options for HTTP requests"
-msgstr ""
+msgstr "HTTP 请求的选项"
 
 #: ../../usage/configuration.rst:447
 msgid "If True, Sphinx verifies server certificates."
-msgstr ""
+msgstr "如果为 True，Sphinx 会验证服务器证书。"
 
 #: ../../usage/configuration.rst:455
 msgid ""
@@ -500,6 +557,7 @@ msgid ""
 "hostnames to the certificate file path. The certificates are used to "
 "verify server certifications."
 msgstr ""
+"CA 证书文件的路径或包含证书的目录路径。此选项还允许使用字典将主机名映射到证书文件路径。这些证书用于验证服务器证书。"
 
 #: ../../usage/configuration.rst:465
 msgid ""
@@ -507,20 +565,23 @@ msgid ""
 ":confval:`!tls_cacerts` is not set, Sphinx falls back to requests' "
 "default behaviour. See :ref:`requests:verification` for further details."
 msgstr ""
+"Sphinx 内部使用 requests_ 作为 HTTP 库。如果未设置 :confval:`!tls_cacerts`，Sphinx 将回退到 requests 的默认行为。"
+"详见 :ref:`requests:verification` 获取更多信息。"
 
 #: ../../usage/configuration.rst:477
 msgid "Set the User-Agent used by Sphinx for HTTP requests."
-msgstr ""
+msgstr "设置 Sphinx 用于 HTTP 请求的 User-Agent。"
 
 #: ../../usage/configuration.rst:485
 msgid "Options for internationalisation"
-msgstr ""
+msgstr "国际化选项"
 
 #: ../../usage/configuration.rst:487
 msgid ""
 "These options influence Sphinx's *Native Language Support*. See the "
 "documentation on :ref:`intl` for details."
 msgstr ""
+"这些选项影响 Sphinx 的 *本地语言支持*。详情请参阅 :ref:`intl` 文档。"
 
 #: ../../usage/configuration.rst:494
 msgid ""
@@ -534,18 +595,22 @@ msgid ""
 "substitute them for original figures. In the LaTeX builder, a suitable "
 "language will be selected as an option for the *Babel* package."
 msgstr ""
+"文档编写的语言代码。Sphinx 自动生成的任何文本都将使用该语言。"
+"此外，Sphinx 会尝试使用从 :confval:`locale_dirs` 获取的翻译集替换文档中的个别段落。"
+"Sphinx 将搜索由 :confval:`figure_language_filename` 命名的语言特定图片（例如，默认设置下，``myfigure.png`` 的德语版本为 ``myfigure.de.png``），并将其替换为原始图片。"
+"在 LaTeX 构建器中，将选择适合的语言作为 *Babel* 包的选项。"
 
 #: ../../usage/configuration.rst:509
 msgid "Support figure substitution"
-msgstr ""
+msgstr "支持图片替换"
 
 #: ../../usage/configuration.rst:512
 msgid "The default is now :code-py:`'en'` (previously :code-py:`None`)."
-msgstr ""
+msgstr "默认值现在为 :code-py:`'en'` （之前为 :code-py:`None`）。"
 
 #: ../../usage/configuration.rst:515
 msgid "Currently supported languages by Sphinx are:"
-msgstr ""
+msgstr "Sphinx 目前支持的语言包括："
 
 #: ../../usage/configuration.rst:517
 msgid "``ar`` -- Arabic"
@@ -761,11 +826,11 @@ msgstr ""
 
 #: ../../usage/configuration.rst:570
 msgid "``zh_CN`` -- Simplified Chinese"
-msgstr ""
+msgstr "``zh_CN`` -- 简体中文"
 
 #: ../../usage/configuration.rst:571
 msgid "``zh_TW`` -- Traditional Chinese"
-msgstr ""
+msgstr "``zh_TW`` -- 繁体中文"
 
 #: ../../usage/configuration.rst:577
 msgid ""
@@ -773,6 +838,7 @@ msgid ""
 ":confval:`language`), relative to the source directory. The directories "
 "on this path are searched by the :mod:`gettext` module."
 msgstr ""
+"用于搜索额外消息目录(message catalogs)的目录（参见 :confval:`language`），相对于源目录。此路径上的目录由 :mod:`gettext` 模块搜索。"
 
 #: ../../usage/configuration.rst:581
 msgid ""
@@ -782,6 +848,9 @@ msgid ""
 "in :file:`./locales/{language}/LC_MESSAGES/sphinx.mo`. The text domain of"
 " individual documents depends on :confval:`gettext_compact`."
 msgstr ""
+"内部消息从 ``sphinx`` 的文本域中获取；因此，如果将此设置中的目录设置为 :file:`./locales`，"
+"则消息目录（使用 :program:`msgfmt` 从 ``.po`` 格式编译）必须位于 :file:`./locales/{language}/LC_MESSAGES/sphinx.mo`。"
+"单个文档的文本域取决于 :confval:`gettext_compact`。"
 
 #: ../../usage/configuration.rst:590
 msgid ""
@@ -789,32 +858,36 @@ msgid ""
 "check the :confval:`!locale_dirs` setting is working as expected. If the "
 "message catalog directory not found, debug messages are emitted."
 msgstr ""
+":option:`sphinx-build 的 -v 选项 <sphinx-build -v>` 对于检查 :confval:`!locale_dirs` 设置是否按预期工作非常有用。如果未找到消息目录，则会发出调试信息。"
 
 #: ../../usage/configuration.rst:596
 msgid "Use ``locales`` directory as a default value"
-msgstr ""
+msgstr "使用 ``locales`` 目录作为默认值"
 
 #: ../../usage/configuration.rst:603
 msgid ""
 "If True, \"fuzzy\" messages in the message catalogs are used for "
 "translation."
 msgstr ""
+"如果为 True，则使用消息目录中的“模糊”消息进行翻译。"
 
 #: ../../usage/configuration.rst:611
 msgid ""
 "If :code-py:`True`, a document's text domain is its docname if it is a "
 "top-level project file and its very base directory otherwise."
 msgstr ""
+"如果为 :code-py:`True`，文档的文本域是其文档名称（如果它是顶级项目文件），否则是其最基础的目录。"
 
 #: ../../usage/configuration.rst:614
 msgid "If :code-py:`False`, a document's text domain is the docname, in full."
-msgstr ""
+msgstr "如果为 :code-py:`False`，文档的文本域是其完整的文档名称。"
 
 #: ../../usage/configuration.rst:616
 msgid ""
 "If set to a string, every document's text domain is set to this string, "
 "making all documents use single text domain."
 msgstr ""
+"如果设置为字符串，则每个文档的文本域都将设置为该字符串，使所有文档使用单一文本域。"
 
 #: ../../usage/configuration.rst:619
 msgid ""
@@ -823,52 +896,59 @@ msgid ""
 "option set to :code-py:`False`, it is ``markup/code``. With this option "
 "set to :code-py:`'sample'`, it is ``sample``."
 msgstr ""
+"当 :code-py:`gettext_compact = True` 时，文档 :file:`markup/code.rst` 的文本域为 ``markup``。"
+"当此选项设置为 :code-py:`False` 时，文本域为 ``markup/code``。当此选项设置为 :code-py:`'sample'` 时，文本域为 ``sample``。"
 
 #: ../../usage/configuration.rst:626
 msgid "Allow string values."
-msgstr ""
+msgstr "允许字符串值。"
 
 #: ../../usage/configuration.rst:633
 msgid ""
 "If :code-py:`True`, Sphinx generates UUID information for version "
 "tracking in message catalogs. It is used to:"
 msgstr ""
+"如果为 :code-py:`True`，Sphinx 会为消息目录中的版本跟踪生成 UUID 信息。它用于："
 
 #: ../../usage/configuration.rst:637
 msgid "Add a UUID line for each *msgid* in ``.pot`` files."
-msgstr ""
+msgstr "为 ``.pot`` 文件中的每个 *msgid* 添加 UUID 行。"
 
 #: ../../usage/configuration.rst:638
 msgid ""
 "Calculate similarity between new msgids and previously saved old msgids. "
 "(This calculation can take a long time.)"
 msgstr ""
+"计算新 msgids 与之前保存的旧 msgids 之间的相似度。（此计算可能耗时较长。）"
 
 #: ../../usage/configuration.rst:642
 msgid ""
 "If you want to accelerate the calculation, you can use a third-party "
 "package (Levenshtein_) by running :command:`pip install levenshtein`."
 msgstr ""
+"如果你想加速计算，可以通过运行 :command:`pip install levenshtein` 来使用第三方包（Levenshtein_）。"
 
 #: ../../usage/configuration.rst:654
 msgid ""
 "If :code-py:`True`, Sphinx generates location information for messages in"
 " message catalogs."
 msgstr ""
+"如果为 :code-py:`True`，Sphinx 会为消息目录中的消息生成位置信息。"
 
 #: ../../usage/configuration.rst:663
 msgid ""
 "If :code-py:`True`, Sphinx builds a ``.mo`` file for each translation "
 "catalog file."
 msgstr ""
+"如果为 :code-py:`True`，Sphinx 会为每个翻译目录文件构建一个 ``.mo`` 文件。"
 
 #: ../../usage/configuration.rst:672
 msgid "Enable ``gettext`` translation for certain element types. Example:"
-msgstr ""
+msgstr "为某些元素类型启用 ``gettext`` 翻译。例如："
 
 #: ../../usage/configuration.rst:679
 msgid "The following element types are supported:"
-msgstr ""
+msgstr "支持以下元素类型："
 
 #: ../../usage/configuration.rst:681
 msgid ":code-py:`'index'` -- index terms"
@@ -894,50 +974,55 @@ msgstr ""
 
 #: ../../usage/configuration.rst:689
 msgid "The alt text for images is translated by default."
-msgstr ""
+msgstr "默认情况下，图片的替代文本会被翻译。"
 
 #: ../../usage/configuration.rst:691 ../../usage/configuration.rst:1861
 #: ../../usage/configuration.rst:2970 ../../usage/configuration.rst:3484
 msgid "Permit and prefer a set type."
-msgstr ""
+msgstr "允许并优先使用集合类型。"
 
 #: ../../usage/configuration.rst:698
 msgid ""
 "The filename format for language-specific figures. The available format "
 "tokens are:"
 msgstr ""
+"语言特定图片的文件名格式。可用的格式标记包括："
 
 #: ../../usage/configuration.rst:701
 msgid ""
 "``{root}``: the filename, including any path component, without the file "
 "extension. For example: ``images/filename``."
 msgstr ""
+"``{root}``：文件名，包括任何路径组件，但不包括文件扩展名。例如：``images/filename``。"
 
 #: ../../usage/configuration.rst:704
 msgid ""
 "``{path}``: the directory path component of the filename, with a trailing"
 " slash if non-empty. For example: ``images/``."
 msgstr ""
+"``{path}``：文件名的目录路径组件，如果非空则带有尾部斜杠。例如：``images/``。"
 
 #: ../../usage/configuration.rst:707
 msgid ""
 "``{basename}``: the filename without the directory path or file extension"
 " components. For example: ``filename``."
 msgstr ""
+"``{basename}``：文件名，不包括目录路径或文件扩展名组件。例如：``filename``。"
 
 #: ../../usage/configuration.rst:710
 msgid "``{ext}``: the file extension. For example: ``.png``."
-msgstr ""
+msgstr "``{ext}``：文件扩展名。例如：``.png``。"
 
 #: ../../usage/configuration.rst:712
 msgid "``{language}``: the translation language. For example: ``en``."
-msgstr ""
+msgstr "``{language}``：翻译语言。例如：``en``。"
 
 #: ../../usage/configuration.rst:714
 msgid ""
 "``{docpath}``: the directory path component for the current document, "
 "with a trailing slash if non-empty. For example: ``dirname/``."
 msgstr ""
+"``{docpath}``：当前文档的目录路径组件，如果非空则带有尾部斜杠。例如：``dirname/``。"
 
 #: ../../usage/configuration.rst:718
 msgid ""
@@ -946,20 +1031,22 @@ msgid ""
 " use the language-specific figure filename "
 ":file:`images/filename.en.png`."
 msgstr ""
+"默认情况下，使用 :file:`images/filename.png` 的图片指令 :code-rst:`.. image:: images/filename.png` 将使用语言特定的图片文件名 :file:`images/filename.en.png`。"
 
 #: ../../usage/configuration.rst:723
 msgid ""
 "If :confval:`!figure_language_filename` is set as below, the language-"
 "specific figure filename will be :file:`images/en/filename.png` instead."
 msgstr ""
+"如果 :confval:`!figure_language_filename` 设置如下，语言特定的图片文件名将改为 :file:`images/en/filename.png`。"
 
 #: ../../usage/configuration.rst:733
 msgid "Added ``{path}`` and ``{basename}`` tokens."
-msgstr ""
+msgstr "添加了 ``{path}`` 和 ``{basename}`` 标记。"
 
 #: ../../usage/configuration.rst:736
 msgid "Added ``{docpath}`` token."
-msgstr ""
+msgstr "添加了 ``{docpath}`` 标记。"
 
 #: ../../usage/configuration.rst:743
 msgid ""
@@ -968,6 +1055,7 @@ msgid ""
 "documentation, in order to quickly indicate translated and untranslated "
 "content."
 msgstr ""
+"控制是否添加类以指示翻译进度。此设置可能仅由文档翻译人员使用，以便快速指示已翻译和未翻译的内容。"
 
 #: ../../usage/configuration.rst:747 ../../usage/configuration.rst:3015
 msgid ":code-py:`True`"
@@ -978,6 +1066,7 @@ msgid ""
 "Add ``translated`` and ``untranslated`` classes to all nodes with "
 "translatable content."
 msgstr ""
+"为所有具有可翻译内容的节点添加 ``translated`` 和 ``untranslated`` 类。"
 
 #: ../../usage/configuration.rst:750
 msgid ":code-py:`'translated'`"
@@ -985,7 +1074,7 @@ msgstr ""
 
 #: ../../usage/configuration.rst:751
 msgid "Only add the ``translated`` class."
-msgstr ""
+msgstr "仅添加 ``translated`` 类。"
 
 #: ../../usage/configuration.rst:752
 msgid ":code-py:`'untranslated'`"
@@ -993,7 +1082,7 @@ msgstr ""
 
 #: ../../usage/configuration.rst:753
 msgid "Only add the ``untranslated`` class."
-msgstr ""
+msgstr "仅添加 ``untranslated`` 类。"
 
 #: ../../usage/configuration.rst:754 ../../usage/configuration.rst:3009
 msgid ":code-py:`False`"
@@ -1001,11 +1090,11 @@ msgstr ""
 
 #: ../../usage/configuration.rst:755
 msgid "Do not add any classes to indicate translation progress."
-msgstr ""
+msgstr "不添加任何类来指示翻译进度。"
 
 #: ../../usage/configuration.rst:761
 msgid "Options for markup"
-msgstr ""
+msgstr "标记选项"
 
 #: ../../usage/configuration.rst:769
 msgid ""

@@ -25,7 +25,7 @@ msgstr ""
 
 #: ../../man/sphinx-build.rst:5
 msgid "Synopsis"
-msgstr ""
+msgstr "概要"
 
 #: ../../man/sphinx-build.rst:7
 msgid "**sphinx-build** [*options*] <*sourcedir*> <*outputdir*> [*filenames* ...]"
@@ -33,13 +33,14 @@ msgstr ""
 
 #: ../../man/sphinx-build.rst:10
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: ../../man/sphinx-build.rst:12
 msgid ""
 ":program:`sphinx-build` generates documentation from the files in "
 "``<sourcedir>`` and places it in the ``<outputdir>``."
 msgstr ""
+":program:`sphinx-build` 从 ``<sourcedir>`` 中的文件生成文档并将其放置在 ``<outputdir>`` 中。"
 
 #: ../../man/sphinx-build.rst:15
 msgid ""
@@ -47,6 +48,8 @@ msgid ""
 "configuration settings.  :manpage:`sphinx-quickstart(1)` may be used to "
 "generate template files, including ``conf.py``."
 msgstr ""
+":program:`sphinx-build` 在 ``<sourcedir>/conf.py`` 中查找配置设置。"
+"可以使用 :manpage:`sphinx-quickstart(1)` 生成模板文件，包括 ``conf.py``。"
 
 #: ../../man/sphinx-build.rst:19
 msgid ""
@@ -56,16 +59,20 @@ msgid ""
 "documentation processing.  For a list of available builders, refer to "
 ":doc:`/usage/builders/index`."
 msgstr ""
+":program:`sphinx-build` 可以创建不同格式的文档。"
+"通过在命令行中指定构建器名称来选择格式；默认情况下为 HTML。"
+"构建器还可以执行与文档处理相关的其他任务。有关可用构建器的列表，请参阅 :doc:`/usage/builders/index`。"
 
 #: ../../man/sphinx-build.rst:25
 msgid ""
 "By default, everything that is outdated is built.  Output only for "
 "selected files can be built by specifying individual filenames."
 msgstr ""
+"默认情况下，所有过时的内容都会被构建。通过指定单个文件名，可以仅构建选定文件的输出。"
 
 #: ../../man/sphinx-build.rst:29
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 #: ../../man/sphinx-build.rst:37
 msgid ""
@@ -73,6 +80,7 @@ msgid ""
 " for a list of all of Sphinx's built-in builders. Extensions can add "
 "their own builders."
 msgstr ""
+"使用 *make 模式* 选择构建器。有关 Sphinx 所有内置构建器的列表，请参阅 :doc:`/usage/builders/index`。扩展可以添加自己的构建器。"
 
 #: ../../man/sphinx-build.rst:42
 msgid ""
@@ -80,6 +88,7 @@ msgid ""
 "the source and output directories, before any other options are passed. "
 "For example::"
 msgstr ""
+"Sphinx 仅在首先使用 ``-M`` 选项时识别它，并且它必须与源目录和输出目录一起使用，然后才能传递其他选项。例如::"
 
 #: ../../man/sphinx-build.rst:48
 msgid ""
@@ -87,6 +96,7 @@ msgid ""
 ":ref:`Makefile or Make.bat <makefile_options>`, and provides the "
 "following additional build pipelines:"
 msgstr ""
+"*make 模式* 提供了与默认的 :ref:`Makefile 或 Make.bat <makefile_options>` 相同的构建功能，并提供了以下额外的构建管道："
 
 #: ../../man/sphinx-build.rst:52
 msgid "*latexpdf*"
@@ -99,6 +109,8 @@ msgid ""
 "``'ja'``, will use automatically the :program:`platex/dvipdfmx` latex to "
 "PDF pipeline."
 msgstr ""
+"构建 LaTeX 文件并通过 :program:`pdflatex` 运行它们，或根据 :confval:`latex_engine` 设置运行。"
+"如果 :confval:`language` 设置为 ``'ja'``，将自动使用 :program:`platex/dvipdfmx` latex 到 PDF 管道。"
 
 #: ../../man/sphinx-build.rst:58
 msgid "*info*"
@@ -106,35 +118,37 @@ msgstr ""
 
 #: ../../man/sphinx-build.rst:59
 msgid "Build Texinfo files and run them through :program:`makeinfo`."
-msgstr ""
+msgstr "构建 Texinfo 文件并通过 :program:`makeinfo` 运行它们。"
 
 #: ../../man/sphinx-build.rst:63
 msgid ""
 "The default output directory locations when using *make-mode* differ from"
 " the defaults when using :option:`-b`."
 msgstr ""
+"使用 *make 模式* 时的默认输出目录位置与使用 :option:`-b` 时的默认位置不同。"
 
 #: ../../man/sphinx-build.rst:66
 msgid "doctrees are saved to ``<outputdir>/doctrees``"
-msgstr ""
+msgstr "文档树保存到 ``<outputdir>/doctrees``"
 
 #: ../../man/sphinx-build.rst:67
 msgid "output files are saved to ``<outputdir>/<builder name>``"
-msgstr ""
+msgstr "输出文件保存到 ``<outputdir>/<builder name>``"
 
 #: ../../man/sphinx-build.rst:73
 msgid "Selects a builder."
-msgstr ""
+msgstr "选择构建器。"
 
 #: ../../man/sphinx-build.rst:75
 msgid ""
 "See :doc:`/usage/builders/index` for a list of all of Sphinx's built-in "
 "builders. Extensions can add their own builders."
 msgstr ""
+"有关 Sphinx 所有内置构建器的列表，请参阅 :doc:`/usage/builders/index`。插件可以添加自己的构建器。"
 
 #: ../../man/sphinx-build.rst:78
 msgid "Add ``--builder`` long option."
-msgstr ""
+msgstr "添加 ``--builder`` 长选项。"
 
 #: ../../man/sphinx-build.rst:83
 msgid ""
@@ -142,16 +156,18 @@ msgid ""
 "output files for new and changed source files. (This may not apply to all"
 " builders.)"
 msgstr ""
+"如果指定，则始终写入所有输出文件。默认情况下，仅为新文件和更改的源文件写入输出文件。（这可能不适用于所有构建器。）"
 
 #: ../../man/sphinx-build.rst:87
 msgid ""
 "This option does not re-read source files. To read and re-process every "
 "file, use :option:`--fresh-env` instead."
 msgstr ""
+"此选项不会重新读取源文件。要读取并重新处理每个文件，请使用 :option:`--fresh-env`。"
 
 #: ../../man/sphinx-build.rst:91
 msgid "Add ``--write-all`` long option."
-msgstr ""
+msgstr "添加 ``--write-all`` 长选项。"
 
 #: ../../man/sphinx-build.rst:96
 msgid ""
@@ -159,10 +175,12 @@ msgid ""
 "references), but rebuild it completely.  The default is to only read and "
 "parse source files that are new or have changed since the last run."
 msgstr ""
+"不使用保存的 :term:`environment` （缓存所有交叉引用的结构），而是完全重新构建它。"
+"默认情况下，仅读取和解析自上次运行以来新增或更改的源文件。"
 
 #: ../../man/sphinx-build.rst:100
 msgid "Add ``--fresh-env`` long option."
-msgstr ""
+msgstr "添加 ``--fresh-env`` 长选项。"
 
 #: ../../man/sphinx-build.rst:105
 msgid ""
@@ -170,10 +188,11 @@ msgid ""
 "that include their content only if certain tags are set. See "
 ":ref:`including content based on tags <tags>` for further detail."
 msgstr ""
+"定义标签 *tag*。这与 :rst:dir:`only` 指令相关，这些指令仅在设置了某些标签时才会包含其内容。有关更多详细信息，请参阅 :ref:`基于标签包含内容 <tags>`。"
 
 #: ../../man/sphinx-build.rst:112
 msgid "Add ``--tag`` long option."
-msgstr ""
+msgstr "添加 ``--tag`` 长选项。"
 
 #: ../../man/sphinx-build.rst:117
 msgid ""
@@ -184,10 +203,12 @@ msgid ""
 "select a different cache directory (the doctrees can be shared between "
 "all builders)."
 msgstr ""
+"由于 Sphinx 在写入输出文件之前必须读取和解析所有源文件，因此解析后的源文件会被缓存为“文档树 pickle”。"
+"通常，这些文件会放在构建目录下的 :file:`.doctrees` 目录中；使用此选项，您可以选择不同的缓存目录（文档树可以在所有构建器之间共享）。"
 
 #: ../../man/sphinx-build.rst:123
 msgid "Add ``--doctree-dir`` long option."
-msgstr ""
+msgstr "添加 ``--doctree-dir`` 长选项。"
 
 #: ../../man/sphinx-build.rst:128
 msgid ""
@@ -197,18 +218,21 @@ msgid ""
 "parts and not all builders of Sphinx can be parallelized. If ``auto`` "
 "argument is given, Sphinx uses the number of CPUs as *N*. Defaults to 1."
 msgstr ""
+"将构建分布在 *N* 个并行进程中，以便在多处理器机器上更有效地进行构建。"
+"此功能仅在支持“fork”的系统上有效。不支持 Windows。"
+"请注意，并非 Sphinx 的所有部分和所有构建器都可以并行化。如果给出 ``auto`` 参数，Sphinx 将使用 CPU 的数量作为 *N*。默认为 1。"
 
 #: ../../man/sphinx-build.rst:135
 msgid "This option should be considered *experimental*."
-msgstr ""
+msgstr "此选项应被视为 *实验性*。"
 
 #: ../../man/sphinx-build.rst:138
 msgid "Support ``auto`` argument."
-msgstr ""
+msgstr "支持 ``auto`` 参数。"
 
 #: ../../man/sphinx-build.rst:141
 msgid "Add ``--jobs`` long option."
-msgstr ""
+msgstr "添加 ``--jobs`` 长选项。"
 
 #: ../../man/sphinx-build.rst:146
 msgid ""
@@ -218,62 +242,67 @@ msgid ""
 "configuration directory, so they will have to be present at this location"
 " too."
 msgstr ""
+"不要在源目录中查找 :file:`conf.py`，而是使用给定的配置目录。请注意，配置值给出的各种其他文件和路径应相对于配置目录，因此它们也必须存在于该位置。"
 
 #: ../../man/sphinx-build.rst:154
 msgid "Add ``--conf-dir`` long option."
-msgstr ""
+msgstr "添加 ``--conf-dir`` 长选项。"
 
 #: ../../man/sphinx-build.rst:159
 msgid ""
 "Don't look for a configuration file; only take options via the "
 ":option:`--define` option."
 msgstr ""
+"不要查找配置文件；仅通过 :option:`--define` 选项获取选项。"
 
 #: ../../man/sphinx-build.rst:163
 msgid "Add ``--isolated`` long option."
-msgstr ""
+msgstr "添加 ``--isolated`` 长选项。"
 
 #: ../../man/sphinx-build.rst:168
 msgid ""
 "Override a configuration value set in the :file:`conf.py` file.  The "
 "value must be a number, string, list or dictionary value."
 msgstr ""
+"覆盖 :file:`conf.py` 文件中设置的配置值。该值必须是数字、字符串、列表或字典值。"
 
 #: ../../man/sphinx-build.rst:171
 msgid ""
 "For lists, you can separate elements with a comma like this: ``-D "
 "html_theme_path=path1,path2``."
 msgstr ""
+"对于列表，您可以用逗号分隔元素，例如：``-D html_theme_path=path1,path2``。"
 
 #: ../../man/sphinx-build.rst:174
 msgid ""
 "For dictionary values, supply the setting name and key like this: ``-D "
 "latex_elements.docclass=scrartcl``."
 msgstr ""
+"对于字典值，请提供设置名称和键，例如：``-D latex_elements.docclass=scrartcl``。"
 
 #: ../../man/sphinx-build.rst:177
 msgid "For boolean values, use ``0`` or ``1`` as the value."
-msgstr ""
+msgstr "对于布尔值，使用 ``0`` 或 ``1`` 作为值。"
 
 #: ../../man/sphinx-build.rst:179
 msgid "The value can now be a dictionary value."
-msgstr ""
+msgstr "该值现在可以是字典值。"
 
 #: ../../man/sphinx-build.rst:182
 msgid "The value can now also be a list value."
-msgstr ""
+msgstr "该值现在也可以是列表值。"
 
 #: ../../man/sphinx-build.rst:185
 msgid "Add ``--define`` long option."
-msgstr ""
+msgstr "添加 ``--define`` 长选项。"
 
 #: ../../man/sphinx-build.rst:190
 msgid "Make the *name* assigned to *value* in the HTML templates."
-msgstr ""
+msgstr "在 HTML 模板中将 *name* 赋值为 *value*。"
 
 #: ../../man/sphinx-build.rst:194
 msgid "Add ``--html-define`` long option."
-msgstr ""
+msgstr "添加 ``--html-define`` 长选项。"
 
 #: ../../man/sphinx-build.rst:199
 msgid ""
@@ -281,76 +310,82 @@ msgid ""
 " references.  See the config value :confval:`nitpick_ignore` for a way to"
 " exclude some references as \"known missing\"."
 msgstr ""
+"以 nitpicky 模式运行。目前，这会为所有缺失的引用生成警告。有关排除某些引用为“已知缺失”的方法，请参阅配置值 :confval:`nitpick_ignore`。"
 
 #: ../../man/sphinx-build.rst:203
 msgid "Add ``--nitpicky`` long option."
-msgstr ""
+msgstr "添加 ``--nitpicky`` 长选项。"
 
 #: ../../man/sphinx-build.rst:208
 msgid "Do not emit colored output."
-msgstr ""
+msgstr "不输出彩色内容。"
 
 #: ../../man/sphinx-build.rst:210
 msgid "Add ``--no-color`` long option."
-msgstr ""
+msgstr "添加 ``--no-color`` 长选项。"
 
 #: ../../man/sphinx-build.rst:215
 msgid "Emit colored output. Auto-detected by default."
-msgstr ""
+msgstr "输出彩色内容。默认情况下自动检测。"
 
 #: ../../man/sphinx-build.rst:221
 msgid ""
 "Increase verbosity (log-level).  This option can be given up to three "
 "times to get more debug logging output.  It implies :option:`-T`."
 msgstr ""
+"增加详细程度（日志级别）。此选项最多可以给出三次，以获得更多的调试日志输出。它隐含了 :option:`-T`。"
 
 #: ../../man/sphinx-build.rst:226
 msgid "Add ``--verbose`` long option."
-msgstr ""
+msgstr "添加 ``--verbose`` 长选项。"
 
 #: ../../man/sphinx-build.rst:231
 msgid ""
 "Do not output anything on standard output, only write warnings and errors"
 " to standard error."
 msgstr ""
+"不在标准输出上输出任何内容，仅将警告和错误写入标准错误。"
 
 #: ../../man/sphinx-build.rst:234
 msgid "Add ``--quiet`` long option."
-msgstr ""
+msgstr "添加 ``--quiet`` 长选项。"
 
 #: ../../man/sphinx-build.rst:239
 msgid ""
 "Do not output anything on standard output, also suppress warnings.  Only "
 "errors are written to standard error."
 msgstr ""
+"不在标准输出上输出任何内容，也抑制警告。仅将错误写入标准错误。"
 
 #: ../../man/sphinx-build.rst:242
 msgid "Add ``--silent`` long option."
-msgstr ""
+msgstr "添加 ``--silent`` 长选项。"
 
 #: ../../man/sphinx-build.rst:247
 msgid ""
 "Write warnings (and errors) to the given file, in addition to standard "
 "error."
 msgstr ""
+"将警告（和错误）写入给定的文件，而不仅仅是标准错误。"
 
 #: ../../man/sphinx-build.rst:251
 msgid "ANSI control sequences are stripped when writing to *file*."
-msgstr ""
+msgstr "ANSI 控制序列在写入 *file* 时会被删除。"
 
 #: ../../man/sphinx-build.rst:253
 msgid "Add ``--warning-file`` long option."
-msgstr ""
+msgstr "添加 ``--warning-file`` 长选项。"
 
 #: ../../man/sphinx-build.rst:258
 msgid ""
 "Turn warnings into errors. This means that :program:`sphinx-build` exits "
 "with exit status 1 if any warnings are generated during the build."
 msgstr ""
+"将警告转换为错误。这意味着如果构建过程中生成了任何警告，:program:`sphinx-build` 将以退出状态 1 退出。"
 
 #: ../../man/sphinx-build.rst:262
 msgid "Add ``--fail-on-warning`` long option."
-msgstr ""
+msgstr "添加 ``--fail-on-warning`` 长选项。"
 
 #: ../../man/sphinx-build.rst:264
 msgid ""
@@ -359,6 +394,7 @@ msgid ""
 "generated. This behaviour was previously enabled with :option:`--keep-"
 "going`."
 msgstr ""
+"：program:`sphinx-build` 不再在第一个警告时退出，而是运行整个构建并在有任何警告生成时以退出状态 1 退出。此行为以前是通过 :option:`--keep-going` 启用的。"
 
 #: ../../man/sphinx-build.rst:272
 msgid ""
@@ -368,6 +404,9 @@ msgid ""
 ":option:`!--keep-going` runs :program:`!sphinx-build` to completion and "
 "exits with exit status 1 if errors are encountered."
 msgstr ""
+"从 Sphinx 8.1 开始，:option:`!--keep-going` 始终启用。"
+"以前，它仅适用于 :option:`--fail-on-warning`，默认情况下在第一个警告时退出 :program:`sphinx-build`。"
+"使用 :option:`!--keep-going` 运行 :program:`!sphinx-build` 以完成并在遇到错误时以退出状态 1 退出。"
 
 #: ../../man/sphinx-build.rst:279
 msgid ""
@@ -375,6 +414,7 @@ msgid ""
 "that in effect :option:`!--fail-on-warning` is always enabled. The option"
 " is retained for compatibility, but may be removed at some later date."
 msgstr ""
+":program:`sphinx-build` 不再在第一个警告时退出，这意味着在效果上 :option:`!--fail-on-warning` 始终启用。"
 
 #: ../../man/sphinx-build.rst:290
 msgid ""
@@ -382,30 +422,33 @@ msgid ""
 "Otherwise, only a summary is displayed and the traceback information is "
 "saved to a file for further analysis."
 msgstr ""
+"显示未处理异常的完整回溯。否则，仅显示摘要，并将回溯信息保存到文件中以供进一步分析。"
 
 #: ../../man/sphinx-build.rst:296
 msgid "Add ``--show-traceback`` long option."
-msgstr ""
+msgstr "添加 ``--show-traceback`` 长选项。"
 
 #: ../../man/sphinx-build.rst:301
 msgid ""
 "(Useful for debugging only.)  Run the Python debugger, :mod:`pdb`, if an "
 "unhandled exception occurs while building."
 msgstr ""
+"(仅用于调试。) 在构建过程中发生未处理异常时运行 Python 调试器 :mod:`pdb`。"
 
 #: ../../man/sphinx-build.rst:304
 msgid "Add ``--pdb`` long option."
-msgstr ""
+msgstr "添加 ``--pdb`` 长选项。"
 
 #: ../../man/sphinx-build.rst:309
 msgid ""
 "Raise an exception when a warning is emitted during the build. This can "
 "be useful in combination with :option:`--pdb` to debug warnings."
 msgstr ""
+"在构建过程中发出警告时引发异常。这可以与 :option:`--pdb` 结合使用，以调试警告。"
 
 #: ../../man/sphinx-build.rst:316
 msgid "Display usage summary or Sphinx version."
-msgstr ""
+msgstr "显示使用摘要或 Sphinx 版本。"
 
 #: ../../man/sphinx-build.rst:320
 msgid ""
@@ -413,24 +456,26 @@ msgid ""
 "source and build directories. Sphinx will then try to build only these "
 "output files (and their dependencies)."
 msgstr ""
+"你也可以在源文件和构建目录之后的命令行上给出一个或多个文件名。Sphinx 将只尝试构建这些输出文件（及其依赖项）。"
 
 #: ../../man/sphinx-build.rst:325
 msgid "Environment Variables"
-msgstr ""
+msgstr "环境变量"
 
 #: ../../man/sphinx-build.rst:327
 msgid "The :program:`sphinx-build` refers following environment variables:"
-msgstr ""
+msgstr ":program:`sphinx-build` 引用以下环境变量:"
 
 #: ../../man/sphinx-build.rst:331
 msgid ""
 "A path to make command.  A command name is also allowed. :program"
 ":`sphinx-build` uses it to invoke sub-build process on make-mode."
 msgstr ""
+"make 命令的路径。也允许使用命令名称。:program:`sphinx-build` 使用它在 make 模式下调用子构建过程。"
 
 #: ../../man/sphinx-build.rst:337
 msgid "Makefile Options"
-msgstr ""
+msgstr "Makefile 选项"
 
 #: ../../man/sphinx-build.rst:338
 msgid ""
@@ -439,6 +484,8 @@ msgid ""
 ":option:`-b` and :option:`-d` options.  However, they support the "
 "following variables to customize behavior:"
 msgstr ""
+":file:`Makefile` 和 :file:`make.bat` 文件通常由 :program:`sphinx-quickstart` 创建，"
+"并且通常只使用 :option:`-b` 和 :option:`-d` 选项运行 :program:`sphinx-build`。然而，它们支持以下变量来自定义行为："
 
 #: ../../man/sphinx-build.rst:345
 msgid ""
@@ -446,6 +493,7 @@ msgid ""
 "``PAPER=a4`` sets it to ``'a4paper'`` and ``PAPER=letter`` to "
 "``'letterpaper'``."
 msgstr ""
+"这将设置 :confval:`latex_elements` 的 ``'papersize'`` 键：例如，``PAPER=a4`` 将其设置为 ``'a4paper'``，``PAPER=letter`` 将其设置为 ``'letterpaper'``。"
 
 #: ../../man/sphinx-build.rst:351
 msgid ""
@@ -453,22 +501,25 @@ msgid ""
 "``letter`` ended up as option to LaTeX document in place of the needed "
 "``a4paper``, resp. ``letterpaper``.  Fixed at 1.7.7."
 msgstr ""
+"此环境变量的用法在 Sphinx 1.5 中被破坏，因为 ``a4`` 或 ``letter`` 最终作为 LaTeX 文档的选项，而不是所需的 ``a4paper`` 或 ``letterpaper``。在 1.7.7 中修复。"
 
 #: ../../man/sphinx-build.rst:358
 msgid "The command to use instead of ``sphinx-build``."
-msgstr ""
+msgstr "用于替代 ``sphinx-build`` 的命令。"
 
 #: ../../man/sphinx-build.rst:362
 msgid ""
 "The build directory to use instead of the one chosen in :program:`sphinx-"
 "quickstart`."
 msgstr ""
+"用于替代 :program:`sphinx-quickstart` 中选择的构建目录的构建目录。"
 
 #: ../../man/sphinx-build.rst:367
 msgid ""
 "Additional options for :program:`sphinx-build`. These options can also be"
 " set via the shortcut variable **O** (capital 'o')."
 msgstr ""
+":program:`sphinx-build` 的附加选项。这些选项也可以通过快捷变量 **O** （大写 'o'）设置。"
 
 #: ../../man/sphinx-build.rst:372
 msgid ""
@@ -477,16 +528,19 @@ msgid ""
 "``FORCE_COLOR``. See `no-color.org <https://no-color.org/>`__ for other "
 "libraries supporting this community standard."
 msgstr ""
+"当设置时（无论值为何），:program:`sphinx-build` 将不在终端输出中使用颜色。"
+"``NO_COLOR`` 优先于 ``FORCE_COLOR``。有关支持此社区标准的其他库，请参阅 `no-color.org <https://no-color.org/>`__。"
 
 #: ../../man/sphinx-build.rst:381
 msgid ""
 "When set (regardless of value), :program:`sphinx-build` will use color in"
 " terminal output. ``NO_COLOR`` takes precedence over ``FORCE_COLOR``."
 msgstr ""
+"当设置时（无论值为何），:program:`sphinx-build` 将在终端输出中使用颜色。``NO_COLOR`` 优先于 ``FORCE_COLOR``。"
 
 #: ../../man/sphinx-build.rst:389
 msgid "Deprecation Warnings"
-msgstr ""
+msgstr "弃用警告"
 
 #: ../../man/sphinx-build.rst:391
 msgid ""
@@ -495,12 +549,14 @@ msgid ""
 " deprecated features. In that case, please report it to author of the "
 "extension."
 msgstr ""
+"如果在构建用户文档时显示任何弃用警告，例如 ``RemovedInSphinxXXXWarning``，则某些 Sphinx 扩展正在使用已弃用的功能。在这种情况下，请向扩展的作者报告。"
 
 #: ../../man/sphinx-build.rst:395
 msgid ""
 "To disable the deprecation warnings, please set ``PYTHONWARNINGS=`` "
 "environment variable to your environment. For example:"
 msgstr ""
+"要禁用弃用警告，请将 ``PYTHONWARNINGS=`` 环境变量设置到您的环境中。例如："
 
 #: ../../man/sphinx-build.rst:398
 msgid "``PYTHONWARNINGS= make html`` (Linux/Mac)"
