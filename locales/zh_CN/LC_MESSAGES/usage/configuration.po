@@ -1979,16 +1979,18 @@ msgid ""
 "or a URL that points an image file for the logo. It is placed at the top "
 "of the sidebar; its width should therefore not exceed 200 pixels."
 msgstr ""
+"如果提供，这必须是图像文件的名称（路径相对于 :term:`配置目录` ），该文件是文档的徽标，或者是指向徽标图像文件的 URL。它位于侧边栏的顶部；因此，其宽度不应超过200像素。"
 
 #: ../../usage/configuration.rst:1574
 msgid ""
 "The image file will be copied to the ``_static`` directory, but only if "
 "the file does not already exist there."
 msgstr ""
+"该图像文件将被复制到 ``_static`` 目录中，但仅当该文件尚未存在于该目录时才会执行复制操作。"
 
 #: ../../usage/configuration.rst:1577
 msgid "Also accepts a URL."
-msgstr ""
+msgstr "同时支持使用 URL 链接。"
 
 #: ../../usage/configuration.rst:1584
 msgid ""
@@ -1998,16 +2000,19 @@ msgid ""
 "Browsers use this as the icon for tabs, windows and bookmarks. It should "
 "be a 16-by-16 pixel icon in the PNG, SVG, GIF, or ICO file formats."
 msgstr ""
+"如果提供，这必须是图像文件的名称（路径相对于 :term:`配置目录`），该文件是文档的 favicon_，或者是指向网站图标图像文件的 URL。"
+"浏览器会将其用作标签页、窗口和书签的图标。它应为 16x16 像素的图标，文件格式为 PNG、SVG、GIF 或 ICO。"
 
 #: ../../usage/configuration.rst:1601
 msgid ""
 "The image file will be copied to the ``_static``, but only if the file "
 "does not already exist there."
 msgstr ""
+"该图像文件将被复制到 ``_static`` 目录中，但仅当该文件尚未存在于该目录时才会执行复制操作。"
 
 #: ../../usage/configuration.rst:1605
 msgid "Also accepts the URL for the favicon."
-msgstr ""
+msgstr "同时支持使用网站图标的URL链接。"
 
 #: ../../usage/configuration.rst:1612
 msgid ""
@@ -2017,6 +2022,8 @@ msgid ""
 " URI with scheme like :code-py:`'https://example.org/style.css'`. The "
 "*attributes* dictionary is used for the ``<link>`` tag's attributes."
 msgstr ""
+"CSS 文件的列表。条目必须是 *文件名* 字符串，或者包含 *文件名* 字符串和 *属性* 字典的元组。"
+"*文件名* 必须相对于 :confval:`html_static_path`，或者是带有协议（如 :code-py:`'https://example.org/style.css'`）的完整URI。*属性* 字典用于 ``<link>`` 标签的属性。"
 
 #: ../../usage/configuration.rst:1629
 msgid ""
@@ -2024,10 +2031,11 @@ msgid ""
 " file at an earlier or later step. For more information, refer to "
 ":meth:`.Sphinx.add_css_file`."
 msgstr ""
+"可以通过设置特殊的 *priority* 属性为整数，来在更早或更晚的步骤中加载 CSS 文件。更多信息，请参考 :meth:`.Sphinx.add_css_file`。"
 
 #: ../../usage/configuration.rst:1634 ../../usage/configuration.rst:1663
 msgid "Support the *priority* attribute"
-msgstr ""
+msgstr "支持 *priority* 属性"
 
 #: ../../usage/configuration.rst:1641
 msgid ""
@@ -2037,6 +2045,9 @@ msgid ""
 "full URI with scheme like :code-py:`'https://example.org/script.js'`. The"
 " *attributes* dictionary is used for the ``<script>`` tag's attributes."
 msgstr ""
+"JavaScript 文件的列表。条目必须是 *文件名* 字符串，或者包含 *文件名* 字符串和 *属性* 字典的元组。"
+"*文件名* 必须相对于 :confval:`html_static_path`，或者是带有协议（如 :code-py:`'https://example.org/script.js'`）的完整URI。"
+"*属性* 字典用于 ``<script>`` 标签的属性。"
 
 #: ../../usage/configuration.rst:1658
 msgid ""
