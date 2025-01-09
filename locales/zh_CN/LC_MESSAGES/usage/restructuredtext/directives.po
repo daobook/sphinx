@@ -21,7 +21,7 @@ msgstr ""
 
 #: ../../usage/restructuredtext/directives.rst:5
 msgid "Directives"
-msgstr ""
+msgstr "指令"
 
 #: ../../usage/restructuredtext/directives.rst:7
 msgid ""
@@ -30,20 +30,22 @@ msgid ""
 "directives, Sphinx provides many more and uses directives as one of the "
 "primary extension mechanisms."
 msgstr ""
+":ref:`如前所述 <rst-directives>`，指令是通用的显式标记块。虽然 Docutils 提供了许多指令，但 Sphinx 提供了更多，并将指令作为主要的扩展机制之一。"
 
 #: ../../usage/restructuredtext/directives.rst:12
 msgid "See :doc:`/usage/domains/index` for roles added by domains."
-msgstr ""
+msgstr "请参阅 :doc:`/usage/domains/index` 了解由域（domains）添加的角色。"
 
 #: ../../usage/restructuredtext/directives.rst:16
 msgid ""
 "Refer to the :ref:`reStructuredText Primer <rst-directives>` for an "
 "overview of the directives provided by Docutils."
 msgstr ""
+"请参阅 :ref:`reStructuredText 入门指南 <rst-directives>` 以了解 Docutils 提供的指令概述。"
 
 #: ../../usage/restructuredtext/directives.rst:23
 msgid "Table of contents"
-msgstr ""
+msgstr "目录"
 
 #: ../../usage/restructuredtext/directives.rst:27
 msgid ""
@@ -53,12 +55,15 @@ msgid ""
 "documentation is made of, as well as tables of contents. The ``toctree`` "
 "directive is the central element."
 msgstr ""
+"由于 reStructuredText 本身不具备将多个文档相互连接或将文档分割成多个输出文件的功能，"
+"Sphinx 使用自定义指令来添加构成文档的单个文件之间的关系，以及目录。``toctree`` 指令是其中的核心元素。"
 
 #: ../../usage/restructuredtext/directives.rst:35
 msgid ""
 "Simple \"inclusion\" of one file in another can be done with the "
 ":dudir:`include` directive."
 msgstr ""
+"可以通过 :dudir:`include` 指令简单地实现一个文件对另一个文件的“包含”。"
 
 #: ../../usage/restructuredtext/directives.rst:40
 msgid ""
@@ -66,6 +71,7 @@ msgid ""
 "standard reStructuredText :dudir:`contents directive <table-of-"
 "contents>`."
 msgstr ""
+"要为当前文档（.rst 文件）创建目录，请使用标准的 reStructuredText :dudir:`目录指令 <table-of-contents>`。"
 
 #: ../../usage/restructuredtext/directives.rst:45
 msgid ""
@@ -77,6 +83,9 @@ msgid ""
 "given to indicate the depth of the tree; by default, all levels are "
 "included. [#]_"
 msgstr ""
+"该指令在当前位置插入“TOC 树”，使用指令主体中给出的各个文档的目录（包括“子目录树”）。"
+"相对文档名称（不以斜杠开头）相对于指令所在文档，绝对名称相对于源目录。"
+"可以指定数字 ``maxdepth`` 选项来表示树的深度；默认情况下，包含所有层级。[#]_"
 
 #: ../../usage/restructuredtext/directives.rst:52
 msgid ""
@@ -86,16 +95,20 @@ msgid ""
 "file (e.g. LaTeX, man page, etc.) replace it with the content of the "
 "documents on the TOC tree."
 msgstr ""
+"“TOC 树”的表示形式在每个输出格式中会有所不同。"
+"输出多个文件的构建器（例如 HTML）将其视为超链接的集合。"
+"另一方面，输出单个文件的构建器（例如 LaTeX、man 页面等）会将其替换为 TOC 树上文档的内容。"
 
 #: ../../usage/restructuredtext/directives.rst:58
 msgid ""
 "Consider this example (taken from the Python docs' library reference "
 "index)::"
 msgstr ""
+"请看以下示例（取自 Python 文档的库参考索引）::"
 
 #: ../../usage/restructuredtext/directives.rst:69
 msgid "This accomplishes two things:"
-msgstr ""
+msgstr "这实现了两个目的："
 
 #: ../../usage/restructuredtext/directives.rst:71
 msgid ""
@@ -103,6 +116,7 @@ msgid ""
 "depth of two, that means one nested heading.  ``toctree`` directives in "
 "those documents are also taken into account."
 msgstr ""
+"所有这些文档的目录都会被插入，最大深度为两层，即包含一个嵌套标题。这些文档中的 ``toctree`` 指令也会被考虑在内。"
 
 #: ../../usage/restructuredtext/directives.rst:74
 msgid ""
@@ -111,10 +125,11 @@ msgid ""
 "the library index.  From this information it generates \"next chapter\", "
 "\"previous chapter\" and \"parent chapter\" links."
 msgstr ""
+"Sphinx 知道文档 ``intro``、``strings`` 等的相对顺序，并且知道它们是当前显示的文档（库索引）的子文档。根据这些信息，它会生成“下一章”、“上一章”和“父章节”的链接。"
 
 #: ../../usage/restructuredtext/directives.rst:79
 msgid "**Entries**"
-msgstr ""
+msgstr "**条目**"
 
 #: ../../usage/restructuredtext/directives.rst:81
 msgid ""
@@ -124,6 +139,8 @@ msgid ""
 "reStructuredText hyperlinks (and Sphinx's :ref:`cross-referencing syntax "
 "<xref-syntax>`). This looks like::"
 msgstr ""
+":rst:dir:`toctree` 中的文档标题将自动从引用文档的标题中读取。"
+"如果这不是你想要的，你可以使用类似于 reStructuredText 超链接（以及 Sphinx 的 :ref:`交叉引用语法 <xref-syntax>`）的语法指定明确的标题和目标。示例如下::"
 
 #: ../../usage/restructuredtext/directives.rst:93
 msgid ""
@@ -131,12 +148,14 @@ msgid ""
 " the title \"All about strings\" instead of the title of the ``strings`` "
 "document."
 msgstr ""
+"上面第二行将链接到 ``strings`` 文档，但会使用标题“All about strings”而不是 ``strings`` 文档的标题。"
 
 #: ../../usage/restructuredtext/directives.rst:96
 msgid ""
 "You can also add external links, by giving an HTTP URL instead of a "
 "document name."
 msgstr ""
+"你也可以通过提供 HTTP URL 而不是文档名称来添加外部链接。"
 
 #: ../../usage/restructuredtext/directives.rst:99
 msgid ""
@@ -144,6 +163,7 @@ msgid ""
 "toctree directive.  This is useful if you want to generate a \"sitemap\" "
 "from the toctree."
 msgstr ""
+"特殊条目名称 ``self`` 表示包含 toctree 指令的文档。如果你想从 toctree 生成“站点地图”，这将非常有用。"
 
 #: ../../usage/restructuredtext/directives.rst:103
 msgid ""
@@ -152,6 +172,8 @@ msgid ""
 "emit a warning if it finds a file that is not included, because that "
 "means that this file will not be reachable through standard navigation."
 msgstr ""
+"最后，:term:`源目录` （或子目录）中的所有文档都必须出现在某个 ``toctree`` 指令中；"
+"如果 Sphinx 发现文件未被包含，它将发出警告，因为这意味着该文件无法通过标准导航访问。"
 
 #: ../../usage/restructuredtext/directives.rst:108
 msgid ""
@@ -160,6 +182,8 @@ msgid ""
 "<metadata>` to let a document be built, but notify Sphinx that it is not "
 "reachable via a toctree."
 msgstr ""
+"使用 :confval:`exclude_patterns` 明确排除文档或目录，使其完全不被构建。"
+"使用 :ref:`\"orphan\" 元数据 <metadata>` 可以让文档被构建，但通知 Sphinx 该文档无法通过 toctree 访问。"
 
 #: ../../usage/restructuredtext/directives.rst:113
 msgid ""
@@ -168,10 +192,11 @@ msgid ""
 "page, or as a \"full table of contents\" if you don't give a "
 "``:maxdepth:`` option."
 msgstr ""
+"“根文档”（由 :confval:`root_doc` 选择）是 TOC 树层次结构的“根”。它可以用作文档的主页，或者如果你不提供 ``:maxdepth:`` 选项，也可以用作“完整目录”。"
 
 #: ../../usage/restructuredtext/directives.rst:117
 msgid "Added support for external links and \"self\" references."
-msgstr ""
+msgstr "增加了对外部链接和“self”引用的支持。"
 
 #: ../../usage/restructuredtext/directives.rst:121
 #: ../../usage/restructuredtext/directives.rst:573
@@ -182,51 +207,57 @@ msgstr ""
 #: ../../usage/restructuredtext/directives.rst:1328
 #: ../../usage/restructuredtext/directives.rst:1532
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 #: ../../usage/restructuredtext/directives.rst:125
 msgid ""
 "Assign `class attributes`_. This is a :dudir:`common option <common-"
 "options>`. For example::"
 msgstr ""
+"分配 `class attributes`_。这是 :dudir:`常见选项 <common-options>`。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:139
 msgid ""
 "An implicit target name that can be referenced using :rst:role:`ref`. "
 "This is a :dudir:`common option <common-options>`. For example::"
 msgstr ""
+"可以使用 :rst:role:`ref` 引用的隐式目标名称。这是 :dudir:`常见选项 <common-options>`。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:153
 msgid "Add a caption to the toctree. For example::"
-msgstr ""
+msgstr "为 toctree 添加标题。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:166
 msgid ""
 "If you want to have section numbers even in HTML output, add the "
 "``:numbered:`` option to the *top-level* toctree. For example::"
 msgstr ""
+"如果你希望在 HTML 输出中也显示章节编号，可以在 *顶级* toctree 中添加 ``:numbered:`` 选项。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:176
 msgid ""
 "Section numbering then starts at the heading of ``foo``. Sub-toctrees are"
 " automatically numbered (don't give the ``numbered`` flag to those)."
 msgstr ""
+"章节编号将从 ``foo`` 的标题开始。子 toctree 会自动编号（不要给它们添加 ``numbered`` 标志）。"
 
 #: ../../usage/restructuredtext/directives.rst:180
 msgid ""
 "Numbering up to a specific depth is also possible, by giving the depth as"
 " a numeric argument to ``numbered``."
 msgstr ""
+"也可以通过为 ``numbered`` 提供数字参数来指定编号的深度。"
 
 #: ../../usage/restructuredtext/directives.rst:185
 msgid "Added the numeric *depth* argument."
-msgstr ""
+msgstr "增加了数字 *depth* 参数。"
 
 #: ../../usage/restructuredtext/directives.rst:190
 msgid ""
 "Only list document titles, not other headings of the same level. For "
 "example::"
 msgstr ""
+"仅列出文档标题，而不列出同一级别的其他标题。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:203
 msgid ""
@@ -234,6 +265,7 @@ msgid ""
 "the list of available documents, and matches are inserted into the list "
 "alphabetically. For example::"
 msgstr ""
+"解析 toctree 条目中的通配符。所有条目将与可用文档列表进行匹配，并按字母顺序将匹配项插入列表中。例如::"
 
 #: ../../usage/restructuredtext/directives.rst:215
 msgid ""
@@ -241,18 +273,21 @@ msgid ""
 "all documents in the ``recipe`` folder, then all remaining documents "
 "(except the one containing the directive, of course.) [#]_"
 msgstr ""
+"这首先包括所有名称以 ``intro`` 开头的文档，然后是 ``recipe`` 文件夹中的所有文档，最后是所有剩余的文档（当然，不包括包含该指令的文档）。[#]_"
 
 #: ../../usage/restructuredtext/directives.rst:223
 msgid ""
 "Reverse the order of the entries in the list. This is particularly useful"
 " when using the ``:glob:`` option."
 msgstr ""
+"反转列表中条目的顺序。这在结合使用 ``:glob:`` 选项时特别有用。"
 
 #: ../../usage/restructuredtext/directives.rst:230
 msgid ""
 "A hidden toctree only defines the document hierarchy. It will not insert "
 "links into the document at the location of the directive."
 msgstr ""
+"隐藏的 toctree 仅定义文档层次结构。它不会在指令位置插入链接到文档中。"
 
 #: ../../usage/restructuredtext/directives.rst:233
 msgid ""
